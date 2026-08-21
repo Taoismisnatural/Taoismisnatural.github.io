@@ -3,129 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>跨境线索后台 · 可视化</title>
+<title>跨境线索对账后台</title>
 <style>
 :root{--bg:#0b1020;--bg2:#111936;--card:#151d3d;--card2:#1a2450;--txt:#e8ecff;--dim:#9aa7d0;--line:#2a3566;
   --gold:#ffc24d;--gold2:#ff9d2e;--cyan:#37e0ff;--green:#4ade80;--blue:#6c8bff;--red:#ff5c7a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:radial-gradient(1200px 600px at 20% -10%,#1b2a5e 0%,transparent 50%),var(--bg);color:var(--txt);
-  font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;line-height:1.6;min-height:100vh}
-.wrap{max-width:1180px;margin:auto;padding:28px 20px 80px}
+  font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;line-height:1.55;min-height:100vh}
+.wrap{max-width:1220px;margin:auto;padding:26px 20px 80px}
 h1{font-size:24px;font-weight:800;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sub{color:var(--dim);font-size:12.5px;margin-top:4px}
-.conn{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-top:18px;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:18px}
+.conn{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-top:16px;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:18px}
 .conn label{font-size:12px;color:var(--dim);display:block;margin-bottom:5px}
 .conn input{width:100%;padding:10px 13px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--txt);outline:none;font-size:13px}
 .conn input:focus{border-color:var(--cyan)}
-.conn .f{flex:1;min-width:220px}
-.conn button{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;border:none;padding:11px 22px;border-radius:10px;font-weight:800;cursor:pointer;font-size:14px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.conn .f{flex:1;min-width:210px}
+.conn button{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;border:none;padding:11px 20px;border-radius:10px;font-weight:800;cursor:pointer;font-size:13.5px}
+.conn .danger{background:linear-gradient(90deg,var(--red),#c43c5c);color:#fff}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0}
 .kpi{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
-.kpi .n{font-size:28px;font-weight:800;color:var(--gold)}
+.kpi .n{font-size:26px;font-weight:800;color:var(--gold)}
 .kpi .l{font-size:12px;color:var(--dim);margin-top:2px}
 .kpi.cyan .n{color:var(--cyan)}.kpi.green .n{color:var(--green)}.kpi.red .n{color:var(--red)}
-.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin-top:14px}
-table{border-collapse:collapse;width:100%;min-width:900px;background:var(--card)}
-th,td{text-align:left;padding:13px 14px;font-size:13px;border-bottom:1px solid var(--line);vertical-align:top}
+.funnel{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+.funnel h3{font-size:14px;color:var(--gold);margin-bottom:12px}
+.fstep{display:flex;align-items:center;gap:12px;margin:8px 0}
+.fstep .lab{flex:0 0 90px;font-size:12.5px;color:var(--dim);text-align:right}
+.fstep .bar{flex:1;height:18px;background:var(--bg);border-radius:8px;overflow:hidden}
+.fstep .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold2),var(--cyan));transition:width .4s}
+.fstep .num{flex:0 0 120px;font-size:13px;color:var(--txt)}
+.fstep .num b{color:var(--gold)}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin-top:10px}
+table{border-collapse:collapse;width:100%;min-width:1080px;background:var(--card)}
+th,td{text-align:left;padding:12px 13px;font-size:12.5px;border-bottom:1px solid var(--line);vertical-align:top}
 th{background:var(--card2);color:var(--gold);font-size:12px;font-weight:700;white-space:nowrap}
 tr:last-child td{border-bottom:none}
-.lid{color:var(--gold);font-weight:800;white-space:nowrap;font-size:12.5px}
-.ts{color:var(--dim);font-size:12px;white-space:nowrap}
-.contact div{font-size:12.5px}
+.lid{color:var(--gold);font-weight:800;white-space:nowrap;font-size:12px}
+.ts{color:var(--dim);font-size:11.5px;white-space:nowrap}
+.contact div{font-size:12px}
 .contact .m{color:var(--cyan)}
-.chip{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:2px 9px;font-size:11.5px;margin:1px 3px 1px 0;color:var(--dim)}
+.chip{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:13px;padding:1px 8px;font-size:11px;margin:1px 3px 1px 0;color:var(--dim)}
 .chip.risk{color:#ffd0da;border-color:var(--red)}
-.badge{display:inline-block;font-size:11px;padding:2px 10px;border-radius:20px;font-weight:700}
-.on{color:#12360f;background:var(--green)}
-.off{color:#7a5b08;background:var(--gold)}
+.st{display:inline-block;font-size:11px;padding:2px 10px;border-radius:20px;font-weight:700;white-space:nowrap}
+.st.new{color:#062f4a;background:var(--cyan)}
+.st.converted{color:#231407;background:var(--gold)}
+.st.settled{color:#12360f;background:var(--green)}
+.am{font-size:13px;font-weight:700}
+.am.money{color:var(--gold)}.am.settled{color:var(--green)}
+.act{display:flex;gap:6px;flex-wrap:wrap}
+.act button{border:none;border-radius:8px;padding:6px 10px;font-size:11.5px;cursor:pointer;font-weight:600}
+.bt-conv{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407}
+.bt-set{background:var(--green);color:#12360f}
+.bt-reset{background:var(--card2);color:var(--dim);border:1px solid var(--line)}
+.bt-del{background:transparent;color:var(--red);border:1px solid var(--red)}
 .empty{padding:40px;text-align:center;color:var(--dim)}
-.err{background:rgba(255,92,122,.12);border:1px solid var(--red);color:#ffd0da;border-radius:12px;padding:14px 16px;margin-top:14px;font-size:13px}
-.note{color:var(--dim);font-size:12px;margin-top:14px}
+.err{background:rgba(255,92,122,.12);border:1px solid var(--red);color:#ffd0da;border-radius:12px;padding:13px 15px;margin-top:14px;font-size:12.5px}
+.ok{background:rgba(74,222,128,.12);border:1px solid var(--green);color:#c9f7da;border-radius:12px;padding:11px 14px;margin-top:10px;font-size:12.5px}
+.note{color:var(--dim);font-size:12px;margin-top:14px;line-height:1.8}
 footer{border-top:1px solid var(--line);margin-top:40px;padding-top:18px;text-align:center;color:var(--dim);font-size:12px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>跨境电商线索后台</h1>
-  <div class="sub">数据源：Cloudflare Worker + Supabase。若尚无成交/结算字段，此处只展示线索本身与授权数。</div>
+  <h1>跨境电商线索 · 对账后台</h1>
+  <div class="sub">数据源：Cloudflare Worker + Supabase。状态流转：新线索 → 已成交 → 已结算；金额以你录入的成交额/分成为准。</div>
 
   <div class="conn">
     <div class="f"><label>接口地址</label><input id="apiUrl" placeholder="https://...workers.dev"></div>
     <div class="f" style="min-width:180px"><label>管理密钥（x-admin-token）</label><input id="apiToken" type="password" placeholder="ADMIN_TOKEN"></div>
-    <button onclick="load()">加载线索 ▶</button>
+    <button onclick="load()">加载 ▶</button>
+    <button class="danger" onclick="clearAll()">清空全部数据</button>
   </div>
 
   <div class="kpis">
     <div class="kpi"><div class="n" id="kTotal">0</div><div class="l">全部线索</div></div>
-    <div class="kpi cyan"><div class="n" id="kToday">0</div><div class="l">今日新增</div></div>
-    <div class="kpi green"><div class="n" id="kAuth">0</div><div class="l">已授权转介</div></div>
+    <div class="kpi cyan"><div class="n" id="kNew">0</div><div class="l">新线索 · 待分配/待成交</div></div>
+    <div class="kpi"><div class="n" id="kConv">0</div><div class="l">已成交（待结算）</div></div>
+    <div class="kpi red"><div class="n" id="kDue">¥0</div><div class="l">待结算合计（应收）</div></div>
+    <div class="kpi green"><div class="n" id="kDone">¥0</div><div class="l">已结算合计（已收）</div></div>
   </div>
 
-  <div id="err"></div>
-  <div class="tblwrap">
-    <table id="tbl"><thead>
-      <tr><th>线索编号</th><th>提交时间</th><th>联系方式</th><th>推荐通道</th><th>卖家画像</th><th>风险提醒</th><th>授权</th></tr>
-    </thead><tbody id="tbody"></tbody></table>
+  <div class="funnel">
+    <h3>线索漏斗</h3>
+    <div class="fstep"><div class="lab">新线索</div><div class="bar"><i id="fNew"></i></div><div class="num" id="nNew"></div></div>
+    <div class="fstep"><div class="lab">已成交</div><div class="bar"><i id="fConv"></i></div><div class="num" id="nConv"></div></div>
+    <div class="fstep"><div class="lab">已结算</div><div class="bar"><i id="fDone"></i></div><div class="num" id="nDone"></div></div>
+    <div class="sub" style="margin-top:8px">待结算合计 <b style="color:var(--gold);font-size:16px" id="dueBig">¥0</b> —— 越快找代账对账核销越好。</div>
   </div>
-  <div class="note">注：本页只读展示。若需「成交金额 / 分成 / 结算状态」等对账字段，需给 Supabase 表加字段并扩展接口，可另行加上。</div>
-  <footer>跨境电商线索后台 · 请妥善保管管理密钥</footer>
+
+  <div id="msg"></div>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>线索编号</th><th>提交时间</th><th>联系方式</th><th>推荐通道</th><th>卖家画像</th><th>状态</th><th>成交金额</th><th>我的分成</th><th>操作</th></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+  <div class="note">操作说明：<br>· <b>记录成交</b>：输入这笔「成交金额」和「我的分成」，线索转为「已成交」，并计入待结算。<br>· <b>标记结算</b>：该笔分成已实际到账，计入已结算，从待结算移除。<br>· <b>还原未成交</b> / <b>删除</b>：分别用于纠错与清理单条。<br>· 金额均为人工录入，非测算。所有写操作均需管理密钥。</div>
+  <footer>跨境电商线索 · 对账后台 · 请妥善保管密钥</footer>
 </div>
 
 <script>
 function store(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
 function loadStore(k,d){ try{ return localStorage.getItem(k)||d; }catch(e){ return d; } }
-
 var qlabel={q1:'发货方式',q2:'开票能力',q3:'综试区',q4:'销售额',q5:'收款安排'};
-
-document.getElementById('apiUrl').value=loadStore('cb_api','https://caishui-leads.861481939.workers.dev');
+var URL=loadStore('cb_api','https://caishui-leads.861481939.workers.dev');
+document.getElementById('apiUrl').value=URL;
 document.getElementById('apiToken').value=loadStore('cb_token','');
+function tok(){ return document.getElementById('apiToken').value.trim(); }
+function base(){ return (document.getElementById('apiUrl').value||'').trim().replace(/\/+$/,''); }
+function api(opts){
+  opts.headers=Object.assign({'x-admin-token':tok()}, opts.headers||{});
+  return fetch(base()+'/api/leads', opts);
+}
+function money(n){ return n==null?'—':'¥'+Number(n).toLocaleString('zh-CN'); }
+function maskPhone(s){ if(!s) return ''; return s.length>7 ? s.slice(0,3)+'****'+s.slice(-4) : s; }
+function msg(html,cls){ var m=document.getElementById('msg'); m.innerHTML=cls?('<div class="'+cls+'">'+html+'</div>'):(''); }
 
-function maskPhone(s){ if(!s) return ''; if(s.length>7){ return s.slice(0,3)+'****'+s.slice(-4); } return s; }
-
+load();
 function load(){
-  var url=(document.getElementById('apiUrl').value||'').trim().replace(/\/+$/,'');
-  var tok=document.getElementById('apiToken').value.trim();
-  store('cb_api',url); store('cb_token',tok);
-  var err=document.getElementById('err'); err.innerHTML='';
-  if(!url||!tok){ err.innerHTML='<div class="err">请填写接口地址和管理密钥。</div>'; return; }
-  fetch(url+'/api/leads',{ headers:{ 'x-admin-token':tok } })
+  var err='';
+  if(!base()||!tok()){ document.getElementById('msg').innerHTML='<div class="err">请填写接口地址和管理密钥。</div>'; return; }
+  store('cb_api',base()); store('cb_token',tok());
+  api({method:'GET'})
     .then(function(r){ if(r.ok) return r.json(); throw new Error('HTTP '+r.status); })
-    .then(function(d){
-      if(!d.ok) throw new Error(d.error||'获取失败');
-      render(d.leads||[]);
-    })
-    .catch(function(e){ err.innerHTML='<div class="err">加载失败：'+e.message+'。请检查地址/密钥，或本机网络是否可连通 workers.dev。</div>'; });
+    .then(function(d){ if(!d.ok) throw new Error(d.error||'获取失败'); render(d.leads||[]); })
+    .catch(function(e){ document.getElementById('msg').innerHTML='<div class="err">加载失败：'+e.message+'。若是 404，请强制刷新(Ctrl+Shift+R)或换无痕窗口；否则检查网络是否可连通 workers.dev。</div>'; });
 }
 
-function render(leads){
-  document.getElementById('kTotal').textContent=leads.length;
-  var now=new Date(); var today=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
-  var auth=0, td=0;
-  var rows=leads.map(function(L){
-    if(L.auth_flag) auth++;
-    var ts=(L.created_at||'').split('T')[0];
-    if(ts===today) td++;
+function render(ls){
+  var newN=0,conv=0,doneN=0,due=0,doneAmt=0;
+  ls.forEach(function(L){
+    var s=L.status||'new';
+    if(s==='new') newN++;
+    else if(s==='converted'){ conv++; due+=Number(L.my_cut||0); }
+    else if(s==='settled'){ doneN++; doneAmt+=Number(L.my_cut||0); }
+  });
+  document.getElementById('kTotal').textContent=ls.length;
+  document.getElementById('kNew').textContent=newN;
+  document.getElementById('kConv').textContent=conv;
+  document.getElementById('kDue').textContent=money(due);
+  document.getElementById('kDone').textContent=money(doneAmt);
+  document.getElementById('dueBig').textContent=money(due);
+  var tot=ls.length||1;
+  document.getElementById('fNew').style.width=(newN/tot*100)+'%';
+  document.getElementById('fConv').style.width=(conv/tot*100)+'%';
+  document.getElementById('fDone').style.width=(doneN/tot*100)+'%';
+  document.getElementById('nNew').innerHTML='<b>'+newN+'</b> 条';
+  document.getElementById('nConv').innerHTML='<b>'+conv+'</b> 条';
+  document.getElementById('nDone').innerHTML='<b>'+doneN+'</b> 条';
+
+  var rows=ls.map(function(L){
+    var s=L.status||'new';
+    var stl={new:'新线索',converted:'已成交·待结算',settled:'已结算'}[s]||s;
+    var stcls={new:'new',converted:'converted',settled:'settled'}[s]||'new';
     var prof=L.profile||{};
     var profHtml=Object.keys(qlabel).filter(function(k){return prof[k];})
-      .map(function(k){ return '<span class="chip">'+qlabel[k]+'：'+prof[k]+'</span>'; }).join('') || '<span style="color:var(--dim)">—</span>';
-    var riskHtml=(L.risks&&L.risks.length)
-      ? L.risks.map(function(r){ return '<span class="chip risk">'+r+'</span>'; }).join('')
-      : '<span style="color:var(--dim)">无</span>';
-    var recHtml=(L.recommended||'').split('通道')[0]||L.recommended;
-    return '<tr><td class="lid">'+L.lead_id+'</td>'+
+      .map(function(k){return '<span class="chip">'+qlabel[k]+'：'+prof[k]+'</span>';}).join('')||'<span style="color:var(--dim)">—</span>';
+    var riskHtml=(L.risks&&L.risks.length)?L.risks.map(function(r){return '<span class="chip risk">'+r+'</span>';}).join(''):'<span style="color:var(--dim)">无</span>';
+    profHtml+=riskHtml;
+    var act='';
+    act+='<button class="bt-conv" onclick="recordDeal('+L.id+')">记录成交</button>';
+    if(s!=='settled') act+='<button class="bt-set" onclick="markSet('+L.id+')">标记结算</button>';
+    if(s!=='new') act+='<button class="bt-reset" onclick="resetNew('+L.id+')">还原未成交</button>';
+    act+='<button class="bt-del" onclick="delOne('+L.id+')">删除</button>';
+    return '<tr>'+
+      '<td class="lid">'+L.lead_id+'</td>'+
       '<td class="ts">'+(L.created_at? new Date(L.created_at).toLocaleString('zh-CN',{hour12:false}):'')+'</td>'+
-      '<td class="contact"><div><b>'+(L.contact_name||'未留名')+'</b></div>'+
-        (L.contact_phone?'<div class="m">'+maskPhone(L.contact_phone)+'</div>':'')+
-        (L.contact_wechat?'<div>微信：'+L.contact_wechat+'</div>':'')+'</td>'+
-      '<td>'+recHtml+'</td>'+
+      '<td class="contact"><div><b>'+(L.contact_name||'未留名')+'</b></div>'+(L.contact_phone?'<div class="m">'+maskPhone(L.contact_phone)+'</div>':'')+(L.contact_wechat?'<div>微信:'+L.contact_wechat+'</div>':'')+'</td>'+
+      '<td>'+(L.recommended||'—')+'</td>'+
       '<td>'+profHtml+'</td>'+
-      '<td>'+riskHtml+'</td>'+
-      '<td>'+ (L.auth_flag?'<span class="badge on">已授权</span>':'<span class="badge off">未授权</span>') +'</td>'+
-    '</tr>';
+      '<td><span class="st '+stcls+'">'+stl+'</span></td>'+
+      '<td class="am money">'+(s==='new'?'—':money(L.deal_amount))+'</td>'+
+      '<td class="am '+(s==='settled'?'settled':'money')+'">'+(s==='new'?'—':money(L.my_cut))+'</td>'+
+      '<td><div class="act">'+act+'</div></td>'+
+      '</tr>';
   }).join('');
-  document.getElementById('tbody').innerHTML=rows || '<tr><td colspan="7" class="empty">还没有线索。等你公网站点有卖家提交后，这里会出现。</td></tr>';
-  document.getElementById('kToday').textContent=td;
-  document.getElementById('kAuth').textContent=auth;
+  document.getElementById('tbody').innerHTML=rows||'<tr><td colspan="9" class="empty">还没有线索。等公网站点有卖家提交后，这里会出现。</td></tr>';
+}
+
+function patch(id,f){
+  return api({method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({id:id},f))});
+}
+function recordDeal(id){
+  var deal=prompt('成交金额（元）：');
+  if(deal==null) return;
+  var cut=prompt('我的分成（元）：');
+  if(cut==null) return;
+  patch(id,{status:'converted',deal_amount:Number(deal)||0,my_cut:Number(cut)||0}).then(function(r){
+    if(r.ok){ msg('✅ 已记录成交，计入待结算。','ok'); load(); } else { r.json().then(function(d){ msg('❌ '+d.error); }); }
+  }).catch(function(e){ msg('❌ '+e.message); });
+}
+function markSet(id){
+  if(!confirm('确认该笔分成已实际到账、标记为「已结算」？')) return;
+  patch(id,{status:'settled',settled:true}).then(function(r){
+    if(r.ok){ msg('✅ 已标记结算，加入已收。','ok'); load(); } else { r.json().then(function(d){ msg('❌ '+d.error); }); }
+  }).catch(function(e){ msg('❌ '+e.message); });
+}
+function resetNew(id){
+  if(!confirm('把该线索还原为「新线索」？其成交金额/分成记录会保留在行内。')) return;
+  patch(id,{status:'new',settled:false}).then(function(r){
+    if(r.ok){ msg('已还原为新线索。','ok'); load(); }
+  }).catch(function(e){ msg('❌ '+e.message); });
+}
+function delOne(id){
+  if(!confirm('删除这条线索？')) return;
+  api({method:'DELETE'}).then(function(){ return fetch(base()+'/api/leads?id='+id,{method:'DELETE',headers:{'x-admin-token':tok()}}); }).then(function(r){
+    if(r.ok){ msg('已删除。','ok'); load(); }
+  }).catch(function(e){ msg('❌ '+e.message); });
+}
+function clearAll(){
+  if(!confirm('⚠ 将清空全部线索？此操作不可恢复。')) return;
+  fetch(base()+'/api/leads?id=all',{method:'DELETE',headers:{'x-admin-token':tok()}}).then(function(r){
+    if(r.ok){ msg('已清空全部数据。','ok'); load(); } else { r.text().then(function(t){ msg('❌ '+t); }); }
+  }).catch(function(e){ msg('❌ '+e.message); });
 }
 </script>
 </body>
