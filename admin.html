@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跨境线索后台 · 可视化</title>
+<style>
+:root{--bg:#0b1020;--bg2:#111936;--card:#151d3d;--card2:#1a2450;--txt:#e8ecff;--dim:#9aa7d0;--line:#2a3566;
+  --gold:#ffc24d;--gold2:#ff9d2e;--cyan:#37e0ff;--green:#4ade80;--blue:#6c8bff;--red:#ff5c7a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 20% -10%,#1b2a5e 0%,transparent 50%),var(--bg);color:var(--txt);
+  font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;line-height:1.6;min-height:100vh}
+.wrap{max-width:1180px;margin:auto;padding:28px 20px 80px}
+h1{font-size:24px;font-weight:800;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--dim);font-size:12.5px;margin-top:4px}
+.conn{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-top:18px;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:18px}
+.conn label{font-size:12px;color:var(--dim);display:block;margin-bottom:5px}
+.conn input{width:100%;padding:10px 13px;border-radius:9px;border:1px solid var(--line);background:var(--bg);color:var(--txt);outline:none;font-size:13px}
+.conn input:focus{border-color:var(--cyan)}
+.conn .f{flex:1;min-width:220px}
+.conn button{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;border:none;padding:11px 22px;border-radius:10px;font-weight:800;cursor:pointer;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.kpi{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+.kpi .n{font-size:28px;font-weight:800;color:var(--gold)}
+.kpi .l{font-size:12px;color:var(--dim);margin-top:2px}
+.kpi.cyan .n{color:var(--cyan)}.kpi.green .n{color:var(--green)}.kpi.red .n{color:var(--red)}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin-top:14px}
+table{border-collapse:collapse;width:100%;min-width:900px;background:var(--card)}
+th,td{text-align:left;padding:13px 14px;font-size:13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--card2);color:var(--gold);font-size:12px;font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.lid{color:var(--gold);font-weight:800;white-space:nowrap;font-size:12.5px}
+.ts{color:var(--dim);font-size:12px;white-space:nowrap}
+.contact div{font-size:12.5px}
+.contact .m{color:var(--cyan)}
+.chip{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:2px 9px;font-size:11.5px;margin:1px 3px 1px 0;color:var(--dim)}
+.chip.risk{color:#ffd0da;border-color:var(--red)}
+.badge{display:inline-block;font-size:11px;padding:2px 10px;border-radius:20px;font-weight:700}
+.on{color:#12360f;background:var(--green)}
+.off{color:#7a5b08;background:var(--gold)}
+.empty{padding:40px;text-align:center;color:var(--dim)}
+.err{background:rgba(255,92,122,.12);border:1px solid var(--red);color:#ffd0da;border-radius:12px;padding:14px 16px;margin-top:14px;font-size:13px}
+.note{color:var(--dim);font-size:12px;margin-top:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:18px;text-align:center;color:var(--dim);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>跨境电商线索后台</h1>
+  <div class="sub">数据源：Cloudflare Worker + Supabase。若尚无成交/结算字段，此处只展示线索本身与授权数。</div>
+
+  <div class="conn">
+    <div class="f"><label>接口地址</label><input id="apiUrl" placeholder="https://...workers.dev"></div>
+    <div class="f" style="min-width:180px"><label>管理密钥（x-admin-token）</label><input id="apiToken" type="password" placeholder="ADMIN_TOKEN"></div>
+    <button onclick="load()">加载线索 ▶</button>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n" id="kTotal">0</div><div class="l">全部线索</div></div>
+    <div class="kpi cyan"><div class="n" id="kToday">0</div><div class="l">今日新增</div></div>
+    <div class="kpi green"><div class="n" id="kAuth">0</div><div class="l">已授权转介</div></div>
+  </div>
+
+  <div id="err"></div>
+  <div class="tblwrap">
+    <table id="tbl"><thead>
+      <tr><th>线索编号</th><th>提交时间</th><th>联系方式</th><th>推荐通道</th><th>卖家画像</th><th>风险提醒</th><th>授权</th></tr>
+    </thead><tbody id="tbody"></tbody></table>
+  </div>
+  <div class="note">注：本页只读展示。若需「成交金额 / 分成 / 结算状态」等对账字段，需给 Supabase 表加字段并扩展接口，可另行加上。</div>
+  <footer>跨境电商线索后台 · 请妥善保管管理密钥</footer>
+</div>
+
+<script>
+function store(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+function loadStore(k,d){ try{ return localStorage.getItem(k)||d; }catch(e){ return d; } }
+
+var qlabel={q1:'发货方式',q2:'开票能力',q3:'综试区',q4:'销售额',q5:'收款安排'};
+
+document.getElementById('apiUrl').value=loadStore('cb_api','https://caishui-leads.861481939.workers.dev');
+document.getElementById('apiToken').value=loadStore('cb_token','');
+
+function maskPhone(s){ if(!s) return ''; if(s.length>7){ return s.slice(0,3)+'****'+s.slice(-4); } return s; }
+
+function load(){
+  var url=(document.getElementById('apiUrl').value||'').trim().replace(/\/+$/,'');
+  var tok=document.getElementById('apiToken').value.trim();
+  store('cb_api',url); store('cb_token',tok);
+  var err=document.getElementById('err'); err.innerHTML='';
+  if(!url||!tok){ err.innerHTML='<div class="err">请填写接口地址和管理密钥。</div>'; return; }
+  fetch(url+'/api/leads',{ headers:{ 'x-admin-token':tok } })
+    .then(function(r){ if(r.ok) return r.json(); throw new Error('HTTP '+r.status); })
+    .then(function(d){
+      if(!d.ok) throw new Error(d.error||'获取失败');
+      render(d.leads||[]);
+    })
+    .catch(function(e){ err.innerHTML='<div class="err">加载失败：'+e.message+'。请检查地址/密钥，或本机网络是否可连通 workers.dev。</div>'; });
+}
+
+function render(leads){
+  document.getElementById('kTotal').textContent=leads.length;
+  var now=new Date(); var today=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  var auth=0, td=0;
+  var rows=leads.map(function(L){
+    if(L.auth_flag) auth++;
+    var ts=(L.created_at||'').split('T')[0];
+    if(ts===today) td++;
+    var prof=L.profile||{};
+    var profHtml=Object.keys(qlabel).filter(function(k){return prof[k];})
+      .map(function(k){ return '<span class="chip">'+qlabel[k]+'：'+prof[k]+'</span>'; }).join('') || '<span style="color:var(--dim)">—</span>';
+    var riskHtml=(L.risks&&L.risks.length)
+      ? L.risks.map(function(r){ return '<span class="chip risk">'+r+'</span>'; }).join('')
+      : '<span style="color:var(--dim)">无</span>';
+    var recHtml=(L.recommended||'').split('通道')[0]||L.recommended;
+    return '<tr><td class="lid">'+L.lead_id+'</td>'+
+      '<td class="ts">'+(L.created_at? new Date(L.created_at).toLocaleString('zh-CN',{hour12:false}):'')+'</td>'+
+      '<td class="contact"><div><b>'+(L.contact_name||'未留名')+'</b></div>'+
+        (L.contact_phone?'<div class="m">'+maskPhone(L.contact_phone)+'</div>':'')+
+        (L.contact_wechat?'<div>微信：'+L.contact_wechat+'</div>':'')+'</td>'+
+      '<td>'+recHtml+'</td>'+
+      '<td>'+profHtml+'</td>'+
+      '<td>'+riskHtml+'</td>'+
+      '<td>'+ (L.auth_flag?'<span class="badge on">已授权</span>':'<span class="badge off">未授权</span>') +'</td>'+
+    '</tr>';
+  }).join('');
+  document.getElementById('tbody').innerHTML=rows || '<tr><td colspan="7" class="empty">还没有线索。等你公网站点有卖家提交后，这里会出现。</td></tr>';
+  document.getElementById('kToday').textContent=td;
+  document.getElementById('kAuth').textContent=auth;
+}
+</script>
+</body>
+</html>
