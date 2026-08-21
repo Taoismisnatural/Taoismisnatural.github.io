@@ -64,6 +64,45 @@ section{margin:54px 0}
 .qnav .step{font-size:12px;color:var(--dim)}
 .result{display:none}
 .result.on{display:block;animation:fade .4s ease}
+.remove-btn{display:block;width:100%;margin-top:14px;background:var(--card);color:var(--dim);border:1px solid var(--line);padding:12px;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s}
+.remove-btn:hover{color:var(--txt);border-color:var(--cyan)}
+.lead-box{background:var(--card2);border:1px solid var(--cyan);border-radius:14px;padding:16px 18px;margin-top:14px}
+.lead-box .lid{font-size:13px;color:var(--dim)}
+.lead-box .lid b{color:var(--gold);font-size:16px;font-weight:800}
+.lead-box .authv{display:flex;align-items:flex-start;gap:10px;margin-top:12px;font-size:13.5px;color:var(--dim)}
+.lead-box .authv input{width:17px;height:17px;accent-color:var(--cyan);margin-top:3px;flex:0 0 auto}
+.report-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;border:none;padding:13px 22px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;margin-top:12px;width:100%;box-shadow:0 8px 20px rgba(255,194,77,.25);transition:.25s}
+.report-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(255,194,77,.38)}
+.report-btn:disabled{opacity:.42;cursor:not-allowed;transform:none;box-shadow:none}
+.report-btn.blue{background:linear-gradient(90deg,var(--cyan),#2a8cff);color:#062f4a;box-shadow:0 8px 20px rgba(55,224,255,.22)}
+.report-btn.blue:hover{box-shadow:0 12px 26px rgba(55,224,255,.34)}
+.gray-hint{font-size:12px;color:var(--dim);margin-top:8px;text-align:center}
+#printSheet{display:none}
+.report{display:none;margin-top:16px;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--gold2);border-radius:16px;padding:22px;position:relative;overflow:hidden}
+.report.on{display:block;animation:fade .4s ease}
+.report .rep-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.report .rep-head h3{font-size:18px;color:var(--gold);flex:1}
+.report .rep-tag{font-size:11px;background:var(--card2);border:1px solid var(--line);color:var(--dim);padding:3px 10px;border-radius:20px;white-space:nowrap}
+.rep-sec{margin:14px 0}
+.rep-sec h4{font-size:13.5px;color:var(--cyan);margin-bottom:8px;border-left:3px solid var(--cyan);padding-left:8px}
+.rep-line{font-size:13.5px;color:var(--dim);margin:5px 0;line-height:1.75}
+.rep-line b{color:var(--txt)}
+.rep-risk{background:rgba(255,92,122,.1);border:1px solid var(--red);border-radius:10px;padding:10px 12px;color:#ffd0da;font-size:13px;margin:6px 0;line-height:1.7}
+.rep-score{display:inline-block;background:var(--card);border:1px solid var(--gold2);border-radius:10px;padding:6px 14px;font-weight:800;color:var(--gold);font-size:15px}
+.rep-foot{font-size:11.5px;color:var(--dim);border-top:1px solid var(--line);margin-top:6px;padding-top:12px;line-height:1.8}
+.rep-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+@media print{
+  body *{visibility:hidden}
+  #printSheet, #printSheet *{visibility:visible}
+  #printSheet{display:block !important;position:absolute;left:0;top:0;width:100%;padding:24px;color:#111;background:#fff}
+  #printSheet h2{color:#111;margin-bottom:12px}
+  #printSheet .pmeta{font-size:12px;color:#555;margin-bottom:16px}
+  #printSheet .psec{margin:12px 0}
+  #printSheet .psec h4{color:#333;margin-bottom:6px}
+  #printSheet .pline{margin:4px 0;font-size:13.5px;color:#222}
+  #printSheet .prisk{color:#b3261e;margin:5px 0;font-size:13px}
+  #printSheet .pfoot{font-size:11px;color:#777;border-top:1px solid #ccc;margin-top:18px;padding-top:10px}
+}
 .rmap{background:var(--card2);border:1px solid var(--gold2);border-radius:14px;padding:20px;margin:8px 0}
 .rmap h4{color:var(--gold);font-size:18px;margin-bottom:8px}
 .rmap .badge{display:inline-block;font-size:11px;color:#231407;background:var(--gold);padding:2px 10px;border-radius:20px;font-weight:700;margin-bottom:10px}
@@ -246,7 +285,7 @@ function makeLead(){var d=new Date();var ymd=d.getFullYear()+('0'+(d.getMonth()+
 function showResult(){
   document.getElementById('quiz').style.display='none';var res=document.getElementById('result');var p=pick();leadCode=makeLead();lastPick=p;
   var riskHtml = p.risks.map(function(r){return '<div class="risk" style="margin-top:8px"><h5>⚠ 需重点注意</h5>'+r+'</div>';}).join('');
-  res.innerHTML='<div class="note-box" style="margin-bottom:14px">✅ 已收到你的答案。以下是你的「自我排查线索」，<b style="color:var(--gold)">不构成申报建议</b>，请以属地税局口径二次确认。</div>'+'<div class="rmap">'+'<span class="badge">推荐线索 · '+p.key+'</span>'+'<h4>'+p.name+'</h4>'+'<p>'+p.note+'</p>'+riskHtml+'</div>'+'<div class="note-box">💡 下一步建议：<b>①</b> 完成下方「30秒自查清单」形成留痕；<b>②</b> 对照第③节确认你的出口模式没有选错；<b>③</b> 涉及正式申报前，联系属地税局或持证财税顾问核验属地细则。</div>'+'<div class="lead-box">'+'<div class="lid">你的唯一线索编号：<b>'+leadCode+'</b><br><span style="color:var(--dim)">结论与报告可免费查看；此编号用于你后续核对。</span></div>'+'<button class="report-btn" id="freeReport" type="button" onclick="genReport()">立即查看《自查报告》（免费）</button>'+'<div class="gray-hint" style="margin-top:6px">无需留下联系方式，即可查看 / 下载 / 打印你的自查报告。</div>'+'<div style="margin-top:14px;border-top:1px dashed var(--line);padding-top:14px">'+'<div style="font-size:14.5px"><b style="color:var(--gold)">想有人帮你把这事办完？</b><span style="color:var(--dim);font-size:13px"> 平台不做代账/申报，只在获得你确认后对接持证财税机构。</span></div>'+'<div class="cfields" style="margin-top:12px">'+'<div class="cfield"><label>称呼（选填）</label><input type="text" id="ctName" placeholder="姓氏 / 称呼"></div>'+'<div class="cfield"><label>手机号（回访核验用）</label><input type="tel" id="ctPhone" placeholder="如 138****0000"></div>'+'<div class="cfield"><label>微信（选填）</label><input type="text" id="ctWechat" placeholder="微信号"></div>'+'</div>'+'<label class="authv"><input type="checkbox" id="authOk"><span>我同意：本平台仅可在<b style="color:var(--txt)">我本人确认后</b>，把我的线索编号对接给<b style="color:var(--txt)">平台已备案的持证财税机构</b>；未经我同意，不会向任何机构披露我的信息，并可随时撤销授权或删除信息。</span></label>'+'<button class="report-btn" id="reportBtn" type="button" onclick="submitLead()" disabled>提交，等专人联系我核验</button>'+'<div class="gray-hint" id="leadStatus">本工具与报告对卖家免费；对接不向你收取任何费用，费用由机构方承担。未经你同意，平台不会向任何机构披露信息，你可随时撤销/删除。</div>'+'</div>'+'</div>'+'<button class="remove-btn" onclick="resetQuiz()">↺ 重新自查</button>';
+  res.innerHTML='<div class="note-box" style="margin-bottom:14px">✅ 已收到你的答案。以下是你的「自我排查线索」，<b style="color:var(--gold)">不构成申报建议</b>，请以属地税局口径二次确认。</div>'+'<div class="rmap">'+'<span class="badge">推荐线索 · '+p.key+'</span>'+'<h4>'+p.name+'</h4>'+'<p>'+p.note+'</p>'+riskHtml+'</div>'+'<div class="note-box">💡 下一步建议：<b>①</b> 完成下方「30秒自查清单」形成留痕；<b>②</b> 对照第③节确认你的出口模式没有选错；<b>③</b> 涉及正式申报前，联系属地税局或持证财税顾问核验属地细则。</div>'+'<div class="lead-box">'+'<div class="lid">你的唯一线索编号：<b>'+leadCode+'</b><br><span style="color:var(--dim)">结论与报告可免费查看；此编号用于你后续核对。</span></div>'+'<button class="report-btn" id="freeReport" type="button" onclick="genReport()">📋 立即查看《自查报告》（免费）</button>'+'<div class="gray-hint" style="margin-top:6px">无需留联系方式，也可直接查看 / 打印 / 保存这份报告。</div>'+'<div style="margin-top:14px;border-top:1px dashed var(--line);padding-top:14px">'+'<div style="font-size:14.5px"><b style="color:var(--gold)">想有人帮你把这事办完？</b><span style="color:var(--dim);font-size:13px"> 平台不做代账/申报，只在获得你确认后，对接持证财税机构。</span></div>'+'<div class="cfields" style="margin-top:12px">'+'<div class="cfield"><label>称呼（选填）</label><input type="text" id="ctName" placeholder="姓氏 / 称呼"></div>'+'<div class="cfield"><label>手机号（回访核验用）</label><input type="tel" id="ctPhone" placeholder="如 138****0000"></div>'+'<div class="cfield"><label>微信（选填）</label><input type="text" id="ctWechat" placeholder="微信号"></div>'+'</div>'+'<label class="authv"><input type="checkbox" id="authOk"><span>我同意：本平台仅可在<b style="color:var(--txt)">我本人确认后</b>，把我的线索编号对接给<b style="color:var(--txt)">平台已备案的持证财税机构</b>；未经我同意，不会向任何机构披露我的信息，并可随时撤销授权或删除信息。</span></label>'+'<button class="report-btn blue" id="reportBtn" type="button" onclick="submitLead()" disabled>📤 提交，等专人联系我核验</button>'+'<div class="gray-hint" id="leadStatus">本工具与报告对卖家免费；对接不向你收取任何费用，费用由机构方承担。未经你同意，平台不会向任何机构披露信息，你可随时撤销/删除。</div>'+'</div>'+'</div>'+'<div class="report" id="reportView"></div>'+'<button class="remove-btn" onclick="resetQuiz()">↺ 重新自查一次</button>';
   res.classList.add('on');var auth=document.getElementById('authOk');if(auth){auth.addEventListener('change',function(){document.getElementById('reportBtn').disabled=!this.checked;});}
   res.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
@@ -256,7 +295,24 @@ function submitLead(){var auth=document.getElementById('authOk');if(!auth||!auth
 function resetQuiz(){document.getElementById('quiz').style.display='';document.querySelectorAll('#quiz input:checked').forEach(function(i){i.checked=false;});ans={}; leadCode=''; lastPick=null;document.getElementById('result').classList.remove('on');document.getElementById('result').innerHTML='';goTo(1);}
 var labelMap={q1:{small:'小包直邮 / 自发货（零售）',overseas:'海外仓备货、海外零售',b2b:'B2B 批量出口',market:'市场采购'},q2:{yes:'上游可开增值税专用发票',ordinary:'仅普通发票 / 部分可开',no:'基本无票采购'},q3:{yes:'注册在跨境电商综合试验区',no:'不在 / 不确定综试区'},q4:{lt500:'销售额 500 万以下',gt500:'接近 / 超 500 万'},q5:{company:'对公账户合规收汇',personal:'个人卡 / 微信代收为主',mixed:'两者混用'}};
 var qtxt={q1:'发货方式',q2:'开票能力',q3:'综试区',q4:'销售额',q5:'收款安排'};
-function genReport(){if(!lastPick) return;var p=lastPick;var profile=Object.keys(ans).map(function(k){var v=ans[k];var n=(labelMap[k]&&labelMap[k][v])?labelMap[k][v]:v;return '<div class="pline"><b>'+(qtxt[k]||k)+'：</b>'+n+'</div>';}).join('');var risk='';p.risks.forEach(function(r){ risk+='<div class="prisk">⚠ '+r+'</div>'; });var scoreNode=document.getElementById('checkScore');var score=scoreNode?scoreNode.textContent:'';var now=new Date();var ts=now.getFullYear()+'-'+('0'+(now.getMonth()+1)).slice(-2)+'-'+('0'+now.getDate()).slice(-2)+' '+('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2);document.getElementById('printSheet').innerHTML='<h2>跨境电商卖家 · 合规自查报告</h2>'+'<div class="pmeta">线索编号：'+leadCode+' &nbsp;|&nbsp; 生成时间：'+ts+'</div>'+'<div class="psec"><h4>一、卖家画像</h4>'+profile+'</div>'+'<div class="psec"><h4>二、推荐合规通道线索</h4>'+'<div class="pline"><b>'+p.key+'</b> — '+p.name+'</div>'+'<div class="pline">'+p.note+'</div>'+'</div>'+'<div class="psec"><h4>三、需重点注意</h4>'+(risk||'<div class="pline">未见明显高危信号。</div>')+'</div>'+'<div class="psec"><h4>四、自查清单完成情况</h4><div class="pline">'+score+'（转给持证服务商前建议逐项确认）</div></div>'+'<div class="psec"><h4>五、开始前建议准备的凭证</h4>'+'<div class="pline">· 营业执照注册地（确认是否综试区）</div>'+'<div class="pline">· 平台后台结算 / 订单流水（以买家实付全额定口径）</div>'+'<div class="pline">· 报关单证（9610/9710/9810/1039 等监管代码）</div>'+'<div class="pline">· 收汇记录（对公/离岸账户流水）</div>'+'<div class="pline">· 进项发票或采购凭证（按能力择一）</div>'+'</div>'+'<div class="psec"><h4>六、下一步怎么做（3 步）</h4>'+'<div class="pline">① 回到页面 #属地速查，确认注册地所属综试区状态；</div>'+'<div class="pline">② 用 #税负测算 对比一下两条通道的资金账；</div>'+'<div class="pline">③ 带本报告找属地税局或持证财税顾问核验属地细则，再定申报路径。</div>'+'<div class="pline" style="margin-top:6px;color:#b3261e">💡 想有专人在合规处置上帮你把关？请在自查结果页选择「想有人帮你办完」，留下方式（仅在你授权时发起对接）。</div>'+'</div>'+'<div class="pfoot">本报告由跨境电商税务自查平台生成，仅作「自我排查」信息，不构成申报建议、税务筹划或法律意见。请以属地税务机关口径为准，重大决策前咨询持证财税专业人员。</div>';setTimeout(function(){ window.print(); },60);}
+function genReport(){
+  if(!lastPick) return;
+  var p=lastPick;
+  var profLines=Object.keys(ans).map(function(k){var v=ans[k];var n=(labelMap[k]&&labelMap[k][v])?labelMap[k][v]:v;return '<div class="pline"><b>'+(qtxt[k]||k)+'：</b>'+n+'</div>';}).join('');
+  var repProf=Object.keys(ans).map(function(k){var v=ans[k];var n=(labelMap[k]&&labelMap[k][v])?labelMap[k][v]:v;return '<div class="rep-line"><b>'+(qtxt[k]||k)+'：</b>'+n+'</div>';}).join('');
+  var printRisk='';
+  p.risks.forEach(function(r){ printRisk+='<div class="prisk">⚠ '+r+'</div>'; });
+  var repRisk=p.risks.length ? p.risks.map(function(r){return '<div class="rep-risk">⚠ '+r+'</div>';}).join('') : '<div class="rep-line">未见明显高危信号。</div>';
+  var scoreNode=document.getElementById('checkScore');
+  var score=scoreNode?scoreNode.textContent:'';
+  var now=new Date();
+  var ts=now.getFullYear()+'-'+('0'+(now.getMonth()+1)).slice(-2)+'-'+('0'+now.getDate()).slice(-2)+' '+('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2);
+  document.getElementById('printSheet').innerHTML='<h2>跨境电商卖家 · 合规自查报告</h2>'+'<div class="pmeta">线索编号：'+leadCode+' &nbsp;|&nbsp; 生成时间：'+ts+'</div>'+'<div class="psec"><h4>一、卖家画像</h4>'+profLines+'</div>'+'<div class="psec"><h4>二、推荐合规通道线索</h4>'+'<div class="pline"><b>'+p.key+'</b> — '+p.name+'</div>'+'<div class="pline">'+p.note+'</div>'+'</div>'+'<div class="psec"><h4>三、需重点注意</h4>'+(printRisk||'<div class="pline">未见明显高危信号。</div>')+'</div>'+'<div class="psec"><h4>四、自查清单完成情况</h4><div class="pline">'+score+'（转给持证服务商前建议逐项确认）</div></div>'+'<div class="psec"><h4>五、可先把这些凭证备齐</h4>'+'<div class="pline">· 营业执照注册地（确认是否综试区）</div>'+'<div class="pline">· 平台后台结算 / 订单流水（以买家实付全额定口径）</div>'+'<div class="pline">· 报关单证（9610/9710/9810/1039 等监管代码）</div>'+'<div class="pline">· 收汇记录（对公/离岸账户流水）</div>'+'<div class="pline">· 进项发票或采购凭证（按能力择一）</div>'+'</div>'+'<div class="psec"><h4>六、下一步怎么做（3 步）</h4>'+'<div class="pline">① 回到页面「属地速查」，确认注册地所属综试区状态；</div>'+'<div class="pline">② 用「税负测算」对比两条通道的资金账；</div>'+'<div class="pline">③ 带本报告找属地税局或持证财税顾问核验属地细则，再定申报路径。</div>'+'</div>'+'<div class="pfoot">本报告由跨境电商税务自查平台生成，仅作「自我排查」信息，不构成申报建议、税务筹划或法律意见。请以属地税务机关口径为准，重大决策前咨询持证财税专业人员。</div>';
+  var rv=document.getElementById('reportView');
+  rv.innerHTML='<div class="rep-head"><h3>📄 你的《自查报告》</h3><span class="rep-tag">线索 '+leadCode+'</span></div>'+'<div class="rep-sec"><h4>一、卖家画像</h4>'+repProf+'</div>'+'<div class="rep-sec"><h4>二、推荐合规通道</h4>'+'<div class="rep-line"><b>'+p.key+'</b> — '+p.name+'</div>'+'<div class="rep-line">'+p.note+'</div>'+'</div>'+'<div class="rep-sec"><h4>三、需重点注意</h4>'+repRisk+'</div>'+'<div class="rep-sec"><h4>四、自查完成度</h4><span class="rep-score">'+score+'</span><span style="color:var(--dim);font-size:12.5px;margin-left:8px">转给持证机构前建议逐项确认</span></div>'+'<div class="rep-sec"><h4>五、先备齐这些，对接机构更高效</h4>'+'<div class="rep-line">· 营业执照注册地（确认是否综试区）</div>'+'<div class="rep-line">· 平台订单 / 结算流水（以实付全额口径）</div>'+'<div class="rep-line">· 报关单证、收汇记录、进项凭证</div>'+'</div>'+'<div class="rep-foot">本报告仅作「自我排查」，不构成申报建议、税务筹划或法律意见；请以属地税务机关口径为准。<br>生成时间：'+ts+' · 线索编号为后续核对凭证。</div>'+'<div class="rep-actions">'+'<button class="report-btn blue" type="button" onclick="window.print()">🖨 打印 / 另存为 PDF</button>'+'<button class="report-btn" type="button" onclick="document.getElementById(\'reportView\').classList.remove(\'on\')">收起</button>'+'</div>';
+  rv.classList.add('on');
+  rv.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
 var ZONES=[['杭州','浙江'],['宁波','浙江'],['义乌','浙江'],['广州','广东'],['深圳','广东'],['东莞','广东'],['珠海','广东'],['福州','福建'],['平潭','福建'],['厦门','福建'],['上海','上海'],['北京','北京'],['天津','天津'],['重庆','重庆'],['南京','江苏'],['苏州','江苏'],['连云港','江苏'],['青岛','山东'],['济南','山东'],['威海','山东'],['烟台','山东'],['郑州','河南'],['许昌','河南(1039试点)'],['武汉','湖北'],['成都','四川'],['西安','陕西'],['合肥','安徽'],['长沙','湖南'],['大连','辽宁'],['南昌','江西'],['昆明','云南']];
 var activeProv='全部';
 function provsOf(){var set=[], seen={};ZONES.forEach(function(z){ if(!seen[z[1]]){seen[z[1]]=1; set.push(z[1]);} });return set;}
