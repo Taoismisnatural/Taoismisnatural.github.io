@@ -526,7 +526,7 @@ updScore();
   });
 })();
 // ---------- 政策订阅（私域沉淀）：POST /api/subscribe ----------
-function kjSubscribe(){
+function kjSubscribe(afterAction){
   var el=document.getElementById('subEmail');var note=document.getElementById('subNote');var btn=document.getElementById('subBtn');
   var email=(el?el.value:'').trim();
   if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ if(note)note.textContent='⚠ 请输入正确的邮箱地址'; return; }
@@ -534,10 +534,32 @@ function kjSubscribe(){
   var BACK=typeof BACKEND!=='undefined'?BACKEND:'https://caishui-leads.861481939.workers.dev';
   fetch(BACK+'/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,source:'site',tags:['policy-update']})})
     .then(function(r){return r.json();})
-    .then(function(d){ if(d&&d.ok){ if(note)note.textContent='✅ 订阅成功！政策更新将第一时间发到你的邮箱。'; if(el)el.value=''; }
-      else { note.textContent='⚠ '+(d.error||'订阅失败')+(d.note?('（'+d.note+'）'):''); } })
+    .then(function(d){ if(d&&d.ok){
+        if(d.unsubscribe_token){ try { localStorage.setItem('kj_sub_'+email, d.unsubscribe_token); } catch(e){} }
+        if(note)note.innerHTML='✅ 订阅成功！政策更新将发到 '+email+'。<br><span style="color:var(--dim)">需要时可随时 <a href="javascript:void(0)" onclick="kjUnsubPrompt()">退订或删除</a></span>';
+        if(el)el.value='';
+      }
+      else { note.innerHTML='⚠ '+(d.error||'订阅失败')+(d.note?('（'+d.note+'）'):''); } })
     .catch(function(){ if(note)note.textContent='⚠ 订阅接口暂未连通，请稍后再试或联系客服。'; })
     .finally(function(){ if(btn)btn.disabled=false; });
+}
+// 退订/删除：读取本地 token 或要求提供 token（合规动作，写库幂等）
+function kjUnsubPrompt(){
+  var email=(document.getElementById('subEmail')&&document.getElementById('subEmail').value||'').trim();
+  var token='';
+  if(email){ try { token=localStorage.getItem('kj_sub_'+email)||''; } catch(e){} }
+  var want=confirm(token?('将对该邮箱退订并删除订阅：'+email+'（将清除存储）'):'请输入要退订的邮箱（将退订并删除订阅）');
+  if(!want) return;
+  kjSubAction(email||(prompt('请输入你要退订的邮箱：')||'').trim(), (token?'delete':'delete'), 'delete');
+}
+function kjSubAction(email, action, label){
+  var note=document.getElementById('subNote');
+  if(!email){ if(note)note.textContent='⚠ 请先填写邮箱'; return; }
+  var BACK=typeof BACKEND!=='undefined'?BACKEND:'https://caishui-leads.861481939.workers.dev';
+  fetch(BACK+'/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,action:'delete'})})
+    .then(function(r){return r.json();})
+    .then(function(d){ if(note)note.innerHTML=(d&&d.ok)?('🗑️ 已按你的要求删除订阅：'+email+'。'):('⚠ '+(d&&d.error||'操作失败')); })
+    .catch(function(){ if(note)note.textContent='⚠ 网络异常，稍后再试。'; });
 }
 </script>
 

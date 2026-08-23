@@ -97,6 +97,23 @@ footer{border-top:1px solid var(--line);margin-top:20px;padding:22px;text-align:
 }
   </script>
 <!-- KJ-READ -->
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "收到税务补税通知怎么办？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "不要慌、不要隐瞒。先核实通知依据与金额，按标准流程梳理财税四流证据，必要时联系属地税务机关或持证顾问，尽快补正与申报。"
+   }
+  }
+ ]
+}
+  </script>
+  <!-- kj-faq -->
 </head>
 <body>
 
@@ -147,6 +164,41 @@ footer{border-top:1px solid var(--line);margin-top:20px;padding:22px;text-align:
 <div class="kj-tail" id="kjCta"><div class="kj-cta"><b>这招对你的店铺意味着什么？</b><p class="kj-cta-sub">4 分钟自查，判断你更该走哪条合规通道。</p><a class="kj-btn" href="https://kuajingshuidun.cn/index.html#tool">▶ 开始自查</a><a class="kj-btn kj-s" href="https://kuajingshuidun.cn/index.html#calc">算税负</a><a class="kj-btn kj-s" href="https://ai.kuajingshuidun.cn/" target="_blank" rel="noopener">💬 问 AI 财税</a><div class="kj-rel">延伸阅读：<a class="kj-rel-a" href="内容-合规自查清单.html">合规自查清单</a><a class="kj-rel-a" href="内容-无票采购稽查.html">无票采购稽查</a><a class="kj-rel-a" href="内容-核定征收.html">核定征收</a></div></div></div>
 </article>
 
+<style id="kjSubCss">
+.kj-tail-sub{max-width:560px;margin:20px auto 0;background:linear-gradient(135deg,#1a2450,#151d3d);border:1px solid #37e0ff;border-radius:14px;padding:16px 18px;text-align:left}
+.kj-tail-sub .kj-sub-t{color:#ffc24d;font-weight:800;font-size:14px;margin-bottom:8px}
+.kj-tail-sub .kj-sub-row{display:flex;gap:8px}
+.kj-tail-sub .kj-se{flex:1;padding:10px 12px;border-radius:9px;background:#0b1020;color:#e8ecff;border:1px solid #2a3566;font-size:13.5px}
+.kj-tail-sub .kj-sb{background:linear-gradient(90deg,#37e0ff,#2a8cff);color:#062f4a;border:none;padding:10px 16px;border-radius:9px;font-weight:800;cursor:pointer}
+.kj-tail-sub .kj-sn{font-size:11.5px;color:#9aa7d0;margin-top:7px}
+</style>
+<div class="kj-tail-sub" id="kjSubLi">
+  <div class="kj-sub-t">📬 政策变化早知道 · 订阅跨境税盾政策周报</div>
+  <div class="kj-sub-row"><input type="email" class="kj-se" placeholder="输入邮箱，如 name@qq.com"><button class="kj-sb" type="button">订阅</button></div>
+  <div class="kj-sn" id="kjSn">低频推送 · 可随时退订删除 · 用途仅限政策提醒</div>
+</div>
+<script>
+(function(){
+  function note(t){ var n=document.getElementById('kjSn'); if(n) n.textContent=t; }
+  function doSub(btn){
+    var box=document.getElementById('kjSubLi'); var inp=box?box.querySelector('.kj-se'):null;
+    var em=inp?(inp.value||'').trim():''; if(!em){note('⚠ 请先输入邮箱');return;}
+    btn.disabled=true; note('⏳ 正在订阅…');
+    fetch('https://caishui-leads.861481939.workers.dev'+'/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,source:'article',tags:['policy-update']})})
+      .then(function(r){return r.json();})
+      .then(function(d){ if(d&&d.ok){ if(d.unsubscribe_token){try{localStorage.setItem('kj_sub_'+em,d.unsubscribe_token);}catch(e){}} note('✅ 订阅成功！政策更新将发到 '+em); if(inp)inp.value=''; } else { note('⚠ '+(d.error||'订阅失败')); } })
+      .catch(function(){ note('⚠ 网络异常，请稍后再试'); })
+      .finally(function(){ btn.disabled=false; });
+  }
+  function init(){
+    var bs=document.querySelectorAll('.kj-sb');
+    for(var i=0;i<bs.length;i++){ (function(b){ b.addEventListener('click',function(){ doSub(b); }); })(bs[i]); }
+    var ins=document.querySelectorAll('.kj-se');
+    for(var j=0;j<ins.length;j++){ (function(i){ i.addEventListener('keydown',function(e){ if(e.key==='Enter'&&i.nextElementSibling){ i.nextElementSibling.click(); } }); })(ins[j]); }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
 <footer>跨境电商税务自查 · 信息整理工具 · 以属地税局口径为准</footer>
 </body>
 </html>

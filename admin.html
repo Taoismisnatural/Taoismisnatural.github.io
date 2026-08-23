@@ -25,6 +25,7 @@ h1{font-size:24px;font-weight:800;background:linear-gradient(90deg,var(--gold),v
 .kpi .n{font-size:26px;font-weight:800;color:var(--gold)}
 .kpi .l{font-size:12px;color:var(--dim);margin-top:2px}
 .kpi.cyan .n{color:var(--cyan)}.kpi.green .n{color:var(--green)}.kpi.red .n{color:var(--red)}
+/* funnel */
 .funnel{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
 .funnel h3{font-size:14px;color:var(--gold);margin-bottom:12px}
 .fstep{display:flex;align-items:center;gap:12px;margin:8px 0}
@@ -99,16 +100,35 @@ footer{border-top:1px solid var(--line);margin-top:40px;padding-top:18px;text-al
     </table>
   </div>
   <div class="note">操作说明：<br>· <b>记录成交</b>：输入这笔「成交金额」和「我的分成」，线索转为「已成交」，并计入待结算。<br>· <b>标记结算</b>：该笔分成已实际到账，计入已结算，从待结算移除。<br>· <b>还原未成交</b> / <b>删除</b>：分别用于纠错与清理单条。<br>· 金额均为人工录入，非测算。所有写操作均需管理密钥。</div>
+
+  <div style="margin-top:40px"><div class="tblwrap">
+    <h3 style="color:var(--gold);margin-bottom:10px">📬 政策订阅看板</h3>
+    <div class="kpis">
+      <div class="kpi"><div class="n" id="sTotal">0</div><div class="l">订阅总数</div></div>
+      <div class="kpi green"><div class="n" id="sActive">0</div><div class="l">有效订阅</div></div>
+      <div class="kpi cyan"><div class="n" id="sSite">0</div><div class="l">来源：站内</div></div>
+      <div class="kpi cyan"><div class="n" id="sArticle">0</div><div class="l">来源：文章</div></div>
+    </div>
+    <table>
+      <thead><tr><th>邮箱</th><th>状态</th><th>来源</th><th>标签</th><th>订阅时间</th></tr></thead>
+      <tbody id="sbody"></tbody>
+    </table>
+    <div class="note">策略：由 Worker <code>/api/subscribers</code> 读取（需管理密钥）；退订/删除同样在此操作入口对应一键删除。</div>
+  </div></div>
+
   <footer>跨境电商线索 · 对账后台 · 请妥善保管密钥</footer>
 </div>
 
 <script>
 function store(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
 function loadStore(k,d){ try{ return localStorage.getItem(k)||d; }catch(e){ return d; } }
+// 管理密钥按会话存 sessionStorage：关闭标签页即清除，避免长期滞留浏览器
+function sstore(k,v){ try{sessionStorage.setItem(k,v);}catch(e){} }
+function sload(k,d){ try{ return sessionStorage.getItem(k)||d; }catch(e){ return d; } }
 var qlabel={q1:'发货方式',q2:'开票能力',q3:'综试区',q4:'销售额',q5:'收款安排'};
 var URL=loadStore('cb_api','https://caishui-leads.861481939.workers.dev');
 document.getElementById('apiUrl').value=URL;
-document.getElementById('apiToken').value=loadStore('cb_token','');
+document.getElementById('apiToken').value=sload('cb_token','');
 function tok(){ return document.getElementById('apiToken').value.trim(); }
 function base(){ return (document.getElementById('apiUrl').value||'').trim().replace(/\/+$/,''); }
 function api(opts){
@@ -123,11 +143,33 @@ load();
 function load(){
   var err='';
   if(!base()||!tok()){ document.getElementById('msg').innerHTML='<div class="err">请填写接口地址和管理密钥。</div>'; return; }
-  store('cb_api',base()); store('cb_token',tok());
+  store('cb_api',base()); sstore('cb_token',tok());
   api({method:'GET'})
     .then(function(r){ if(r.ok) return r.json(); throw new Error('HTTP '+r.status); })
     .then(function(d){ if(!d.ok) throw new Error(d.error||'获取失败'); render(d.leads||[]); })
     .catch(function(e){ document.getElementById('msg').innerHTML='<div class="err">加载失败：'+e.message+'。若是 404，请强制刷新(Ctrl+Shift+R)或换无痕窗口；否则检查网络是否可连通 workers.dev。</div>'; });
+  loadSubs();
+}
+function loadSubs(){
+  fetch(base()+'/api/subscribers',{headers:{'x-admin-token':tok()}})
+    .then(function(r){ return r.json(); })
+    .then(function(d){ if(d&&d.ok) renderSubs(d); })
+    .catch(function(){ /* 订阅看板为辅助；失败静默，不影响线索加载 */ });
+}
+function renderSubs(d){
+  var rows=d.subscribers||[]; var by=d.by_source||{};
+  document.getElementById('sTotal').textContent=Number(d.total||0);
+  document.getElementById('sActive').textContent=Number(d.active_count||0);
+  document.getElementById('sSite').textContent=Number(by['site']||0)+Number(by['crossborder']||0);
+  document.getElementById('sArticle').textContent=Number(by['article']||0)+Number(by['verify']||0);
+  var tb=document.getElementById('sbody');
+  if(Object.prototype.toString.call(rows)==='[object Array]'&&rows.length){
+    tb.innerHTML=rows.map(function(r){
+      var t=new Date(r.created_at);
+      var ts=isNaN(t)?(r.created_at||''):(t.getFullYear()+'-'+('0'+(t.getMonth()+1)).slice(-2)+'-'+('0'+t.getDate()).slice(-2));
+      return '<tr><td>'+(r.email||'')+'</td><td>'+(r.subscribed?'<span style="color:var(--green)">有效</span>':'<span style="color:var(--dim)">已退订</span>')+'</td><td>'+(r.source||'')+'</td><td>'+(Array.isArray(r.tags)?r.tags.join(', '):(r.tags||''))+'</td><td>'+ts+'</td></tr>';
+    }).join('');
+  } else { tb.innerHTML='<tr><td colspan="5" class="empty">暂无订阅者，或尚未建 subscribers 表</td></tr>'; }
 }
 
 function render(ls){
@@ -162,9 +204,9 @@ function render(ls){
     var riskHtml=(L.risks&&L.risks.length)?L.risks.map(function(r){return '<span class="chip risk">'+r+'</span>';}).join(''):'<span style="color:var(--dim)">无</span>';
     profHtml+=riskHtml;
     var act='';
-    act+='<button class="bt-conv" onclick="recordDeal('+L.id+')">记录成交</button>';
-    if(s!=='settled') act+='<button class="bt-set" onclick="markSet('+L.id+')">标记结算</button>';
-    if(s!=='new') act+='<button class="bt-reset" onclick="resetNew('+L.id+')">还原未成交</button>';
+    if(s==='new'||s==='assigned') act+='<button class="bt-conv" onclick="recordDeal('+L.id+')">记录成交</button>';
+    if(s==='converted') act+='<button class="bt-set" onclick="markSet('+L.id+')">标记结算</button>';
+    if(s==='converted') act+='<button class="bt-reset" onclick="resetNew('+L.id+')">还原未成交</button>';
     act+='<button class="bt-del" onclick="delOne('+L.id+')">删除</button>';
     return '<tr>'+
       '<td class="lid">'+L.lead_id+'</td>'+
@@ -212,8 +254,9 @@ function delOne(id){
   }).catch(function(e){ msg('❌ '+e.message); });
 }
 function clearAll(){
-  if(!confirm('⚠ 将清空全部线索？此操作不可恢复。')) return;
-  fetch(base()+'/api/leads?id=all',{method:'DELETE',headers:{'x-admin-token':tok()}}).then(function(r){
+  var t = prompt('⚠ 危险操作：将不可恢复地清空全部线索。\n如需继续，请原样输入：确认全部清空');
+  if (t === null || t.trim() !== '确认全部清空') { msg('已取消清空。','ok'); return; }
+  fetch(base()+'/api/leads?id=all&confirm=ALL',{method:'DELETE',headers:{'x-admin-token':tok()}}).then(function(r){
     if(r.ok){ msg('已清空全部数据。','ok'); load(); } else { r.text().then(function(t){ msg('❌ '+t); }); }
   }).catch(function(e){ msg('❌ '+e.message); });
 }
