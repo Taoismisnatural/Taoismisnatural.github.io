@@ -145,6 +145,16 @@ section{margin:54px 0}
 .reveal.in{opacity:1;transform:none}
 .kpiList.hasNumber .n{display:inline-block}
 @media(prefers-reduced-motion:reduce){.hero .flash,.kpi,.reveal{transition:none;animation:none}.reveal{opacity:1;transform:none}}
+/* ---------- 信任与转化强化 ---------- */
+.kj-trust{max-width:1200px;margin:26px auto 0;padding:0 22px}
+.kj-trust-in{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.kj-trust-h{text-align:center;margin-bottom:16px}.kj-trust-h b{color:var(--gold);font-size:17px}
+.kj-trust-h p{color:var(--dim);font-size:13px;margin-top:4px}
+.kj-trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.kj-tc{display:flex;gap:12px;align-items:flex-start;background:rgba(11,16,32,.35);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kj-tc .kj-tic{font-size:20px;flex:0 0 auto}
+.kj-tc b{font-size:13.5px;color:var(--txt)}
+.kj-tc p{font-size:12px;color:var(--dim);margin-top:3px;line-height:1.6}
 /* ---------- 政策订阅（私域沉淀） ---------- */
 .kj-subscribe{max-width:1200px;margin:10px auto 0;padding:0 22px}
 .kj-sub-in{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--cyan);border-radius:18px;padding:22px 26px}
@@ -356,6 +366,19 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding:26px 22px 40px;t
       </div>
     </div>
   </section>
+  <section class="kj-trust" id="trust">
+    <div class="kj-trust-in">
+      <div class="kj-trust-h"><b>为什么可以信任跨境税盾</b><p>做信息核验与自我排查，不替你做决定，只把口径给你讲清楚。</p></div>
+      <div class="kj-trust-grid">
+        <div class="kj-tc"><span class="kj-tic">📜</span><div><b>官方依据可回溯</b><p>每条结论标注政策原文与证据强度（官方/待核验），不编造数字。</p></div></div>
+        <div class="kj-tc"><span class="kj-tic">📍</span><div><b>属地差异化提示</b><p>综试区细则、核定、退税窗口高度属地化，逐条提醒你以属地税局为准。</p></div></div>
+        <div class="kj-tc"><span class="kj-tic">🛡</span><div><b>不替你代理申报</b><p>我们只做信息整理与撮合，不私代申报、不「包过」，也不给激进避税建议。</p></div></div>
+        <div class="kj-tc"><span class="kj-tic">🔐</span><div><b>信息掌握在你手里</b><p>只有你勾选转介+留资才对接持证机构；未经同意不披露，可随时撤销/删除。</p></div></div>
+        <div class="kj-tc"><span class="kj-tic">💬</span><div><b>AI 帮你进一步问</b><p>看不懂就继续问「AI 财税助手」，会带上你的自查信息回答。</p></div></div>
+        <div class="kj-tc"><span class="kj-tic">✅</span><div><b>4分钟能落地</b><p>先自查→出报告→确定下一步，每一步都告诉你该带什么去对账.</p></div></div>
+      </div>
+    </div>
+  </section>
 </div>
 <footer>
   <div class="trust-strip">🛡 <b>跨境税盾 · 安心出海。</b>为<b>跨境电商的税务"安全线"</b>——信息整理与撮合平台，不构成税务筹划或法律建议，以属地税局口径为准。您的信息仅按您的授权对接持证机构，未经同意不披露、可随时撤销。<br>联系：<b>📧 861481939@qq.com</b></div>
@@ -481,9 +504,32 @@ function genReport(){
   var ts=now.getFullYear()+'-'+('0'+(now.getMonth()+1)).slice(-2)+'-'+('0'+now.getDate()).slice(-2)+' '+('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2);
   document.getElementById('printSheet').innerHTML='<h2>跨境电商卖家 · 合规自查报告</h2>'+'<div class="pmeta">线索编号：'+leadCode+' &nbsp;|&nbsp; 生成时间：'+ts+'</div>'+'<div class="psec"><h4>一、卖家画像</h4>'+profLines+'</div>'+'<div class="psec"><h4>二、推荐合规通道线索</h4>'+'<div class="pline"><b>'+p.key+'</b> — '+p.name+'</div>'+confLine+srcPrint+'<div class="pline">'+p.note+'</div>'+'</div>'+'<div class="psec"><h4>三、需重点注意</h4>'+(printRisk||'<div class="pline">未见明显高危信号。</div>')+'</div>'+'<div class="psec"><h4>四、自查清单完成情况</h4><div class="pline">'+score+'（转给持证服务商前建议逐项确认）</div></div>'+'<div class="psec"><h4>五、可先把这些凭证备齐</h4>'+'<div class="pline">· 营业执照注册地（确认是否综试区）</div>'+'<div class="pline">· 平台后台结算 / 订单流水（以买家实付全额定口径）</div>'+'<div class="pline">· 报关单证（9610/9710/9810/1039 等监管代码）</div>'+'<div class="pline">· 收汇记录（对公/离岸账户流水）</div>'+'<div class="pline">· 进项发票或采购凭证（按能力择一）</div>'+'</div>'+'<div class="psec"><h4>六、下一步怎么做（3 步）</h4>'+'<div class="pline">① 回到页面「属地速查」，确认注册地所属综试区状态；</div>'+'<div class="pline">② 用「税负测算」对比两条通道的资金账；</div>'+'<div class="pline">③ 带本报告找属地税局或持证财税顾问核验属地细则，再定申报路径。</div>'+'</div>'+'<div class="pfoot">跨境税盾 · 本报告由跨境电商税务自查平台生成，仅作「自我排查」信息，不构成申报建议、税务筹划或法律意见。请以属地税务机关口径为准，重大决策前咨询持证财税专业人员。</div>';
   var rv=document.getElementById('reportView');
-  rv.innerHTML='<div class="rep-head"><h3>📄 你的《自查报告》</h3><span class="rep-tag">线索 '+leadCode+'</span></div>'+'<div class="rep-sec"><h4>一、卖家画像</h4>'+repProf+'</div>'+'<div class="rep-sec"><h4>二、推荐合规通道</h4>'+'<div class="rep-line"><b>'+p.key+'</b> — '+p.name+'</div>'+'<div class="rep-line">'+confBadge(p.conf)+'</div>'+srcLines(p.sources)+'<div class="rep-line">'+p.note+'</div>'+'</div>'+'<div class="rep-sec"><h4>三、需重点注意</h4>'+repRisk+'</div>'+'<div class="rep-sec"><h4>四、自查完成度</h4><span class="rep-score">'+score+'</span><span style="color:var(--dim);font-size:12.5px;margin-left:8px">转给持证机构前建议逐项确认</span></div>'+'<div class="rep-sec"><h4>五、先备齐这些，对接机构更高效</h4>'+'<div class="rep-line">· 营业执照注册地（确认是否综试区）</div>'+'<div class="rep-line">· 平台订单 / 结算流水（以实付全额口径）</div>'+'<div class="rep-line">· 报关单证、收汇记录、进项凭证</div>'+'</div>'+'<div class="rep-foot">跨境税盾 · 本报告仅作「自我排查」，不构成申报建议、税务筹划或法律意见；请以属地税务机关口径为准。<br>生成时间：'+ts+' · 线索编号为后续核对凭证。</div>'+'<div class="rep-actions">'+'<button class="report-btn blue" type="button" onclick="window.print()">🖨 打印 / 另存为 PDF</button>'+'<a class="report-btn blue" target="_blank" href="report.html">↗ 独立打印版</a>'+'<button class="report-btn" type="button" onclick="document.getElementById(\'reportView\').classList.remove(\'on\')">收起</button>'+'</div>';
+  rv.innerHTML='<div class="rep-head"><h3>📄 你的《自查报告》</h3><span class="rep-tag">线索 '+leadCode+'</span></div>'+'<div class="rep-sec"><h4>一、卖家画像</h4>'+repProf+'</div>'+'<div class="rep-sec"><h4>二、推荐合规通道</h4>'+'<div class="rep-line"><b>'+p.key+'</b> — '+p.name+'</div>'+'<div class="rep-line">'+confBadge(p.conf)+'</div>'+srcLines(p.sources)+'<div class="rep-line">'+p.note+'</div>'+'</div>'+'<div class="rep-sec"><h4>三、需重点注意</h4>'+repRisk+'</div>'+'<div class="rep-sec"><h4>四、自查完成度</h4><span class="rep-score">'+score+'</span><span style="color:var(--dim);font-size:12.5px;margin-left:8px">转给持证机构前建议逐项确认</span></div>'+'<div class="rep-sec"><h4>五、先备齐这些，对接机构更高效</h4>'+'<div class="rep-line">· 营业执照注册地（确认是否综试区）</div>'+'<div class="rep-line">· 平台订单 / 结算流水（以实付全额口径）</div>'+'<div class="rep-line">· 报关单证、收汇记录、进项凭证</div>'+'</div>'+'<div class="rep-foot">跨境税盾 · 本报告仅作「自我排查」，不构成申报建议、税务筹划或法律意见；请以属地税务机关口径为准。<br>生成时间：'+ts+' · 线索编号为后续核对凭证。</div>'+'<div class="rep-actions">'+'<button class="report-btn blue" type="button" onclick="window.print()">🖨 打印 / 另存为 PDF</button>'+'<button class="report-btn blue" type="button" onclick="copySummary()">📋 复制结论摘要</button>'+'<a class="report-btn blue" target="_blank" href="report.html">↗ 独立打印版</a>'+'<button class="report-btn" type="button" onclick="document.getElementById(\'reportView\').classList.remove(\'on\')">收起</button>'+'</div>';
   rv.classList.add('on');
   rv.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+// 可分享结论：复制一段可粘贴文本摘要（含线索编号、推荐、风险、依据）
+function copySummary(){
+  if(!lastPick) return;
+  var p=lastPick;
+  var lines=[];
+  lines.push('【跨境税盾 · 跨境税务自查结论】线索 '+leadCode);
+  lines.push('推荐通道：'+p.key+' — '+p.name);
+  lines.push('置信度：'+({high:'较高',mid:'中等',low:'较低'}[p.conf]));
+  lines.push('');
+  lines.push('依据：'+(p.sources||[]).join('；'));
+  lines.push('风险提示：');
+  (p.risks||[]).forEach(function(r){ lines.push('· '+ri(r)); });
+  lines.push('');
+  lines.push('—— 本结论为自我排查信息，不构成申报建议，正式申报请以属地税务机关为准（kuajingshuidun.cn）');
+  var txt=lines.join('\n');
+  var done=function(ok){ var b=document.querySelector('#reportView .rep-actions .report-btn:nth-child(2)'); if(b){ b.textContent=ok?'✅ 已复制':'😢 复制失败'; var n=b.textContent; setTimeout(function(){ b.textContent='📋 复制结论摘要'; },1600); } };
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(function(){done(true);},function(){ done(fbCopy(txt)); }); }
+  else { done(fbCopy(txt)); }
+}
+function fbCopy(txt){
+  var ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+  try { var ok=document.execCommand('copy'); document.body.removeChild(ta); return ok; } catch(e){ document.body.removeChild(ta); return false; }
 }
 var ZONES=[['杭州','浙江'],['宁波','浙江'],['义乌','浙江'],['广州','广东'],['深圳','广东'],['东莞','广东'],['珠海','广东'],['福州','福建'],['平潭','福建'],['厦门','福建'],['上海','上海'],['北京','北京'],['天津','天津'],['重庆','重庆'],['南京','江苏'],['苏州','江苏'],['连云港','江苏'],['青岛','山东'],['济南','山东'],['威海','山东'],['烟台','山东'],['郑州','河南'],['许昌','河南(1039试点)'],['武汉','湖北'],['成都','四川'],['西安','陕西'],['合肥','安徽'],['长沙','湖南'],['大连','辽宁'],['南昌','江西'],['昆明','云南']];
 var activeProv='全部';
