@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# 后台/排他页面不收录
+Disallow: /admin.html
+Disallow: /管理后台.html
+Disallow: /report.html
+Disallow: /index_live.html
+
+Sitemap: https://kuajingshuidun.cn/sitemap.xml
