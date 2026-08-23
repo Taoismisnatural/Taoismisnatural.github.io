@@ -133,9 +133,31 @@ section{margin:54px 0}
   #printSheet .prisk{color:#b3261e;margin:5px 0;font-size:13px}
   #printSheet .pfoot{font-size:11px;color:#777;border-top:1px solid #ccc;margin-top:18px;padding-top:10px}
 }
+/* ---------- 视觉动效升级 ---------- */
+.hero .flash{animation:heroPulse 7s ease-in-out infinite}
+@keyframes heroPulse{0%,100%{opacity:.9;transform:scale(1)}50%{opacity:.5;transform:scale(1.06)}}
+.kpi{transition:transform .3s ease,box-shadow .3s ease}
+.kpi:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(55,224,255,.14)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.kpiList.hasNumber .n{display:inline-block}
+@media(prefers-reduced-motion:reduce){.hero .flash,.kpi,.reveal{transition:none;animation:none}.reveal{opacity:1;transform:none}}
 .rmap{background:var(--card2);border:1px solid var(--gold2);border-radius:14px;padding:20px;margin:8px 0}
 .rmap h4{color:var(--gold);font-size:18px;margin-bottom:8px}
 .rmap .badge{display:inline-block;font-size:11px;color:#231407;background:var(--gold);padding:2px 10px;border-radius:20px;font-weight:700;margin-bottom:10px}
+/* 数据严谨：置信度 / 敏感性 / 依据徽标 */
+.conf{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;margin:2px 4px 2px 0;white-space:nowrap}
+.conf .dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.conf.high{color:#0f3d18;background:var(--green)}.conf.high .dot{background:#0f3d18}
+.conf.mid{color:#5c4200;background:var(--gold)}.conf.mid .dot{background:#5c4200}
+.conf.low{color:#fff;background:var(--red)}.conf.low .dot{background:#fff}
+.sens{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;margin:2px 4px 2px 0;white-space:nowrap}
+.sens.red{color:#ffd0da;background:rgba(255,92,122,.18);border:1px solid var(--red)}
+.sens.gold{color:var(--gold);background:rgba(255,194,77,.12);border:1px solid var(--gold2)}
+.sens.blue{color:var(--cyan);background:rgba(55,224,255,.1);border:1px solid var(--cyan)}
+.src-line{font-size:12px;color:var(--dim);margin-top:8px;line-height:1.7}
+.src-line b{color:var(--cyan)}
+.confseq{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
 .risk{background:rgba(255,92,122,.1);border:1px solid var(--red);border-radius:12px;padding:14px 16px;margin-top:12px;font-size:13.5px}
 .risk h5{color:var(--red);font-size:14px;margin-bottom:6px}
 .note-box{background:rgba(108,139,255,.08);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:12px;font-size:13px;color:var(--dim)}
@@ -326,33 +348,81 @@ function goTo(n){cur=n;steps.forEach(function(s){s.classList.toggle('on',parseIn
 function nextQ(){var el=document.querySelector('.q.on');if(!el) return;var name=el.getAttribute('data-q');var picked=el.querySelector('input:checked');if(!picked){ alert('请先选择一个选项'); return; }ans['q'+name]=picked.value;if(cur<qs.length){ goTo(cur+1); }else { showResult(); }}
 document.querySelectorAll('#quiz .opts .opt input').forEach(function(inp){inp.addEventListener('change',function(){var el=this.closest('.q');var qn=parseInt(el.getAttribute('data-q'));ans['q'+qn]=this.value;setTimeout(function(){ if(cur!==qn || document.querySelector('.q.on')!==el) return; if(qn<qs.length){ goTo(qn+1); } else { showResult(); } },130);});});
 function pick(){
-  var a=ans;var path={key:'', name:'', note:'', risks:[]};var q1=a.q1,q2=a.q2,q3=a.q3,q4=a.q4,q5=a.q5;
-  if(q5==='personal'){ path.risks.push('「体外/私收」信号：资金未走对公，建议尽快梳理收款归属与申报口径，这是当前重点稽查方向。'); }
-  if(q4==='gt500'){ path.risks.push('销售额已达/接近 500 万：请重点关注「一般纳税人」身份与进项抵扣安排，避免税负突变。'); }
-  if(q2==='yes'){path.key='退税通道';path.name='走「有专票 → 出口退税」通道（9710 / 9810 / 一般贸易）';path.note='你有完整进项专票，这是税负结构最优的正规通道。按你的发货方式：B2B 批量走 9710 / 一般贸易，海外仓备货走 9810。出口前确认产品退税率档位，做好收汇与单证留痕。';}
+  var a=ans;var path={key:'', name:'', note:'', risks:[], sources:[], sflag:[]};var q1=a.q1,q2=a.q2,q3=a.q3,q4=a.q4,q5=a.q5;
+  // 敏感性标注：按你的回答为识别到的风险信号打 mark（red=高风险 / gold=属地差异 / blue=提示）
+  function sens(txt,mk){ return {t:txt, mk:mk||'gold'}; }
+  if(q5==='personal'){ path.risks.push(sens('「体外/私收」信号：资金未走对公，建议尽快梳理收款归属与申报口径，这是当前重点稽查方向。','red')); }
+  if(q4==='gt500'){ path.risks.push(sens('销售额已达/接近 500 万：请重点关注「一般纳税人」身份与进项抵扣安排，避免税负突变。','red')); }
+  if(q2==='yes'){
+    path.key='退税通道';path.name='走「有专票 → 出口退税」通道（9710 / 9810 / 一般贸易）';
+    path.note='你有完整进项专票，这是税负结构最优的正规通道。按你的发货方式：B2B 批量走 9710 / 一般贸易，海外仓备货走 9810。出口前确认产品退税率档位，做好收汇与单证留痕。';
+    path.sources=['财政部 税务总局公告2026年第11号（出口货物及跨境服务退（免）税衔接）','国家税务总局支持跨境电商出口海外仓（9810）退（免）税事项'];
+    path.sflag=['blue'];}
   else if(q2==='no'){
-    if(q1==='small'){if(q3==='yes'){path.key='无票免税';path.name='走「9610 无票免税 + 4% 核定」通道（需在综试区）';path.note='无进项专票的小包直邮零售，满足条件下可享增值税、消费税免税，并对经营所得按 4% 应税所得率核定。硬性前提：已在综试区注册、登记出口信息、经综试区海关申报，且申报数据与平台/报关一致。';path.risks.push('务必完成「免税备案+按期申报」，仅零申报不备案不算合规；资料真实性（平台/报关/申报一致）是命门。');path.risks.push('属地核验：各地综试区对核定的落地细则有差异，须与属地税局确认。');}else{path.key='需属地确认';path.name='疑似「9610」候选，但不在综试区 → 先确认注册地';path.note='小包直邮 + 无票，本最契合 9610 无票免税，但该政策要求注册在综试区内。请先在商务部官网核对综试区名单；如不在，需评估转区或改走其他合规通道。';path.risks.push('「未落户综试区却套用无票免税」是明确稽查红线。');}}
-    else if(q1==='market'){path.key='市场采购';path.name='走「1039 市场采购贸易」通道（需在试点集聚区）';path.note='从批发市场/集市拿货且无票、多品类零散出口，1039 是划定的正规通道：增值税免征不退，个税可核定，支持合规收结汇。需在全国试点集聚区内经营并按规定报关。';path.risks.push('属地核验：1039 试点区域与单票上限各有规定，须确认当地是否在试点范围及具体上限。');}
-    else{path.key='需专项梳理';path.name='无票 + 非零售直邮/非市场采购 → 需要专项判断';path.note='你既不是小包直邮也不是市场采购，却存在明显无票采购。这类组合在现行监管下最容易触发「四流断裂」核查。建议先按自查清单逐项梳理进货、报关、收汇、申报，再决定合规改造路径。';path.risks.push('无进项专票却走一般贸易退税/免税，可能被视同内销补缴增值税。勿轻信「走账」类方案。');}
+    if(q1==='small'){
+      if(q3==='yes'){
+        path.key='无票免税';path.name='走「9610 无票免税 + 4% 核定」通道（需在综试区）';
+        path.note='无进项专票的小包直邮零售，满足条件下可享增值税、消费税免税，并对经营所得按 4% 应税所得率核定。硬性前提：已在综试区注册、登记出口信息、经综试区海关申报，且申报数据与平台/报关一致。';
+        path.risks.push(sens('务必完成「免税备案+按期申报」，仅零申报不备案不算合规；资料真实性（平台/报关/申报一致）是命门。','red'));
+        path.risks.push(sens('属地核验：各地综试区对核定的落地细则有差异，须与属地税局确认。','gold'));
+        path.sources=['财税〔2018〕103号（综试区零售出口增值税、消费税免征）','国家税务总局公告2019年第36号（应税所得率统一按 4% 核定）'];
+        path.sflag=['blue'];}
+      else{path.key='需属地确认';path.name='疑似「9610」候选，但不在综试区 → 先确认注册地';
+        path.note='小包直邮 + 无票，本最契合 9610 无票免税，但该政策要求注册在综试区内。请先在商务部官网核对综试区名单；如不在，需评估转区或改走其他合规通道。';
+        path.risks.push(sens('「未落户综试区却套用无票免税」是明确稽查红线。','red'));
+        path.sources=['商务部官网跨境电商综试区名单','财税〔2018〕103号（须综试区内注册）'];
+        path.sflag=['gold'];}
+    }
+    else if(q1==='market'){path.key='市场采购';path.name='走「1039 市场采购贸易」通道（需在试点集聚区）';
+      path.note='从批发市场/集市拿货且无票、多品类零散出口，1039 是划定的正规通道：增值税免征不退，个税可核定，支持合规收结汇。需在全国试点集聚区内经营并按规定报关。';
+      path.risks.push(sens('属地核验：1039 试点区域与单票上限各有规定，须确认当地是否在试点范围及具体上限。','gold'));
+      path.sources=['市场采购贸易方式（1039）相关监管规定','属地商务/税务试点集聚区名单'];
+      path.sflag=['blue'];}
+    else{path.key='需专项梳理';path.name='无票 + 非零售直邮/非市场采购 → 需要专项判断';
+      path.note='你既不是小包直邮也不是市场采购，却存在明显无票采购。这类组合在现行监管下最容易触发「四流断裂」核查。建议先按自查清单逐项梳理进货、报关、收汇、申报，再决定合规改造路径。';
+      path.risks.push(sens('无进项专票却走一般贸易退税/免税，可能被视同内销补缴增值税。勿轻信「走账」类方案。','red'));
+      path.sources=['国家税务总局公告2019年第36号（核定适用条件）','属地稽查口径（四流一致性核查）'];
+      path.sflag=['gold'];}
   }else{
-    if(q1==='small'){path.key='合规+免税叠加路';path.name='普通发票为主 → 「出口免税」或「综试区无票免税」视情况';path.note='有普通发票但非专票：若不退税，可走规范报关的「出口免税」模式（对公收汇不留痕）；若成本结构接近无票，且落户综试区，可评估 9610 无票免税。两者选其一，避免混用。';path.risks.push('有票走无票免税、或反之混用，都是高风险错配。');}
-    else{path.key='需涉专家核';path.name='部分发票 + 非零售直邮 → 建议专项梳理';path.note='你的开票能力与发货方式组合较复杂，进项抵扣与免税边界需要专业人员逐环节判断，勿自行套用单一模式。';path.risks.push('进销不匹配（长期有销无进）是常见的预警触发点。');}
+    if(q1==='small'){path.key='合规+免税叠加路';path.name='普通发票为主 → 「出口免税」或「综试区无票免税」视情况';
+      path.note='有普通发票但非专票：若不退税，可走规范报关的「出口免税」模式（对公收汇不留痕）；若成本结构接近无票，且落户综试区，可评估 9610 无票免税。两者选其一，避免混用。';
+      path.risks.push(sens('有票走无票免税、或反之混用，都是高风险错配。','red'));
+      path.sources=['财税〔2018〕103号（适用前提）','属地税局免税备案口径'];
+      path.sflag=['gold'];}
+    else{path.key='需涉专家核';path.name='部分发票 + 非零售直邮 → 建议专项梳理';
+      path.note='你的开票能力与发货方式组合较复杂，进项抵扣与免税边界需要专业人员逐环节判断，勿自行套用单一模式。';
+      path.risks.push(sens('进销不匹配（长期有销无进）是常见的预警触发点。','red'));
+      path.sources=['财政部 税务总局公告2026年第11号（进项抵扣与退免税边界）','国家税务总局公告2019年第36号（核定适用条件）'];
+      path.sflag=['gold'];}
   }
-  if(!path.risks.length){ path.risks.push('按你的回答暂未见高危信号，但仍建议完成下方自查清单形成留痕。'); }
+  if(!path.risks.length){ path.risks.push(sens('按你的回答暂未见高危信号，但仍建议完成下方自查清单形成留痕。','blue')); }
+  // 置信度判定：路径成立所需的前提项是否都已被你确认
+  var need=[]; var have=0;
+  if(q2==='yes'){need=['2-开专票','1-发货方式明确','5-收款合规']; have=(q1?1:0)+(q5==='company'?1:0)+((q5==='mixed')?0.6:0);}
+  else if(q2==='no'&&q1==='small'){need=['3-在综试区','5-合规收汇']; have=(q3==='yes'?1:(q3==='no'?0:0.5))+((q5==='company')?1:(q5==='mixed'?0.6:0.3));}
+  else if(q1==='market'){need=['1-市场集聚区','5-合规收汇']; have=0.5+((q5==='company')?1:0.5);}
+  else { have=0.5; }
+  var conf = have>=1.6?'high':(have>=0.9?'mid':'low');
+  path.conf=conf;
+  path.confLabel = {high:'较高置信（你已确认关键前提）',mid:'中等置信（部分前提需属地核验）',low:'较低置信（关键前提未确认）'}[conf];
   return path;
 }
+function confBadge(c){ return '<span class="conf '+c+'"><i class="dot"></i>'+({high:'置信：较高',mid:'置信：中等',low:'置信：较低'}[c])+'</span>'; }
+function riskShow(risks){ return risks.map(function(r){ var t=typeof r==='string'?r:r.t; var mk=typeof r==='string'?'gold':(r.mk||'gold'); var lab={red:'高',gold:'属地',blue:'提示'}[mk]; return '<div class="risk"><h5>⚠ 需重点注意 <span class="sens '+mk+'">敏感性：'+lab+'</span></h5>'+t+'</div>'; }).join(''); }
+function srcLines(s){ return '<div class="src-line"><b>依据来源：</b>'+(s||[]).map(function(x){return '《'+x+'》';}).join(' · ')+'</div>'; }
 var leadCode='';var lastPick=null;
 function makeLead(){var d=new Date();var ymd=d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2)+('0'+d.getDate()).slice(-2);var h='';var chars='0123456789ABCDEF';for(var i=0;i<12;i++){h+=chars[Math.floor(Math.random()*16)];}return 'KJ-'+ymd+'-'+h;}
 function showResult(){
   document.getElementById('quiz').style.display='none';var res=document.getElementById('result');var p=pick();leadCode=makeLead();lastPick=p;
-  var riskHtml = p.risks.map(function(r){return '<div class="risk" style="margin-top:8px"><h5>⚠ 需重点注意</h5>'+r+'</div>';}).join('');
-  res.innerHTML='<div class="note-box" style="margin-bottom:14px">✅ 已收到你的答案。以下是你的「自我排查线索」，<b style="color:var(--gold)">不构成申报建议</b>，请以属地税局口径二次确认。</div>'+'<div class="rmap">'+'<span class="badge">推荐线索 · '+p.key+'</span>'+'<h4>'+p.name+'</h4>'+'<p>'+p.note+'</p>'+riskHtml+'</div>'+'<div class="note-box">💡 下一步建议：<b>①</b> 完成下方「30秒自查清单」形成留痕；<b>②</b> 对照第③节确认你的出口模式没有选错；<b>③</b> 涉及正式申报前，联系属地税局或持证财税顾问核验属地细则。</div>'+'<div class="lead-box">'+'<div class="lid">你的唯一线索编号：<b>'+leadCode+'</b><br><span style="color:var(--dim)">结论与报告可免费查看；此编号用于你后续核对。</span></div>'+'<button class="report-btn" id="freeReport" type="button" onclick="genReport()">📋 立即查看《自查报告》（免费）</button>'+'<div class="gray-hint" style="margin-top:6px">无需留联系方式，也可直接查看 / 打印 / 保存这份报告。</div>'+'<div style="margin-top:14px;border-top:1px dashed var(--line);padding-top:14px">'+'<div style="font-size:14.5px"><b style="color:var(--gold)">想有人帮你把这事办完？</b><span style="color:var(--dim);font-size:13px"> 跨境税盾不做代账/申报，只在获得你确认后，对接持证财税机构。</span></div>'+'<div class="cfields" style="margin-top:12px">'+'<div class="cfield"><label>称呼（选填）</label><input type="text" id="ctName" placeholder="姓氏 / 称呼"></div>'+'<div class="cfield"><label>手机号（回访核验用）</label><input type="tel" id="ctPhone" placeholder="如 138****0000"></div>'+'<div class="cfield"><label>微信（选填）</label><input type="text" id="ctWechat" placeholder="微信号"></div>'+'</div>'+'<label class="authv"><input type="checkbox" id="authOk"><span>我同意：本平台仅可在<b style="color:var(--txt)">我本人确认后</b>，把我的线索编号对接给<b style="color:var(--txt)">平台已备案的持证财税机构</b>；未经我同意，不会向任何机构披露我的信息，并可随时撤销授权或删除信息。</span></label>'+'<button class="report-btn blue" id="reportBtn" type="button" onclick="submitLead()" disabled>📤 提交，等专人联系我核验</button>'+'<div class="gray-hint" id="leadStatus">本工具与报告对卖家免费；对接不向你收取任何费用，费用由机构方承担。未经你同意，平台不会向任何机构披露信息，你可随时撤销/删除。</div>'+'</div>'+'</div>'+'<div class="ai-next"><button type="button" id="aiAskNext">💬 还有疑问？直接问「AI 财税助手」</button><div class="subscript">AI 会带上你刚填的自查信息继续回答（不替代正式申报建议 / 属地税局口径）</div></div>'+'<div class="sub-cta" style="margin-top:12px;border:1px solid var(--gold2);border-radius:12px;padding:14px 16px;background:linear-gradient(135deg,rgba(255,194,77,.14),rgba(255,194,77,.04));display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">'+'<div><b style="color:var(--gold2)">AI 财税助手 · 开通订阅</b><div style="color:var(--dim);font-size:12.5px;margin-top:2px">免费每日 3 次；升级 ¥29/月起，无限次问税 + 全年政策更新</div></div>'+'<button class="report-btn" id="aiSubscribe" type="button" onclick="openSubscribe()">🔓 开通订阅</button>'+'</div>'+'<div class="report" id="reportView"></div>'+'<button class="remove-btn" onclick="resetQuiz()">↺ 重新自查一次</button>';
+  var riskHtml = riskShow(p.risks);
+  res.innerHTML='<div class="note-box" style="margin-bottom:14px">✅ 已收到你的答案。以下是你的「自我排查线索」，<b style="color:var(--gold)">不构成申报建议</b>，请以属地税局口径二次确认。</div>'+'<div class="rmap">'+'<span class="badge">推荐线索 · '+p.key+'</span>'+'<h4>'+p.name+'</h4>'+'<div class="confseq">'+confBadge(p.conf)+'<span class="sens '+(p.sflag[0]||'blue')+'">敏感性：'+({blue:'以官方口径为准',gold:'属地差异',red:'高风险'}[p.sflag[0]||'blue'])+'</span></div>'+'<p>'+p.note+'</p>'+riskHtml+srcLines(p.sources)+'</div>'+'<div class="note-box">💡 下一步建议：<b>①</b> 完成下方「30秒自查清单」形成留痕；<b>②</b> 对照第③节确认你的出口模式没有选错；<b>③</b> 涉及正式申报前，联系属地税局或持证财税顾问核验属地细则。</div>'+'<div class="lead-box" id="leadForm">'+'<div class="lid">你的唯一线索编号：<b>'+leadCode+'</b><br><span style="color:var(--dim)">结论与报告可免费查看；此编号用于你后续核对。</span></div>'+'<button class="report-btn" id="freeReport" type="button" onclick="genReport()">📋 立即查看《自查报告》（免费）</button>'+'<div class="gray-hint" style="margin-top:6px">无需留联系方式，也可直接查看 / 打印 / 保存这份报告。</div>'+'<div style="margin-top:14px;border-top:1px dashed var(--line);padding-top:14px">'+'<div style="font-size:14.5px"><b style="color:var(--gold)">想有人帮你把这事办完？</b><span style="color:var(--dim);font-size:13px"> 跨境税盾不做代账/申报，只在获得你确认后，对接持证财税机构。</span></div>'+'<div class="cfields" style="margin-top:12px">'+'<div class="cfield"><label>称呼（选填）</label><input type="text" id="ctName" placeholder="姓氏 / 称呼"></div>'+'<div class="cfield"><label>手机号（回访核验用）</label><input type="tel" id="ctPhone" placeholder="如 138****0000"></div>'+'<div class="cfield"><label>微信（选填）</label><input type="text" id="ctWechat" placeholder="微信号"></div>'+'</div>'+'<label class="authv"><input type="checkbox" id="authOk"><span>我同意：本平台仅可在<b style="color:var(--txt)">我本人确认后</b>，把我的线索编号对接给<b style="color:var(--txt)">平台已备案的持证财税机构</b>；未经我同意，不会向任何机构披露我的信息，并可随时撤销授权或删除信息。</span></label>'+'<button class="report-btn blue" id="reportBtn" type="button" onclick="submitLead()" disabled>📤 提交，等专人联系我核验</button>'+'<div class="gray-hint" id="leadStatus">本工具与报告对卖家免费；对接不向你收取任何费用，费用由机构方承担。未经你同意，平台不会向任何机构披露信息，你可随时撤销/删除。</div>'+'</div>'+'</div>'+'<div class="ai-next"><button type="button" id="aiAskNext">💬 还有疑问？直接问「AI 财税助手」</button><div class="subscript">AI 会带上你刚填的自查信息继续回答（不替代正式申报建议 / 属地税局口径）</div></div>'+'<div class="sub-cta" style="margin-top:12px;border:1px solid var(--gold2);border-radius:12px;padding:14px 16px;background:linear-gradient(135deg,rgba(255,194,77,.14),rgba(255,194,77,.04));display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">'+'<div><b style="color:var(--gold2)">AI 财税助手 · 开通订阅</b><div style="color:var(--dim);font-size:12.5px;margin-top:2px">免费每日 3 次；升级 ¥29/月起，无限次问税 + 全年政策更新</div></div>'+'<button class="report-btn" id="aiSubscribe" type="button" onclick="openSubscribe()">🔓 开通订阅</button>'+'</div>'+'<div class="report" id="reportView"></div>'+'<button class="remove-btn" onclick="resetQuiz()">↺ 重新自查一次</button>';
   res.classList.add('on');var auth=document.getElementById('authOk');if(auth){auth.addEventListener('change',function(){document.getElementById('reportBtn').disabled=!this.checked;});}
   res.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 var BACKEND=(function(){ try { return localStorage.getItem('cb_backend') || 'https://caishui-leads.861481939.workers.dev'; } catch(e){ return 'https://caishui-leads.861481939.workers.dev'; } })();
 function ans2profile(){var o={};Object.keys(ans).forEach(function(k){var v=ans[k];o[k]=(labelMap[k]&&labelMap[k][v])?labelMap[k][v]:v;});return o;}
-function submitLead(){var auth=document.getElementById('authOk');if(!auth||!auth.checked){ alert('请先勾选“同意转介”'); return; }var st=document.getElementById('leadStatus');var phone=(document.getElementById('ctPhone').value||'').trim();var wechat=(document.getElementById('ctWechat').value||'').trim();var name=(document.getElementById('ctName').value||'').trim();if(!phone && !wechat){ st.innerHTML='⚠ 请至少填写手机号或微信，才能入库用于核验与对接。'; return; }var payload={source:'crossborder',profile:ans2profile(),recommended:lastPick?(lastPick.key||lastPick.name):'',risks:lastPick?lastPick.risks:[],contact_name:name, contact_phone:phone, contact_wechat:wechat,auth_flag:auth.checked};st.innerHTML='⏳ 正在入库…';payload=withAiContext(payload);fetch(BACKEND+'/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){ if(r.ok){return r.json();} throw new Error('HTTP '+r.status); }).then(function(d){ if(d&&d.lead_id) leadCode=d.lead_id; st.innerHTML='✅ 线索已建档：编号 <b style="color:var(--gold)">'+d.lead_id+'</b>，已具备对接与回访核验能力。'; }).catch(function(e){ st.innerHTML='⚠ 后端未连接（'+BACKEND+'），已回退为本地报告；对接与回访核验能力受限。'; }).finally(function(){ setTimeout(function(){ genReport(); },150); });}
+var ri = function(r){ return typeof r==='string' ? r : r.t; };
+function submitLead(){var auth=document.getElementById('authOk');if(!auth||!auth.checked){ alert('请先勾选“同意转介”'); return; }var st=document.getElementById('leadStatus');var phone=(document.getElementById('ctPhone').value||'').trim();var wechat=(document.getElementById('ctWechat').value||'').trim();var name=(document.getElementById('ctName').value||'').trim();if(!phone && !wechat){ st.innerHTML='⚠ 请至少填写手机号或微信，才能入库用于核验与对接。'; return; }var payload={source:'crossborder',profile:ans2profile(),recommended:lastPick?(lastPick.key||lastPick.name):'',risks:lastPick?(lastPick.risks||[]).map(ri):[],conf:lastPick?lastPick.conf:'',contact_name:name, contact_phone:phone, contact_wechat:wechat,auth_flag:auth.checked};st.innerHTML='⏳ 正在入库…';payload=withAiContext(payload);fetch(BACKEND+'/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){ if(r.ok){return r.json();} throw new Error('HTTP '+r.status); }).then(function(d){ if(d&&d.lead_id) leadCode=d.lead_id; st.innerHTML='✅ 线索已建档：编号 <b style="color:var(--gold)">'+d.lead_id+'</b>，已具备对接与回访核验能力。'; }).catch(function(e){ st.innerHTML='⚠ 后端未连接（'+BACKEND+'），已回退为本地报告；对接与回访核验能力受限。'; }).finally(function(){ setTimeout(function(){ genReport(); },150); });}
 // L2：把「是否问过 AI + 追问要点」合并进线索载荷（数据来自 cb_ai_context，AI 挂件写入）
 function withAiContext(p){
   try{
@@ -369,7 +439,7 @@ function withAiContext(p){
 function resetQuiz(){document.getElementById('quiz').style.display='';document.querySelectorAll('#quiz input:checked').forEach(function(i){i.checked=false;});ans={}; leadCode=''; lastPick=null;document.getElementById('result').classList.remove('on');document.getElementById('result').innerHTML='';goTo(1);}
 var labelMap={q1:{small:'小包直邮 / 自发货（零售）',overseas:'海外仓备货、海外零售',b2b:'B2B 批量出口',market:'市场采购'},q2:{yes:'上游可开增值税专用发票',ordinary:'仅普通发票 / 部分可开',no:'基本无票采购'},q3:{yes:'注册在跨境电商综合试验区',no:'不在 / 不确定综试区'},q4:{lt500:'销售额 500 万以下',gt500:'接近 / 超 500 万'},q5:{company:'对公账户合规收汇',personal:'个人卡 / 微信代收为主',mixed:'两者混用'}};
 var qtxt={q1:'发货方式',q2:'开票能力',q3:'综试区',q4:'销售额',q5:'收款安排'};
-function persistProfile(){ try{ if(!lastPick) return; var sc=document.getElementById('checkScore'); var save={id:leadCode,profile:ans2profile(),recommended:lastPick.key||'',recname:lastPick.name||'',recnote:lastPick.note||'',risks:lastPick.risks||[],score:sc?sc.textContent:''}; localStorage.setItem('cb_lastProfile',JSON.stringify(save)); }catch(e){} }
+function persistProfile(){ try{ if(!lastPick) return; var sc=document.getElementById('checkScore'); var save={id:leadCode,profile:ans2profile(),recommended:lastPick.key||'',recname:lastPick.name||'',recnote:lastPick.note||'',conf:lastPick.conf||'',sources:lastPick.sources||[],risks:(lastPick.risks||[]).map(ri),score:sc?sc.textContent:''}; localStorage.setItem('cb_lastProfile',JSON.stringify(save)); }catch(e){} }
 function genReport(){
   if(!lastPick) return;
   persistProfile();
@@ -377,15 +447,17 @@ function genReport(){
   var profLines=Object.keys(ans).map(function(k){var v=ans[k];var n=(labelMap[k]&&labelMap[k][v])?labelMap[k][v]:v;return '<div class="pline"><b>'+(qtxt[k]||k)+'：</b>'+n+'</div>';}).join('');
   var repProf=Object.keys(ans).map(function(k){var v=ans[k];var n=(labelMap[k]&&labelMap[k][v])?labelMap[k][v]:v;return '<div class="rep-line"><b>'+(qtxt[k]||k)+'：</b>'+n+'</div>';}).join('');
   var printRisk='';
-  p.risks.forEach(function(r){ printRisk+='<div class="prisk">⚠ '+r+'</div>'; });
-  var repRisk=p.risks.length ? p.risks.map(function(r){return '<div class="rep-risk">⚠ '+r+'</div>';}).join('') : '<div class="rep-line">未见明显高危信号。</div>';
+  p.risks.forEach(function(r){ printRisk+='<div class="prisk">⚠ '+ri(r)+'</div>'; });
+  var repRisk=p.risks.length ? p.risks.map(function(r){return '<div class="rep-risk">⚠ '+ri(r)+'</div>';}).join('') : '<div class="rep-line">未见明显高危信号。</div>';
+  var confLine='<div class="pline" style="color:#444">置信度：'+({high:'较高（你已确认关键前提）',mid:'中等（部分前提需属地核验）',low:'较低（关键前提未确认）'}[p.conf])+'</div>';
+  var srcPrint=p.sources&&p.sources.length?('<div class="pline">依据来源：'+p.sources.map(function(x){return '《'+x+'》';}).join(' · ')+'</div>'):'';
   var scoreNode=document.getElementById('checkScore');
   var score=scoreNode?scoreNode.textContent:'';
   var now=new Date();
   var ts=now.getFullYear()+'-'+('0'+(now.getMonth()+1)).slice(-2)+'-'+('0'+now.getDate()).slice(-2)+' '+('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2);
-  document.getElementById('printSheet').innerHTML='<h2>跨境电商卖家 · 合规自查报告</h2>'+'<div class="pmeta">线索编号：'+leadCode+' &nbsp;|&nbsp; 生成时间：'+ts+'</div>'+'<div class="psec"><h4>一、卖家画像</h4>'+profLines+'</div>'+'<div class="psec"><h4>二、推荐合规通道线索</h4>'+'<div class="pline"><b>'+p.key+'</b> — '+p.name+'</div>'+'<div class="pline">'+p.note+'</div>'+'</div>'+'<div class="psec"><h4>三、需重点注意</h4>'+(printRisk||'<div class="pline">未见明显高危信号。</div>')+'</div>'+'<div class="psec"><h4>四、自查清单完成情况</h4><div class="pline">'+score+'（转给持证服务商前建议逐项确认）</div></div>'+'<div class="psec"><h4>五、可先把这些凭证备齐</h4>'+'<div class="pline">· 营业执照注册地（确认是否综试区）</div>'+'<div class="pline">· 平台后台结算 / 订单流水（以买家实付全额定口径）</div>'+'<div class="pline">· 报关单证（9610/9710/9810/1039 等监管代码）</div>'+'<div class="pline">· 收汇记录（对公/离岸账户流水）</div>'+'<div class="pline">· 进项发票或采购凭证（按能力择一）</div>'+'</div>'+'<div class="psec"><h4>六、下一步怎么做（3 步）</h4>'+'<div class="pline">① 回到页面「属地速查」，确认注册地所属综试区状态；</div>'+'<div class="pline">② 用「税负测算」对比两条通道的资金账；</div>'+'<div class="pline">③ 带本报告找属地税局或持证财税顾问核验属地细则，再定申报路径。</div>'+'</div>'+'<div class="pfoot">跨境税盾 · 本报告由跨境电商税务自查平台生成，仅作「自我排查」信息，不构成申报建议、税务筹划或法律意见。请以属地税务机关口径为准，重大决策前咨询持证财税专业人员。</div>';
+  document.getElementById('printSheet').innerHTML='<h2>跨境电商卖家 · 合规自查报告</h2>'+'<div class="pmeta">线索编号：'+leadCode+' &nbsp;|&nbsp; 生成时间：'+ts+'</div>'+'<div class="psec"><h4>一、卖家画像</h4>'+profLines+'</div>'+'<div class="psec"><h4>二、推荐合规通道线索</h4>'+'<div class="pline"><b>'+p.key+'</b> — '+p.name+'</div>'+confLine+srcPrint+'<div class="pline">'+p.note+'</div>'+'</div>'+'<div class="psec"><h4>三、需重点注意</h4>'+(printRisk||'<div class="pline">未见明显高危信号。</div>')+'</div>'+'<div class="psec"><h4>四、自查清单完成情况</h4><div class="pline">'+score+'（转给持证服务商前建议逐项确认）</div></div>'+'<div class="psec"><h4>五、可先把这些凭证备齐</h4>'+'<div class="pline">· 营业执照注册地（确认是否综试区）</div>'+'<div class="pline">· 平台后台结算 / 订单流水（以买家实付全额定口径）</div>'+'<div class="pline">· 报关单证（9610/9710/9810/1039 等监管代码）</div>'+'<div class="pline">· 收汇记录（对公/离岸账户流水）</div>'+'<div class="pline">· 进项发票或采购凭证（按能力择一）</div>'+'</div>'+'<div class="psec"><h4>六、下一步怎么做（3 步）</h4>'+'<div class="pline">① 回到页面「属地速查」，确认注册地所属综试区状态；</div>'+'<div class="pline">② 用「税负测算」对比两条通道的资金账；</div>'+'<div class="pline">③ 带本报告找属地税局或持证财税顾问核验属地细则，再定申报路径。</div>'+'</div>'+'<div class="pfoot">跨境税盾 · 本报告由跨境电商税务自查平台生成，仅作「自我排查」信息，不构成申报建议、税务筹划或法律意见。请以属地税务机关口径为准，重大决策前咨询持证财税专业人员。</div>';
   var rv=document.getElementById('reportView');
-  rv.innerHTML='<div class="rep-head"><h3>📄 你的《自查报告》</h3><span class="rep-tag">线索 '+leadCode+'</span></div>'+'<div class="rep-sec"><h4>一、卖家画像</h4>'+repProf+'</div>'+'<div class="rep-sec"><h4>二、推荐合规通道</h4>'+'<div class="rep-line"><b>'+p.key+'</b> — '+p.name+'</div>'+'<div class="rep-line">'+p.note+'</div>'+'</div>'+'<div class="rep-sec"><h4>三、需重点注意</h4>'+repRisk+'</div>'+'<div class="rep-sec"><h4>四、自查完成度</h4><span class="rep-score">'+score+'</span><span style="color:var(--dim);font-size:12.5px;margin-left:8px">转给持证机构前建议逐项确认</span></div>'+'<div class="rep-sec"><h4>五、先备齐这些，对接机构更高效</h4>'+'<div class="rep-line">· 营业执照注册地（确认是否综试区）</div>'+'<div class="rep-line">· 平台订单 / 结算流水（以实付全额口径）</div>'+'<div class="rep-line">· 报关单证、收汇记录、进项凭证</div>'+'</div>'+'<div class="rep-foot">跨境税盾 · 本报告仅作「自我排查」，不构成申报建议、税务筹划或法律意见；请以属地税务机关口径为准。<br>生成时间：'+ts+' · 线索编号为后续核对凭证。</div>'+'<div class="rep-actions">'+'<button class="report-btn blue" type="button" onclick="window.print()">🖨 打印 / 另存为 PDF</button>'+'<a class="report-btn blue" target="_blank" href="report.html">↗ 独立打印版</a>'+'<button class="report-btn" type="button" onclick="document.getElementById(\'reportView\').classList.remove(\'on\')">收起</button>'+'</div>';
+  rv.innerHTML='<div class="rep-head"><h3>📄 你的《自查报告》</h3><span class="rep-tag">线索 '+leadCode+'</span></div>'+'<div class="rep-sec"><h4>一、卖家画像</h4>'+repProf+'</div>'+'<div class="rep-sec"><h4>二、推荐合规通道</h4>'+'<div class="rep-line"><b>'+p.key+'</b> — '+p.name+'</div>'+'<div class="rep-line">'+confBadge(p.conf)+'</div>'+srcLines(p.sources)+'<div class="rep-line">'+p.note+'</div>'+'</div>'+'<div class="rep-sec"><h4>三、需重点注意</h4>'+repRisk+'</div>'+'<div class="rep-sec"><h4>四、自查完成度</h4><span class="rep-score">'+score+'</span><span style="color:var(--dim);font-size:12.5px;margin-left:8px">转给持证机构前建议逐项确认</span></div>'+'<div class="rep-sec"><h4>五、先备齐这些，对接机构更高效</h4>'+'<div class="rep-line">· 营业执照注册地（确认是否综试区）</div>'+'<div class="rep-line">· 平台订单 / 结算流水（以实付全额口径）</div>'+'<div class="rep-line">· 报关单证、收汇记录、进项凭证</div>'+'</div>'+'<div class="rep-foot">跨境税盾 · 本报告仅作「自我排查」，不构成申报建议、税务筹划或法律意见；请以属地税务机关口径为准。<br>生成时间：'+ts+' · 线索编号为后续核对凭证。</div>'+'<div class="rep-actions">'+'<button class="report-btn blue" type="button" onclick="window.print()">🖨 打印 / 另存为 PDF</button>'+'<a class="report-btn blue" target="_blank" href="report.html">↗ 独立打印版</a>'+'<button class="report-btn" type="button" onclick="document.getElementById(\'reportView\').classList.remove(\'on\')">收起</button>'+'</div>';
   rv.classList.add('on');
   rv.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
@@ -398,7 +470,7 @@ function zoneSearch(){ zoneRender(); }
 zoneRender();
 function val(id){ var v=parseFloat(document.getElementById(id).value); return isNaN(v)?0:v; }
 function fmt(n){ return Math.round(n).toLocaleString('zh-CN'); }
-function calcRun(){var S=val('cSales'), pct=val('cCost')/100, inv=val('cInv')/100, rate=val('cRate')/100;if(S<=0){ document.getElementById('cRes').innerHTML='<div class="cfin"><b>请先填写年出口销售额</b>（其余项可用默认值）。</div>'; document.getElementById('cRes').classList.add('on'); return; }var purchTaxOut = S*pct*inv*rate/(1+rate);var refund = purchTaxOut;var netA = refund - purchTaxOut;var taxB = S*0.04*0.05;var netB = -taxB;var html='<div class="cres-grid">'+'<div class="cres-cell">'+'<div class="ct">通道 A · 有票走出口退税</div><h4>补齐专票 → 退税回流</h4>'+'<div class="crow"><span class="k">承担采购税点成本</span><span class="v neg">− '+fmt(purchTaxOut)+'</span></div>'+'<div class="crow"><span class="k">预估出口退税额</span><span class="v pos">+ '+fmt(refund)+'</span></div>'+'<div class="crow total"><span class="k">综合资金净流</span><span class="v '+(netA>=0?'pos':'neg')+'">'+(netA>=0?'+':'')+fmt(netA)+'</span></div>'+'</div>'+'<div class="cres-cell rec">'+'<div class="ct">通道 B · 综试区无票免税+4%核定</div><h4>无票也能合规出口</h4>'+'<div class="crow"><span class="k">增值税 / 消费税</span><span class="v pos">0（免征）</span></div>'+'<div class="crow"><span class="k">预估经营所得税（示意）</span><span class="v neg">− '+fmt(taxB)+'</span></div>'+'<div class="crow total"><span class="k">综合资金净流（仅所得税）</span><span class="v neg">'+fmt(netB)+'</span></div>'+'</div>'+'</div>'+'<div class="cfin">💡 <b>简单理解：</b>若你「补齐专票要承担的税点」大于「能退回来的税」，那为退税而补票<b>不一定划算</b>；通道 B 的核心价值，是<b>在没有进项专票时仍能以合规方式出口</b>、减负可控。请把以上估算数字带给属地税局或持证顾问做最终判断。</div>'+'<div class="cnote">⚠ 本测算为<strong style="color:var(--gold)">简化估算</strong>：仅示意进口增值税可退与所得税核定两项，不包含其他税种、附加税费、汇算调整及综试区/主体（企业 vs 个体户）口径差异，<b>不作为申报或筹划依据</b>。</div>';var res=document.getElementById('cRes');res.innerHTML=html;res.classList.add('on');}
+function calcRun(){var S=val('cSales'), pct=val('cCost')/100, inv=val('cInv')/100, rate=val('cRate')/100;if(S<=0){ document.getElementById('cRes').innerHTML='<div class="cfin"><b>请先填写年出口销售额</b>（其余项可用默认值）。</div>'; document.getElementById('cRes').classList.add('on'); return; }var purchTaxOut = S*pct*inv*rate/(1+rate);var refund = purchTaxOut;var netA = refund - purchTaxOut;var taxB = S*0.04*0.05;var netB = -taxB;var html='<div class="cres-grid">'+'<div class="cres-cell">'+'<div class="ct">通道 A · 有票走出口退税</div><h4>补齐专票 → 退税回流</h4>'+'<div class="crow"><span class="k">承担采购税点成本</span><span class="v neg">− '+fmt(purchTaxOut)+'</span></div>'+'<div class="crow"><span class="k">预估出口退税额</span><span class="v pos">+ '+fmt(refund)+'</span></div>'+'<div class="crow total"><span class="k">综合资金净流</span><span class="v '+(netA>=0?'pos':'neg')+'">'+(netA>=0?'+':'')+fmt(netA)+'</span></div>'+'</div>'+'<div class="cres-cell rec">'+'<div class="ct">通道 B · 综试区无票免税+4%核定</div><h4>无票也能合规出口</h4>'+'<div class="crow"><span class="k">增值税 / 消费税</span><span class="v pos">0（免征）</span></div>'+'<div class="crow"><span class="k">预估经营所得税（示意）</span><span class="v neg">− '+fmt(taxB)+'</span></div>'+'<div class="crow total"><span class="k">综合资金净流（仅所得税）</span><span class="v neg">'+fmt(netB)+'</span></div>'+'</div>'+'</div>'+'<div class="cfin">💡 <b>简单理解：</b>若你「补齐专票要承担的税点」大于「能退回来的税」，那为退税而补票<b>不一定划算</b>；通道 B 的核心价值，是<b>在没有进项专票时仍能以合规方式出口</b>、减负可控。请把以上估算数字带给属地税局或持证顾问做最终判断。</div>'+'<div class="cnote"><span class="sens gold" style="margin-left:0">敏感性：简化估算</span><span class="sens blue">退税率：以你报关品名档位为准</span> ⚠ 本测算为<strong style="color:var(--gold)">简化估算</strong>：仅示意进口增值税可退与所得税核定两项，不包含其他税种、附加税费、汇算调整及综试区/主体（企业 vs 个体户）口径差异，<b>不作为申报或筹划依据</b>。<br><span style="color:var(--dim);font-size:12px">依据：财政部 税务总局公告2026年第11号（退（免）税衔接）· 财税〔2018〕103号（无票免税）· 国家税务总局公告2019年第36号（4%核定）</span></div>';var res=document.getElementById('cRes');res.innerHTML=html;res.classList.add('on');}
 function calcReset(){document.getElementById('cSales').value='5000000';document.getElementById('cCost').value='60';document.getElementById('cInv').value='30';document.getElementById('cRate').value='13';document.getElementById('cRes').classList.remove('on');}
 // 出口退税率速查：选品类→填退税率（示意档位，正式以海关税则/出口退税申报系统为准）
 function setCatRate(){
@@ -414,6 +486,21 @@ var items=[['已在综试区内注册并在公共服务平台登记出口信息'
 var checkList=document.getElementById('checkList');items.forEach(function(it,i){var d=document.createElement('label');d.className='check-item';d.innerHTML='<input type="checkbox" data-i="'+i+'"><span class="ct">'+it[0]+'<span class="cd">'+it[1]+'</span></span>';d.addEventListener('change',function(){this.classList.toggle('done',this.querySelector('input').checked);updScore();});checkList.appendChild(d);});
 function updScore(){var n=document.querySelectorAll('#checkList input:checked').length;document.getElementById('checkScore').textContent=n+' / '+items.length;document.getElementById('checkBar').style.width=(n/items.length*100)+'%';}
 updScore();
+// ---------- 视觉动效：滚动显现 + KPI 数字滚动 ----------
+(function(){
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced) return;
+  var targets=document.querySelectorAll('section'); targets.forEach(function(s){ if(!s.classList.contains('reveal')) s.classList.add('reveal'); });
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.08});
+  targets.forEach(function(s){ io.observe(s); });
+  // KPI 数字滚动：只对纯数字生效
+  var nums=document.querySelectorAll('.kpi .n'); nums.forEach(function(n){
+    var txt=(n.textContent||'').trim(); if(!/^\d+$/.test(txt)) return;
+    var target=parseInt(txt,10); var done=false;
+    var kio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting&&!done){ done=true; var t0=null,l=target; function step(tm){ if(!t0) t0=tm; var p=Math.min((tm-t0)/900,1); n.textContent=Math.round(l-(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); else n.textContent=l; } requestAnimationFrame(step); kio.disconnect(); } }); },{threshold:.5});
+    kio.observe(n);
+  });
+})();
 </script>
 
 <!-- ===== 品牌融合 L1·L2 · AI 智能问答浮动挂件 ===== -->
@@ -426,17 +513,18 @@ updScore();
 </div>
 <script>
 (function () {
-  // L1：AI 问答线上地址（Vercel 免费托管）
-  var AI_BASE = 'https://caishui-ai-assistant.vercel.app';
+  // L1：AI 问答线上地址（Vercel 托管 + ai.kuajingshuidun.cn 自定义域名，HTTPS 稳定访问）
+  var AI_BASE = 'https://ai.kuajingshuidun.cn';
   var modal = document.getElementById('aiModal');
   var frame = document.getElementById('aiFrame');
+  var loadedQ = null; // 已加载并展示过的问题（用于判断是否需要重载）
 
   function buildNextQuestion() {
     if (typeof lastPick === 'undefined' || !lastPick) return null;
     var parts = [];
     parts.push('我刚做完网站的跨境电商自查，推荐走「' + lastPick.key + '」：' + lastPick.name);
     if (lastPick.note) parts.push(lastPick.note);
-    (lastPick.risks || []).slice(0, 3).forEach(function (r) { parts.push('这条线索需要注意：' + r + '，具体该怎么做？'); });
+    (lastPick.risks || []).slice(0, 3).forEach(function (r) { parts.push('这条线索需要注意：' + ri(r) + '，具体该怎么做？'); });
     return parts.join('\n');
   }
 
@@ -445,16 +533,20 @@ updScore();
     try {
       var bak = JSON.parse(localStorage.getItem('cb_ai_context') || '{}') || {};
       bak.asked = true; bak.last = Date.now(); bak.question = question;
-      if (typeof lastPick !== 'undefined' && lastPick) { bak.recommended = lastPick.key; bak.intents = lastPick.risks; }
+      if (typeof lastPick !== 'undefined' && lastPick) { bak.recommended = lastPick.key; bak.intents = (lastPick.risks || []).map(ri); }
       if (typeof ans2profile === 'function') { bak.profile = ans2profile(); }
       localStorage.setItem('cb_ai_context', JSON.stringify(bak));
     } catch (e) {}
   }
 
-  function openAI(question) {
+  function openAI(question, forceReload) {
     var q = question || '跨境电商卖家，我最需要关注哪些税务风险？';
     trackAsked(q);
-    frame.src = AI_BASE + '/?q=' + encodeURIComponent(q);
+    // 首次打开才加载；之后再打开若给的是新问题就换问，否则保留上次对话状态，体验更顺
+    if (!frame.getAttribute('src') || (forceReload) || (loadedQ !== q)) {
+      frame.src = AI_BASE + '/?q=' + encodeURIComponent(q);
+      loadedQ = q;
+    }
     modal.classList.add('on');
   }
   window.openAI = openAI;
@@ -463,19 +555,25 @@ updScore();
   function openSubscribe() {
     trackAsked('开通订阅');
     frame.src = AI_BASE + '/?open=subscribe';
+    loadedQ = 'subscribe';
     modal.classList.add('on');
   }
   window.openSubscribe = openSubscribe;
 
-  document.getElementById('aiFab').addEventListener('click', function () { openAI(buildNextQuestion()); });
+  document.getElementById('aiFab').addEventListener('click', function () {
+    // 悬浮球首次点开：带上自查上下文；已打开过则原位展开（不强制重载）
+    openAI(loadedQ ? null : buildNextQuestion(), false);
+  });
   document.getElementById('aiClose').addEventListener('click', function () { modal.classList.remove('on'); });
   modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.remove('on'); });
+  // 支持 Esc 关闭，移动端更好操作
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') modal.classList.remove('on'); });
 
-  // L2：自测结果里的「问 AI」按钮（结果由 JS 渲染，用事件委托捕获）
+  // L2：自测结果里的「问 AI」按钮（结果由 JS 渲染，用事件委托捕获）——每次带着最新自查结果去问
   document.addEventListener('click', function (e) {
     var t = e.target.closest ? e.target.closest('#aiAskNext') : null;
     if (!t) return;
-    openAI(buildNextQuestion() || '跨境电商卖家，我要注意哪些税务风险？');
+    openAI(buildNextQuestion() || '跨境电商卖家，我要注意哪些税务风险？', true);
   });
 })();
 </script>

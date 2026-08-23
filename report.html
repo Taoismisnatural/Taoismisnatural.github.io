@@ -41,7 +41,8 @@ h2{font-size:17px;color:var(--accent);margin:26px 0 10px;border-left:4px solid v
 <body>
   <div class="actions">
     <a href="javascript:window.print()">🖨 打印 / 另存为 PDF</a>
-    <a class="ghost" href="index.html">← 返回免费自查</a>
+    <a class="ghost" href="index.html#tool">↺ 重新自查</a>
+    <a class="primary" href="index.html#leadForm" style="background:var(--brand)!important;border:1px solid var(--brand)">📤 预约持证顾问核验这条线索</a>
   </div>
   <div class="page">
     <div class="system-bar">
@@ -55,14 +56,19 @@ h2{font-size:17px;color:var(--accent);margin:26px 0 10px;border-left:4px solid v
       <span>生成时间：<b id="rTime">____</b></span>
       <span>工具：跨境税盾 · 4 分钟自查</span>
     </div>
+
     <h2>一、卖家画像</h2>
     <div id="rProfile" class="row"><span class="k">（由你的 5 个回答生成：发货方式 / 开票能力 / 综试区 / 销售额 / 收款安排）</span></div>
+
     <h2>二、推荐合规通道（线索）</h2>
-    <div class="recbox"><span class="tag">推荐线索 · <span id="rKey">——</span></span><p id="rName">——</p><p id="rNote" style="color:#555;margin-top:6px"></p></div>
+    <div class="recbox"><span class="tag">推荐线索 · <span id="rKey">——</span></span><p id="rName">——</p><p style="color:#555;font-size:12.5px;margin-top:6px">置信度：<b id="rConf" style="color:var(--brand)">——</b></p><p id="rNote" style="color:#555;margin-top:6px"></p><p id="rSources" style="color:#555;font-size:11.5px;margin-top:4px"></p></div>
+
     <h2>三、需重点注意</h2>
     <div id="rRisks"><div class="warn">→ 完成自查后，风险提示将显示于此。</div></div>
+
     <h2>四、自查完成度</h2>
     <div><span class="score" id="rScore">0 / 8</span>&nbsp;<span style="color:#555;font-size:13px">转给持证机构前建议逐项确认</span></div>
+
     <h2>五、建议先备齐的凭证</h2>
     <ul class="check">
       <li>营业执照注册地（确认是否综试区）</li>
@@ -71,31 +77,37 @@ h2{font-size:17px;color:var(--accent);margin:26px 0 10px;border-left:4px solid v
       <li>收汇记录（对公 / 离岸账户流水）</li>
       <li>进项发票或采购凭证（按能力择一）</li>
     </ul>
+
     <h2>六、下一步怎么做（3 步）</h2>
     <ol class="check" style="margin-left:18px;font-size:14px">
       <li>回到页面「属地速查」，确认注册地所属综试区状态；</li>
       <li>用「税负测算」对比两条通道的资金账；</li>
       <li>带本报告找属地税局或持证财税顾问核验属地细则，再定申报路径。</li>
     </ol>
+
     <div class="sig">
       <div style="font-size:13px;color:#555">本报告由跨境税盾生成 · 线索编号为后续核对凭证</div>
       <div class="prod">跨境税盾<span>跨境电商税务自查平台 · <a href="index.html">kuajingshuidun.cn</a></span></div>
     </div>
+
     <div class="foot">
       免责与政策依据：本报告仅供「自我排查」参考，不构成申报建议、税务筹划或法律意见。跨境电商税务政策高度属地化且随监管调整；正式申报前请以属地税务机关口径为准，必要时咨询持证财税专业人员。政策来源见<a href="sources.html">政策原文与权威来源</a>。
     </div>
   </div>
 <script>
 (function(){try{
-  var d=new Date();document.getElementById("rTime").textContent=d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);
-  try{var p=localStorage.getItem("cb_lastProfile");if(p){var o=JSON.parse(p);
-    if(o.id)document.getElementById("rId").textContent=o.id;
-    if(o.profile){var keys={q1:"发货方式",q2:"开票能力",q3:"综试区",q4:"销售额",q5:"收款安排"};var rows="";for(var k in keys){if(o.profile[k]){rows+="<div class=\"row\"><span class=\"k\">"+keys[k]+"</span><span class=\"v\">"+o.profile[k]+"</span></div>";}}if(rows)document.getElementById("rProfile").innerHTML=rows;}
-    if(o.recommended)document.getElementById("rKey").textContent=o.recommended;
-    if(o.recname)document.getElementById("rName").textContent=o.recname;
-    if(o.recnote)document.getElementById("rNote").textContent=o.recnote;
-    if(o.risks&&o.risks.length){document.getElementById("rRisks").innerHTML=o.risks.map(function(r){return "<div class=\"warn\">⚠ "+r+"</div>";}).join("");}
-    if(o.score)document.getElementById("rScore").textContent=o.score;
+  var d=new Date();document.getElementById('rTime').textContent=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+  try{var p=localStorage.getItem('cb_lastProfile');if(p){var o=JSON.parse(p);
+    if(o.id)document.getElementById('rId').textContent=o.id;
+    if(o.profile){var keys={q1:'发货方式',q2:'开票能力',q3:'综试区',q4:'销售额',q5:'收款安排'};var rows='';for(var k in keys){if(o.profile[k]){rows+='<div class="row"><span class="k">'+keys[k]+'</span><span class="v">'+o.profile[k]+'</span></div>';}}if(rows)document.getElementById('rProfile').innerHTML=rows;}
+    if(o.recommended)document.getElementById('rKey').textContent=o.recommended;
+    if(o.recname)document.getElementById('rName').textContent=o.recname;
+    if(o.recnote)document.getElementById('rNote').textContent=o.recnote;
+    // 数据严谨：置信度 + 依据来源
+    if(o.conf){document.getElementById('rConf').textContent={high:'较高（你已确认关键前提）',mid:'中等（部分前提需属地核验）',low:'较低（关键前提未确认）'}[o.conf]||o.conf;}
+    if(o.sources&&o.sources.length){document.getElementById('rSources').textContent='依据来源：'+o.sources.map(function(x){return '《'+x+'》';}).join(' · ');}
+    if(o.risks&&o.risks.length){document.getElementById('rRisks').innerHTML=o.risks.map(function(r){return '<div class="warn">⚠ '+r+'</div>';}).join('');}
+    if(o.score)document.getElementById('rScore').textContent=o.score;
   }}catch(e){}
 }catch(e){}
 })();
