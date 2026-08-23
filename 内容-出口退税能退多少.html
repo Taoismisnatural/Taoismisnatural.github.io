@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出口退税能退多少？跨境电商卖家退税金额怎么算</title>
+<meta name="description" content="跨境电商卖家出口退税能退多少？先看退税率，再看进项专票与出口额——退税额 = 计税依据 × 退税率。本文用例子讲清退税金额怎么算、能退多少、哪些情况退不了。">
+<meta name="keywords" content="出口退税,退税金额,退税率,进项专票,跨境电商退税,退税怎么算,退多少">
+<style>
+:root{--bg:#0b1020;--bg2:#111936;--card:#151d3d;--card2:#1a2450;--txt:#e8ecff;--dim:#9aa7d0;--line:#2a3566;--gold:#ffc24d;--gold2:#ff9d2e;--cyan:#37e0ff;--green:#4ade80;--blue:#6c8bff;--red:#ff5c7a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 20% -10%,#1b2a5e 0%,transparent 50%),var(--bg);color:var(--txt);font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;line-height:1.8;min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+.top{position:sticky;top:0;z-index:40;background:rgba(11,16,32,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:auto;padding:13px 22px;display:flex;align-items:center;gap:12px}
+.brand{font-size:16px;font-weight:800;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}.brand small{display:block;font-size:11px;color:var(--dim);font-weight:400;-webkit-text-fill-color:var(--dim)}
+.addr{margin-left:auto;font-size:12px;color:var(--dim)}
+.art{max-width:860px;margin:auto;padding:34px 22px 80px}
+.art .crumb{font-size:12px;color:var(--dim);margin-bottom:18px}
+.art h1{font-size:clamp(24px,4vw,34px);line-height:1.3;background:linear-gradient(90deg,#fff,var(--gold),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.art .meta{font-size:12px;color:var(--dim);margin:14px 0 6px;display:flex;gap:16px;flex-wrap:wrap}.art .meta .t{color:var(--gold)}
+.lede{color:var(--dim);font-size:15.5px;margin:14px 0 26px}
+.art h2{font-size:21px;margin:34px 0 14px;padding-left:12px;border-left:4px solid var(--gold2)}
+.art h3{font-size:17px;margin:24px 0 10px;color:var(--gold)}
+.art p{font-size:15px;margin:12px 0}.art p b{color:var(--gold)}
+.art ul{margin:12px 0 12px 22px}.art li{margin:8px 0;font-size:15px}
+.callout{background:var(--card);border-left:4px solid var(--cyan);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:14.5px;color:var(--dim)}.callout b{color:var(--cyan)}
+.warn{background:rgba(255,92,122,.08);border-left:4px solid var(--red);border-radius:10px;padding:14px 16px;margin:16px 0;font-size:14.5px;color:var(--dim)}.warn b{color:var(--red)}
+table{border-collapse:collapse;width:100%;min-width:480px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:16px 0}.tblwrap{overflow-x:auto}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);font-size:14px}th{background:var(--card2);color:var(--gold);font-size:13px}tr:last-child td{border-bottom:none}
+.cta{margin:34px 0;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--gold2);border-radius:16px;padding:26px;text-align:center}.cta::before{content:"";display:block;height:4px;width:100%;margin:-26px 0 22px -26px;background:linear-gradient(90deg,var(--gold2),var(--cyan));border-radius:0}
+.cta h3{font-size:20px;color:var(--gold);margin-bottom:8px}.cta p{color:var(--dim);font-size:14px;max-width:600px;margin:0 auto 18px}
+.cta a{display:inline-block;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;padding:13px 28px;border-radius:12px;font-weight:800;font-size:15px}.cta .sub{font-size:12px;color:var(--dim);margin-top:12px}
+.disclaim{background:rgba(108,139,255,.07);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:20px;font-size:12.5px;color:var(--dim)}.disclaim b{color:var(--gold)}
+.sources{margin-top:16px;font-size:12.5px;color:var(--dim)}
+footer{border-top:1px solid var(--line);margin-top:20px;padding:22px;text-align:center;color:var(--dim);font-size:12px}
+@media(max-width:640px){.addr{display:none}}
+
+/* KJ-BADGE-CSS */.kj-badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px}.kj-bg{font-size:11.5px;padding:3px 12px;border-radius:20px;font-weight:700}.kj-bg.kj-off{color:#12360f;background:#4ade80}.kj-bg.kj-loc{color:#0b2f4a;background:#37e0ff}.kj-bg.kj-src{color:#5c4200;background:#ffc24d}.kj-bg.kj-ai{color:#231407;background:linear-gradient(90deg,#ff9d2e,#ffc24d)}.kj-tail{background:linear-gradient(160deg,#151d3d,#1a2450);border:1px solid #ff9d2e;border-radius:16px;padding:24px;margin:30px 0;text-align:center}.kj-tail .kj-cta b{color:#ffc24d;font-size:18px}.kj-tail .kj-cta p{color:#9aa7d0;font-size:13.5px;margin:8px 0 16px}.kj-btn{display:inline-block;background:linear-gradient(90deg,#ff9d2e,#ffc24d);color:#231407;padding:12px 22px;border-radius:12px;font-weight:800;font-size:14px;margin:4px}.kj-btn.kj-s{background:#151d3d;color:#37e0ff;border:1px solid #2a3566}.kj-rel{margin-top:14px;font-size:12.5px;color:#9aa7d0}.kj-rel-a{color:#37e0ff;margin:0 6px}
+
+/* KJ-READ-CSS */.kj-toc{background:linear-gradient(160deg,#151d3d,#121a38);border:1px solid #2a3566;border-radius:12px;padding:12px 18px;margin:16px 0 8px}.kj-toc-t{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.kj-toc-t b{color:#ffc24d}.kj-toc-t span{font-size:11.5px;color:#9aa7d0}.kj-toc a{display:inline-block;font-size:12.5px;color:#37e0ff;background:rgba(55,224,255,.07);border:1px solid #2a3566;border-radius:20px;padding:4px 12px;margin:4px 4px 0 0}.kj-tldr{background:linear-gradient(135deg,rgba(255,194,77,.14),rgba(255,194,77,.04));border:1px solid #ff9d2e;border-left:5px solid #ff9d2e;border-radius:12px;padding:14px 18px;margin:8px 0 18px}.kj-tldr-t{color:#ffc24d;font-weight:800;font-size:13px;margin-bottom:6px}.kj-tldr p{color:#e8ecff;font-size:14px;margin:0}
+</style>
+  <!-- KJ-SEO: canonical+og+article schema -->
+  <link rel="canonical" href="https://kuajingshuidun.cn/%E5%86%85%E5%AE%B9-%E5%87%BA%E5%8F%A3%E9%80%80%E7%A8%8E%E8%83%BD%E9%80%80%E5%A4%9A%E5%B0%91.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="跨境税盾">
+  <meta property="og:title" content="出口退税能退多少？跨境电商卖家退税金额怎么算">
+  <meta property="og:description" content="先看退税率，再看进项专票与出口额——退税额 = 计税依据 × 退税率。用例子讲清退税金额怎么算、能退多少、哪些情况退不了。">
+  <meta property="og:url" content="https://kuajingshuidun.cn/%E5%86%85%E5%AE%B9-%E5%87%BA%E5%8F%A3%E9%80%80%E7%A8%8E%E8%83%BD%E9%80%80%E5%A4%9A%E5%B0%91.html">
+  <meta property="og:image" content="https://kuajingshuidun.cn/assets/%E8%B7%A8%E5%A2%83%E7%A8%8E%E7%9B%BE_%E5%93%81%E7%89%8C%E4%B8%BBLOGO.jpg">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "出口退税能退多少？跨境电商卖家退税金额怎么算",
+ "description": "先看退税率，再看进项专票与出口额——退税额 = 计税依据 × 退税率。用例子讲清退税金额怎么算、能退多少、哪些情况退不了。",
+ "image": "https://kuajingshuidun.cn/assets/%E8%B7%A8%E5%A2%83%E7%A8%8E%E7%9B%BE_%E5%93%81%E7%89%8C%E4%B8%BBLOGO.jpg",
+ "author": { "name": "跨境税盾", "url": "https://kuajingshuidun.cn" },
+ "publisher": { "name": "跨境税盾", "url": "https://kuajingshuidun.cn" },
+ "datePublished": "2026-08-23",
+ "dateModified": "2026-08-23",
+ "mainEntityOfPage": { "@type": "WebPage", "@id": "https://kuajingshuidun.cn/%E5%86%85%E5%AE%B9-%E5%87%BA%E5%8F%A3%E9%80%80%E7%A8%8E%E8%83%BD%E9%80%80%E5%A4%9A%E5%B0%91.html" }
+}
+  </script>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "跨境电商税务", "item": "https://kuajingshuidun.cn/index.html" },
+  { "@type": "ListItem", "position": 2, "name": "文章", "item": "https://kuajingshuidun.cn/articles.html" },
+  { "@type": "ListItem", "position": 3, "name": "出口退税能退多少", "item": "https://kuajingshuidun.cn/%E5%86%85%E5%AE%B9-%E5%87%BA%E5%8F%A3%E9%80%80%E7%A8%8E%E8%83%BD%E9%80%80%E5%A4%9A%E5%B0%91.html" }
+ ]
+}
+  </script>
+<!-- KJ-READ -->
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  { "@type": "Question", "name": "出口退税能退多少？", "acceptedAnswer": { "@type": "Answer", "text": "退税额 ≈ 出口额（或进项计税依据）× 退税率。退税率按报关品名对应档位（多数一般制成品 13%，部分品类有调整，如 2026 年电池由 9% 降至 6%、光伏取消退税），能退多少取决于你拿到多少真实进项专票——退税额不会超过你实际支付的进项税。" } },
+  { "@type": "Question", "name": "没有进项专票能退税吗？", "acceptedAnswer": { "@type": "Answer", "text": "一般不能。出口退税（退增值税）以合法有效的增值税进项专用发票为前提；没有专票但注册在跨境电商综合试验区、走 9610 零售出口的，可走「无票免税」（免增值税、消费税，经营所得按 4% 应税所得率核定），但那是免税不是退税。" } },
+  { "@type": "Question", "name": "哪些情况退不了税？", "acceptedAnswer": { "@type": "Answer", "text": "没有合规进项专票、单证不齐（缺报关单/出口发票/收汇凭证）、货物属于取消退（免）税范围（如光伏等）、或存在买单出口/四流不一致等情形，都办不了或会被追回。退税率与口径以海关税则和出口退税申报系统复核为准。" } }
+ ]
+}
+  </script>
+</head>
+<body>
+
+<header class="top"><div class="top-in"><div class="brand">跨境电商税务自查<small>属地 · 测算 · 报告</small></div><span class="addr">权威来源 · 属地核验</span></div></header>
+
+<article class="art">
+  <div class="crumb"><a href="index.html">跨境电商税务自查</a> › 出口退税</div>
+  <h1>出口退税能退多少？退税金额怎么算</h1>
+  <div class="kj-toc" id="kjToc"><div class="kj-toc-t"><b>目录</b><span>点击跳转</span></div><a href="#kj-h1">退税金额怎么算</a><a href="#kj-h2">能退多少：关键变量</a><a href="#kj-h3">哪些情况退不了</a></div>
+  <div class="kj-tldr" id="kjTldr"><div class="kj-tldr-t">📌 先看结论</div><p>退税额 ≈ 计税依据 × 退税率，且不会超过你实际取得的进项税。能退多少，取决于「你的产品退税率」和「你有没有真实进项专票」两件事。</p></div>
+  <div class="kj-badges"><span class="kj-bg kj-off">时效 · 2026</span><span class="kj-bg kj-loc">属地核验</span><span class="kj-bg kj-src">来源可溯</span><span class="kj-bg kj-ai">AI 可追问</span></div>
+  <div class="meta"><span class="t">出口退税</span><span>回答「退多少 / 怎么算」</span></div>
+  <p class="lede">很多卖家问「我一年出口 500 万，能退多少？」——答案不是拍脑袋的数字，而是<b>两步算出来的</b>：先看你的退税率，再看你的进项专票。下面用例子讲清楚。</p>
+
+  <h2 id="kj-h1">退税金额怎么算</h2>
+  <p>外贸企业出口退税的基本思路是：<b>退的是你采购环节缴过的增值税</b>，所以退税额上限就是你的进项税。简化公式：</p>
+  <div class="callout"><b>退税额 ≈ 计税依据 × 退税率</b>（计税依据多为出口销售额或进项计税金额；实际退税额 ≤ 你取得的进项增值税额）</div>
+  <p>用例子看：假设你出口一批一般制成品，销售额 100 万元、退税率 13%，采购时取得进项专票并已抵扣：</p>
+  <ul>
+    <li><b>进项税：</b>采购含税 100 万对应的进项税约 11.5 万（100万 ÷ 1.13 × 13%）——这是你能退的「上限」。</li>
+    <li><b>应退税额：</b>按出口额 × 13% 与进项余额孰低退税，这里约 11.5 万。</li>
+    <li><b>关键：</b>如果你采购没拿专票、或只拿了一半专票，进项少 → 能退的也相应变少，甚至退不了。</li>
+  </ul>
+  <p class="dim" style="font-size:12.5px;color:var(--dim)">注：生产企业走「免抵退」口径更复杂，此处以外贸企业为简化示例；实际退税额以出口退税申报系统与属地税务机关核定为准。</p>
+
+  <h2 id="kj-h2">能退多少：关键变量</h2>
+  <table>
+    <thead><tr><th>变量</th><th>怎么影响退税</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>产品退税率</td><td>越高，能退的越多</td><td>多数一般制成品 13%；2026 年电池由 9% 降至 6%（2027 起取消）、光伏取消退税——按报关品名对应档位复核</td></tr>
+      <tr><td>进项专票</td><td>决定「上限」</td><td>退税额 ≤ 你实际取得的进项增值税；无专票则一般走无票免税而非退税</td></tr>
+      <tr><td>单证与收汇</td><td>缺一不可</td><td>报关单、出口发票、收汇记录等不齐会退不了或要求退回</td></tr>
+      <tr><td>申报真实性</td><td>四流一致是底线</td><td>平台订单、报关、申报、收汇数据不一致易触发核查</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><b>一句话：</b>退税不是「出口额 × 退税率」想退多少退多少，而是「以你真实进项为上限、按退税率折算」。拿不到专票，退税这条路基本走不通。</div>
+
+  <h2 id="kj-h3">哪些情况退不了</h2>
+  <ul>
+    <li><b>没有合规进项专票：</b>无票采购走一般贸易退税，会被视同内销补缴增值税。</li>
+    <li><b>单证不齐：</b>缺报关单、出口发票、收汇凭证等。</li>
+    <li><b>产品在取消退（免）税范围：</b>如光伏（2026.4.1 起取消）、电池（逐步下调至取消）。</li>
+    <li><b>四流不一致 / 买单出口：</b>属于重点稽查对象，退税会被追回并叠加处罚。</li>
+  </ul>
+  <div class="warn"><b>红线提醒：</b>用别人的发票配你的出口信息、或空箱套退税，都属于骗取出口退税，刑事风险极高。退税的前提永远是「业务真实、单证齐全、四流一致」。</div>
+
+  <div class="cta">
+    <h3>想算清楚「值不值得为退税补专票」？</h3>
+    <p>输入销售额、成本占比、专票比例、退税率，对比「退税回流」与「无票免税」两条通道的资金账。</p>
+    <a href="index.html#calc">▶ 去税负测算</a>
+    <div class="sub">或：<a href="index.html#tool" style="color:var(--cyan)">先自查该走哪条通道</a></div>
+  </div>
+
+  <div class="disclaim"><b>免责：</b>本文为决策参考，退税额为简化估算、不构成申报或退税筹划依据；退税率与属地执行口径请以海关税则、出口退税申报系统及属地税务机关复核为准。</div>
+  <div class="sources"><b>依据：</b>财政部 税务总局公告2026年第11号（出口退（免）税衔接）；财税〔2018〕103号（综试区无票免税）；国家税务总局公告2019年第36号（4%核定）；出口退（免）税申报及单证管理相关规定。</div>
+<div class="kj-tail" id="kjCta"><div class="kj-cta"><b>你的店铺能不能退税？</b><p class="kj-cta-sub">4 分钟自查，判断你更该走退税还是无票免税。</p><a class="kj-btn" href="https://kuajingshuidun.cn/index.html#tool">▶ 开始自查</a><a class="kj-btn kj-s" href="https://kuajingshuidun.cn/index.html#calc">算税负</a><a class="kj-btn kj-s" href="https://ai.kuajingshuidun.cn/" target="_blank" rel="noopener">💬 问 AI 财税</a><div class="kj-rel">延伸阅读：<a class="kj-rel-a" href="内容-退税还是无票免税.html">退税 vs 无票免税</a><a class="kj-rel-a" href="内容-四大出口模式.html">四大出口模式</a><a class="kj-rel-a" href="内容-政策变更解读-2026.html">2026 政策解读</a></div></div></div>
+</article>
+
+<style id="kjSubCss">
+.kj-tail-sub{max-width:560px;margin:20px auto 0;background:linear-gradient(135deg,#1a2450,#151d3d);border:1px solid #37e0ff;border-radius:14px;padding:16px 18px;text-align:left}
+.kj-tail-sub .kj-sub-t{color:#ffc24d;font-weight:800;font-size:14px;margin-bottom:8px}
+.kj-tail-sub .kj-sub-row{display:flex;gap:8px}
+.kj-tail-sub .kj-se{flex:1;padding:10px 12px;border-radius:9px;background:#0b1020;color:#e8ecff;border:1px solid #2a3566;font-size:13.5px}
+.kj-tail-sub .kj-sb{background:linear-gradient(90deg,#37e0ff,#2a8cff);color:#062f4a;border:none;padding:10px 16px;border-radius:9px;font-weight:800;cursor:pointer}
+.kj-tail-sub .kj-sn{font-size:11.5px;color:#9aa7d0;margin-top:7px}
+</style>
+<div class="kj-tail-sub" id="kjSubLi">
+  <div class="kj-sub-t">📬 政策变化早知道 · 订阅跨境税盾政策周报</div>
+  <div class="kj-sub-row"><input type="email" class="kj-se" placeholder="输入邮箱，如 name@qq.com"><button class="kj-sb" type="button">订阅</button></div>
+  <div class="kj-sn" id="kjSn">低频推送 · 可随时退订删除 · 用途仅限政策提醒</div>
+</div>
+<script>
+(function(){
+  function note(t){ var n=document.getElementById('kjSn'); if(n) n.textContent=t; }
+  function doSub(btn){
+    var box=document.getElementById('kjSubLi'); var inp=box?box.querySelector('.kj-se'):null;
+    var em=inp?(inp.value||'').trim():''; if(!em){note('⚠ 请先输入邮箱');return;}
+    btn.disabled=true; note('⏳ 正在订阅…');
+    fetch('https://caishui-leads.861481939.workers.dev'+'/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,source:'article',tags:['policy-update']})})
+      .then(function(r){return r.json();})
+      .then(function(d){ if(d&&d.ok){ if(d.unsubscribe_token){try{localStorage.setItem('kj_sub_'+em,d.unsubscribe_token);}catch(e){}} note('✅ 订阅成功！政策更新将发到 '+em); if(inp)inp.value=''; } else { note('⚠ '+(d.error||'订阅失败')); } })
+      .catch(function(){ note('⚠ 网络异常，请稍后再试'); })
+      .finally(function(){ btn.disabled=false; });
+  }
+  function init(){
+    var bs=document.querySelectorAll('.kj-sb');
+    for(var i=0;i<bs.length;i++){ (function(b){ b.addEventListener('click',function(){ doSub(b); }); })(bs[i]); }
+    var ins=document.querySelectorAll('.kj-se');
+    for(var j=0;j<ins.length;j++){ (function(i){ i.addEventListener('keydown',function(e){ if(e.key==='Enter'&&i.nextElementSibling){ i.nextElementSibling.click(); } }); })(ins[j]); }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+<footer>跨境电商税务自查 · 信息整理工具 · 以属地税局口径为准</footer>
+</body>
+</html>
