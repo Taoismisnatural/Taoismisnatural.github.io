@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梁智超 · 双栈主理人｜财税合规副驾驶 × AXION 量化信号</title>
+<meta name="description" content="梁智超 — 财税 AI 合规副驾驶 × AXION 量化信号平台双栈主理人。独立交付 7 个产品级项目：跨境税盾 AI 助手 v3（Avalara/Sovos 级财税 SaaS）、AXION 三周期量化宽码头、衡元 A 股终端、缥缃付费 SaaS 等，擅长用数据把不确定性变成确定性的竞争力。">
+<meta property="og:title" content="梁智超 · 双栈主理人｜财税合规 × 量化信号（执业档案 v5）">
+<meta property="og:description" content="双栈硬核实绩：跨境税盾 AI 助手 v3 · 支付宝订阅闭环 · RAG 143+ 政策；AXION 量化宽码头 · composite 情绪分 · 600d 长窗 +454%；7 个可点作品卡片 · 风控合规清算全链路闭环。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/portrait.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231e3a8f'/%3E%3Ctext x='32' y='45' font-family='Microsoft YaHei,serif' font-size='36' font-weight='700' fill='%23ffffff' text-anchor='middle'%3E梁%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "梁智超",
+  "alternateName": "Liang Zhichao",
+  "jobTitle": "财税 AI 合规副驾驶 × AXION 量化信号 · 双栈主理人",
+  "description": "22 岁双栈主理人。财税 AI 侧：独立交付跨境税盾 AI 助手 v3（Avalara/Sovos 级，覆盖 RAG/测算/支付宝订阅闭环）与 20+ 内容站页；量化侧：自研 AXION 三周期宽码头与衡元 A 股信号终端。擅长数据驱动的风险监测、合规闭环落地、产品级交付。",
+  "email": "mailto:861481939@qq.com",
+  "address": {"@type":"PostalAddress","addressLocality":"泰州","addressRegion":"江苏","addressCountry":"CN"},
+  "knowsAbout": ["风险控制","合规管理","清算","数据分析","内容风控","价格行为分析","量化交易","回测保真","多因子模型","支付安全","A/B证伪"],
+  "seeking": {"@type":"JobPosting","title":"风控 / 合规 / 清算岗位"},
+  "hasCredential": [
+    {"@type":"EducationalOccupationalCredential","name":"国家级奖学金 × 2"},
+    {"@type":"EducationalOccupationalCredential","name":"江苏省三创优秀学生"},
+    {"@type":"EducationalOccupationalCredential","name":"三级健身教练"},
+    {"@type":"EducationalOccupationalCredential","name":"公共营养师"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   EXECUTIVE DOSSIER v5 // 执业档案
+   对标灵感：Read.cv / Shane Kinkennon / Simon Pan Case Study
+   气质：严谨 · 专业 · 商务 · 数据可溯。
+   米白纸面 + 深藏青 + 克制琥珀金 + 微灰线。动效克制：淡入上移 / 数字 / 计量条。
+   ============================================================ */
+:root{
+  --paper:#fbfcfe;
+  --paper-2:#ffffff;
+  --ink:#0f172a;
+  --ink-2:#1e293b;
+  --slate:#475569;
+  --muted:#64748b;
+  --faint:#94a3b8;
+  --line:#e5e9f2;
+  --line-2:#d9e0ef;
+  --navy:#1e3a8f;
+  --navy-d:#16295f;
+  --navy-ink:#0e1d54;
+  --tint:#eef2fb;
+  --tint-2:#f6f8ff;
+  --green:#157a3c;
+  --red:#b3261e;
+  --gold:#9c7a3b;         /* 琥珀金（精选徽章） */
+  --gold-2:#faf5ea;
+  --gold-line:#e5d5af;
+  --radius:12px;
+  --radius-s:9px;
+  --shadow:0 14px 44px rgba(15,23,42,.075);
+  --shadow-s:0 6px 18px rgba(15,23,42,.05);
+  --shadow-hover:0 18px 52px rgba(30,58,143,.12);
+  --font-s:'Noto Serif SC',serif;
+  --font-b:'Noto Sans SC',sans-serif;
+  --font-m:'IBM Plex Mono',monospace;
+  --ease:cubic-bezier(.22,.68,.26,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-b);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.78;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background-image:
+    radial-gradient(1200px 600px at 85% -8%, rgba(30,58,143,.045), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(156,122,59,.035), transparent 55%);
+  background-attachment:fixed;
+}
+::selection{background:var(--navy);color:#fff}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:#c5cde0;border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:#a9b3cd}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+#progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:2000;background:linear-gradient(90deg,var(--navy) 0%,#3b5fc7 100%);transform-origin:0 50%;transform:scaleX(0)}
+
+/* ============ 预加载 ============ */
+#preloader{
+  position:fixed;inset:0;z-index:9999;background:var(--paper);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;
+  transition:opacity .55s,visibility .55s;
+}
+#preloader.done{opacity:0;visibility:hidden}
+.pre-name{font-family:var(--font-s);font-weight:700;font-size:28px;letter-spacing:12px;color:var(--ink-2)}
+.pre-sub{font-family:var(--font-m);font-size:10.5px;letter-spacing:3.5px;color:var(--faint)}
+.pre-bar{width:200px;height:2px;background:var(--line);overflow:hidden;border-radius:2px}
+.pre-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--navy),var(--gold));transition:width 1s var(--ease)}
+
+/* ============ 顶栏 ============ */
+#topbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(251,252,254,.86);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:14px 5vw;
+  transition:box-shadow .3s var(--ease),padding .3s var(--ease);
+}
+#topbar.scrolled{padding:10px 5vw;box-shadow:0 4px 22px rgba(15,23,42,.05)}
+#topbar .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+#topbar .brand .seal{
+  width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--navy) 0%,#2749b4 100%);color:#fff;
+  display:grid;place-items:center;font-family:var(--font-s);font-weight:700;font-size:16px;
+  box-shadow:0 6px 14px rgba(30,58,143,.22);
+  position:relative;
+}
+#topbar .brand .seal::after{content:'';position:absolute;inset:2px;border-radius:7px;border:1px solid rgba(255,255,255,.22)}
+#topbar .brand .nm{font-family:var(--font-s);font-weight:700;font-size:15px;letter-spacing:2.5px;color:var(--ink-2);line-height:1.25}
+#topbar .brand .sub{font-family:var(--font-m);font-size:9.5px;letter-spacing:1.8px;color:var(--faint)}
+#topbar nav{display:flex;gap:4px;align-items:center}
+#topbar nav a{
+  color:var(--slate);text-decoration:none;font-size:13.5px;font-weight:500;
+  padding:8px 14px;border-radius:8px;transition:.25s;position:relative;
+}
+#topbar nav a:hover{color:var(--ink-2);background:var(--tint)}
+#topbar nav a.active{color:var(--navy);font-weight:700;background:var(--tint-2)}
+#topbar nav a.active::after{content:'';position:absolute;left:14px;right:14px;bottom:3px;height:2px;background:linear-gradient(90deg,var(--navy),#3b5fc7);border-radius:2px}
+#topbar nav a.cta{background:linear-gradient(135deg,var(--navy) 0%,#2749b4 100%);color:#fff;padding:9px 20px;border-radius:9px;box-shadow:0 6px 18px rgba(30,58,143,.22);letter-spacing:.5px}
+#topbar nav a.cta:hover{background:linear-gradient(135deg,var(--navy-d) 0%,var(--navy) 100%);color:#fff;transform:translateY(-1px);box-shadow:0 10px 26px rgba(30,58,143,.28)}
+#topbar .clockbox{font-family:var(--font-m);font-size:11px;color:var(--faint);white-space:nowrap;letter-spacing:.6px}
+#topbar .clockbox i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:7px;animation:pulse 2s infinite;box-shadow:0 0 0 0 rgba(21,122,60,.45)}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(21,122,60,.45);opacity:1}
+  70%{box-shadow:0 0 0 8px rgba(21,122,60,0);opacity:1}
+  100%{box-shadow:0 0 0 0 rgba(21,122,60,0);opacity:.35}
+}
+#navToggle{display:none;flex-direction:column;gap:5px;background:none;border:1px solid var(--line);border-radius:8px;padding:9px;cursor:pointer}
+#navToggle span{width:20px;height:2px;background:var(--ink-2);transition:.25s;border-radius:2px}
+#navToggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#navToggle.open span:nth-child(2){opacity:0}
+#navToggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ============ 通用 ============ */
+main{position:relative;z-index:2}
+section{position:relative;padding:110px clamp(24px,6vw,96px)}
+.wrap{max-width:1280px;margin:0 auto}
+.sec-head{margin-bottom:52px;text-align:center;max-width:760px;margin-left:auto;margin-right:auto}
+.sec-label{
+  font-family:var(--font-m);font-size:11px;letter-spacing:3.5px;color:var(--navy);
+  text-transform:uppercase;display:inline-flex;align-items:center;gap:14px;margin-bottom:14px;
+}
+.sec-label::before,.sec-label::after{content:'';width:26px;height:1px;background:var(--navy);opacity:.55}
+h2.sec-title{font-family:var(--font-s);font-weight:700;font-size:clamp(30px,4.2vw,44px);letter-spacing:3px;color:var(--ink-2);line-height:1.25}
+h2.sec-title em{font-style:normal;background:linear-gradient(90deg,var(--navy) 0%,#3b5fc7 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-sub{color:var(--slate);max-width:640px;margin:16px auto 0;font-size:15.5px;line-height:1.9}
+
+/* 显现 */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.07s}.rv.d2{transition-delay:.14s}.rv.d3{transition-delay:.21s}.rv.d4{transition-delay:.28s}.rv.d5{transition-delay:.35s}.rv.d6{transition-delay:.42s}
+
+/* 按钮 */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;justify-content:center;
+  border-radius:10px;font-family:var(--font-b);font-weight:700;font-size:14.5px;letter-spacing:.6px;
+  padding:14px 28px;text-decoration:none;transition:.25s;border:1px solid transparent;cursor:pointer;
+  white-space:nowrap;
+}
+.btn.navy{background:linear-gradient(135deg,var(--navy) 0%,#2749b4 100%);color:#fff;box-shadow:0 10px 26px rgba(30,58,143,.22)}
+.btn.navy:hover{background:linear-gradient(135deg,var(--navy-d) 0%,var(--navy) 100%);transform:translateY(-2px);box-shadow:0 16px 36px rgba(30,58,143,.30)}
+.btn.ghost{background:transparent;color:var(--navy);border-color:#c5d2f0}
+.btn.ghost:hover{background:var(--tint-2);border-color:var(--navy);transform:translateY(-1px)}
+.btn.gold{background:linear-gradient(135deg,var(--gold) 0%,#b39155 100%);color:#fff;border-color:transparent;box-shadow:0 8px 22px rgba(156,122,59,.22)}
+.btn.gold:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(156,122,59,.30)}
+
+/* 置信度徽章 */
+.conf{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-m);font-size:10px;letter-spacing:.8px;padding:3px 9px;border-radius:20px;border:1px solid;font-weight:500}
+.conf.high{color:#0f5132;background:#f0faf4;border-color:#c5e7d1}
+.conf.mid{color:var(--navy);background:var(--tint);border-color:#d4dff5}
+.conf.low{color:#6d4c00;background:#fbf5e6;border-color:#ecdfbf}
+.conf::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.85}
+
+/* 卡片基底 */
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius)}
+.card.hoverable{transition:.3s var(--ease);will-change:transform}
+.card.hoverable:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:#cfd9ef}
+
+/* ===========================================================
+   HERO 首屏（升级：右侧职业资质卡 + 精选项目带）
+   =========================================================== */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:150px;padding-bottom:80px;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(30,58,143,.02) 0%,transparent 60%),
+  radial-gradient(600px 300px at 95% 80%, rgba(156,122,59,.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:68px;align-items:start}
+
+.avail{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-m);font-size:11px;letter-spacing:2.5px;color:var(--green);
+  border:1px solid #cdebd8;background:linear-gradient(135deg,#f3fbf6 0%,#ecf9f1 100%);border-radius:30px;padding:8px 18px;margin-bottom:26px;
+  box-shadow:0 4px 14px rgba(21,122,60,.07);
+}
+.avail i{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+
+.hero h1{font-family:var(--font-s);font-weight:900;font-size:clamp(52px,7.5vw,88px);letter-spacing:6px;line-height:1.08;color:var(--ink-2)}
+.hero h1 .dot{background:linear-gradient(135deg,var(--navy) 0%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  font-style:normal}
+.hero-role{
+  margin-top:18px;font-size:clamp(18px,2.3vw,23px);font-weight:500;color:var(--slate);
+  display:flex;align-items:center;gap:10px;min-height:36px;
+}
+.hero-role .typed{color:var(--ink-2);font-weight:600}
+.hero-role .cursor{display:inline-block;width:2.5px;height:1.2em;background:linear-gradient(180deg,var(--navy),var(--gold));margin-left:4px;animation:blink 1.1s step-end infinite;border-radius:2px}
+@keyframes blink{50%{opacity:0}}
+
+.hero-oneliner{margin-top:22px;font-size:18px;font-weight:700;color:var(--ink-2);letter-spacing:.4px;line-height:1.7;padding-left:18px;border-left:3px solid var(--gold)}
+.hero-oneliner b{color:var(--navy);font-weight:800}
+
+.hero-desc{margin-top:22px;max-width:560px;color:var(--slate);font-size:16px;line-height:1.95}
+.hero-desc b{color:var(--ink-2);font-weight:700}
+.hero-desc i{font-style:normal;color:var(--gold);font-weight:600;border-bottom:1px dashed var(--gold-line)}
+
+.hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+
+.hero-contact{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px 30px;font-family:var(--font-m);font-size:12px;color:var(--muted)}
+.hero-contact span{display:inline-flex;align-items:center;gap:8px}
+.hero-contact span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--navy);opacity:.55}
+.hero-contact a{color:var(--navy);text-decoration:none;font-weight:600;border-bottom:1px dashed var(--line-2);transition:.2s}
+.hero-contact a:hover{border-color:var(--navy)}
+
+/* 精选徽章带（Shane Kinkennon 式） */
+.hero-badges{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.hb{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius-s);padding:14px 14px 13px;
+  transition:.28s var(--ease);position:relative;overflow:hidden;
+}
+.hb:hover{border-color:var(--gold-line);transform:translateY(-2px);box-shadow:var(--shadow-s)}
+.hb .hbt{font-family:var(--font-m);font-size:9.5px;letter-spacing:1.5px;color:var(--gold);font-weight:600;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+.hb .hbt::before{content:'★';color:var(--gold);font-size:11px}
+.hb .hbn{font-weight:700;font-size:14px;color:var(--ink-2);line-height:1.35;font-family:var(--font-s)}
+.hb .hbm{font-family:var(--font-m);font-size:10.5px;color:var(--faint);margin-top:4px;letter-spacing:.4px}
+
+/* 右侧执业档案卡（Read.cv 风格） */
+.dossier-card{
+  position:sticky;top:110px;
+  background:var(--paper-2);border:1px solid var(--line);border-radius:18px;
+  box-shadow:var(--shadow);overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.dossier-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.dossier-header{
+  background:linear-gradient(135deg,var(--navy-ink) 0%,var(--navy) 55%,#2749b4 100%);
+  color:#fff;padding:22px 24px 18px;position:relative;overflow:hidden;
+}
+.dossier-header::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(400px 180px at 120% -20%, rgba(255,255,255,.15),transparent 60%),
+  radial-gradient(300px 200px at -10% 130%, rgba(156,122,59,.30),transparent 60%);
+  pointer-events:none;
+}
+.dossier-header::after{content:'DOSSIER';position:absolute;right:18px;bottom:6px;font-family:var(--font-m);font-size:10px;letter-spacing:3.5px;color:rgba(255,255,255,.28);font-weight:600}
+.dh-row{display:flex;align-items:center;gap:16px;position:relative;z-index:1}
+.dh-avatar{
+  width:66px;height:66px;border-radius:16px;background:var(--paper-2);display:grid;place-items:center;
+  font-family:var(--font-s);font-weight:900;font-size:28px;color:var(--navy);
+  box-shadow:0 8px 22px rgba(0,0,0,.2), inset 0 0 0 2px rgba(255,255,255,.6);
+}
+.dh-info h3{font-family:var(--font-s);font-size:22px;letter-spacing:3px;font-weight:700;line-height:1.1}
+.dh-info .dh-pos{font-size:12px;letter-spacing:1.4px;color:rgba(255,255,255,.82);margin-top:5px;font-weight:500}
+.dh-info .dh-id{font-family:var(--font-m);font-size:10.5px;letter-spacing:1.8px;color:rgba(255,255,255,.55);margin-top:4px}
+.dossier-body{padding:20px 22px 22px}
+/* 执业数据（4+2 数字） */
+.dossier-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dm{
+  background:var(--tint-2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;
+}
+.dm .n{font-family:var(--font-m);font-size:20px;font-weight:600;color:var(--navy);line-height:1.15}
+.dm .n i{font-style:normal;font-size:11px;color:var(--muted);font-weight:500;margin-left:2px}
+.dm .l{font-size:11.5px;color:var(--muted);margin-top:4px;letter-spacing:.3px}
+.dm.highlight{background:linear-gradient(135deg,var(--gold-2),#fff);border-color:var(--gold-line)}
+.dm.highlight .n{color:var(--gold)}
+/* 执业条目 */
+.dossier-list{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.dl{display:flex;align-items:flex-start;gap:12px;padding:11px 12px;border-radius:9px;background:var(--tint-2);border:1px solid var(--line)}
+.dl .dot{width:8px;height:8px;border-radius:50%;margin-top:8px;flex-shrink:0}
+.dl .dot.g{background:var(--green)}
+.dl .dot.n{background:var(--navy)}
+.dl .dot.a{background:var(--gold)}
+.dl .dt{font-family:var(--font-m);font-size:10px;letter-spacing:1.5px;color:var(--faint);margin-bottom:2px;font-weight:500}
+.dl .dv{font-size:13.5px;color:var(--ink-2);font-weight:600;line-height:1.4}
+.dl .dv small{display:block;font-size:11.5px;color:var(--muted);font-weight:400;margin-top:3px;font-family:var(--font-m)}
+/* 底部 CTA */
+.dossier-foot{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+.dossier-foot .df{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dossier-foot .df .k{font-family:var(--font-m);font-size:10.5px;letter-spacing:1.5px;color:var(--faint)}
+.dossier-foot .df .v{font-family:var(--font-m);font-size:11px;color:var(--navy);font-weight:600}
+.dossier-foot .btn{width:100%;padding:12px 20px}
+
+/* ============ 关于 ============ */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:start}
+.about-text p{color:var(--slate);font-size:16px;margin-bottom:18px;line-height:2}
+.about-text p b{color:var(--ink-2);font-weight:700}
+.about-text p mark{background:linear-gradient(120deg,transparent 0%,rgba(156,122,59,.16) 30%,rgba(156,122,59,.16) 70%,transparent 100%);color:var(--ink-2);padding:1px 4px;border-radius:4px}
+.figure{
+  border-left:4px solid var(--gold);background:linear-gradient(135deg,var(--gold-2),#fffdf7);
+  padding:22px 28px;margin:28px 0 28px;border-radius:0 12px 12px 0;
+  font-family:var(--font-s);font-size:17.5px;line-height:1.95;color:var(--ink-2);font-weight:600;
+  position:relative;box-shadow:0 6px 18px rgba(156,122,59,.08);
+}
+.figure::before{content:'“';position:absolute;left:8px;top:4px;color:var(--gold);font-size:40px;font-weight:900;line-height:1;opacity:.6}
+.figure::after{content:'”';position:absolute;right:12px;bottom:0;color:var(--gold);font-size:40px;font-weight:900;line-height:1;opacity:.6}
+.info-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.info-item{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;transition:.3s var(--ease);position:relative;overflow:hidden}
+.info-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--navy),#3b5fc7);opacity:0;transition:.3s}
+.info-item:hover{border-color:#cfd9ef;box-shadow:var(--shadow-s);transform:translateY(-2px)}
+.info-item:hover::before{opacity:1}
+.info-item.gold:hover{border-color:var(--gold-line)}
+.info-item.gold::before{background:linear-gradient(180deg,var(--gold),#b39155)}
+.info-item .k{font-family:var(--font-m);font-size:10.5px;letter-spacing:2.2px;color:var(--faint);text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.info-item .v{font-weight:700;font-size:18px;color:var(--ink-2);line-height:1.3}
+.info-item .v small{font-size:13px;color:var(--muted);font-weight:500}
+
+/* ============ 关键数据卡 ============ */
+.metrics{background:linear-gradient(180deg,#fff 0%,#fcfdff 100%);border-block:1px solid var(--line)}
+.data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.data-card{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:28px 26px 24px;transition:.3s var(--ease);overflow:hidden}
+.data-card::before{content:'';position:absolute;top:0;left:26px;right:26px;height:3px;border-radius:0 0 3px 3px}
+.data-card.navy-bar::before{background:linear-gradient(90deg,var(--navy),#3b5fc7)}
+.data-card.gold-bar::before{background:linear-gradient(90deg,var(--gold),#c9a76b)}
+.data-card.green-bar::before{background:linear-gradient(90deg,var(--green),#3cb06a)}
+.data-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:#cfd9ef}
+.data-card .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:10px;flex-wrap:wrap}
+.data-card .tag{font-family:var(--font-m);font-size:10.5px;letter-spacing:1px;padding:4px 10px;border-radius:20px;font-weight:600}
+.data-card .tag.up{color:var(--green);background:#f0faf4;border:1px solid #c5e7d1}
+.data-card .tag.down{color:var(--navy);background:var(--tint);border:1px solid #d4dff5}
+.data-card .tag.acc{color:var(--gold);background:var(--gold-2);border:1px solid var(--gold-line)}
+.data-card .tag.misc{color:var(--navy);background:var(--tint-2);border:1px solid #dbe5f8}
+.data-card .ic{font-size:22px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.06))}
+.data-card .num{font-family:var(--font-m);font-size:clamp(36px,5vw,52px);font-weight:600;color:var(--ink-2);line-height:1;display:flex;align-items:baseline;gap:6px;letter-spacing:-1px}
+.data-card .num .unit{font-size:18px;color:var(--muted);font-weight:400;letter-spacing:0}
+.data-card .lbl{font-size:14.5px;color:var(--slate);margin-top:12px;font-weight:600;line-height:1.5}
+.data-card .lbl small{display:block;font-size:12px;color:var(--muted);margin-top:4px;font-weight:400;font-family:var(--font-m)}
+.data-card .sig{height:5px;border-radius:4px;background:var(--line);margin-top:20px;overflow:hidden}
+.data-card .sig i{display:block;height:100%;width:0;border-radius:4px;transition:width 1.3s var(--ease)}
+.data-card.navy-bar .sig i{background:linear-gradient(90deg,var(--navy),#3b5fc7)}
+.data-card.gold-bar .sig i{background:linear-gradient(90deg,var(--gold),#c9a76b)}
+.data-card.green-bar .sig i{background:linear-gradient(90deg,var(--green),#3cb06a)}
+.note-line{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:26px;font-family:var(--font-m);font-size:11px;color:var(--faint);letter-spacing:.6px;padding:14px 18px;background:var(--tint-2);border:1px solid var(--line);border-radius:var(--radius-s)}
+.note-line .seg{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.note-line b{color:var(--navy);font-weight:600}
+.note-line .sep{width:1px;height:14px;background:var(--line-2)}
+
+/* ============ 专业能力（6 卡） ============ */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cap{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:30px 26px 24px;transition:.3s var(--ease);position:relative;overflow:hidden}
+.cap:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:#cfd9ef}
+.cap:hover .ic{transform:scale(1.06) rotate(-2deg)}
+.cap .no{position:absolute;top:20px;right:24px;font-family:var(--font-m);font-size:12px;color:var(--faint);letter-spacing:2.4px}
+.cap .k{display:flex;align-items:center;gap:12px;font-family:var(--font-m);font-size:10.5px;letter-spacing:2.4px;color:var(--navy);text-transform:uppercase;margin-bottom:18px;font-weight:600}
+.cap .k::after{content:'';flex:1;border-top:1px dashed var(--line-2)}
+.cap .ic{width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,var(--tint-2),var(--tint));display:grid;place-items:center;margin-bottom:18px;border:1px solid #dbe5f8;transition:transform .35s var(--ease)}
+.cap.gold .ic{background:linear-gradient(135deg,var(--gold-2),#fff6e3);border-color:var(--gold-line)}
+.cap.gold .k{color:var(--gold)}
+.cap svg{width:26px;height:26px;stroke:var(--navy)}
+.cap.gold svg{stroke:var(--gold)}
+.cap svg path,.cap svg line,.cap svg circle{stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cap h3{font-family:var(--font-s);font-size:18px;font-weight:700;color:var(--ink-2);margin-bottom:10px;line-height:1.4}
+.cap p{font-size:14px;color:var(--slate);line-height:1.9}
+.cap .stat{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line-2);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.cap .stat .s-v{font-family:var(--font-m);font-size:12px;color:var(--navy);font-weight:600;letter-spacing:.6px}
+.cap.gold .stat .s-v{color:var(--gold)}
+
+/* ============ 经历 ============ */
+.tl-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.tl{position:relative;padding-left:38px}
+.tl::before{content:'';position:absolute;left:12px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--navy) 0%,var(--line) 100%);border-radius:2px}
+.tl-item{position:relative;margin-bottom:34px}
+.tl-item::before{content:'';position:absolute;left:-32px;top:10px;width:14px;height:14px;border-radius:50%;background:var(--paper-2);border:3px solid var(--navy);box-shadow:0 0 0 4px rgba(30,58,143,.08)}
+.tl-item.done::before{background:var(--navy)}
+.tl-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.tl-date{font-family:var(--font-m);font-size:11.5px;font-weight:600;color:var(--navy);letter-spacing:.8px;background:linear-gradient(135deg,var(--tint-2),var(--tint));border:1px solid #dbe5f8;padding:5px 14px;border-radius:22px}
+.tl-role{font-family:var(--font-m);font-size:10.5px;letter-spacing:2px;color:var(--faint);text-transform:uppercase;font-weight:500}
+.tl-card{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:28px;transition:.3s var(--ease)}
+.tl-card:hover{box-shadow:var(--shadow);border-color:#cfd9ef;transform:translateX(4px)}
+.tl-card h3{font-family:var(--font-s);font-size:21px;font-weight:700;color:var(--ink-2);margin-bottom:4px}
+.tl-card .org{font-family:var(--font-m);font-size:12px;color:var(--muted);margin-bottom:16px;letter-spacing:.4px}
+.tl-card ul{list-style:none}
+.tl-card li{font-size:14.5px;color:var(--slate);padding:7px 0 7px 24px;position:relative;line-height:1.8}
+.tl-card li::before{content:'';position:absolute;left:0;top:16px;width:9px;height:9px;border:2px solid var(--navy);border-radius:2px;background:var(--tint-2)}
+.tl-card li b{color:var(--ink-2);font-weight:700}
+.tl-card li i{font-style:normal;color:var(--gold);font-weight:600}
+.tl-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tl-tags span{font-size:11.5px;color:var(--slate);background:var(--tint-2);border:1px solid #dbe5f8;padding:5px 12px;border-radius:7px;font-family:var(--font-m);font-weight:500}
+/* 侧栏：关键里程碑 */
+.milestones{
+  background:linear-gradient(180deg,#fff,var(--tint-2));border:1px solid var(--line);border-radius:16px;padding:28px 24px;
+  position:sticky;top:110px;
+}
+.milestones h3{font-family:var(--font-s);font-size:20px;font-weight:700;color:var(--ink-2);margin-bottom:6px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.milestones .m-sub{font-family:var(--font-m);font-size:10.5px;letter-spacing:2px;color:var(--faint);margin-bottom:20px;text-transform:uppercase}
+.ms{padding:14px 0;border-bottom:1px dashed var(--line-2)}
+.ms:last-of-type{border-bottom:none}
+.ms .mv{font-family:var(--font-m);font-size:16px;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:8px}
+.ms .mv.g{color:var(--gold)}
+.ms .mv.g::before{content:'★';font-size:13px}
+.ms .ml{font-size:13px;color:var(--slate);margin-top:5px;font-weight:500}
+.ms .md{font-family:var(--font-m);font-size:10.5px;color:var(--faint);margin-top:6px;letter-spacing:.5px}
+
+/* ============ 作品集（7 卡 3 列 · 封面版） ============ */
+.portfolio{background:linear-gradient(180deg,#fff 0%,#fafcff 100%);border-top:1px solid var(--line);padding-left:clamp(28px,7vw,112px);padding-right:clamp(28px,7vw,112px)}
+.portfolio > .wrap{max-width:1220px}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 28px}
+.work{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:0 0 26px;
+  display:flex;flex-direction:column;transition:.4s var(--ease);position:relative;overflow:hidden;isolation:isolate;
+}
+.work::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy) 0%,#3b5fc7 100%);opacity:0;transition:.3s;transform:scaleX(.3);transform-origin:left;z-index:5}
+.work::after{
+  content:'';position:absolute;inset:0;border-radius:18px;pointer-events:none;
+  background:linear-gradient(120deg,transparent 0%,transparent 40%,rgba(255,255,255,.28) 50%,transparent 60%,transparent 100%);
+  transform:translateX(-120%);transition:transform .9s var(--ease);mix-blend-mode:soft-light;z-index:4;
+}
+.work:hover{transform:translateY(-6px);box-shadow:0 30px 55px -22px rgba(15,23,42,.22),0 10px 24px -14px rgba(30,58,143,.28);border-color:#c7d3ec}
+.work:hover::before{opacity:1;transform:scaleX(1)}
+.work:hover::after{transform:translateX(120%)}
+.work.featured{border-color:#e7d8b3;background:linear-gradient(180deg,#fffdf8,var(--paper-2))}
+.work.featured::before{background:linear-gradient(90deg,var(--gold) 0%,#c9a76b 100%);opacity:.92;transform:scaleX(1)}
+.work.featured:hover{border-color:var(--gold);box-shadow:0 30px 55px -22px rgba(156,122,59,.28),0 12px 24px -14px rgba(196,154,74,.32)}
+
+/* ===== 封面头（16:9） ===== */
+.work .cover{
+  position:relative;aspect-ratio:16/9;width:100%;overflow:hidden;margin:0;
+  background-position:center;background-size:cover;background-repeat:no-repeat;
+  transition:transform .8s var(--ease);z-index:1;isolation:isolate;border-radius:15px 15px 0 0;
+  margin:10px 10px 0 10px;
+}
+.work .cover::before{content:'';position:absolute;inset:-20%;background:inherit;background-size:cover;background-position:center;filter:blur(28px) saturate(1.25);opacity:.5;transform:scale(1.05);z-index:0;border-radius:12px}
+.work:hover .cover{transform:scale(1.035)}
+.work .cover-grad{
+  position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:12px;
+  background:
+    linear-gradient(180deg,rgba(15,23,42,.10) 0%,rgba(15,23,42,0) 38%,rgba(15,23,42,.0) 62%,rgba(15,23,42,.84) 100%),
+    linear-gradient(135deg,rgba(30,58,143,.18),transparent 55%);
+}
+.work.featured .cover-grad{
+  background:
+    linear-gradient(180deg,rgba(20,16,6,.12) 0%,transparent 38%,transparent 60%,rgba(20,12,0,.86) 100%),
+    linear-gradient(135deg,rgba(196,154,74,.38),rgba(30,58,143,.14) 60%,transparent);
+}
+.work .cover-mask{
+  position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.08;mix-blend-mode:overlay;border-radius:12px;
+  background-image:
+    repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px),
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.6),transparent 45%);
+}
+.work .cover-hud{
+  position:absolute;top:14px;left:14px;right:14px;z-index:5;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none;
+}
+.hud-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--font-m);font-size:10px;font-weight:600;letter-spacing:1.2px;
+  color:#fff;padding:6px 12px;border-radius:7px;line-height:1;
+  background:rgba(15,23,42,.52);backdrop-filter:blur(8px) saturate(1.4);-webkit-backdrop-filter:blur(8px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.16);box-shadow:0 6px 16px rgba(0,0,0,.25),inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.hud-chip::before{content:'';width:6px;height:6px;border-radius:50%;background:#7dd3fc;box-shadow:0 0 8px #7dd3fc}
+.hud-chip.hud-acc{color:#fff1d6;background:rgba(196,154,74,.78);border-color:rgba(255,236,200,.38)}
+.hud-chip.hud-acc::before{background:#ffd37a;box-shadow:0 0 10px #ffd37a,0 0 2px #fff;animation:hudPulse 1.8s infinite}
+.hud-chip.hud-buy{color:#e7ffe9;background:rgba(22,163,74,.78);border-color:rgba(200,255,210,.35)}
+.hud-chip.hud-buy::before{background:#bbf7d0;box-shadow:0 0 10px #4ade80}
+.hud-chip.hud-pay{color:#fff1d6;background:rgba(156,122,59,.82);border-color:rgba(255,236,200,.35)}
+.hud-chip.hud-pay::before{background:#fde68a;box-shadow:0 0 9px #fbbf24}
+.hud-chip.hud-rag{color:#e6eeff;background:rgba(30,58,143,.78);border-color:rgba(200,220,255,.32)}
+.hud-chip.hud-rag::before{background:#bfdbfe;box-shadow:0 0 9px #60a5fa}
+.hud-chip.hud-sec{color:#e6eeff;background:rgba(15,23,42,.78);border-color:rgba(200,220,255,.2)}
+.hud-chip.hud-sec::before{background:#c7d2fe;box-shadow:0 0 9px #818cf8}
+.hud-chip.hud-seo{color:#ecfeff;background:rgba(8,145,178,.78);border-color:rgba(200,250,255,.32)}
+.hud-chip.hud-seo::before{background:#a5f3fc;box-shadow:0 0 9px #22d3ee}
+.hud-chip.hud-ai{color:#ffe4ef;background:rgba(190,24,93,.78);border-color:rgba(255,200,225,.32)}
+.hud-chip.hud-ai::before{background:#fbcfe8;box-shadow:0 0 10px #f472b6}
+@keyframes hudPulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ===== 正文区（封面下方） ===== */
+.work .body-wrap{padding:22px 24px 0;display:flex;flex-direction:column;gap:0;flex:1}
+/* 兼容：没有 .body-wrap 时，.top 以下的子元素作为 body 子项需要间距 */
+.work > .top,.work > .cat,.work > h3,.work > .desc,.work > .mets,.work > .tags,.work > .link{margin-left:28px;margin-right:28px}
+.work .top{display:flex;align-items:center;justify-content:space-between;margin:20px 0 14px}
+.work .no{font-family:var(--font-m);font-size:12px;color:var(--faint);letter-spacing:2px;font-weight:500}
+.work .badge{
+  display:inline-flex;align-items:center;gap:6px;font-family:var(--font-m);font-size:10.5px;font-weight:600;
+  color:var(--gold);background:var(--gold-2);border:1px solid var(--gold-line);padding:5px 12px;border-radius:22px;letter-spacing:.6px;
+}
+.work .badge::before{content:'★';font-size:11px}
+.work .cat{font-family:var(--font-m);font-size:10.5px;letter-spacing:2px;color:var(--navy);text-transform:uppercase;margin:0 0 10px;font-weight:600;display:flex;align-items:center;gap:10px}
+.work.featured .cat{color:var(--gold)}
+.work .cat::after{content:'';flex:1;border-top:1px dashed var(--line-2)}
+.work h3{font-family:var(--font-s);font-size:21px;font-weight:700;color:var(--ink-2);margin:0 0 12px;line-height:1.4}
+.work .desc{font-size:14px;color:var(--slate);line-height:1.95;flex:1;margin:0 0 8px}
+.work .desc em{font-style:normal;color:var(--gold);font-weight:600}
+.work .desc b{color:var(--ink-2);font-weight:700}
+.work .mets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0 20px;padding:16px 0;border-block:1px solid var(--line)}
+.work .met{text-align:center;padding:4px 2px}
+.work .met b{font-family:var(--font-m);font-size:18px;font-weight:600;color:var(--navy);display:block;line-height:1.2}
+.work.featured .met b{color:var(--gold)}
+.work .met span{font-size:11px;color:var(--faint);display:block;margin-top:4px;letter-spacing:.3px}
+.work .tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.work .tags span{font-size:11.5px;color:var(--slate);background:var(--tint-2);border:1px solid #dbe5f8;padding:5px 11px;border-radius:8px;font-family:var(--font-m);font-weight:500}
+.work.featured .tags span{background:var(--gold-2);border-color:var(--gold-line);color:#7a5c23}
+.work .link{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;color:var(--navy);text-decoration:none;align-self:flex-start;transition:.25s;padding:9px 14px;border-radius:9px;margin:0 -14px 0 14px}
+.work.featured .link{color:var(--gold)}
+.work .link span{transition:transform .25s;display:inline-block}
+.work .link:hover{background:var(--tint-2)}
+.work.featured .link:hover{background:var(--gold-2)}
+.work .link:hover span{transform:translateX(5px)}
+
+/* ============ 技能 ============ */
+.skill-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+.skill-panel h3,.tool-panel h3{font-family:var(--font-s);font-size:20px;font-weight:700;color:var(--ink-2);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.skill-panel h3::after,.tool-panel h3::after{content:'';flex:1;height:0}
+.skill-row{margin-bottom:20px}
+.skill-row .hd{display:flex;justify-content:space-between;font-size:14.5px;font-weight:600;color:var(--ink-2);margin-bottom:9px;align-items:baseline;gap:10px}
+.skill-row .hd .val{font-family:var(--font-m);font-size:12.5px;color:var(--navy);font-weight:600}
+.skill-row .tk{height:7px;border-radius:5px;background:var(--line);overflow:hidden;position:relative}
+.skill-row .tk i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--navy) 0%,#3b5fc7 100%);border-radius:5px;transition:width 1.4s var(--ease);position:relative}
+.skill-row.gold .tk i{background:linear-gradient(90deg,var(--gold) 0%,#c9a76b 100%)}
+.skill-row.gold .hd .val{color:var(--gold)}
+.skill-row .tk i::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:translateX(-100%);animation:shimmer 2.4s infinite ease-in-out;animation-delay:.6s}
+@keyframes shimmer{to{transform:translateX(100%)}}
+.tool-list{list-style:none}
+.tool-list li{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--slate);padding:11px 0;border-bottom:1px dashed var(--line-2);line-height:1.7}
+.tool-list li::before{content:'';width:8px;height:8px;border:2px solid var(--navy);border-radius:2px;margin-top:8px;flex-shrink:0;background:var(--tint-2)}
+.tool-list li b{color:var(--ink-2);font-weight:700}
+.tool-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.tool-tags span{font-size:12px;font-family:var(--font-m);color:var(--navy);background:linear-gradient(135deg,var(--tint-2),var(--tint));border:1px solid #dbe5f8;padding:7px 14px;border-radius:8px;font-weight:500}
+
+/* ============ 荣誉 / 教育 ============ */
+.awards{background:linear-gradient(180deg,#fff 0%,#fcfdff 100%);border-top:1px solid var(--line)}
+.awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.award{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:28px 22px 24px;text-align:center;transition:.35s var(--ease);position:relative;overflow:hidden}
+.award::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:.3s}
+.award:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--gold-line)}
+.award:hover::before{opacity:1}
+.award .a-no{position:absolute;top:14px;left:18px;font-family:var(--font-m);font-size:11px;color:var(--faint);letter-spacing:1.5px;font-weight:500}
+.award .a-medal{
+  width:58px;height:58px;margin:10px auto 16px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-2) 0%,#fff8e6 100%);
+  border:1px solid var(--gold-line);display:grid;place-items:center;font-size:26px;
+  box-shadow:inset 0 -2px 0 rgba(156,122,59,.12),0 8px 18px rgba(156,122,59,.10);
+}
+.award h3{font-family:var(--font-s);font-size:16px;font-weight:700;color:var(--ink-2);margin-bottom:8px;line-height:1.45}
+.award .a-rank{font-family:var(--font-m);font-size:11.5px;color:var(--gold);margin-bottom:10px;font-weight:600;letter-spacing:.6px}
+.award p{font-size:12.5px;color:var(--slate);line-height:1.75}
+
+.edu-grid{display:grid;grid-template-columns:1fr .9fr;gap:40px;align-items:stretch}
+.edu-card{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:34px;display:flex;gap:26px;align-items:center;transition:.3s var(--ease)}
+.edu-card:hover{box-shadow:var(--shadow);border-color:#cfd9ef;transform:translateY(-3px)}
+.edu-card .ic{width:68px;height:68px;flex-shrink:0;border-radius:14px;background:linear-gradient(135deg,var(--tint-2),var(--tint));border:1px solid #dbe5f8;display:grid;place-items:center;font-size:30px;box-shadow:0 6px 16px rgba(30,58,143,.08)}
+.edu-card h3{font-family:var(--font-s);font-size:22px;font-weight:700;color:var(--ink-2);letter-spacing:1px}
+.edu-card .major{color:var(--navy);font-weight:700;font-size:15px;margin:5px 0}
+.edu-card .date{font-family:var(--font-m);font-size:11.5px;color:var(--faint);letter-spacing:1px}
+.edu-card p{font-size:14px;color:var(--slate);margin-top:10px;line-height:1.9}
+.edu-side{background:linear-gradient(135deg,var(--navy-ink) 0%,var(--navy) 100%);color:#fff;border-radius:14px;padding:30px 28px;position:relative;overflow:hidden}
+.edu-side::after{content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(156,122,59,.4),transparent 65%)}
+.edu-side h3{font-family:var(--font-s);font-size:20px;font-weight:700;margin-bottom:6px;position:relative;z-index:1}
+.edu-side .sub{font-family:var(--font-m);font-size:10.5px;letter-spacing:2.2px;color:rgba(255,255,255,.6);margin-bottom:18px;position:relative;z-index:1}
+.edu-side ul{list-style:none;position:relative;z-index:1}
+.edu-side li{padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.18);display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:14px;color:rgba(255,255,255,.88)}
+.edu-side li:last-child{border-bottom:none}
+.edu-side li span{font-family:var(--font-m);font-size:11px;color:var(--gold-line);font-weight:600;white-space:nowrap;letter-spacing:.5px}
+
+/* ============ 联系 ============ */
+.contact{background:#fff;border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:70px;align-items:center}
+.c-list{display:flex;flex-direction:column;gap:4px}
+.c-item{display:flex;align-items:flex-start;gap:20px;padding:22px 4px;border-bottom:1px dashed var(--line-2)}
+.c-item:last-child{border-bottom:none}
+.c-item .ci{width:46px;height:46px;border-radius:12px;background:var(--tint-2);border:1px solid #dbe5f8;display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.c-item .k{font-family:var(--font-m);font-size:10.5px;letter-spacing:2.4px;color:var(--faint);text-transform:uppercase;margin-bottom:5px;font-weight:600}
+.c-item .v{font-size:17.5px;font-weight:600;color:var(--ink-2);line-height:1.4}
+.c-item a.v{text-decoration:none;color:var(--navy)}
+.c-item a.v:hover{text-decoration:underline}
+.c-item .sub{font-size:12.5px;color:var(--muted);margin-top:4px;font-family:var(--font-m);letter-spacing:.4px}
+.c-panel{
+  background:linear-gradient(150deg,var(--navy-ink) 0%,var(--navy) 50%,#2749b4 100%);
+  color:#fff;border-radius:18px;padding:46px 42px;position:relative;overflow:hidden;
+  box-shadow:0 22px 60px rgba(30,58,143,.25);
+}
+.c-panel::before{content:'';position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(156,122,59,.32),transparent 60%)}
+.c-panel::after{content:'';position:absolute;left:-40px;bottom:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.10),transparent 60%)}
+.c-panel h3{font-family:var(--font-s);font-size:26px;font-weight:700;line-height:1.5;position:relative;z-index:1}
+.c-panel h3 em{font-style:normal;color:var(--gold-line);background:linear-gradient(90deg,#f2e2b5,#e5d5af);-webkit-background-clip:text;background-clip:text;color:transparent}
+.c-panel p{color:rgba(255,255,255,.82);font-size:15px;margin:16px 0 28px;line-height:1.9;position:relative;z-index:1}
+.c-panel .mail{font-family:var(--font-m);font-size:20px;color:#fff;display:block;margin-bottom:26px;word-break:break-all;position:relative;z-index:1;padding:14px 18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:12px;letter-spacing:.5px}
+.c-panel .btn{width:100%;position:relative;z-index:1;background:#fff;color:var(--navy-ink);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+.c-panel .btn:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(0,0,0,.28);background:var(--gold-2)}
+.c-panel .btn-ghost-light{
+  display:block;text-align:center;margin-top:13px;padding:13px 26px;border-radius:10px;
+  font-family:var(--font-b);font-weight:700;font-size:14.5px;letter-spacing:.6px;color:#fff;
+  border:1px solid rgba(255,255,255,.55);text-decoration:none;transition:.25s;position:relative;z-index:1;
+}
+.c-panel .btn-ghost-light:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-1px)}
+.c-panel .or{
+  position:relative;z-index:1;text-align:center;font-family:var(--font-m);font-size:10.5px;
+  letter-spacing:2.5px;color:rgba(255,255,255,.5);margin:16px 0 13px;text-transform:uppercase;
+}
+
+/* ============ 页脚 ============ */
+footer{background:linear-gradient(180deg,var(--ink-2) 0%,#0b1222 100%);color:#aeb6c6;text-align:center;padding:46px 5vw 50px;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;inset:0;background:radial-gradient(600px 200px at 50% 0%,rgba(30,58,143,.35),transparent 60%);pointer-events:none}
+footer .fl{font-family:var(--font-s);font-weight:700;font-size:17px;letter-spacing:5px;color:#fff;margin-bottom:8px;position:relative;z-index:1}
+footer .fl b{color:var(--gold-line)}
+footer .mid{font-size:13.5px;color:#c3cbd9;margin-bottom:16px;position:relative;z-index:1;letter-spacing:.3px}
+footer .fm{font-family:var(--font-m);font-size:11px;letter-spacing:1.2px;margin-top:12px;color:#7c8698;position:relative;z-index:1}
+footer .fm a{color:#b3c6ed;text-decoration:none;font-weight:600}
+footer .fm a:hover{text-decoration:underline;color:#eef2fb}
+
+/* ============ 响应式 ============ */
+@media(max-width:1160px){
+  .cap-grid{grid-template-columns:repeat(2,1fr)}
+  .work-grid{grid-template-columns:1fr 1fr}
+  .hero-badges{grid-template-columns:1fr 1fr}
+  .awards-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:50px}
+  .dossier-card{position:relative;top:0;max-width:520px;margin:0 auto}
+  .about-grid,.skill-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
+  .edu-grid{grid-template-columns:1fr;gap:24px}
+  .tl-wrap{grid-template-columns:1fr;gap:30px}
+  .milestones{position:relative;top:0}
+  .data-grid{grid-template-columns:1fr 1fr}
+  section{padding:90px 6vw}
+}
+@media(max-width:760px){
+  #topbar .clockbox{display:none}
+  #navToggle{display:flex}
+  #topbar nav{
+    position:fixed;top:0;right:-100%;height:100vh;width:min(300px,84vw);
+    background:var(--paper-2);flex-direction:column;justify-content:center;gap:14px;align-items:stretch;padding:0 20px;
+    border-left:1px solid var(--line);box-shadow:-24px 0 60px rgba(15,23,42,.12);
+    transition:right .4s var(--ease);z-index:999;
+  }
+  #topbar nav.open{right:0}
+  #topbar nav a{font-size:15.5px;padding:13px 18px;text-align:left}
+  #topbar nav a.cta{text-align:center}
+  .data-grid{grid-template-columns:1fr}
+  .cap-grid,.work-grid,.awards-grid,.hero-badges{grid-template-columns:1fr}
+  .info-list{grid-template-columns:1fr}
+  .edu-card{flex-direction:column;text-align:center;padding:26px}
+  .hero{padding-top:130px;padding-bottom:60px}
+  .hero h1{letter-spacing:3px}
+  section{padding:76px 6vw}
+  .c-panel{padding:34px 26px}
+  .dossier-body{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important;animation-iteration-count:1 !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+  .work::before{transform:scaleX(1) !important}
+}
+a:focus-visible,button:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:6px}
+
+/* ============ 打印优化 ============ */
+@media print{
+  #topbar,#progress,#preloader,footer,.hero-cta,.hero-contact,.hero-badges,.c-panel .btn,.c-panel .btn-ghost-light,.dossier-foot,.milestones,.note-line .seg:nth-child(n+3),.c-item .ci{display:none !important}
+  body{background:#fff;color:#000;line-height:1.6;background-image:none}
+  section{padding:0 0 28px 0 !important;page-break-inside:avoid;border:none !important}
+  .wrap{max-width:100% !important}
+  .hero{min-height:0;padding:0 0 20px !important}
+  .hero::before{display:none}
+  .hero-grid{grid-template-columns:1fr 1fr;gap:24px !important}
+  .dossier-card{box-shadow:none;border:1px solid #ccc;position:relative;top:0}
+  .dossier-header{background:#fff !important;color:#000 !important;border-bottom:2px solid #1e3a8f}
+  .dossier-header::before{display:none}
+  .dossier-header .dh-pos{color:#555 !important}
+  .about-grid,.skill-grid,.contact-grid,.edu-grid,.tl-wrap{grid-template-columns:1fr !important;gap:16px !important}
+  .data-grid{grid-template-columns:repeat(3,1fr) !important;gap:10px !important}
+  .cap-grid{grid-template-columns:repeat(2,1fr) !important;gap:10px !important}
+  .work-grid{grid-template-columns:repeat(3,1fr) !important;gap:10px !important}
+  .awards-grid{grid-template-columns:repeat(4,1fr) !important;gap:8px !important}
+  .card,.data-card,.cap,.work,.award,.edu-card,.info-item,.tl-card,.dossier-card,.milestones,.edu-side{box-shadow:none !important;break-inside:avoid;border-color:#ddd !important}
+  .rv{opacity:1 !important;transform:none !important}
+  .work::before{display:none}
+  .figure{box-shadow:none;border:1px solid #e5d5af;page-break-inside:avoid}
+  .c-panel{background:#fff !important;color:#000 !important;box-shadow:none;border:2px solid #1e3a8f}
+  .c-panel::before,.c-panel::after{display:none}
+  .c-panel h3,.c-panel p,.c-panel .mail{color:#000 !important}
+  .c-panel .mail{border-color:#ccc;background:#fafafa}
+  footer{background:#fff !important;color:#000 !important}
+  footer::before{display:none}
+}
+</style>
+<noscript>
+<style>.rv{opacity:1;transform:none}#preloader{display:none}</style>
+</noscript>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div id="preloader" role="status" aria-label="页面加载中">
+  <span class="pre-name">梁智超</span>
+  <span class="pre-sub">EXECUTIVE DOSSIER · 执业档案</span>
+  <div class="pre-bar"><i id="preFill"></i></div>
+</div>
+
+<header id="topbar">
+  <a class="brand" href="#hero"><span class="seal" aria-hidden="true">梁</span><span><span class="nm">梁智超</span><br><span class="sub">RISK · COMPLIANCE · CLEARING</span></span></a>
+  <nav id="nav" aria-label="主导航">
+    <a href="#hero" class="active">首页</a>
+    <a href="#about">关于我</a>
+    <a href="#metrics">关键数据</a>
+    <a href="#capabilities">专业能力</a>
+    <a href="#experience">工作经历</a>
+    <a href="#portfolio">作品集</a>
+    <a href="#skills">技能</a>
+    <a href="#awards">荣誉</a>
+    <a href="#contact" class="cta">联系我</a>
+  </nav>
+  <span class="clockbox" aria-label="当前时间"><i aria-hidden="true"></i><span id="clock">TAIZHOU --:--:--</span></span>
+  <button id="navToggle" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<main>
+<!-- ============= HERO ============= -->
+<section class="hero" id="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="avail" aria-label="求职中"><i></i> 求职中 · 目标方向：风控 / 合规 / 清算</span>
+      <h1>梁智超<span class="dot">.</span></h1>
+      <div class="hero-role" aria-live="polite"><span class="typed" id="typed"></span><span class="cursor" aria-hidden="true"></span></div>
+      <p class="hero-oneliner">双栈主理人：<b>财税 AI 合规副驾驶 × AXION 量化信号</b>｜把不确定性变成确定性的竞争力。</p>
+      <p class="hero-desc"> 22 岁<b>财税 AI × 量化双栈主理人</b>，以数据驱动构建风险监测与合规交付的完整闭环： <br>• <b>财税 AI 侧</b>：跨境税盾 AI 助手 v3（对标 Avalara/Sovos），RAG 知识库覆盖 <em>143+ 现行政策</em>、四场景税费测算、支付宝自助订阅支付全链路贯通； <br>• <b>量化信号侧</b>：AXION 三周期宽码头 + 衡元 A 股信号终端，AFMEO 六类顶底信号扫描 2800+ 股票，600d 2x 长窗 +454%； <br>• <b>合规基线</b>：视频内容风险率 ↓35%、完播率 ↑40%；7 个产品级项目全部独立交付。 <br>始终信奉——<b>先看懂数据，再预判风险，最后用合规和产品把结果交出来</b>。 </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn navy">联系我 · 约时间聊聊</a>
+        <a href="#portfolio" class="btn ghost">查看 7 个作品</a>
+        <a href="resume.html" class="btn gold" target="_blank" rel="noopener">下载简历 PDF</a>
+      </div>
+      <div class="hero-contact" aria-label="快速联系">
+        <span>邮箱 <a href="mailto:861481939@qq.com">861481939@qq.com</a></span>
+        <span>坐标 江苏 · 泰州</span>
+        <span>状态 可快速到岗</span>
+      </div>
+
+      <!-- 精选项目带（对标 Shane Kinkennon：首屏先看实力） -->
+      <div class="hero-badges" aria-label="精选项目速览">
+        <div class="hb rv d1">
+          <div class="hbt">精选 01</div>
+          <div class="hbn">AXION · 量化信号宽码头</div>
+          <div class="hbm">CAGR +454% · 600d 长窗</div>
+        </div>
+        <div class="hb rv d2">
+          <div class="hbt">精选 02</div>
+          <div class="hbn">衡元量化 · A股信号终端</div>
+          <div class="hbm">2800+ 股票周线扫描</div>
+        </div>
+        <div class="hb rv d3">
+          <div class="hbt">精选 03</div>
+          <div class="hbn">缥缃秘府 · 付费 SaaS</div>
+          <div class="hbm">4 档分层 · 92 项安全断言</div>
+        </div>
+        <div class="hb rv d4">
+          <div class="hbt">精选 04</div>
+          <div class="hbn">跨境税盾 AI 合规副驾驶 v3</div>
+          <div class="hbm">54/55 Live PASS · 四档定价</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右侧执业档案卡（Read.cv 风格） -->
+    <aside class="dossier-card rv" aria-label="执业档案摘要">
+      <div class="dossier-header">
+        <div class="dh-row">
+          <div class="dh-avatar" aria-hidden="true">梁</div>
+          <div class="dh-info">
+            <h3>LIANG ZHICHAO</h3>
+            <div class="dh-pos">风控合规清算 · 22 岁 · 3年+ 实战</div>
+            <div class="dh-id">DOSSIER #LZ-22 · TAIZHOU · 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="dossier-body">
+        <div class="dossier-metrics">
+          <div class="dm highlight"><div class="n">7<i> 个</i></div><div class="l">产品级项目</div></div>
+          <div class="dm"><div class="n">92<i> %</i></div><div class="l">风控预警准确率</div></div>
+          <div class="dm"><div class="n">100<i> %</i></div><div class="l">合规审核通过率</div></div>
+          <div class="dm highlight"><div class="n">TOP<i></i>0.2%</div><div class="l">省级三创优秀学生</div></div>
+          <div class="dm"><div class="n">454<i> %</i></div><div class="l">量化策略 2x CAGR</div></div>
+          <div class="dm"><div class="n">92<i> 项</i></div><div class="l">支付安全回归断言</div></div>
+        </div>
+        <div class="dossier-list" aria-label="执业标签">
+          <div class="dl"><div class="dot n"></div><div><div class="dt">风控方法</div><div class="dv">数据驱动 · 风险闭环<small>建模 → 预警 → 干预 → 复盘</small></div></div></div>
+          <div class="dl"><div class="dot g"></div><div><div class="dt">项目覆盖</div><div class="dv">量化 / 证券 / SaaS / AI / 内容<small>7 项目 · 含付费订阅产品</small></div></div></div>
+          <div class="dl"><div class="dot a"></div><div><div class="dt">个人信条</div><div class="dv">数据里的异常值，都是机会<small>风险不是敌人，是被度量的变量</small></div></div></div>
+        </div>
+        <div class="dossier-foot">
+          <div class="df"><span class="k">PORTFOLIO UPDATED</span><span class="v">2026-09</span></div>
+          <a class="btn gold" href="#portfolio">浏览完整作品集 →</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 关于我 -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-label">01 · About</div>
+      <h2 class="sec-title">关于<em>我</em></h2>
+      <p class="sec-sub">把数据变成预警、把风险变成变量、把合规变成护城河——这是我做每件事的底色。</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text rv">
+        <p>我是<b>梁智超</b>，专注<b>风控合规清算</b>方向。三年多的实践路径很清楚：<mark>先在内容平台做违规与热点风险</mark>，内容风险率降了 35%；<mark>再迁移到健身行业做客户画像与流失预警</mark>，续约率守住了 85%；<mark>最后沉下去做金融级的量化风控与证券信号系统</mark>，把「朴素愿望 → 数据证伪 → 保真修复 → 长窗校准 → 熔断止血」的完整风控链路跑通了一遍。</p>
+        <div class="figure">风险不是要消灭的东西，而是可以被度量、被预判、被管理的变量。我的价值，就是把不确定性变成确定性。</div>
+        <p>我做项目有三条硬规则：① <b>任何结论必须可回溯</b>——大B量化项目完整记录了每一个被证伪的想法（挑最强是负 alpha、ATR 紧止损是绞肉机、SQZ 不能当触发器……）；② <b>安全和合规永远写在第一行</b>——缥缃秘府 SaaS 先写 7 项支付安全断言、再写业务逻辑；③ <b>永远标注已知边界</b>——回测窗口依赖、幸存者偏差、山寨流动性摩擦，都会诚实写在产品和文档里。风控这两个字，<b>诚实比聪明更重要</b>。</p>
+      </div>
+      <div class="info-list rv d1">
+        <div class="info-item"><div class="k">Age / Status</div><div class="v">22 <small>岁 · 求职中</small></div></div>
+        <div class="info-item gold"><div class="k">Target</div><div class="v">风控合规 <small>/ 清算岗位</small></div></div>
+        <div class="info-item"><div class="k">Location</div><div class="v">江苏 · 泰州</div></div>
+        <div class="info-item gold"><div class="k">Education</div><div class="v">大专 <small>· 模具专业 → 风控</small></div></div>
+        <div class="info-item"><div class="k">Projects</div><div class="v">7 <small>个产品级项目（3 新上线）</small></div></div>
+        <div class="info-item gold"><div class="k">Availability</div><div class="v">可快速到岗 <small>· 邮箱优先沟通</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 关键数据（6 卡 + 置信度/来源注） -->
+<section class="metrics" id="metrics">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-label">02 · Key Metrics</div>
+      <h2 class="sec-title">关键<em>数据</em></h2>
+      <p class="sec-sub">以下指标均来源于个人项目实测与交付结果，附置信度与来源口径，仅供方法论参考。</p>
+    </div>
+    <div class="data-grid">
+      <div class="data-card navy-bar rv">
+        <div class="top"><span class="tag down">↓ 风险下降</span><span class="conf high">高置信</span></div>
+        <div class="num"><span class="ct" data-t="35">0</span><span class="unit">%</span></div>
+        <div class="lbl">视频内容风险率下降<small>来源：巨量算数 + 蝉妈妈 · 对比优化前后 30 日</small></div>
+        <div class="sig"><i data-w="35%"></i></div>
+      </div>
+      <div class="data-card green-bar rv d1">
+        <div class="top"><span class="tag up">↑ 体验提升</span><span class="conf high">高置信</span></div>
+        <div class="num"><span class="ct" data-t="40">0</span><span class="unit">%</span></div>
+        <div class="lbl">视频完播率提升<small>来源：短视频账号后台 · 审核关键词库优化 3 天后</small></div>
+        <div class="sig"><i data-w="40%"></i></div>
+      </div>
+      <div class="data-card green-bar rv d2">
+        <div class="top"><span class="tag up">↑ 转化提升</span><span class="conf mid">中置信</span></div>
+        <div class="num"><span class="ct" data-t="25">0</span><span class="unit">%</span></div>
+        <div class="lbl">粉丝转化率提升<small>来源：短视频平台后台 · 同期前后对照</small></div>
+        <div class="sig"><i data-w="25%"></i></div>
+      </div>
+      <div class="data-card navy-bar rv">
+        <div class="top"><span class="tag acc">预警精准</span><span class="conf high">高置信</span></div>
+        <div class="num"><span class="ct" data-t="92">0</span><span class="unit">%</span></div>
+        <div class="lbl">风险预警准确率<small>来源：内容风控实测 · 违规命中 / 总预警数</small></div>
+        <div class="sig"><i data-w="92%"></i></div>
+      </div>
+      <div class="data-card gold-bar rv d1">
+        <div class="top"><span class="tag misc">续约留存</span><span class="conf high">高置信</span></div>
+        <div class="num"><span class="ct" data-t="85">0</span><span class="unit">%</span></div>
+        <div class="lbl">客户续约率<small>来源：健身工作室 500+ 客户画像 · 实测数据</small></div>
+        <div class="sig"><i data-w="85%"></i></div>
+      </div>
+      <div class="data-card gold-bar rv d2">
+        <div class="top"><span class="tag misc">合规通过</span><span class="conf high">高置信</span></div>
+        <div class="num"><span class="ct" data-t="100">0</span><span class="unit">%</span></div>
+        <div class="lbl">平台合规审核率<small>来源：覆盖 10 类场景的 SOP · 全年 0 违规</small></div>
+        <div class="sig"><i data-w="100%"></i></div>
+      </div>
+    </div>
+    <div class="note-line" role="note" aria-label="数据口径说明">
+      <span class="seg">📊 <b>口径</b>：指标均为个人项目实测披露</span><span class="sep"></span>
+      <span class="seg">🎯 <b>置信</b>：高置信=可复现实测 / 中置信=前后对照 / 低置信=区间估计</span><span class="sep"></span>
+      <span class="seg">🔗 <b>来源</b>：平台后台、回测引擎、交付记录</span><span class="sep"></span>
+      <span class="seg">DOSSIER <b>#LZ-22</b> · 2026-09 更新</span>
+    </div>
+  </div>
+</section>
+
+<!-- 专业能力（6 卡） -->
+<section id="capabilities">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-label">03 · Capabilities</div>
+      <h2 class="sec-title">专业<em>能力</em></h2>
+      <p class="sec-sub">六大核心能力构成一套完整的风险管理闭环——从指标建模、A/B证伪，到合规执行、交付落地。</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap rv">
+        <span class="no">01</span>
+        <div class="k">Data · Monitoring</div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/><path d="M4 10h5"/><path d="M10 4h4"/><path d="M16 13h3"/></svg></div>
+        <h3>风控数据建模与监测</h3>
+        <p>基于巨量算数、蝉妈妈、交易所公开数据等多源构建风险监测模型，实时监控违规关键词、拥挤度、资金费率等多维指标，预警准确率 92%。</p>
+        <div class="stat"><span>准确率 92% · 多源聚合</span><span class="s-v">MONITORING</span></div>
+      </div>
+      <div class="cap rv d1 gold">
+        <span class="no">02</span>
+        <div class="k">Backtest · Fidelity</div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/><circle cx="7" cy="15" r="1.3"/><circle cx="19" cy="8" r="1.3"/></svg></div>
+        <h3>回测保真与 A/B 证伪</h3>
+        <p>每一个策略假设先过探针式成交率验证、再过长窗回测、最后写清楚已知边界。大B项目完整记录了 17+ 个被数据证伪的想法，保真越修收益越实。</p>
+        <div class="stat"><span>17+ 被证伪结论 · 600d 长窗</span><span class="s-v">PROVEN WRONG</span></div>
+      </div>
+      <div class="cap rv d2">
+        <span class="no">03</span>
+        <div class="k">Closed-Loop Risk</div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/><path d="M12 7v6l4 2"/></svg></div>
+        <h3>风险识别与完整闭环</h3>
+        <p>从识别、评估、干预到复盘形成完整闭环：健身行业客户续约率 85%，流失风险下降 28%；内容风控建立 10 类场景 SOP，平台合规审核率 100%。</p>
+        <div class="stat"><span>续约 85% · 审核 100%</span><span class="s-v">CLOSED LOOP</span></div>
+      </div>
+      <div class="cap rv">
+        <span class="no">04</span>
+        <div class="k">Market Forecast</div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12c2-6 5-6 8 0s6 6 8 0"/><path d="M3 6v12"/><path d="M21 6v12"/><path d="M7 9l3-3 3 3 3-4 3 2"/></svg></div>
+        <h3>市场波动预判与信号引擎</h3>
+        <p>精通价格行为分析、支撑压力位判断与多因子信号合成。预判热点提前 3 天优化审核；A股终端覆盖 6 级信号，量化策略 600d 2x 复利 CAGR +454%。</p>
+        <div class="stat"><span>提前 3 天 · CAGR +454%</span><span class="s-v">FORESIGHT</span></div>
+      </div>
+      <div class="cap rv d1 gold">
+        <span class="no">05</span>
+        <div class="k">Security · Compliance</div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/><path d="M8 8h.01M16 8h.01"/></svg></div>
+        <h3>合规执行 · 支付安全</h3>
+        <p>国家级奖学金连续两年（全校前 0.5%）、省三创优秀学生（全省 0.2%）。缥缃 SaaS 92 项回归断言 100% 过：0 元直通拦截、回调验签对账、HMAC 解锁码、哈希脱敏。</p>
+        <div class="stat"><span>92 断言 · TOP 0.2% 省优</span><span class="s-v">SAFE BY DEFAULT</span></div>
+      </div>
+      <div class="cap rv d2">
+        <span class="no">06</span>
+        <div class="k">Product · Delivery</div>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h18v10H3z"/><path d="M3 7l3-4h12l3 4"/><path d="M8 12h8M8 16h5"/></svg></div>
+        <h3>独立产品端到端交付</h3>
+        <p>从 0 到 1 独立交付 7 个产品级项目：量化终端 / 付费 SaaS / AI 问答 / 研究看板 / 内容站，覆盖前端、后端、支付、订阅、授权、可视化与合规文档全链路。</p>
+        <div class="stat"><span>7 项目 · 端到端交付</span><span class="s-v">SHIP IT</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 工作经历（左时间线 + 右里程碑） -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-label">04 · Experience</div>
+      <h2 class="sec-title">工作<em>经历</em></h2>
+      <p class="sec-sub">从内容风控到客户风险、再到金融级量化——三段实战层层递进。</p>
+    </div>
+    <div class="tl-wrap">
+      <div class="tl">
+        <div class="tl-item done rv">
+          <div class="tl-meta"><span class="tl-date">2024.05 — 至今</span><span class="tl-role">Content Risk Control</span></div>
+          <div class="tl-card">
+            <h3>内容风控负责人 · 独立操盘</h3>
+            <div class="org">短视频账号矩阵 · 个人操盘 + 团队协作</div>
+            <ul>
+              <li>搭建<b>内容安全风险评估模型</b>，实时监控巨量算数违规关键词，风险预警准确率 <b>92%</b>，规避账号封禁风险</li>
+              <li>结合<b>价格行为分析</b>预判市场热点波动，提前 3 天优化审核关键词库：风险率下降 <b>35%</b>、完播率提升 <b>40%</b>、粉丝转化率提升 <b>25%</b></li>
+              <li>制定《高风险内容审核 SOP》覆盖 <i>10 类场景</i>（含老年人养生健康类），平台合规审核率 <b>100%</b></li>
+              <li>同步孵化微博大 V 方法论与小红书 AI 生图技能库，<b>内容风控经验跨平台复用</b></li>
+            </ul>
+            <div class="tl-tags"><span>风险建模</span><span>关键词库</span><span>价格行为分析</span><span>审核SOP</span><span>跨平台复用</span></div>
+          </div>
+        </div>
+        <div class="tl-item done rv d1">
+          <div class="tl-meta"><span class="tl-date">2023.07 — 2024.07</span><span class="tl-role">Customer Risk Mgmt</span></div>
+          <div class="tl-card">
+            <h3>客户风险管理助理</h3>
+            <div class="org">皇室堡健身中心</div>
+            <ul>
+              <li>分析 <b>500+ 客户数据</b>（年龄、健康指标、消费习惯），构建高流失风险标签体系，准确率 <b>87%</b>，针对性制定服务方案</li>
+              <li>定制化方案（饮食 + 训练）提升 <b>80%</b> 学员目标达成率，客户续约率 <b>85%</b>，降低流失风险 <b>28%</b></li>
+              <li>严格执行行业规范，实现 <b>0 合规投诉</b>，客户满意度 <b>92%</b></li>
+            </ul>
+            <div class="tl-tags"><span>客户画像</span><span>流失预警</span><span>续约管理</span><span>合规服务</span></div>
+          </div>
+        </div>
+        <div class="tl-item rv d2">
+          <div class="tl-meta"><span class="tl-date">2022.10 — 至今</span><span class="tl-role">Founder · Entrepreneur</span></div>
+          <div class="tl-card">
+            <h3>创始人 · 杭州余杭乐乾电子商务工作室</h3>
+            <div class="org">独立法人 · 从 0 到 1</div>
+            <ul>
+              <li>从 0 到 1 创立电商工作室，负责选品、运营与团队搭建，验证<b>从风险识别到商业变现</b>的完整链路</li>
+              <li>将内容风控经验迁移至电商场景，以数据驱动决策，持续打磨<b>风险与增长平衡</b>的经营方法论</li>
+              <li>同步完成财税 AI 问答助手、跨境电商财税内容站等交付项目，<b>把合规做成可变现的竞争力</b></li>
+            </ul>
+            <div class="tl-tags"><span>电商运营</span><span>创业</span><span>数据决策</span><span>端到端交付</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧里程碑 -->
+      <aside class="milestones rv d1" aria-label="关键里程碑">
+        <h3>关键里程碑</h3>
+        <div class="m-sub">CAREER MILESTONES</div>
+        <div class="ms"><div class="mv g">国家级奖学金 × 2</div><div class="ml">全校前 0.5%，连续两年斩获</div><div class="md">ACADEMIC · 2020 — 2022</div></div>
+        <div class="ms"><div class="mv g">江苏省三创优秀学生</div><div class="ml">全省仅 2 人/年，前 0.2%</div><div class="md">PROVINCIAL · 2022</div></div>
+        <div class="ms"><div class="mv">10 类内容风控 SOP</div><div class="ml">平台合规审核率 100%</div><div class="md">WORK · 2024</div></div>
+        <div class="ms"><div class="mv">500+ 客户风险画像</div><div class="ml">续约率 85%，流失降 28%</div><div class="md">WORK · 2023 — 2024</div></div>
+        <div class="ms"><div class="mv g">7 个产品级项目交付</div><div class="ml">量化 / SaaS / AI / 内容站全覆盖</div><div class="md">PROJECTS · 2026</div></div>
+        <div class="ms"><div class="mv">大B量化 2x CAGR +454%</div><div class="ml">600d 长窗 · 含熔断止血</div><div class="md">QUANT · 2026-09</div></div>
+        <div class="ms"><div class="mv">缥缃 SaaS 92 项安全断言</div><div class="ml">0 元直通 / 回调验签 / 解锁码</div><div class="md">SECURITY · 2026-09</div></div>
+        <div class="ms"><div class="mv">衡元 A股终端 V6</div><div class="ml">2800+ 股票 · 6 级信号引擎</div><div class="md">FINTECH · 2026-09</div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 作品集（7 卡 3 列，5 精选 + 2 常规） ============= -->
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-label">05 · Portfolio</div>
+      <h2 class="sec-title">项目<em>作品集</em></h2>
+      <p class="sec-sub">7 个端到端交付的产品级项目，覆盖量化风控、证券终端、付费 SaaS、AI 问答、研究可视化、内容站与内容运营——每一个都有实锤数据，不做「看起来挺像」的样子货。</p>
+    </div>
+    <div class="work-grid">
+
+      <!-- 01 精选：大B量化 -->
+      <article class="work featured rv">
+        <div class="cover" style="background-image:url('assets/portfolio-01-axion.png');" aria-hidden="true">
+          <div class="cover-grad"></div>
+          <div class="cover-mask"></div>
+          <div class="cover-hud"><span class="hud-chip">AXION · 量化宽码头</span><span class="hud-chip hud-acc">LIVE · 28 ROUTES OK</span></div>
+        </div>
+        <div class="top"><span class="no">N° 01</span><span class="badge">精选 · Featured</span></div>
+        <div class="cat">Quant · Signal Platform</div>
+        <h3>AXION · 量化信号平台（大B 宽码头）</h3>
+        <p class="desc">面向加密永续合约的多平台多因子风控体系：<em>资金费率 / OI / 多空比 / 爆仓 / 基差 / 期权波动率</em>五大类因子合成 composite 情绪分。完整走过「动量追强」→ 数据证伪（挑最强=负 alpha）→ 保真修复 → 600d 长窗过拟合检验 → <b>熔断止血</b>的全链路。配套虚拟挂单探针测真实成交率、蒙特卡洛反推杠杆上限（≤3x）、模拟盘移动止损盯仓。<b>诚实标注窗口依赖、幸存者偏差与流动性摩擦。</b></p>
+        <div class="mets">
+          <div class="met"><b>+454%</b><span>600d 2x 年化</span></div>
+          <div class="met"><b>41</b><span>币种覆盖</span></div>
+          <div class="met"><b>17+</b><span>被证伪结论</span></div>
+        </div>
+        <div class="tags"><span>Python</span><span>多因子模型</span><span>回测保真</span><span>z-score</span><span>A/B 证伪</span><span>蒙特卡洛</span><span>成交率探针</span><span>运维挂机</span></div>
+        <a class="link" href="https://kuajingshuidun.cn/axion-platform.html" target="_blank" rel="noopener">访问 AXION 量化信号平台 <span>→</span></a>
+      </article>
+
+      <!-- 02 精选：衡元量化 A股终端 -->
+      <article class="work featured rv d1">
+        <div class="cover" style="background-image:url('assets/portfolio-02-afmeo.png');" aria-hidden="true">
+          <div class="cover-grad"></div>
+          <div class="cover-mask"></div>
+          <div class="cover-hud"><span class="hud-chip">AFMEO V6</span><span class="hud-chip hud-buy">BUY ZONE</span></div>
+        </div>
+        <div class="top"><span class="no">N° 02</span><span class="badge">精选 · Featured</span></div>
+        <div class="cat">FinTech · A Share Terminal</div>
+        <h3>衡元量化 · A股顶底信号终端</h3>
+        <p class="desc">面向 A 股的专业订阅制量化终端：<b>2800+ 股票</b>的周线/日线双源数据扫描，自研 <em>AFMEO 六类顶底信号引擎</em>（反击买 / 强买 / 反转买及空头镜像）。V6 视觉全面升级为研报终端风：行业星图、周期光环、<b>置信度波形</b>、板块资金流热力图、信号日历、AP 综合评分 0-100、K线支撑压力止损目标参考线、回测盈亏比与<b>Walk-Forward 滚动验证</b>、PDF 周报导出、自选组合与授权订阅机制。</p>
+        <div class="mets">
+          <div class="met"><b>2800+</b><span>股票全扫</span></div>
+          <div class="met"><b>6</b><span>级信号分类</span></div>
+          <div class="met"><b>V6</b><span>视觉 · 终端风</span></div>
+        </div>
+        <div class="tags"><span>Python</span><span>Pandas</span><span>ECharts</span><span>A股量化</span><span>信号引擎</span><span>行业归因</span><span>订阅授权</span><span>PDF 导出</span></div>
+        <a class="link" href="https://afmeo.kuajingshuidun.cn/" target="_blank" rel="noopener">访问衡元量化终端 <span>→</span></a>
+      </article>
+
+      <!-- 03 精选：缥缃秘府 SaaS -->
+      <article class="work featured rv d2">
+        <div class="cover" style="background-image:url('assets/portfolio-03-ziwei.png');" aria-hidden="true">
+          <div class="cover-grad"></div>
+          <div class="cover-mask"></div>
+          <div class="cover-hud"><span class="hud-chip">ZIWEI 紫微</span><span class="hud-chip hud-pay">4 TIER PAID</span></div>
+        </div>
+        <div class="top"><span class="no">N° 03</span><span class="badge">精选 · Featured</span></div>
+        <div class="cat">SaaS · Paid Content</div>
+        <h3>缥缃秘府 · 付费命谱 SaaS</h3>
+        <p class="desc">紫微斗数自动起盘付费演示站：生辰输入 → <em>真太阳时校正排盘</em> → <b>20+ 卷命谱</b>分层解锁 → 跨机解锁码恢复。纯原生零框架实现，后端分层支付（单卷¥9.9 / 全卷¥99 / 尊享¥199）集成 <b>支付宝回调验签对账</b>、幂等防重、HMAC 解锁码、IP 限流、隐私哈希脱敏。<em>85 项渲染回归 + 7 项支付安全断言 100% 通过</em>。首屏秒开（惰性渲染），0 元直通路径被完全封堵。</p>
+        <div class="mets">
+          <div class="met"><b>20+</b><span>内容卷</span></div>
+          <div class="met"><b>92</b><span>项断言通过</span></div>
+          <div class="met"><b>4</b><span>档定价分层</span></div>
+        </div>
+        <div class="tags"><span>原生 JS</span><span>Node.js</span><span>支付宝支付</span><span>分层 SaaS</span><span>支付安全</span><span>幂等防重</span><span>HMAC 解锁码</span><span>哈希脱敏</span></div>
+        <a class="link" href="https://ziwei.kuajingshuidun.cn/" target="_blank" rel="noopener">访问缥缃秘府 <span>→</span></a>
+      </article>
+
+      <!-- 04 精选：财税 AI -->
+      <article class="work featured rv">
+        <div class="cover" style="background-image:url('assets/portfolio-04-taxai.png');" aria-hidden="true">
+          <div class="cover-grad"></div>
+          <div class="cover-mask"></div>
+          <div class="cover-hud"><span class="hud-chip">TAX AI v3 · 豪华智能体</span><span class="hud-chip hud-rag">RAG 143+ 政策</span></div>
+        </div>
+        <div class="top"><span class="no">N° 04</span><span class="badge">精选 · Featured</span></div>
+        <div class="cat">AI Product · Full-Stack</div>
+        <h3>跨境税盾 · AI 财税合规副驾驶 v3</h3>
+        <p class="desc">对标 Avalara / Sovos / Anrok 的<b>跨境财税合规豪华智能体 v3</b>：DeepSeek 大模型 + RAG 知识库（143+ 现行政策 / 299+ 实战问答），三栏布局 + Avalara 式 4 步 Onboarding + Sovos 级 Workspace 多实体切换 + 右侧 Mini 税费测算器（个体户 / 小微 / 年终奖 / 跨境电商进出口）+ TaxJar 式四档定价 + Anrok 渐进式升级 Modal，完成支付宝自助订阅支付全链路与合规闭环（54/55 活体验收通过）。</p>
+        <div class="mets">
+          <div class="met"><b>143+</b><span>现行政策</span></div><div class="met"><b>299+</b><span>实战问答</span></div><div class="met"><b>54/55</b><span>Live PASS</span></div>
+        </div>
+        <div class="tags"><span>FastAPI</span><span>DeepSeek AI</span><span>RAG</span><span>支付宝支付</span><span>SQLite</span></div>
+        <a class="link" href="https://kuajingshuidun.cn/ai-assistant-v3.html" target="_blank" rel="noopener">打开财税 AI 助手 v3 <span>→</span></a>
+      </article>
+
+      <!-- 05 精选：中美对比 -->
+      <article class="work featured rv d1">
+        <div class="cover" style="background-image:url('assets/portfolio-05-us-china.png');" aria-hidden="true">
+          <div class="cover-grad"></div>
+          <div class="cover-mask"></div>
+          <div class="cover-hud"><span class="hud-chip">研究简报</span><span class="hud-chip hud-sec">44 板块</span></div>
+        </div>
+        <div class="top"><span class="no">N° 05</span><span class="badge">精选 · Featured</span></div>
+        <div class="cat">Data Viz · Research</div>
+        <h3>中美深度对比研究大盘</h3>
+        <p class="desc">44 个板块、四轴专题的深度研究可视化大盘，覆盖经济、科技、军事、金融制裁等维度，以 ECharts 构建可交互数据看板，体现从海量信息中提炼结构、用数据讲清复杂议题的能力。</p>
+        <div class="mets">
+          <div class="met"><b>44</b><span>分析板块</span></div>
+          <div class="met"><b>4</b><span>专题轴</span></div>
+          <div class="met"><b>ECharts</b><span>可视化</span></div>
+        </div>
+        <div class="tags"><span>ECharts</span><span>数据可视化</span><span>深度研究</span><span>交互看板</span></div>
+        <a class="link" href="projects/us-china/us-china-deep-comparison/us-china-comparison.html" target="_blank" rel="noopener">查看作品 <span>→</span></a>
+      </article>
+
+      <!-- 06 常规：跨境内容站 -->
+      <article class="work rv d2">
+        <div class="cover" style="background-image:url('assets/portfolio-06-cross-border.png');" aria-hidden="true">
+          <div class="cover-grad"></div>
+          <div class="cover-mask"></div>
+          <div class="cover-hud"><span class="hud-chip">内容站</span><span class="hud-chip hud-seo">SEO</span></div>
+        </div>
+        <div class="top"><span class="no">N° 06</span><span class="no" style="color:var(--muted);font-weight:500">CORE</span></div>
+        <div class="cat">Content Site · SEO</div>
+        <h3>跨境电商财税内容站</h3>
+        <p class="desc">跨境电商财税垂直内容站：出口退税、无票免税、核定征收、稽查风险等核心话题，20+ 内容页 + 管理后台 + SEO 优化，把专业财税知识转化为可被搜索、可转化的内容资产。</p>
+        <div class="mets">
+          <div class="met"><b>20+</b><span>内容页面</span></div>
+          <div class="met"><b>SEO</b><span>搜索优化</span></div>
+          <div class="met"><b>✓</b><span>管理后台</span></div>
+        </div>
+        <div class="tags"><span>内容运营</span><span>SEO</span><span>站点搭建</span><span>垂直领域</span></div>
+        <a class="link" href="projects/cross-border/index.html" target="_blank" rel="noopener">查看作品 <span>→</span></a>
+      </article>
+
+      <!-- 07 常规：微博 + AI生图 -->
+      <article class="work rv">
+        <div class="cover" style="background-image:url('assets/portfolio-07-weibo.png');" aria-hidden="true">
+          <div class="cover-grad"></div>
+          <div class="cover-mask"></div>
+          <div class="cover-hud"><span class="hud-chip">KOL LAB</span><span class="hud-chip hud-ai">AI CREATIVE</span></div>
+        </div>
+        <div class="top"><span class="no">N° 07</span><span class="no" style="color:var(--muted);font-weight:500">CORE</span></div>
+        <div class="cat">Content Ops · AI Creative</div>
+        <h3>微博大 V 孵化 &amp; 小红书 AI 生图</h3>
+        <p class="desc">微博大 V 孵化方法论（账号定位、KOL 策略、内容日报、技巧拆解）+ 小红书 AI 人像生图技能库（去 AI 味、穿搭拆解、场景库），深度理解内容平台规则，与短视频内容风控互为印证。</p>
+        <div class="mets">
+          <div class="met"><b>日报</b><span>每日内容</span></div>
+          <div class="met"><b>KOL</b><span>策略体系</span></div>
+          <div class="met"><b>AI</b><span>生图技能库</span></div>
+        </div>
+        <div class="tags"><span>内容运营</span><span>KOL 策略</span><span>AI 生图</span><span>平台规则</span></div>
+        <a class="link" href="projects/weibo/technique-breakdown.html" target="_blank" rel="noopener">查看作品 <span>→</span></a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 技能 -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-label">06 · Skills</div>
+      <h2 class="sec-title">核心<em>技能</em></h2>
+      <p class="sec-sub">能力掌握度基于 7 个项目的真实交付表现评估，金色条目为当前持续深化的核心方向。</p>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-panel rv">
+        <h3>🛡️ 能力掌握度</h3>
+        <div class="skill-row gold"><div class="hd"><span>风险评估模型搭建 · 回测保真</span><span class="val">96%</span></div><div class="tk"><i data-w="96%"></i></div></div>
+        <div class="skill-row gold"><div class="hd"><span>合规执行与支付安全设计</span><span class="val">96%</span></div><div class="tk"><i data-w="96%"></i></div></div>
+        <div class="skill-row"><div class="hd"><span>风险闭环管理（识别→干预→复盘）</span><span class="val">94%</span></div><div class="tk"><i data-w="94%"></i></div></div>
+        <div class="skill-row"><div class="hd"><span>巨量算数 / 蝉妈妈数据分析</span><span class="val">92%</span></div><div class="tk"><i data-w="92%"></i></div></div>
+        <div class="skill-row gold"><div class="hd"><span>价格行为分析 / 市场预判 / 信号合成</span><span class="val">90%</span></div><div class="tk"><i data-w="90%"></i></div></div>
+        <div class="skill-row"><div class="hd"><span>Excel / Pandas 高级分析与数据清洗</span><span class="val">90%</span></div><div class="tk"><i data-w="90%"></i></div></div>
+        <div class="skill-row"><div class="hd"><span>产品端到端交付（前·后·支付·授权·文档）</span><span class="val">89%</span></div><div class="tk"><i data-w="89%"></i></div></div>
+      </div>
+      <div class="tool-panel rv d1">
+        <h3>🧰 工具与平台</h3>
+        <ul class="tool-list">
+          <li><b>数据平台：</b>巨量算数、蝉妈妈、交易所公开 API、东财双源数据</li>
+          <li><b>技术栈：</b>Python、FastAPI、Node.js、SQLite、原生 HTML/CSS/JS</li>
+          <li><b>AI / 数据：</b>DeepSeek 大模型、RAG 检索、Pandas、Numpy</li>
+          <li><b>可视化：</b>ECharts、Excel 高级建模、研报终端风格 UI</li>
+          <li><b>支付 &amp; 安全：</b>支付宝支付、验签对账、HMAC、限流、哈希脱敏</li>
+          <li><b>内容运营：</b>SEO、平台合规规则、KOL 策略、AI 生图技能库</li>
+          <li><b>方法论：</b>价格行为分析、多因子合成、A/B 证伪、Walk-Forward 验证</li>
+        </ul>
+        <div class="tool-tags" aria-label="工具标签云"><span>巨量算数</span><span>蝉妈妈</span><span>Python</span><span>Pandas</span><span>FastAPI</span><span>Node.js</span><span>DeepSeek</span><span>RAG</span><span>ECharts</span><span>Excel</span><span>支付宝</span><span>HMAC</span><span>SEO</span><span>A/B 证伪</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 荣誉 -->
+<section class="awards" id="awards">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-label">07 · Recognition</div>
+      <h2 class="sec-title">荣誉<em>奖项</em></h2>
+      <p class="sec-sub">在校与职业路径上的硬通货——这些是合规敏感度、逻辑严谨度和持续学习能力的最直接背书。</p>
+    </div>
+    <div class="awards-grid">
+      <div class="award rv"><span class="a-no">01</span><div class="a-medal">🏅</div><h3>国家级奖学金</h3><div class="a-rank">× 2 次 · 全校前 0.5%</div><p>连续两年获得，证明长期稳定的逻辑严谨度与执行纪律。</p></div>
+      <div class="award rv d1"><span class="a-no">02</span><div class="a-medal">🌟</div><h3>江苏省三创优秀学生</h3><div class="a-rank">全省仅 2 人 / 年 · TOP 0.2%</div><p>创新、创业、创造三创全能，省级稀缺荣誉，百里挑一的综合素质证明。</p></div>
+      <div class="award rv d2"><span class="a-no">03</span><div class="a-medal">🏆</div><h3>江苏省大学生技能大赛</h3><div class="a-rank">二等奖 · 省级竞赛</div><p>工程实操类省级二等奖，支撑风控行业的精密执行与工程思维底盘。</p></div>
+      <div class="award rv d3"><span class="a-no">04</span><div class="a-medal">💪</div><h3>三级健身教练 / 公共营养师</h3><div class="a-rank">双职业资格认证</div><p>健康行业的合规与服务规范双资格，支撑客户风险画像与合规服务专业底盘。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 教育 + 资格 -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-label">08 · Education &amp; Credentials</div>
+      <h2 class="sec-title">教育<em>背景</em> 与资格</h2>
+      <p class="sec-sub">工程专业的底子 + 顶级稀缺荣誉背书——这是风控逻辑和合规敏感度的起点。</p>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card rv">
+        <div class="ic" aria-hidden="true">🎓</div>
+        <div>
+          <h3>江苏联合职业技术学院</h3>
+          <div class="major">模具设计与制造 · 大专（五年制）</div>
+          <div class="date">2018 — 2023</div>
+          <p>在校期间培养了严谨的工程思维、尺寸公差级别的细节敏感度与图纸式逻辑表达习惯。连续两年国家级奖学金（全校前 0.5%），并获江苏省三创优秀学生（全省 TOP 0.2%）、省技能大赛二等奖等荣誉——为风控合规工作打下扎实的逻辑严谨度、执行纪律与合规意识。</p>
+        </div>
+      </div>
+      <aside class="edu-side rv d1" aria-label="资格证书清单">
+        <h3>资格与认证</h3>
+        <div class="sub">CREDENTIALS · 硬通货</div>
+        <ul>
+          <li>国家级奖学金 <span>× 2 次</span></li>
+          <li>江苏省三创优秀学生 <span>TOP 0.2%</span></li>
+          <li>省大学生技能大赛 <span>二等奖</span></li>
+          <li>三级健身教练 <span>职业资格</span></li>
+          <li>公共营养师 <span>职业资格</span></li>
+          <li>支付宝支付集成实战 <span>已交付 2 款</span></li>
+          <li>92 项支付安全断言 <span>100% 通过</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 联系 -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-label">09 · Contact</div>
+      <h2 class="sec-title">联系<em>我</em></h2>
+      <p class="sec-sub">如果您正在寻找一位能把风险变成优势、把合规做成竞争力的成员——欢迎给我一封邮件，我会很快回复。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="c-list rv">
+        <div class="c-item"><div class="ci" aria-hidden="true">✉️</div><div style="flex:1"><div class="k">Email · 首选联系方式</div><a class="v" href="mailto:861481939@qq.com">861481939@qq.com</a><div class="sub">工作日 24 小时内必复</div></div></div>
+        <div class="c-item"><div class="ci" aria-hidden="true">📍</div><div style="flex:1"><div class="k">Location · 坐标</div><div class="v">江苏 · 泰州</div><div class="sub">支持远程 · 出差 · 就近城市面谈</div></div></div>
+        <div class="c-item"><div class="ci" aria-hidden="true">🎯</div><div style="flex:1"><div class="k">Seeking · 目标</div><div class="v">风控 / 合规 / 清算岗位</div><div class="sub">全职 · 实习 · 项目合作均可</div></div></div>
+        <div class="c-item"><div class="ci" aria-hidden="true">🚀</div><div style="flex:1"><div class="k">Availability · 到岗</div><div class="v">可快速到岗</div><div class="sub">邮箱沟通确认后 1 周内可到岗</div></div></div>
+      </div>
+      <div class="c-panel rv d1" aria-label="邮件联系面板">
+        <h3>期待和您的团队一起，<br>把风控做成真正的<em>护城河</em>。</h3>
+        <p>我会带着数据、逻辑、合规意识和 7 个项目的实战经验坐到您的桌前——不是来「学习」的，是来替团队把风险提前看穿、把合规落地、把结果交出来的。</p>
+        <div class="mail" aria-label="邮箱地址">📮 861481939@qq.com</div>
+        <a href="mailto:861481939@qq.com" class="btn">📧 发送邮件（首选）</a>
+        <div class="or">— or —</div>
+        <a href="resume.html" class="btn-ghost-light" target="_blank" rel="noopener">📄 下载简历 PDF · 打开即打印</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="fl">梁智超 · <b>LIANG ZHICHAO</b></div>
+  <div class="mid">财税 AI 合规副驾驶 × AXION 量化信号 ｜ 双栈主理人 ｜ 执业档案 v5 · 2026-09</div>
+  <div class="fm">© 2026 LIANG ZHICHAO · EXECUTIVE DOSSIER · <a href="mailto:861481939@qq.com">EMAIL ME · 861481939@qq.com</a></div>
+  <div class="fm" style="margin-top:6px;font-size:12px;opacity:.78;">🔒 隐私声明：公开页面仅保留邮箱联系方式，手机号码仅用于私下沟通，不在任何公开站点披露。</div>
+</footer>
+
+<script>
+/* 预加载 */
+(function(){
+  const pre=document.getElementById('preloader');
+  const fill=document.getElementById('preFill');
+  const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(fill)fill.style.width='100%';
+  setTimeout(()=>pre&&pre.classList.add('done'),rm?120:780);
+  setTimeout(()=>pre&&pre.parentNode&&pre.classList.add('done'),2200);
+})();
+
+/* 进度条 + 顶栏滚动阴影 */
+const progress=document.getElementById('progress');
+const topbar=document.getElementById('topbar');
+function onScroll(){
+  const h=document.documentElement;
+  progress.style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight)||0)+')';
+  if(h.scrollTop>30)topbar.classList.add('scrolled');else topbar.classList.remove('scrolled');
+}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* 导航 active & 移动端 */
+const nav=document.getElementById('nav');
+const navToggle=document.getElementById('navToggle');
+window.addEventListener('scroll',()=>{
+  const pos=window.scrollY+120;
+  document.querySelectorAll('section[id]').forEach(sec=>{
+    const id=sec.id;if(!id)return;
+    if(pos>=sec.offsetTop&&pos<sec.offsetTop+sec.offsetHeight){
+      nav.querySelectorAll('a').forEach(a=>{
+        const on=a.getAttribute('href')==='#'+id;
+        a.classList.toggle('active',on);
+        if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');
+      });
+    }
+  });
+},{passive:true});
+navToggle.addEventListener('click',()=>{
+  const o=navToggle.classList.toggle('open');
+  nav.classList.toggle('open',o);
+  navToggle.setAttribute('aria-expanded',o?'true':'false');
+});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navToggle.classList.remove('open');nav.classList.remove('open');
+  navToggle.setAttribute('aria-expanded','false');
+}));
+
+/* 时钟 */
+const clockEl=document.getElementById('clock');
+function tickClock(){if(clockEl)clockEl.textContent='TAIZHOU '+new Date().toLocaleTimeString('zh-CN',{hour12:false,timeZone:'Asia/Shanghai'});}
+tickClock();setInterval(tickClock,1000);
+
+/* 打字机：5 个身份滚动（新增量化/支付2项） */
+const roles=['风控合规清算方向','内容风控负责人','量化风控工程师','付费 SaaS 产品交付人','电商工作室创始人','数据驱动决策者'];
+const typ=document.getElementById('typed');
+let ri=0,ci=0,del=false;
+function typeTick(){
+  if(!typ)return;
+  const c=roles[ri];
+  typ.textContent=c.slice(0,ci);
+  if(!del){
+    ci++;
+    if(ci>c.length){del=true;setTimeout(typeTick,1600);return}
+    setTimeout(typeTick,80);
+  }else{
+    ci--;
+    if(ci<0){del=false;ri=(ri+1)%roles.length;setTimeout(typeTick,340);return}
+    setTimeout(typeTick,38);
+  }
+}
+typeTick();
+
+/* 显现 + 计数 + 计量条 */
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.ct').forEach(runCount);
+      e.target.querySelectorAll('.sig>i,.tk>i').forEach(f=>{if(f.dataset.w)f.style.width=f.dataset.w;});
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+function runCount(el){
+  if(el.dataset.done)return;
+  el.dataset.done=true;
+  const t=+el.dataset.t,dur=1450,s=performance.now();
+  function frame(now){
+    const p=Math.min((now-s)/dur,1);
+    el.textContent=Math.round(t*(1-Math.pow(1-p,3)));
+    if(p<1)requestAnimationFrame(frame);
+    else el.textContent=t;
+  }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=t;return}
+  requestAnimationFrame(frame);
+}
+
+/* 站内链接自动附加预览 token（IGA 预览需要） */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a');
+  if(!a)return;
+  const href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||/^(https?:|mailto:|tel:|javascript:)/i.test(href))return;
+  if(href==='#'||href==='')return;
+  const qs=window.location.search;
+  if(!qs||a.search!=='')return;
+  e.preventDefault();
+  const url=a.href+qs;
+  if(a.target==='_blank'){window.open(url,'_blank');}
+  else{window.location.href=url;}
+});
+</script>
+</body>
+</html>

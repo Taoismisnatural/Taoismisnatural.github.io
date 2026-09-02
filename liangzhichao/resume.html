@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梁智超 · 简历 | 风控合规清算</title>
+<meta name="description" content="梁智超 — 风控合规清算方向，简历。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1e3a8f;
+  --ink:#111827;
+  --slate:#4b5563;
+  --line:#e6eaf2;
+  --faint:#94a0b6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Noto Sans SC',sans-serif;
+  background:#eef1f6;color:var(--ink);line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+/* 顶部工具条（打印时隐藏） */
+.toolbar{
+  position:sticky;top:0;z-index:10;display:flex;justify-content:center;gap:12px;padding:16px;
+  background:#1b2436;box-shadow:0 4px 18px rgba(0,0,0,.18);
+}
+.toolbar a,.toolbar button{
+  font-family:'Noto Sans SC',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;
+  padding:10px 22px;border-radius:8px;border:none;cursor:pointer;text-decoration:none;transition:.2s;
+}
+.toolbar .back{background:#fff;color:#1b2436}
+.toolbar .back:hover{background:#e4e9f4}
+.toolbar .print{background:var(--navy);color:#fff}
+.toolbar .print:hover{background:#16295f}
+/* A4 纸张 */
+.sheet{
+  width:210mm;min-height:297mm;margin:24px auto;background:#fff;
+  padding:18mm 20mm 20mm;box-shadow:0 10px 40px rgba(17,24,39,.15);
+}
+/* 头部 */
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding-bottom:14px;border-bottom:3px solid var(--navy);flex-wrap:wrap}
+.head h1{font-family:'Noto Serif SC',serif;font-size:30px;letter-spacing:6px;color:var(--ink)}
+.head h1 em{font-style:normal;color:var(--navy)}
+.head .pos{font-weight:700;color:var(--navy);font-size:15px;margin-top:4px;letter-spacing:1px}
+.head .meta{font-size:12.5px;color:var(--slate);text-align:right;line-height:1.9}
+.head .meta a{color:var(--navy);text-decoration:none}
+/* 区块 */
+.sec{margin-top:20px}
+.sec-h{display:flex;align-items:center;gap:10px;font-family:'Noto Serif SC',serif;font-weight:700;font-size:16px;letter-spacing:2px;color:var(--navy);margin-bottom:10px}
+.sec-h::after{content:'';flex:1;border-top:1px solid var(--line)}
+.sec-h .en{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:2px;color:var(--faint);font-weight:400}
+/* 自我评价 */
+.summary{font-size:13.5px;color:var(--slate)}
+.summary b{color:var(--ink)}
+/* 两列 */
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px}
+/* 经历 */
+.job{margin-bottom:16px}
+.job-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 10px}
+.job-top h3{font-size:15.5px;font-weight:700;color:var(--ink)}
+.job-top .org{font-size:13px;color:var(--navy);font-weight:500}
+.job-top .date{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);white-space:nowrap}
+.job ul{list-style:none;margin-top:6px}
+.job li{font-size:13px;color:var(--slate);padding:3px 0 3px 16px;position:relative}
+.job li::before{content:'';position:absolute;left:0;top:10px;width:7px;height:7px;border:1.5px solid var(--navy);border-radius:1px}
+.job li b{color:var(--ink)}
+/* 数据 */
+.km{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.km .k{background:#f4f7ff;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.km .k b{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--navy);display:block}
+.km .k span{font-size:11.5px;color:var(--slate)}
+/* 能力 / 技能 */
+.skill{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px dashed var(--line);color:var(--slate)}
+.skill b{color:var(--ink);font-weight:500}
+.skill .v{font-family:'IBM Plex Mono',monospace;color:var(--navy);font-size:12px}
+/* 奖项 */
+.li{display:flex;gap:10px;font-size:13px;color:var(--slate);padding:5px 0}
+.li .d{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);white-space:nowrap;padding-top:2px}
+.li b{color:var(--ink)}
+/* 工具标签 */
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.tags span{font-size:11.5px;font-family:'IBM Plex Mono',monospace;color:var(--navy);border:1px solid #d5dff5;background:#f4f7ff;padding:3px 10px;border-radius:6px}
+/* 项目作品 */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.work{
+  border:1px solid var(--line);border-left:3px solid var(--navy);
+  border-radius:10px;padding:14px 16px;background:#fff;
+  transition:box-shadow .25s,transform .25s;
+}
+.work:hover{box-shadow:0 8px 24px rgba(30,58,143,.08);transform:translateY(-1px)}
+.work.featured{border-left-color:#c49a4a;background:linear-gradient(180deg,#fff 0%,#fffdf8 100%)}
+.work-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.work-title{font-weight:700;font-size:14.5px;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.work-title .badge{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1px;
+  color:#8a6619;background:#fbf2de;border:1px solid #e8d4a1;border-radius:4px;
+  padding:2px 8px;vertical-align:middle;
+}
+.work-date{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);white-space:nowrap;padding-top:3px}
+.work-desc{font-size:12.5px;color:var(--slate);margin:2px 0 6px;line-height:1.65}
+.work ul{list-style:none}
+.work li{font-size:12.5px;color:var(--slate);padding:2px 0 2px 14px;position:relative;line-height:1.65}
+.work li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border:1.2px solid var(--navy);border-radius:1px;transform:rotate(45deg)}
+.work li b{color:var(--ink)}
+.foot{margin-top:24px;padding-top:12px;border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+/* 打印 */
+@media print{
+  body{background:#fff}
+  .toolbar{display:none}
+  .sheet{margin:0;box-shadow:none;width:auto;min-height:auto;padding:12mm 14mm}
+  @page{size:A4;margin:0}
+  .job,.work{page-break-inside:avoid}
+}
+@media(max-width:760px){
+  .sheet{padding:14px;width:auto;margin:0;min-height:auto}
+  .grid{grid-template-columns:1fr}
+  .work-grid{grid-template-columns:1fr}
+  .head{flex-direction:column;align-items:flex-start}
+  .head .meta{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a class="back" href="index.html">← 返回个人主页</a>
+  <button class="print" onclick="window.print()">打印 / 另存为 PDF</button>
+</div>
+
+<div class="sheet">
+  <div class="head">
+    <div>
+      <h1>梁智超<em>.</em></h1>
+      <div class="pos">风控合规清算方向 · 数据驱动 · 合规闭环</div>
+    </div>
+    <div class="meta">
+      861481939@qq.com<br>江苏 · 泰州<br>求职中 · 可快速到岗
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h">自我评价 <span class="en">PROFILE</span></div>
+    <p class="summary">风控合规清算方向从业者，以<b>数据驱动</b>构建风险监测与合规闭环体系，<b>独立交付 7 个产品级项目</b>，覆盖量化风控框架、证券信号终端、付费 SaaS 支付安全、AI 政策问答、跨境内容站与内容风控全链路。精于价格行为分析预判市场波动，擅长把风险控制与商业目标做成<b>双赢闭环</b>。量化策略 CAGR <b>+454%</b>，支付安全回归断言 <b>92 项</b>，内容风控预警准确率 <b>92%</b>，合规审核通过率 <b>100%</b>。</p>
+  </div>
+
+  <div class="sec grid">
+    <div>
+      <div class="sec-h">工作经历 <span class="en">EXPERIENCE</span></div>
+      <div class="job">
+        <div class="job-top"><h3>内容风控负责人</h3><span class="org">个人短视频账号 · 独立操盘</span><span class="date">2024.05 — 至今</span></div>
+        <ul>
+          <li>搭建<b>内容安全风险评估模型</b>，实时监控巨量算数违规关键词，风险预警准确率 <b>92%</b>，有效规避账号封禁风险</li>
+          <li>结合<b>价格行为分析</b>预判市场热点波动，提前 3 天优化审核关键词库：风险率下降 <b>35%</b>、完播率提升 <b>40%</b>、粉丝转化率提升 <b>25%</b></li>
+          <li>制定《高风险内容审核 SOP》覆盖 <b>10 类场景</b>（含老年人养生健康类），平台合规审核率 <b>100%</b></li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-top"><h3>客户风险管理助理</h3><span class="org">皇室堡健身中心</span><span class="date">2023.07 — 2024.07</span></div>
+        <ul>
+          <li>分析 <b>500+ 客户数据</b>（年龄、健康指标、消费习惯），构建高流失风险标签体系，准确率 <b>87%</b></li>
+          <li>定制化方案（饮食 + 训练）提升 <b>80%</b> 目标达成率，客户续约率 <b>85%</b>，降低流失风险 <b>28%</b></li>
+          <li>严格执行行业规范，实现 <b>0 合规投诉</b>，客户满意度 <b>92%</b></li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-top"><h3>创始人</h3><span class="org">杭州余杭乐乾电子商务工作室</span><span class="date">2022.10 — 至今</span></div>
+        <ul>
+          <li>从 0 到 1 创立电商工作室，负责选品、运营与团队搭建，验证<b>从风险识别到商业变现</b>的完整链路</li>
+          <li>将内容风控经验迁移至电商场景，以数据驱动决策，持续打磨<b>风险与增长平衡</b>的经营方法论</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-h">关键数据 <span class="en">KEY METRICS</span></div>
+      <div class="km">
+        <div class="k"><b>7<i> 个</i></b><span>产品级项目独立交付</span></div>
+        <div class="k"><b>+454%</b><span>量化策略 CAGR (600d)</span></div>
+        <div class="k"><b>92%</b><span>风险预警准确率</span></div>
+        <div class="k"><b>100%</b><span>合规审核通过率</span></div>
+        <div class="k"><b>92<i> 项</i></b><span>支付安全回归断言</span></div>
+        <div class="k"><b>2800+</b><span>A 股周线级扫描标的</span></div>
+      </div>
+
+      <div class="sec-h">能力与技能 <span class="en">SKILLS</span></div>
+      <div class="skill"><b>多因子风控模型 / 回测保真</b><span class="v">95%</span></div>
+      <div class="skill"><b>证券量化信号引擎 (顶/底)</b><span class="v">90%</span></div>
+      <div class="skill"><b>支付安全 · 验签 / 对账 / 幂等</b><span class="v">93%</span></div>
+      <div class="skill"><b>风险评估模型搭建</b><span class="v">95%</span></div>
+      <div class="skill"><b>价格行为分析 / 市场预判</b><span class="v">88%</span></div>
+      <div class="skill"><b>合规审核流程制定</b><span class="v">96%</span></div>
+      <div class="skill"><b>Python 数据管道 / EDA</b><span class="v">90%</span></div>
+
+      <div class="sec-h">荣誉 <span class="en">RECOGNITION</span></div>
+      <div class="li"><span class="d">国家级</span><span><b>奖学金</b>（×2）· 全校前 0.5%</span></div>
+      <div class="li"><span class="d">省级</span><span><b>江苏省三创优秀学生</b> · 全省仅 2 人/年</span></div>
+      <div class="li"><span class="d">省级</span><span><b>大学生技能大赛</b> · 二等奖</span></div>
+      <div class="li"><span class="d">资格</span><span><b>三级健身教练 / 公共营养师</b></span></div>
+
+      <div class="sec-h">教育 <span class="en">EDUCATION</span></div>
+      <div class="li"><span class="d">2018-2023</span><span><b>江苏联合职业技术学院</b> · 模具设计与制造 · 大专</span></div>
+
+      <div class="sec-h">工具与平台 <span class="en">TOOLS</span></div>
+      <div class="tags"><span>Python</span><span>FastAPI</span><span>Pandas</span><span>ECharts</span><span>DeepSeek RAG</span><span>HMAC 验签</span><span>iFinD / 东财</span><span>巨量算数</span><span>蝉妈妈</span><span>Excel 高级</span><span>SEO</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h">核心项目作品 <span class="en">SELECTED WORK · 7 项</span></div>
+    <div class="work-grid">
+      <div class="work featured">
+        <div class="work-top">
+          <div class="work-title">大B量化 · 永续合约风控框架 <span class="badge">精选 · 量化风控</span></div>
+          <div class="work-date">2026 · 独立产品</div>
+        </div>
+        <div class="work-desc">多因子量化风控框架，覆盖加密货币永续合约链上全链路风险监测：资金费率 / OI / 未平仓量 / 多空比 / 强平清算 / 买入卖出量比 / 长期持仓比等 20+ 数据因子。</div>
+        <ul>
+          <li><b>策略回测 CAGR +454%</b>（600d 长窗），最大回撤 <b>−24.3%</b>，夏普比 <b>2.18</b>，卡玛比 <b>3.01</b>，胜率 <b>63%</b>，盈亏比 <b>2.41</b></li>
+          <li>链上风控看板：<b>12 条链实时监控 · 8 万个池子</b>（Solana/Ethereum/Base 等），异常池预警、Rug 风险检测、交易量异常告警</li>
+          <li>风控分层：<b>仓位管理 + 止损触发 + 异常行情熔断</b>，三级告警机制，回测引擎内置 6 种偏差抑制避免过拟合</li>
+        </ul>
+        <div class="tags"><span>多因子模型</span><span>回测保真</span><span>链上监控</span><span>清算预警</span><span>Solana/EVM</span></div>
+      </div>
+
+      <div class="work featured">
+        <div class="work-top">
+          <div class="work-title">衡元量化 · A 股顶底信号终端 <span class="badge">精选 · 证券量化</span></div>
+          <div class="work-date">2026 · 独立产品</div>
+        </div>
+        <div class="work-desc">A 股周线级别底部 / 顶部信号扫描终端，融合价量形态 + 财务质量 + 风险画像 + 新闻情绪的四级信号引擎，生成可操作买卖建议。</div>
+        <ul>
+          <li><b>2800+ 只股票</b>全覆盖（主板+创业板+科创板），6 级信号强度：D/C/B/A/A+/S，周频输出 20 只优选标的</li>
+          <li>价量形态层：MFI + WVAP + OBV 背离 + 价格带突破 + 周 K 底分形确认；财务层：连续 5 年分红 / 低 PE-PB / 高 ROE / 扣非利润过滤</li>
+          <li>EW-NLP 新闻情绪层：负面打分（st 退市、立案调查、财务造假、违规减持、商誉减值等 25 类关键词），输出风险黑名单</li>
+        </ul>
+        <div class="tags"><span>东方财富 API</span><span>iFinD 数据</span><span>信号引擎</span><span>NLP 情绪</span><span>ECharts</span></div>
+      </div>
+
+      <div class="work featured">
+        <div class="work-top">
+          <div class="work-title">缥缃秘府 · 紫微斗数付费 SaaS <span class="badge">精选 · 支付合规</span></div>
+          <div class="work-date">2026 · 独立产品</div>
+        </div>
+        <div class="work-desc">付费内容站 + 支付全链路安全设计。4 档分层付费（体验 ¥1.00 / 基础 ¥18.80 / 标准 ¥98.80 / 专业 ¥198.80），后端 HMAC 解锁码 + 幂等订单 + 双对账，防重放、防篡改、防绕过。</div>
+        <ul>
+          <li><b>92 项支付安全回归断言</b>全通过：签名伪造、订单篡改、金额欺骗、重复回调、越权解锁、并发撞单等 8 大类场景覆盖</li>
+          <li>HMAC-SHA256 解锁码：订单号 + 档位 + 过期时间 + 服务端密钥签名，前端无法伪造，锁码过期即失效</li>
+          <li>合规闭环：<b>幂等键（3s 窗口）</b>防重复创建订单，<b>回调金额核对</b>拦截异常金额，<b>数据库 + 微信支付订单双对账</b>脚本每日自动核对</li>
+        </ul>
+        <div class="tags"><span>HMAC 验签</span><span>支付幂等</span><span>双对账</span><span>分层付费</span><span>微信支付</span></div>
+      </div>
+
+      <div class="work">
+        <div class="work-top">
+          <div class="work-title">财税 AI 问答助手 <span class="badge">内容风控 · 精标</span></div>
+          <div class="work-date">2026 · 独立产品</div>
+        </div>
+        <div class="work-desc">RAG 架构的财税政策问答工具，覆盖 143+ 国家及地方政策文件，集成付费模块（0.99 元 / 月卡 / 年卡 3 档），A/B 证伪 10 轮优化。</div>
+        <ul>
+          <li><b>143+ 财税政策文件</b>结构化入库，引用段落级溯源展示，避免幻觉答案</li>
+          <li>完整支付闭环：<b>创建订单 → 拉起支付 → 回调验签 → 幂等入账</b>，异常订单隔离审计</li>
+          <li>A/B 证伪 10 轮：RAG 检索召回率 +18pp，答案引用准确率提升至 <b>96%</b></li>
+        </ul>
+        <div class="tags"><span>RAG</span><span>DeepSeek</span><span>FastAPI</span><span>支付闭环</span><span>A/B 证伪</span></div>
+      </div>
+
+      <div class="work">
+        <div class="work-top">
+          <div class="work-title">微博大 V 孵化器 <span class="badge">内容风控</span></div>
+          <div class="work-date">2026 · 独立产品</div>
+        </div>
+        <div class="work-desc">从人设锚点到强观点对抗性写作的全流程 SOP，内置合规红线检测库，覆盖财经税务等垂直领域的内容风控落地。</div>
+        <ul>
+          <li>人设 / 钩子 / 观点 / 对抗技巧 4 维定位器，输出 6 大模板 + 36 条高风险词黑名单</li>
+          <li>合规层：违规词审核 SOP 覆盖 <b>10 类敏感场景</b>，平台合规审核通过率 <b>100%</b></li>
+          <li>效果层：实测首条内容 48h 互动破 500+，完播率与转发率显著高于行业均值</li>
+        </ul>
+        <div class="tags"><span>内容风控</span><span>合规 SOP</span><span>强观点写作</span><span>风险词库</span></div>
+      </div>
+
+      <div class="work">
+        <div class="work-top">
+          <div class="work-title">跨境内容站 · 中美税收指南 <span class="badge">跨境 · 增长</span></div>
+          <div class="work-date">2026 · 独立产品</div>
+        </div>
+        <div class="work-desc">SEO 为核心增长引擎的中英双语内容站，深耕跨境财税赛道，7 大内容集群 + 3 转化着陆页，沉淀精准留资私域。</div>
+        <ul>
+          <li>内容集群：1040 / W-8BEN / 8233 / FBAR / FATCA / EIN 申请 /  NRA 预扣共 7 条线</li>
+          <li>SEO 基线：Google Search Console 接入，301 跳转与 hreflang 双语配对 + sitemap 提交</li>
+          <li>合规风控：<b>免责声明 3 处强制锚点</b>（非税务建议 / 信息仅供参考 / 建议咨询持牌专业人士），避免监管风险</li>
+        </ul>
+        <div class="tags"><span>SEO</span><span>跨境内容</span><span>合规免责</span><span>双语站</span><span>私域转化</span></div>
+      </div>
+
+      <div class="work">
+        <div class="work-top">
+          <div class="work-title">电商工作室 · 自营品牌店 <span class="badge">经营风控</span></div>
+          <div class="work-date">2022 — 至今 · 创始人</div>
+        </div>
+        <div class="work-desc">从 0 到 1 建立电商选品、运营与客户风控的一体化链路，将内容风控方法论迁移至电商场景，实现合规经营与增长双赢。</div>
+        <ul>
+          <li>选品风控：竞品违规风险 + 广告法极限词扫描，累计规避 <b>120+ 件</b>高风险 SKU</li>
+          <li>客户画像：<b>500+ 客户数据</b>建模，高流失标签准确率 <b>87%</b>，续约率 <b>85%</b></li>
+          <li>合规：运营期 <b>0 投诉 / 0 违规处罚</b>，建立《电商合规经营手册》覆盖 8 大类场景</li>
+        </ul>
+        <div class="tags"><span>选品风控</span><span>客户画像</span><span>合规经营</span><span>0 投诉</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>梁智超 · 简历</span>
+    <span>861481939@qq.com · 江苏泰州</span>
+  </div>
+</div>
+
+</body>
+</html>

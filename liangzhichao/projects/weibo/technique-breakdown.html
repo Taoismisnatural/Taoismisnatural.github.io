@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手法拆解表 · 10位大V → 可用税句式（努力错位论）</title>
+<style>
+  :root{
+    --bg:#0e1015;--bg2:#161a22;--bg3:#1e242f;--ink:#e8ecf2;--muted:#929aab;
+    --rule:#262d3a;--accent:#ffcf2e;--accent2:#3df0c8;--risk:#ff6b6b;--blue:#6ea8ff;--purple:#cd8cff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(14,16,21,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+  .topbar .wrap{display:flex;align-items:center;gap:18px;height:58px}
+  .logo{font-weight:800;letter-spacing:.5px}.logo b{color:var(--accent)}
+  .topbar nav{display:flex;gap:6px;margin-left:auto;overflow-x:auto}
+  .topbar nav a{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:8px;font-size:14px;white-space:nowrap}
+  .topbar nav a.on{color:#10131a;background:var(--accent);font-weight:700}
+  .hero{padding:46px 0 28px;border-bottom:1px solid var(--rule)}
+  .hero .tagline{color:var(--accent2);font-weight:700;letter-spacing:2px;font-size:13px;margin-bottom:10px}
+  .hero h1{font-size:clamp(24px,4vw,38px);font-weight:900;line-height:1.25}
+  .hero p{color:var(--muted);margin-top:12px;max-width:860px;font-size:15px}
+  .hero p b{color:var(--ink)}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:26px 0 6px}
+  .stat{background:var(--bg2);border:1px solid var(--rule);border-radius:12px;padding:14px 16px}
+  .stat b{font-size:26px;font-weight:900;color:var(--accent)}
+  .stat .l{color:var(--muted);font-size:13px;margin-top:2px}
+  section{padding:40px 0;border-bottom:1px solid var(--rule)}
+  .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-h .num{color:var(--accent);font-weight:900;font-size:20px}
+  .sec-h h2{font-size:23px;font-weight:800}
+  .sec-sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+  .crit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:20px 0 8px}
+  .crit{background:var(--bg2);border:1px solid var(--rule);border-radius:12px;padding:16px}
+  .crit .t{color:var(--accent);font-weight:800;margin-bottom:6px;font-size:15px}
+  .crit p{color:var(--muted);font-size:13.5px}
+  .pick-note{background:var(--bg3);border-left:4px solid var(--accent);border-radius:10px;padding:15px 18px;margin:20px 0;font-size:14px}
+  .pick-note b{color:var(--accent)}
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+  .filter{padding:6px 13px;border:1px solid var(--rule);border-radius:20px;font-size:13px;cursor:pointer;color:var(--muted);background:var(--bg2);transition:.15s}
+  .filter.on{background:var(--accent);color:#10131a;border-color:var(--accent);font-weight:700}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(520px,1fr));gap:18px}
+  .card{background:var(--bg2);border:1px solid var(--rule);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:13px}
+  .card:hover{border-color:var(--accent)}
+  .card .hd{display:flex;align-items:flex-start;gap:14px}
+  .card .rank{font-size:25px;font-weight:900;color:var(--accent);line-height:1;min-width:38px}
+  .card .nm{font-size:19px;font-weight:800}
+  .card .nm small{color:var(--muted);font-weight:500;font-size:12.5px;display:block;margin-top:2px}
+  .card .tech{color:var(--accent2);font-weight:700;font-size:14px;margin-top:5px}
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  .tag{font-size:11.5px;padding:3px 9px;border-radius:6px;background:var(--bg3);border:1px solid var(--rule);color:var(--accent)}
+  .tag.b{color:var(--accent2)}.tag.c{color:var(--blue)}.tag.d{color:var(--purple)}
+  .blk{font-size:13.5px}
+  .blk .lab{color:var(--muted);font-size:12px;letter-spacing:1px;margin-bottom:5px;font-weight:700}
+  .quote{border-left:3px solid var(--accent2);background:var(--bg3);padding:9px 12px;border-radius:6px;color:#dfe4ee;font-size:13px;margin-bottom:8px}
+  .quote .who{color:var(--accent);font-weight:700;margin-right:6px}
+  .template{background:#17202b;border:1px solid var(--rule);border-left:3px solid var(--blue);border-radius:6px;padding:10px 12px;font-size:13px;color:#cfe0ff;white-space:pre-wrap;margin-bottom:8px}
+  .template .dot{color:var(--accent);font-weight:800}
+  .risk{background:#261d22;border:1px solid var(--rule);border-left:3px solid var(--risk);border-radius:6px;padding:9px 12px;font-size:12.5px;color:#ffcaca}
+  .risk .lab{color:#ff9b9b;font-weight:800;letter-spacing:1px;font-size:12px;margin-bottom:4px}
+  .draft{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+  .tweetchart{background:var(--bg2);border:1px solid var(--rule);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:11px}
+  .tweetchart .ttl{color:var(--accent2);font-weight:800;font-size:14px}
+  .tweetchart .line{font-size:13.5px;color:#e2e8f4;background:var(--bg3);border-radius:8px;padding:9px 12px;border-left:3px solid var(--accent)}
+  .tweetchart .line b{color:var(--accent)}
+  .tweetchart .use{color:var(--muted);font-size:12px;margin-top:5px}
+  .check{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  .ci{display:flex;gap:12px;align-items:flex-start;background:var(--bg2);border:1px solid var(--rule);border-radius:12px;padding:14px 16px}
+  .ci .x{flex-shrink:0;width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px}
+  .ci.good .x{background:#1c3528;color:#3df0c8}
+  .ci.bad .x{background:#3a2427;color:#ff9b9b}
+  .ci .t{font-weight:800;font-size:14.5px;margin-bottom:3px}
+  .ci p{color:var(--muted);font-size:13px;line-height:1.6}
+  .foot{color:var(--muted);font-size:12.5px;padding:34px 0;line-height:1.9}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo">微博<span><b>手法拆解表</b></span></div>
+    <nav>
+      <a href="#crit" class="on">01 筛选逻辑</a>
+      <a href="#breakdown">02 手法→句式拆解</a>
+      <a href="#draft">03 组合成文示范</a>
+      <a href="#deai">04 反AI味清单</a>
+    </nav>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="tagline">TECHNIQUE → SENTENCE · 50 选 10</div>
+    <h1>「手法 → 可用句式」拆解表</h1>
+    <p>基于<b>数据仓库 50 位真实大V</b>，按本号定位（<b>税 + 强观点 + 对抗性 + 人味不AI</b>）筛出 <b>10 位手法最值得照抄</b>的大V。每一个都给出：他到底用了什么手法 → 他原句长什么样 → 我能套用的税相关句式 → 如何挂接到核心锚点「努力错位论」→ 风险红线。</p>
+    <div class="stats">
+      <div class="stat"><b>50</b><div class="l">样本大V（数据仓库）</div></div>
+      <div class="stat"><b>10</b><div class="l">筛出照抄对象</div></div>
+      <div class="stat"><b>42</b><div class="l">可直接套用税句式</div></div>
+      <div class="stat"><b>5</b><div class="l">手法类型维度</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="crit">
+  <div class="wrap">
+    <div class="sec-h"><span class="num">01</span><h2>从 50 位里，为什么是这 10 位</h2></div>
+    <div class="sec-sub">筛选轴 = 本号定位的四个核心诉求。候选在这根轴上必须自带强项，弱项由他人补足。</div>
+    <div class="crit-grid" id="crit"></div>
+    <div class="pick-note">
+      忠于数据 → 产出拆解。这 10 位的手法全部从数据仓库的<b>真实博文样本</b>逐条提取，不虚构、不美化；每一句「可用句式」都标了对齐「努力错位论」的落点。手法类别可点下方筛选切换查看。
+    </div>
+  </div>
+</section>
+
+<section id="breakdown">
+  <div class="wrap">
+    <div class="sec-h"><span class="num">02</span><h2>10 位手法 → 可用税句式</h2></div>
+    <div class="sec-sub">每卡 =「谁 → 什么手法 → 他原句 → 我套用的税句式 → 对齐努力错位论」。措辞示例为占位，需换真实新闻/数据。</div>
+    <div class="filters" id="filters">
+      <span class="filter on" data-f="all">全部</span>
+      <span class="filter" data-f="open">开口/破冰</span>
+      <span class="filter" data-f="team">对抗/点名</span>
+      <span class="filter" data-f="human">人味/去AI</span>
+      <span class="filter" data-f="idea">造词/立判</span>
+      <span class="filter" data-f="interact">互动/评论区</span>
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section id="draft">
+  <div class="wrap">
+    <div class="sec-h"><span class="num">03</span><h2>组合成文示范：把手法混着用</h2></div>
+    <div class="sec-sub">单条微博不该只用一招——下面按「开口→立判→点名→互动」的顺序，把多位大V的手法拼成一条可直接套用的「税 + 努力错位论」成稿骨架，<> 处自行填充。</div>
+    <div class="draft" id="draft"></div>
+  </div>
+</section>
+
+<section id="deai">
+  <div class="wrap">
+    <div class="sec-h"><span class="num">04</span><h2>反 AI 味检查清单</h2></div>
+    <div class="sec-sub">上次反馈的核心痛点就是「太像AI、缺人味」。发每一条前，对着清单过一遍。</div>
+    <div class="check" id="checklist"></div>
+  </div>
+</section>
+
+<div class="foot">
+  <div class="wrap">
+    手法拆解表 · v1 · 生成于 2026-08-24 · 底座 = 微博大V数据仓库（50 位真实博文样本）<br>
+    「可用句式」为税务/宏观/努力叙事方向的示例占位，需按具体新闻与真实数据填充后发布。本文为拆解建议，不构成任何投资/税务意见。
+  </div>
+</div>
+
+<script>
+const CRIT=[
+ {t:"① 财税相关性",p:"选题能贴到税/钱/分配/体制，天然蹭得上「努力错位论」母题。温铁军、卢麒元、曹多鱼直接命中。"},
+ {t:"② 强观点敢下结论",p:"不对事实旁观，直接站队立判给结论（可证伪更好）。徐晓峰「只做多」、洪榕「立点位」是模板。"},
+ {t:"③ 对抗性/情绪张力",p:"制造对立、点名、开怼，逼读者选边进评论区。李建秋、papi酱情绪密度拉满。"},
+ {t:"④ 人味/反AI感",p:"口语、自嘲、亲身经历、留白，去掉AI正确废话。望京博格、卢克文、曹多鱼最去AI味。"},
+ {t:"⑤ 可持续复制",p:"手法得能变成固定句式模板反复用（发车/栏目化），不是偶发灵感。任泽平、花荣属此。"}
+];
+document.getElementById('crit').innerHTML=CRIT.map(c=>'<div class="crit"><div class="t">'+c.t+'</div><p>'+c.p+'</p></div>').join('');
+
+const DATA=[
+{rank:"01",nm:"曹多鱼",bio:"税/宏观 · IP郑州",tech:"提问开场 + 粉丝来信破冰 + 留白句收尾",cls:["open","human"],
+ egs:[
+  "今天有个粉丝过来问我一个问题…就这个问题，我结合自己亲身经历来说好了。",
+  "当一道题只给你两个选项的时候，往往就是刻意把第三个选项给隐藏掉了，而第三个选项就是租房。"
+ ],
+ tpl:[
+  "都2026年了，为什么工资条相当体面，到手却总是不够花？今天有个粉丝来问我这个问题…就这个，我结合自己的亲身经历来说好了。",
+  "当一个问题只给你「A还是B」两个选项时，往往是把第三个选项给藏起来了——而第三个选项，就是<另辟蹊径的方案>。",
+  "留白收尾：「至于该怎么做，你自己想。」"
+ ],
+ loc:"「努力错位论」=那件被刻意藏起的第三件事：你以为只有「更努力」和「更聪明」两条路，真正决定处境的是<税/分配/资产>这条藏起来的路。",
+ risk:"留白要到位，别把话说尽；第三选项要反直觉但立得住，否则读者觉得你在硬拗。"},
+
+{rank:"02",nm:"卢麒元",bio:"财政/主权叙事",tech:"对立阵营点名 + 指代要具象 + 敏感词设边界",cls:["team"],
+ egs:[
+  "该收拾一下败家的殖儿殖女们了！",
+  "有人穿着学术的西装，拿着英文期刊当通行证，把全民命脉一份一份打包塞进私有化的购物车。"
+ ],
+ tpl:[
+  "该收拾一下那些一边高喊奋斗、一边把税收优惠全做给自己人的<既得者>们了。",
+  "穿着「公平」西装、拿着报表当通行证，正把普通人的个税和中小企业的税负，一份一份打包塞进自己的购物车。",
+  "敏感词设界：「我发现很多『聪明人』从来不谈这件事。」"
+ ],
+ loc:"敌人是「告诉你要更拼才能翻身」的那套叙事本身——总有人穿「奋斗」马甲让你吃苦，却绝口不提税与资产的错位。",
+ risk:"点名要有具体动作/画像支撑，空喊会油腻；表达需合规，避免直接攻击监管红线。"},
+
+{rank:"03",nm:"温铁军",bio:"经济学家 · 三农/宏观",tech:"口语化反问 + 具体到金额 + 对立双方拉扯",cls:["team","human"],
+ egs:[
+  "农民本来花30万就可以盖栋3层楼…却用各种手段逼迫农民搬离农村去城市买房。",
+  "为什么我们辛苦赚钱，却提振不了内需？"
+ ],
+ tpl:[
+  "一个普通打工人，一个月到手攒下3000，一年也就3.6万——可他真正怕的是哪笔账？",
+  "为什么我们加班费都到账了，还是觉得越忙越穷？因为账本另一头，有双看不见的手在给你重新定价。",
+  "对立拉扯：「一方面有人说你不够努力，另一方面现实是分配没跟上——两边都不能全信。」"
+ ],
+ loc:"努力错位就错位在——你发力的地方（更拼更卷）和真正决定处境的地方（税制/分配/资产）根本不是一回事。",
+ risk:"金额要具体真实才痛；对立要「双边都像有道理」张力才出来，别一边倒变成纯抱怨。"},
+
+{rank:"04",nm:"卢克文",bio:"时政/财经 · 爽文式",tech:"亲身经历/举例故事化 + 赌咒自证 + 爽文钩链",cls:["human"],
+ egs:[
+  "都2026年了，身边还有很多人，思维方式还活在2000年代。",
+  "这4部电影我要是拿过别人一分钱，我没JJ。"
+ ],
+ tpl:[
+  "我身边就有个开小厂的，一年账面利润看着不错，一分没多落袋，全交了税和社保。他问我怎么办，我说——先搞清楚钱去哪了。",
+  "这事我要收过壹仟块钱，我把我名字倒着写。",
+  "爽文钩链：「你别看他说得头头是道，你把这话翻成资产负债表，一翻就露馅。」"
+ ],
+ loc:"用「小厂老板」的具体例子，把努力错位从抽象变具体——他不是不努力，是努力的地方被系统拿走了。",
+ risk:"自证赌咒要克制真诚，别油；例子必须真实可感，编造一次失去整个人设信任。"},
+
+{rank:"05",nm:"任泽平",bio:"宏观分析师 · 泽平宏观",tech:"新闻数据打底 + 反问式标题 + 数字罗列",cls:["idea","open"],
+ egs:[
+  "上半年结婚登记327.5万对，同比减少26.4万对…当前婚姻形势呈四大变化：1、不婚化加剧…"
+ ],
+ tpl:[
+  "下半年个税专项扣除落地：新增<X>项、额度上浮<Y>%。年轻人为什么不买账？当前税改呈四大变化：1、…2、…",
+  "某省土地出让收入同比-<Z>%，地方财政的压力，正悄悄被转嫁到谁头上？",
+  "数字立论：「数据显示，越努力却越穷的人群集中在<XX>。为什么？因为努力放错了地方。」"
+ ],
+ loc:"把「努力错位」装进可查验的数据里——用数字证明「越努力越穷」是个真现象，而非情绪。",
+ risk:"数字必须可查、口径要标（数据仓要求）；罗列的「X大变化」要真做满，不能注水。"},
+
+{rank:"06",nm:"李建秋",bio:"财经/国际评论",tech:"连续反问炸裂 + 指名道姓开炮",cls:["team"],
+ egs:[
+  "为什么我总是不把经济学家当人呢？为什么我那么喜欢天天喷经济学家呢？因为…",
+  "评论区又说我在吹毛求疵。那请问，拍成这样犯法吗？会被拉出去枪毙吗？"
+ ],
+ tpl:[
+  "为什么我从不信那套「多缴税就能养出更好的未来」？为什么我劝你别把每次「减税」当成恩赐？因为…",
+  "评论区又说我抬杠。那请问，问一句「税到底去了哪」犯法吗？会被请去喝茶吗？",
+  "开炮收尾：「正确的话谁都会说，敢把「努力就有回报」拆开的人不多。」"
+ ],
+ loc:"把矛头直接指向「努力就有回报」这种经济学家式的正确废话——戳穿它，就是揭开努力错位。",
+ risk:"点名要有实锤/具体论点支撑，纯情绪喷会掉粉；咄咄逼人但必须有逻辑闭环。"},
+
+{rank:"07",nm:"上海徐晓峰",bio:"宏观/避险 · 备份号",tech:"叹号情绪口语 + 拟人化 + 宣告式只做多",cls:["human","idea"],
+ egs:[
+  "大A，不能再装睡了哦！睡了五个月了，该醒了！",
+  "禁空令：即日起，我评论里禁止看空唱空，发现一律拉黑。我的地盘我做主，特此通知。"
+ ],
+ tpl:[
+  "个税，你可不能再装睡了哦！这么多年一动不动，该醒醒了！",
+  "今天起，我评论区禁止「多缴税才是爱国」，发现一律拉黑。我的地盘我做主，特此通知。",
+  "宣告式立判：「我先把话撂这：个税起征点不调到位，打工人日子不会有质变。」"
+ ],
+ loc:"把「努力错位」拟人成一个装睡的系统——你不搭理它，它还高悬在那儿一动不动。",
+ risk:"叹号别堆成噪音；拟人+宣告很提神，但要建立在真观点上，不能空喊。"},
+
+{rank:"08",nm:"洪榕",bio:"职业投资人 · 洪攻略",tech:"自造词体系 + 立可证伪点位",cls:["idea","interact"],
+ egs:[
+  "上证指数4500之前不看大调整（期指不做空）…",
+  "洪攻略配置建议：找出这10个领域的机构向城门立木股作为长期底仓…"
+ ],
+ tpl:[
+  "我给这套观察起个名，叫「努力错位论」——错位没看破之前别谈翻身。",
+  "立可证伪：「当下判断：个税不调到位之前，收入困境不会真改。你过三个月回来打我脸，我认。」",
+  "自造词延展：「落错位」「抢错位」「错位守恒」——把它做成你的专属术语体系。"
+ ],
+ loc:"直接把「努力错位论」做成你的自造概念反复调用，成为专属IP词，让人一听就想到你。",
+ risk:"自造词要有记忆点且能成体系；可证伪判断要敢落点，这才是信任锚，别含糊。"},
+
+{rank:"09",nm:"望京博格",bio:"基金投教 · 博格",tech:"自问自答口语提问 + 抛选择题给评论区",cls:["interact","human"],
+ egs:[
+  "100万求稳买啥？今天有大户来问我们：…博格说实话，这行情妥妥的乱纪元。",
+  "大家止盈出来的资金，都买啥了？",
+  "（自嘲）博格今年还差10万就回本…这刚回来当牛马，市场就大跌了，我靠~"
+ ],
+ tpl:[
+  "「月薪2万，每月房租6千，税后到手怎么算都存不下钱。」今天借这个问题，陪你把这笔账算清楚。",
+  "抛选择题：「所以问题来了——你更信「更拼就能翻身」，还是「错位不破翻不了身」？（A）更拼（B）改赛道（C）先看税（D）都选」评论区聊聊。",
+  "自嘲去AI：「别听我扯什么长期主义，我是真的被市场毒打过才知道啥叫对账。」"
+ ],
+ loc:"把「努力错位」抛成一个评论区契约——让粉丝投票站队，争论本身就是在帮话题加热。",
+ risk:"选择题必须真存在观点分歧才有人选；口语自问别太表演，要自然。"},
+
+{rank:"10",nm:"papi酱",bio:"剧情/吐槽 · 全网3000万+",tech:"情绪怼名式 + 反问立Flag + 固定栏目Slogan",cls:["open","team"],
+ egs:[
+  "好生气啊！！太没有品味了！！怎么会有人喜欢xxx啊！！#papi酱生气啦#"
+ ],
+ tpl:[
+  "好生气啊！！都2026年了！！怎么还会有人相信「多缴税你的日子就会更好」这种话啊！！#努力错位论#",
+  "太离谱了！！怎么会有公司把「辞退补偿要他自己缴个税」说得这么理直气壮啊！！",
+  "固定栏目感：「#气得我把账本摔了#」——让情绪词变成你的记忆点。#"
+ ],
+ loc:"用「开怼」的情绪当内容入口，把理性议题用情绪引爆，让人一口代入、立刻共情。",
+ risk:"怼必须有观点内核，不能纯情绪输出；情绪幅度要贴合账号人设，夸张过头会显得假。"}
+];
+
+const TAGMAP={
+ open:["开场/破冰","var(--blue)"],
+ team:["对抗/点名","var(--accent)"],
+ human:["人味/去AI","var(--accent2)"],
+ idea:["造词/立判","var(--purple)"],
+ interact:["互动/评论","var(--risk)"]
+};
+
+const cardEl=document.getElementById('cards');
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function render(shown){
+ cardEl.innerHTML=DATA.filter(d=>shown==='all'||d.cls.includes(shown)).map(d=>{
+   const tags=d.cls.map(k=>{const t=TAGMAP[k];return '<span class="tag" style="color:'+t[1]+';border-color:'+t[1]+'55">'+t[0]+'</span>';}).join('');
+   const egs=d.egs.map(e=>'<div class="quote"><span class="who">原句</span>'+esc(e)+'</div>').join('');
+   const tpl=d.tpl.map(t=>'<div class="template">'+esc(t)+'</div>').join('');
+   return '<div class="card">'
+    +'<div class="hd"><div class="rank">'+d.rank+'</div><div><div class="nm">'+d.nm+'<small>'+esc(d.bio)+'</small></div>'
+    +'<div class="tech">◆ 手法：'+esc(d.tech)+'</div><div class="tag-row">'+tags+'</div></div></div>'
+    +'<div class="blk"><div class="lab">他的原话</div>'+egs+'</div>'
+    +'<div class="blk"><div class="lab">我能套用的「税」句式（<>处填真实内容）</div>'+tpl+'</div>'
+    +'<div class="blk"><div class="lab">对齐「努力错位论」的落点</div><div class="quote" style="border-left-color:var(--accent);color:#ffe9a8">'+esc(d.loc)+'</div></div>'
+    +'<div class="risk"><div class="lab">风险红线</div>'+esc(d.risk)+'</div>'
+    +'</div>';
+ }).join('');
+}
+render('all');
+const fl=document.getElementById('filters');
+fl.querySelectorAll('.filter').forEach(f=>f.addEventListener('click',()=>{
+  fl.querySelectorAll('.filter').forEach(x=>x.classList.remove('on'));f.classList.add('on');
+  render(f.dataset.f);
+}));
+
+// draft
+const DRAFT=[
+ {ttl:"① 开口 · 数据反问（借任泽平+曹多鱼）",lines:"都2026年了，为什么月薪两万到手还是存不下钱？今天有个粉丝问我这个问题——就这个，我结合自己亲身经历讲。别急着骂消费主义，你先看一组数据：<>。",
+   use:"用真实数据压住开头，再落到具体的人，读者直接代入。"},
+ {ttl:"② 立判 · 造词（借洪榕）",lines:"我给这类现象起了个名，叫「努力错位论」——你的努力没错，方向错位了。错位没看破之前，谈再多「奋斗」都是白搭。",
+   use:"第一处抛锚点，自造概念第一次出现，制造专业记忆点。"},
+ {ttl:"③ 点名 · 开怼（借卢麒元/李建秋）",lines:"为什么我从不在朋友圈转发那些「多缴税才有美好生活」的鸡汤？为什么我劝你别把每次减税当恩赐？因为穿着「公平」西装、拿着报表当通行证的人，正把普通人的税负一份一份塞进自己的购物车。",
+   use:"把对立面具象化，让读过的人自动想找人吵。"},
+ {ttl:"④ 故事 · 自证（借卢克文/温铁军）",lines:"我身边就有个开小厂的，一年账面利润看着还行，一分没多落袋，全交了税和社保。他问我怎么办，我说——先把账对明白，别指望靠更拼来翻身。这事我要收过一分钱，我名字倒着写。",
+   use:"具体的人 + 具体金额 + 赌咒自证，人味顶满。"},
+ {ttl:"⑤ 留白 · 互动（借曹多鱼/望京博格）",lines:"所以问题来了：你更信「更拼就能翻身」，还是「错位不破翻不了身」？（A）更拼（B）改赛道（C）先把税和账看懂（D）都选。评论区聊聊，至于答案——你自己想。",
+   use:"结尾留白 + 抛选择，把主场让给评论区，情绪自动扩散。"}
+];
+document.getElementById('draft').innerHTML=DRAFT.map(d=>'<div class="tweetchart"><div class="ttl">'+d.ttl+'</div><div class="line">'+d.lines+'</div><div class="use">'+d.use+'</div></div>').join('');
+
+// checklist
+const CHECK=[
+ {good:true,t:"把「正确废话」换成打脸判断",p:"不要「合理配置、长期持有、规避风险」——要「我先把话撂这：个税不调，打工人不会真翻身」。可证伪才有人回。"},
+ {good:true,t:"加具体到恼人的数字",p:"「月存3000、一年3.6万」好过「想要更多结余」；「账面利润_、落袋_」好过「小厂难」。数字越具体越不像AI。"},
+ {good:true,t:"一个真的经历/一个真实的人",p:"「我身边有个开小厂的」「今天一个粉丝问我」——虚构成分越少越信。AI写不出带体温的人。"},
+ {good:true,t:"情绪词要有振幅",p:"别全程温吞。「好生气」「我靠~」「先撂这」——语气真切起伏，才像真人。但情绪要给观点当配菜，别喧宾夺主。"},
+ {good:true,t:"结尾一定留白或抛择",p:"把结论写满=AI感最重。留一句「你自己想」或抛A/B选择，把主场让给评论区，反而更聚人气。"},
+ {bad:true,t:"避雷：排比式排比式过度对仗",p:"「我们要…我们要…我们要…」三段式完美收尾=最浓AI味。宁可断句、口语、自嘲，也不要工整排比。"},
+ {bad:true,t:"避雷：把所有好处都列一遍",p:"AI爱写「既…又…而且…」的全能论述。真人讲话有取舍，只揪住最狠的一个点往死里打。"},
+ {bad:true,t:"避雷：出现「仅供参考风险自负」模板",p:"这行字放群里像免责公告，放微博是AI味重灾区。真要提示，换成自己的口气：「瞎聊，别当投资建议。」"}
+];
+document.getElementById('checklist').innerHTML=CHECK.map(c=>'<div class="ci '+(c.good?'good':'bad')+'"><div class="x">'+(c.good?'✓':'⚠')+'</div><div><div class="t">'+c.t+'</div><p>'+c.p+'</p></div></div>').join('');
+</script>
+<script>
+/* ============ 站内链接自动附加预览 token ============ */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a');
+  if(!a)return;
+  const href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||/^(https?:|mailto:|tel:|javascript:)/i.test(href))return;
+  const qs=window.location.search;
+  if(!qs||a.search!=='')return;
+  e.preventDefault();
+  const url=a.href+qs;
+  if(a.target==='_blank'){window.open(url,'_blank');}
+  else{window.location.href=url;}
+});
+</script>
+</body>
+</html>

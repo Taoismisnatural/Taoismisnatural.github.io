@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跨境税盾 · 卖家合规自查报告（可打印）</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--ink:#1a1a1a;--sub:#555;--line:#d9d9d9;--brand:#b8860b;--brand2:#d4a017;--accent:#1f4e79}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#eef1f5;color:var(--ink);font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.page{max-width:820px;margin:24px auto;background:#fff;padding:48px 54px;box-shadow:0 6px 24px rgba(0,0,0,.12);border-radius:6px}
+.system-bar{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--brand);padding-bottom:14px;margin-bottom:22px}
+.system-bar .brand{font-size:22px;font-weight:800;color:var(--brand)}
+.system-bar .slogan{font-size:12px;color:var(--sub);letter-spacing:.5px}
+.meta{background:#f7f7f7;border:1px solid var(--line);border-radius:6px;padding:14px 18px;font-size:13px;color:var(--sub);display:flex;flex-wrap:wrap;gap:6px 28px;margin-bottom:26px}
+.meta b{color:var(--ink)}
+h1{font-size:26px;color:var(--accent);margin-bottom:4px}
+.subtitle{font-size:13px;color:var(--sub);margin-bottom:26px}
+h2{font-size:17px;color:var(--accent);margin:26px 0 10px;border-left:4px solid var(--brand);padding-left:10px}
+.row{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.row .k{color:var(--sub)}.row .v{font-weight:600;text-align:right}
+.recbox{border:1px solid var(--brand);background:#fdf8ec;border-radius:6px;padding:14px 18px;margin-top:6px}
+.recbox .tag{display:inline-block;background:var(--brand);color:#fff;font-size:12px;padding:3px 12px;border-radius:14px;font-weight:700;margin-bottom:8px}
+.recbox p{font-size:14px}
+.warn{background:#fdeaea;border:1px solid #d98c8c;border-radius:6px;padding:12px 16px;font-size:13.5px;color:#8a1f1f;margin:8px 0}
+.score{display:inline-block;border:2px solid var(--brand);color:var(--brand);font-weight:800;border-radius:8px;padding:4px 14px;font-size:18px}
+.check{font-size:14px}
+.check li{margin:5px 0;list-style:none}
+.check li::before{content:"□ ";color:var(--brand)}
+.foot{border-top:1px solid var(--line);margin-top:30px;padding-top:12px;font-size:11.5px;color:var(--sub);line-height:1.8}
+.sig{display:flex;justify-content:space-between;align-items:flex-end;margin-top:34px;padding-top:18px;border-top:1px solid var(--line)}
+.sig .prod{font-size:13px;color:var(--brand);font-weight:700}
+.sig .prod span{display:block;font-weight:400;color:var(--sub);font-size:11.5px}
+.actions{max-width:820px;margin:10px auto 0;display:flex;gap:12px;padding:0 2px}
+.actions a{flex:1;text-align:center;background:var(--accent);color:#fff;padding:12px;border-radius:6px;text-decoration:none;font-weight:700}
+.actions .ghost{background:#fff;color:var(--accent);border:1px solid var(--accent)}
+@media print{body{background:#fff}.page{box-shadow:none;margin:0;max-width:none;border-radius:0;padding:16pt 20pt}.actions{display:none}}
+</style>
+</head>
+<body>
+  <div class="actions">
+    <a href="javascript:window.print()">🖨 打印 / 另存为 PDF</a>
+    <a class="ghost" href="index.html#tool">↺ 重新自查</a>
+    <a class="primary" href="index.html#leadForm" style="background:var(--brand)!important;border:1px solid var(--brand)">📤 预约持证顾问核验这条线索</a>
+  </div>
+  <div class="page">
+    <div class="system-bar">
+      <div class="brand">跨境税盾</div>
+      <div class="slogan">安心出海 · 跨境电商税务自查平台</div>
+    </div>
+    <h1>跨境电商卖家 · 合规自查报告</h1>
+    <div class="subtitle">本报告为自我排查信息，不构成申报建议、税务筹划或法律意见</div>
+    <div class="meta">
+      <span>线索编号：<b id="rId">KJ-2026-XXXX</b></span>
+      <span>生成时间：<b id="rTime">____</b></span>
+      <span>工具：跨境税盾 · 4 分钟自查</span>
+    </div>
+
+    <h2>一、卖家画像</h2>
+    <div id="rProfile" class="row"><span class="k">（由你的 5 个回答生成：发货方式 / 开票能力 / 综试区 / 销售额 / 收款安排）</span></div>
+
+    <h2>二、推荐合规通道（线索）</h2>
+    <div class="recbox"><span class="tag">推荐线索 · <span id="rKey">——</span></span><p id="rName">——</p><p style="color:#555;font-size:12.5px;margin-top:6px">置信度：<b id="rConf" style="color:var(--brand)">——</b></p><p id="rNote" style="color:#555;margin-top:6px"></p><p id="rSources" style="color:#555;font-size:11.5px;margin-top:4px"></p></div>
+
+    <h2>三、需重点注意</h2>
+    <div id="rRisks"><div class="warn">→ 完成自查后，风险提示将显示于此。</div></div>
+
+    <h2>四、自查完成度</h2>
+    <div><span class="score" id="rScore">0 / 8</span>&nbsp;<span style="color:#555;font-size:13px">转给持证机构前建议逐项确认</span></div>
+
+    <h2>五、建议先备齐的凭证</h2>
+    <ul class="check">
+      <li>营业执照注册地（确认是否综试区）</li>
+      <li>平台订单 / 结算流水（以实付全额口径）</li>
+      <li>报关单证（9610 / 9710 / 9810 / 1039 等监管代码）</li>
+      <li>收汇记录（对公 / 离岸账户流水）</li>
+      <li>进项发票或采购凭证（按能力择一）</li>
+    </ul>
+
+    <h2>六、下一步怎么做（3 步）</h2>
+    <ol class="check" style="margin-left:18px;font-size:14px">
+      <li>回到页面「属地速查」，确认注册地所属综试区状态；</li>
+      <li>用「税负测算」对比两条通道的资金账；</li>
+      <li>带本报告找属地税局或持证财税顾问核验属地细则，再定申报路径。</li>
+    </ol>
+
+    <div class="sig">
+      <div style="font-size:13px;color:#555">本报告由跨境税盾生成 · 线索编号为后续核对凭证</div>
+      <div class="prod">跨境税盾<span>跨境电商税务自查平台 · <a href="index.html">kuajingshuidun.cn</a></span></div>
+    </div>
+
+    <div class="foot">
+      免责与政策依据：本报告仅供「自我排查」参考，不构成申报建议、税务筹划或法律意见。跨境电商税务政策高度属地化且随监管调整；正式申报前请以属地税务机关口径为准，必要时咨询持证财税专业人员。政策来源见<a href="sources.html">政策原文与权威来源</a>。
+    </div>
+  </div>
+<script>
+(function(){try{
+  var d=new Date();document.getElementById('rTime').textContent=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);
+  try{var p=localStorage.getItem('cb_lastProfile');if(p){var o=JSON.parse(p);
+    if(o.id)document.getElementById('rId').textContent=o.id;
+    if(o.profile){var keys={q1:'发货方式',q2:'开票能力',q3:'综试区',q4:'销售额',q5:'收款安排'};var rows='';for(var k in keys){if(o.profile[k]){rows+='<div class="row"><span class="k">'+keys[k]+'</span><span class="v">'+o.profile[k]+'</span></div>';}}if(rows)document.getElementById('rProfile').innerHTML=rows;}
+    if(o.recommended)document.getElementById('rKey').textContent=o.recommended;
+    if(o.recname)document.getElementById('rName').textContent=o.recname;
+    if(o.recnote)document.getElementById('rNote').textContent=o.recnote;
+    // 数据严谨：置信度 + 依据来源
+    if(o.conf){document.getElementById('rConf').textContent={high:'较高（你已确认关键前提）',mid:'中等（部分前提需属地核验）',low:'较低（关键前提未确认）'}[o.conf]||o.conf;}
+    if(o.sources&&o.sources.length){document.getElementById('rSources').textContent='依据来源：'+o.sources.map(function(x){return '《'+x+'》';}).join(' · ');}
+    if(o.risks&&o.risks.length){document.getElementById('rRisks').innerHTML=o.risks.map(function(r){return '<div class="warn">⚠ '+r+'</div>';}).join('');}
+    if(o.score)document.getElementById('rScore').textContent=o.score;
+  }}catch(e){}
+}catch(e){}
+})();
+</script>
+<script>
+/* ============ 站内链接自动附加预览 token ============ */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a');
+  if(!a)return;
+  const href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||/^(https?:|mailto:|tel:|javascript:)/i.test(href))return;
+  const qs=window.location.search;
+  if(!qs||a.search!=='')return;
+  e.preventDefault();
+  const url=a.href+qs;
+  if(a.target==='_blank'){window.open(url,'_blank');}
+  else{window.location.href=url;}
+});
+</script>
+</body>
+</html>

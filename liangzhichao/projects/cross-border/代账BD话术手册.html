@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>代账BD策略与话术手册</title>
+<style>
+:root{
+  --bg:#0b1020;--bg2:#111936;--card:#151d3d;--card2:#1a2450;
+  --txt:#e8ecff;--dim:#9aa7d0;--line:#2a3566;
+  --gold:#ffc24d;--gold2:#ff9d2e;--cyan:#37e0ff;--green:#4ade80;--blue:#6c8bff;--red:#ff5c7a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(1200px 600px at 20% -10%,#1b2a5e 0%,transparent 50%),var(--bg);color:var(--txt);
+  font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;line-height:1.7;min-height:100vh}
+.top{position:sticky;top:0;z-index:40;background:rgba(11,16,32,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1080px;margin:auto;padding:13px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-size:18px;font-weight:800;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{display:block;font-size:11px;color:var(--dim);font-weight:400;-webkit-text-fill-color:var(--dim)}
+.print-btn{margin-left:auto;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;border:none;padding:9px 20px;border-radius:10px;font-weight:700;cursor:pointer;font-size:13px}
+.wrap{max-width:1080px;margin:auto;padding:30px 22px 80px}
+/* cover */
+.cover{text-align:center;padding:34px 0 10px}
+.cover .tag{display:inline-block;font-size:12px;color:var(--cyan);border:1px dashed var(--cyan);padding:5px 14px;border-radius:20px;letter-spacing:1px}
+.cover h1{font-size:clamp(24px,4vw,38px);margin-top:18px;background:linear-gradient(90deg,#fff,var(--gold),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.25}
+.cover p{color:var(--dim);max-width:720px;margin:16px auto 0}
+.cover .tags{margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cover .tags span{font-size:12px;color:var(--gold);border:1px solid var(--line);padding:5px 13px;border-radius:20px;background:var(--card)}
+.toc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin:34px auto 0;max-width:760px}
+.toc h3{color:var(--gold);font-size:15px;margin-bottom:10px}
+.toc a{display:block;color:var(--dim);font-size:14px;padding:5px 0;border-bottom:1px dashed var(--line);text-decoration:none}
+.toc a:hover{color:var(--cyan)}
+section{margin:44px 0}
+.sec-head{display:flex;align-items:center;gap:12px;border-bottom:2px solid var(--line);padding-bottom:12px;margin-bottom:20px}
+.sec-head .no{font-size:13px;color:var(--cyan);border:1px solid var(--cyan);border-radius:8px;padding:3px 9px;letter-spacing:1px}
+.sec-head h2{font-size:22px}
+.sec-desc{color:var(--dim);font-size:14px;margin-bottom:16px}
+/* value prop */
+.vprop{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--gold2);border-radius:16px;padding:22px 26px;font-size:16px;line-height:1.8}
+.vprop b{color:var(--gold)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.box{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:15px;padding:20px}
+.box h4{color:var(--gold);font-size:16px;margin-bottom:10px}
+.box p{color:var(--dim);font-size:14px;margin:4px 0}
+.box ul{margin:8px 0 0 18px;color:var(--dim);font-size:14px}
+.box li{margin:6px 0}
+.stepbox{display:flex;flex-direction:column}
+.step{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:none}
+.step .n{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;font-weight:800;display:flex;align-items:center;justify-content:center}
+.step h4{font-size:15px}
+.step p{color:var(--dim);font-size:13.5px;margin-top:2px}
+.step .script{margin-top:8px;background:var(--card);border-left:3px solid var(--cyan);border-radius:9px;padding:12px 14px;font-size:14px;color:var(--txt)}
+.step .script b{color:var(--cyan)}
+.step .script i{color:var(--gold)}
+table{border-collapse:collapse;width:100%;min-width:620px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tblwrap{overflow-x:auto;border-radius:14px}
+th,td{text-align:left;padding:13px 16px;font-size:14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--card2);color:var(--gold);font-size:13px}
+td .k{color:var(--cyan);font-weight:600}
+tr:last-child td{border-bottom:none}
+.obj h4{color:var(--red);font-size:15px;margin-bottom:8px}
+.obj .k{color:var(--gold)}
+.verify-table td:first-child{color:var(--gold);font-weight:600}
+.guard{background:rgba(108,139,255,.07);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:13.5px;color:var(--dim)}
+.guard b{color:var(--gold)}
+footer{border-top:1px solid var(--line);margin-top:20px;padding:22px;text-align:center;color:var(--dim);font-size:12px}
+@media print{
+  body{background:#fff;color:#111}
+  .top{position:static;background:#fff}
+  .print-btn{display:none}
+  .toc,.box,.vprop,.guard,table,.step{background:#fff;border-color:#ccc}
+  .brand{background:#111;-webkit-background-clip:text;background-clip:text;color:transparent}
+  section{break-inside:avoid;margin:26px 0}
+  th{background:#f0f0f0;color:#111}
+  td,th{border-color:#ddd}
+  .step .script{background:#f7f7f7;border-left-color:#333}
+  .box{color:#111}.box p,.box li,.step p,.sec-desc{color:#444}
+  .guard,.guard b{color:#111}
+  .step .script b{color:#0b5f77}.step .script i,.sec-head h2,.box h4{color:#8a5b00}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">代账 BD 策略与话术手册<small>跨境电商卖家线索 · B2B2C 合作</small></div>
+    <button class="print-btn" onclick="window.print()">打印 / 导出 PDF</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="cover">
+    <span class="tag">给谈判用 · 可打印 · 别照抄数字</span>
+    <h1>代账机构拓展策略与话术手册</h1>
+    <p>把"我为你免费导跨境合规线索，只在你成交后分成、不成交零成本"这套合作，从头到尾讲到落地上。核心是两件事：<b style="color:var(--gold)">先说动人</b>、<b style="color:var(--gold)">再保状态</b>。</p>
+    <div class="tags"><span>主攻：大湾区 + 杭义</span><span>原则：先试点后扩量</span><span>自保：握流量闸门</span></div>
+  </div>
+
+  <div class="toc" id="toc">
+    <h3>目录</h3>
+    <a href="#sec1">一、一句话价值主张（背下来）</a>
+    <a href="#sec2">二、先打谁：目标画像</a>
+    <a href="#sec3">三、怎么找：跨界借力渠道</a>
+    <a href="#sec4">四、筛选靠谱代账（先防跑路/赖账）</a>
+    <a href="#sec5">五、破冰开场话术</a>
+    <a href="#sec6">六、首谈 20 分钟流程</a>
+    <a href="#sec7">七、异议处理（应对 5 句话）</a>
+    <a href="#sec8">八、收口：试点邀请话术</a>
+    <a href="#sec9">九、合作保障要点</a>
+  </div>
+
+  <!-- 1 -->
+  <section id="sec1">
+    <div class="sec-head"><span class="no">①</span><h2>一句话价值主张</h2></div>
+    <div class="vprop">"我<b>免费</b>给你带<b>主动带合规诉求</b>的跨境卖家线索，只在你<b>成交后分成</b>；不成交你零成本。机制用<b>线索编号</b>全程可查，我<b>绝不抢你客户</b>。"</div>
+  </section>
+
+  <!-- 2 -->
+  <section id="sec2">
+    <div class="sec-head"><span class="no">②</span><h2>先打谁：目标画像</h2></div>
+    <div class="grid2">
+      <div class="box"><h4>首选（成功率最高）</h4>
+        <ul><li>有 <b>跨境 / 外贸记账经验</b> 的代账所——懂这块、有存量、最容易被"新增量"打动</li><li>本地、规模适中、能拍板</li><li>老板 / 合伙人本人出面</li></ul>
+      </div>
+      <div class="box"><h4>次选 / 借力</h4>
+        <ul><li>给跨境电商服务的货代 / 海外仓 / 支付机构服务商</li><li>本地代账协会、税务周边、园区招商机构</li><li>朋友 / 会计转介绍</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="sec3">
+    <div class="sec-head"><span class="no">③</span><h2>怎么找：跨界借力渠道</h2></div>
+    <div class="box">
+      <ul>
+        <li>企查查 / 58 按"跨境记账""出口退税""跨境电商服务"筛本地机构</li>
+        <li>代账协会会员名录、税务机构周边、园区招商服务商</li>
+        <li><b>跨境生态借力</b>：货代、海外仓、支付机构（如万里汇 / 连连 / PingPong 的服务商网络）——他们手里也有卖家，愿意转介绍 / 置换</li>
+        <li>从认识的人开始，破冰最容易</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="sec4">
+    <div class="sec-head"><span class="no">④</span><h2>筛选靠谱代账（先防跑路 / 赖账）</h2></div>
+    <div class="tblwrap">
+      <table class="verify-table">
+        <thead><tr><th>项</th><th>怎么查</th><th>不满足就别投入</th></tr></thead>
+        <tbody>
+          <tr><td>营业执照 + 代理记账许可 / 税务师事务所</td><td>企查查 / 资质校验</td><td>正派敏感</td></tr>
+          <tr><td>实体办公、存续 ≥1–2 年</td><td>实地 / 工商信息</td><td>防跑路</td></tr>
+          <tr><td>有真实客户（能出示例 / 规模）</td><td>问"现在服务多少家"</td><td>防空壳</td></tr>
+          <tr><td>老板本人肯出面、能拍板</td><td>约谈见真人</td><td>防谈而不决</td></tr>
+          <tr><td>无涉诉 / 失信</td><td>企查查风险快查</td><td>排雷</td></tr>
+          <tr><td><b>听得懂且认可"成交才分成 + 编号核销"</b></td><td>现场沟通</td><td>人品前置关</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="sec5">
+    <div class="sec-head"><span class="no">⑤</span><h2>破冰开场话术（15 秒说清楚）</h2></div>
+    <div class="box obj">
+      <p>微信 / 电话，开场第一句就说"我给你免费带高意向客户，成交才分成"，否则对方没耐心听完。</p>
+      <div class="step" style="border:none">
+        <div class="n">说</div>
+        <div style="flex:1">
+          <div class="script">"X总您好，我是做<b>跨境电商卖家税务自查</b>的。现在金税四期 + 平台强制报送，大批跨境卖家在补税、知道自己有风险但<b>不知道该找谁办</b>。我们是免费自查工具，能筛出<b>主动带合规诉求</b>的卖家，按地区导给合规的代账机构——<b>只在你成交后分成，不成交你零成本</b>。您在深圳做跨境这块，想不想先看下我筛出来的线索长什么样？"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="sec6">
+    <div class="sec-head"><span class="no">⑥</span><h2>首谈 20 分钟流程（Demo 驱动）</h2></div>
+    <div class="box stepbox">
+      <div class="step"><div class="n">1</div><div><h4>现场点一遍自查</h4><p>让他看到工具真实、线索是'筛出来'的，不是编的。</p></div></div>
+      <div class="step"><div class="n">2</div><div><h4>展示管理后台 + 线索编号</h4><p>让他看到"从哪来、编号可核" → "<b style="color:var(--gold)">我能核、我不抢客</b>"当场坐实，这是信任最关键的一步。</p></div></div>
+      <div class="step"><div class="n">3</div><div><h4>讲分成机制</h4><p>按单 / 按客户留存月份可选，<b>先 1 城试点</b>。</p></div></div>
+      <div class="step"><div class="n">4</div><div><h4>收口</h4><p>给一份带编号的报告样例 + 约试点。</p></div></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="sec7">
+    <div class="sec-head"><span class="no">⑦</span><h2>异议处理（背熟 · 应对最可能说的 5 句）</h2></div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th>对方说</th><th>你怎么接</th></tr></thead>
+        <tbody>
+          <tr><td class="k">"我们不缺客户"</td><td>你缺的是<b>跨境合规</b>这种新增量高客单，不是存量。我导的是你自己不容易获取的新客。</td></tr>
+          <tr><td class="k">"怕你抢我客户"</td><td>我导的线索跟你现有客户无重叠，编号全程可查。<b>我成交才有钱，我是利益共同体不是竞争者</b>。</td></tr>
+          <tr><td class="k">"分成太少 / 太贵"</td><td>先按<b>留存月份</b>分成，让利换长期；成交量上来比例可谈。</td></tr>
+          <tr><td class="k">"先欠着 / 月结算拖"</td><td>把对账周期写成书面、按编号核销，透明对账，双方都有数。</td></tr>
+          <tr><td class="k">"你凭什么证明线索质量"</td><td>工具筛过、带风险画像和编号。<b>先免费导 3 条给你验证</b>，满意再谈正式。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section id="sec8">
+    <div class="sec-head"><span class="no">⑧</span><h2>收口：试点邀请话术</h2></div>
+    <div class="box obj">
+      <div class="script">"咱们先 <b>1 个城市、1 个月、少量线索</b>试跑：你先看线索质量、成交了再谈长期。分成机制和对账周期写成一张简单确认函，双方都有数。方便的话，<i>明天我先导 3 条给你试试</i>。"</div>
+      <p style="margin-top:12px"><b>要点：</b>不逼对方给大承诺，用"先试 3 条"把门槛降到最低——这是副业谈 BD 最聪明的收口。</p>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section id="sec9">
+    <div class="sec-head"><span class="no">⑨</span><h2>合作保障要点</h2></div>
+    <div class="guard">
+      <b>收好口，写明白：</b><br>
+      ① 只跟能拍板的人谈，谈成即落一张<b>书面确认函</b>（口径 / 结算周期 / 对账 / 违约 / 解除权）。<br>
+      ② <b>按留存月份持续分成</b>，而不是一次性大分成——让他"如实报"比"偷藏"更划算。<br>
+      ③ 你握<b>流量闸门</b>：先小量试点，本身就是对他的履约诚信考察，表现好才扩量。<br>
+      ④ 签约前核对营业执照与涉税资质，涉诉 / 失信记录一律排除。
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  代账 BD 策略与话术手册 · 仅供你本人使用 · 正式合作请落地书面确认函并核验对方资质
+</footer>
+
+<script>
+/* ============ 站内链接自动附加预览 token ============ */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a');
+  if(!a)return;
+  const href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||/^(https?:|mailto:|tel:|javascript:)/i.test(href))return;
+  const qs=window.location.search;
+  if(!qs||a.search!=='')return;
+  e.preventDefault();
+  const url=a.href+qs;
+  if(a.target==='_blank'){window.open(url,'_blank');}
+  else{window.location.href=url;}
+});
+</script>
+</body>
+</html>

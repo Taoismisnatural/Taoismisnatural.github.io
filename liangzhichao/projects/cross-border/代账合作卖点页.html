@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给代账公司 · 跨境界合规线索合作一页纸</title>
+<style>
+:root{
+  --bg:#0b1020;--bg2:#111936;--card:#151d3d;--card2:#1a2450;
+  --txt:#e8ecff;--dim:#9aa7d0;--line:#2a3566;
+  --gold:#ffc24d;--gold2:#ff9d2e;--cyan:#37e0ff;--green:#4ade80;--blue:#6c8bff;--red:#ff5c7a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(1200px 600px at 20% -10%,#1b2a5e 0%,transparent 50%),var(--bg);color:var(--txt);
+  font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;line-height:1.7;min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+.top{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1100px;margin:auto;padding:13px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-size:17px;font-weight:800;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{display:block;font-size:11px;color:var(--dim);font-weight:500;-webkit-text-fill-color:var(--dim)}
+.conf{font-size:12px;color:var(--dim);border:1px dashed var(--line);padding:4px 12px;border-radius:20px;margin-left:auto}
+.wrap{max-width:1100px;margin:auto;padding:38px 22px 80px}
+.hero{text-align:center;padding:20px 0}
+.hero .tag{display:inline-block;font-size:12px;color:var(--cyan);border:1px dashed var(--cyan);padding:5px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:1px}
+.hero h1{font-size:clamp(24px,3.8vw,40px);line-height:1.22;background:linear-gradient(90deg,#fff 0%,var(--gold) 45%,var(--cyan) 85%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
+.hero p{color:var(--dim);max-width:760px;margin:16px auto 0;font-size:15px}
+.hero p b{color:var(--gold)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:900px;margin:28px auto 0}
+.kpi{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-align:center}
+.kpi .n{font-size:26px;font-weight:800;color:var(--gold)}
+.kpi .l{font-size:12px;color:var(--dim);margin-top:3px}
+section{margin:48px 0}
+.sec-head{display:flex;align-items:center;gap:12px;border-bottom:2px solid var(--line);padding-bottom:12px;margin-bottom:20px}
+.sec-head .no{font-size:13px;color:var(--cyan);border:1px solid var(--cyan);border-radius:8px;padding:3px 9px}
+.sec-head h2{font-size:22px}
+.sec-head .hint{font-size:12px;color:var(--dim);margin-left:auto}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.box{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:15px;padding:20px}
+.box h4{font-size:16px;color:var(--gold);margin-bottom:8px}
+.box p{color:var(--dim);font-size:14px}
+.box ul{margin:8px 0 0 18px;color:var(--dim);font-size:14px}
+.box li{margin:6px 0}
+.pain h4{color:var(--red)}
+.mechanism{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.step:last-child{border-bottom:none}
+.step .num{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px}
+.step h4{font-size:16px}
+.step p{color:var(--dim);font-size:14px;margin-top:3px}
+.step .who{font-size:12px;color:var(--cyan);margin-top:6px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.split .col{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px}
+.split .col h5{font-size:14px;margin-bottom:10px}
+.split .col.you h5{color:var(--cyan)}
+.split .col.them h5{color:var(--gold)}
+.split ul{margin:0 0 0 18px;color:var(--dim);font-size:13.5px}
+.split li{margin:6px 0}
+.whyroll{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.item{background:var(--card2);border-left:3px solid var(--cyan);border-radius:12px;padding:16px 18px}
+.item h4{font-size:15px;margin-bottom:6px}
+.item p{color:var(--dim);font-size:13.5px}
+.guard{background:rgba(108,139,255,.07);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:13.5px;color:var(--dim)}
+.guard b{color:var(--gold)}
+.cta-box{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--gold2);border-radius:18px;padding:30px;text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold2),var(--cyan))}
+.cta-box h3{font-size:22px}
+.cta-box p{color:var(--dim);font-size:14px;margin:10px auto 18px;max-width:600px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-box a{font-size:15px;font-weight:700;padding:12px 24px;border-radius:11px;display:inline-block;transition:.25s}
+.cta-box .p{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407}
+.cta-box .p:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,194,77,.22)}
+.cta-box .s{background:var(--card);color:var(--cyan);border:1px solid var(--line)}
+.cta-box .s:hover{border-color:var(--cyan);transform:translateY(-2px)}
+footer{border-top:1px solid var(--line);margin-top:24px;padding:24px 22px;text-align:center;color:var(--dim);font-size:12px}
+@media(max-width:680px){.split{grid-template-columns:1fr}.conf{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">跨境电商卖家 · 合规线索合作<small>给代账 / 财税机构 · 一页纸</small></div>
+    <span class="conf">合作方案，可裁剪</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="tag">你不是又多了一个渠道，而是多了一条「低成本精准获客」管道</span>
+    <h1>2026 跨境界卖家正在补税<br>我们把他们导给你</h1>
+    <p>我们是<b>跨境电商税务自查平台</b>。2026 金税四期 + 平台强制报送下，大量卖家发现自己存在合规风险、却<b>不知道该找谁办</b>。我们用免费自查工具筛出这些「主动带诉求」的卖家，<b>成交后按单分成</b>——你只负责专业落地，我们负责精准导流。</p>
+    <div class="kpis">
+      <div class="kpi"><div class="n">0</div><div class="l">合作方前置成本（无需广告费）</div></div>
+      <div class="kpi"><div class="n">高意向</div><div class="l">已自查、主动带合规诉求的线索</div></div>
+      <div class="kpi"><div class="n">成交后分成</div><div class="l">不成交，你零成本</div></div>
+    </div>
+  </section>
+
+  <!-- 对位痛点 -->
+  <section id="pain">
+    <div class="sec-head"><span class="no">①</span><h2>你在头疼的三件事，我们接住其中一件</h2><span class="hint">都指向同一件事：低成本、低风险获客</span></div>
+    <div class="grid2">
+      <div class="box pain"><h4>获客越来越贵</h4><p>线上竞价/地推成本高、转化低，你缺的是「不用花钱买、意向还高的客户」。</p></div>
+      <div class="box pain"><h4>跨境界合规是新蓝海</h4><p>大部分记账客户没有跨境诉求，但有跨境合规诉求的卖家，正是高单价、高复购的优质客群。</p></div>
+      <div class="box pain"><h4>落地交付你有资质</h4><p>你持证、有团队、懂地方口径——这恰是卖家最需要、而工具给不了的部分。</p></div>
+    </div>
+  </section>
+
+  <!-- 合作机制 -->
+  <section id="mechanism">
+    <div class="sec-head"><span class="no">②</span><h2>怎么合作：4 步，成交后才分成</h2><span class="hint">机制透明，边界清晰</span></div>
+    <div class="box mechanism">
+      <div class="step"><div class="num">1</div><div><h4>卖家来自查</h4><p>卖家在我们的免费自查页勾选业务情况，系统识别其合规诉求（如在综试区、无票、可能有风险）。</p><span class="who">我的职责：免费工具 + 线索识别</span></div></div>
+      <div class="step"><div class="num">2</div><div><h4>精准导流给你</h4><p>把「已自查、主动有诉求」的卖家线索按地域/体量导给你（我导线索，你定属地跟进节奏）。</p><span class="who">我的职责：筛选 + 初筛信息</span></div></div>
+      <div class="step"><div class="num">3</div><div><h4>你落地成交</h4><p>你用执业专业接洽：注册代办、记账、年度税筹、补税整改等，按你的费率成交。</p><span class="who">你的职责：持证接洽、专业交付、收费</span></div></div>
+      <div class="step"><div class="num">4</div><div><h4>按单分成</h4><p>建成任何付费合作（建档/注册/记账/整改等），按约定比例分成给我。不成交，你不付一分钱。</p><span class="who">分成比例：见下方「可谈项」，按单或按月均可</span></div></div>
+    </div>
+  </section>
+
+  <!-- 责任边界 + 分成占位 -->
+  <section id="roles">
+    <div class="sec-head"><span class="no">③</span><h2>谁负责什么</h2><span class="hint">明确分工，规避双方责任风险</span></div>
+    <div class="split">
+      <div class="col you"><h5>我们（导流方）负责</h5>
+        <ul>
+          <li>免费自查工具与内容运营，持续产出线索</li>
+          <li>线索初筛、目的地分组与基础信息</li>
+          <li>不从事代办、申报等涉税执业行为</li>
+          <li>内容附带权威来源，降低卖家戒心</li>
+        </ul>
+      </div>
+      <div class="col them"><h5>贵司（落地方）负责</h5>
+        <ul>
+          <li>持专业资质接洽客户、方案设计与交付</li>
+          <li>属地政策核验与申报操办</li>
+          <li>按自身费率收费并开具票据</li>
+          <li>遵守执业规范，对落地结果负责</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 为什么是现在 -->
+  <section id="whyno">
+    <div class="sec-head"><span class="no">④</span><h2>为什么是现在</h2><span class="hint">窗口期红利，越早进越好</span></div>
+    <div class="whyroll">
+      <div class="item"><h4>监管收紧，诉求激增</h4><p>2026 平台强制报送、货代报备、买单出口封死，卖家批量意识到「要合规」，主动求助的客户变多。</p></div>
+      <div class="item"><h4>信息差大，没人讲得清</h4><p>市面上碎片解读真假混杂，卖家不敢轻信——需要「先自查、再找人办」的可信路径。</p></div>
+      <div class="item"><h4>先发占位</h4><p>越早绑定工具侧线索，越能拿到区域内的优先客源，形成持续稳定入口。</p></div>
+    </div>
+  </section>
+
+  <!-- 可谈项 -->
+  <section id="terms">
+    <div class="sec-head"><span class="no">⑤</span><h2>可谈项（示例，双方细定）</h2><span class="hint">占位，谈之前替换成真实条款</span></div>
+    <div class="grid2">
+      <div class="box"><h4>分成方式</h4><p>按单比例（如成交服务费的 20%~30%）或按建档/注册固定金额；可谈成月度或季度结算。</p></div>
+      <div class="box"><h4>线索独家/排他</h4><p>同一区域是否独家承接、线索留存规则，可在试点期约定，再谈扩量。</p></div>
+      <div class="box"><h4>结算与核销</h4><p>以「客户成交并收到服务费」为准核算；明确哪些服务计入分成，避免歧义。</p></div>
+      <div class="box"><h4>试点先跑</h4><p>建议 1 个月小范围试点（如限定 1 个城市/1 个品类），验证转化率后再谈长期合作。</p></div>
+    </div>
+    <div class="guard" style="margin-top:16px">🛡 <b>合规护栏：</b>双方都严格遵守涉税执业规范。我方只提供信息核验与线索，不从事代办/申报执业；贵司以持证身份完成专业交付并对结果负责。本合作不涉及任何逃税避税建议，仅面向「合规整改与正规申报」诉求。</div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="cta-box">
+      <h3>谈一谈：先把 1 个城市的试点点起来</h3>
+      <p>给我 20 分钟，演示自查工具 → 看看线索长什么样 → 一起定分成比例。跑通 1 个月，再决定要不要扩到更多区域。</p>
+      <div class="cta-row">
+        <a class="p" href="#agent" style="display:inline-block">约个时间演示工具</a>
+        <a class="s" href="#agent">给我一版合作条款模板</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="agent">
+    <div class="guard">
+      <b>本页是「一页纸卖点」，供你拿去谈判用。</b> 其中"合作机制 / 分成示例 / 试点建议"均为给出谈判起点的占位内容——<b>正式报价前，请把数字改成你自己的真实方案</b>，并与对方签署书面合作约定。<br>
+      <span style="color:var(--cyan)">待填项：</span>你的平台链接、联系方式、结算账号、分成比例、试点城市与品类范围等。
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  跨境电商卖家合规线索合作 · 一页纸 &nbsp;|&nbsp; 信息核验与线索导流，不构成涉税执业服务
+</footer>
+
+<script>
+/* ============ 站内链接自动附加预览 token ============ */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a');
+  if(!a)return;
+  const href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||/^(https?:|mailto:|tel:|javascript:)/i.test(href))return;
+  const qs=window.location.search;
+  if(!qs||a.search!=='')return;
+  e.preventDefault();
+  const url=a.href+qs;
+  if(a.target==='_blank'){window.open(url,'_blank');}
+  else{window.location.href=url;}
+});
+</script>
+</body>
+</html>

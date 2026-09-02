@@ -1,0 +1,12 @@
+{
+  "name": "AXION 量化信号平台",
+  "short_name": "AXION",
+  "description": "三周期宽码头量化信号平台 · 数据验证驱动",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a1218",
+  "theme_color": "#0b1016",
+  "icons": [
+    { "src": "/static/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跨境线索 · 管理对账后台</title>
+<style>
+:root{
+  --bg:#0b1020;--bg2:#111936;--card:#151d3d;--card2:#1a2450;
+  --txt:#e8ecff;--dim:#9aa7d0;--line:#2a3566;
+  --gold:#ffc24d;--gold2:#ff9d2e;--cyan:#37e0ff;--green:#4ade80;--blue:#6c8bff;--red:#ff5c7a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 20% -10%,#1b2a5e 0%,transparent 50%),var(--bg);color:var(--txt);
+  font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;line-height:1.6;min-height:100vh}
+.top{position:sticky;top:0;z-index:40;background:rgba(11,16,32,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1240px;margin:auto;padding:14px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-size:19px;font-weight:800;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{display:block;font-size:11px;color:var(--dim);font-weight:400;-webkit-text-fill-color:var(--dim)}
+.cfg{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;align-items:center}
+.cfg input{padding:9px 12px;border-radius:9px;border:1px solid var(--line);background:var(--card2);color:var(--txt);outline:none;font-size:13px}
+.cfg input:focus{border-color:var(--cyan)}
+.cfg button{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;border:none;padding:9px 18px;border-radius:9px;font-weight:700;cursor:pointer;font-size:13px}
+.wrap{max-width:1240px;margin:auto;padding:26px 22px 90px}
+.err{display:none;background:rgba(255,92,122,.12);border:1px solid var(--red);border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.kpi{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden}
+.kpi::after{content:"";position:absolute;inset:0;background:radial-gradient(200px 70px at 100% 0%,rgba(55,224,255,.14),transparent)}
+.kpi .l{font-size:12px;color:var(--dim)}
+.kpi .n{font-size:26px;font-weight:800;margin-top:4px}
+.kpi .n.cny{font-size:22px;color:var(--gold)}
+.kpi.warn{border-color:var(--gold2)}
+.kpi.warn .n.cny{color:var(--gold);font-size:24px}
+.kpi .sub{font-size:11px;color:var(--dim);margin-top:2px}
+section{margin:34px 0}
+.sec-head{display:flex;align-items:center;gap:12px;border-bottom:2px solid var(--line);padding-bottom:10px;margin-bottom:18px}
+.sec-head h2{font-size:20px}
+.sec-head .hint{font-size:12px;color:var(--dim);margin-left:auto}
+/* funnel */
+.funnel{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:16px;padding:24px 28px}
+.fun-row{display:flex;align-items:center;gap:14px;margin:7px 0}
+.fun-stage{display:flex;flex-direction:column;justify-content:center;padding:13px 20px;border-radius:12px;color:#071c1c;transition:width .5s ease}
+.fun-stage .fs{font-size:13px;font-weight:700;white-space:nowrap}
+.fun-stage .fc{font-size:22px;font-weight:800}
+.fun-stage.s1{background:linear-gradient(90deg,var(--cyan),#2a8cff)}
+.fun-stage.s2{background:linear-gradient(90deg,#6c8bff,#8f6cff)}
+.fun-stage.s3{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407}
+.fun-stage.s4{background:linear-gradient(90deg,var(--green),#34d9a1);color:#071f10}
+.fun-stage.closed{background:var(--card);color:var(--dim);border:1px solid var(--line)}
+.fun-anno{font-size:12px;color:var(--dim);white-space:nowrap}
+.fun-pending{display:flex;align-items:center;gap:14px;margin-top:18px;background:rgba(255,194,77,.1);border:1px solid var(--gold2);border-radius:12px;padding:16px 18px}
+.fun-pending .amt{font-size:30px;font-weight:800;color:var(--gold)}
+.fun-pending .t{font-size:13px;color:var(--dim)}
+/* table */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{padding:6px 13px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--dim);font-size:12.5px;cursor:pointer}
+.chip.active{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;border-color:transparent;font-weight:700}
+table{border-collapse:collapse;width:100%;min-width:980px}
+th,td{text-align:left;padding:12px 14px;font-size:13px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{background:var(--card2);color:var(--gold);font-size:12px}
+tr:last-child td{border-bottom:none}
+.badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;font-weight:700}
+.badge.new{color:#062f4a;background:var(--cyan)}
+.badge.assigned{color:#271a63;background:#8f6cff}
+.badge.converted{color:#231407;background:var(--gold)}
+.badge.settled{color:#071f10;background:var(--green)}
+.badge.closed{color:var(--dim);background:var(--card)}
+.mono{font:600 12.5px Consolas,monospace}
+.num{color:var(--gold);font-weight:700}
+.pending{color:var(--gold)}
+.act{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.act input{padding:6px 8px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:12px;width:86px;outline:none}
+.act select{padding:6px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:12px}
+.act button{padding:6px 12px;border-radius:7px;border:none;font-size:12px;font-weight:700;cursor:pointer}
+.btn-gold{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407}
+.btn-cyan{background:linear-gradient(90deg,var(--cyan),#2a8cff);color:#062f4a}
+.btn-gray{background:var(--card);color:var(--dim);border:1px solid var(--line)!important}
+.partform{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.partform input{padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--txt);outline:none;font-size:13px;flex:1;min-width:140px}
+.partform button{background:linear-gradient(90deg,var(--cyan),#2a8cff);color:#062f4a;border:none;padding:11px 20px;border-radius:9px;font-weight:700;cursor:pointer}
+.empty{color:var(--dim);text-align:center;padding:40px 0;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:20px;padding:22px;text-align:center;color:var(--dim);font-size:12px}
+@media(max-width:680px){.cfg{width:100%;margin-left:0}.cfg input{flex:1}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">跨境线索 · 管理对账后台<small>线索漏斗 · 待结算 · 状态流转</small></div>
+    <div class="cfg">
+      <input type="text" id="cfgUrl" placeholder="后端地址 http://localhost:8000">
+      <input type="password" id="cfgTok" placeholder="ADMIN_TOKEN(管理鉴权)">
+      <button type="button" onclick="loadData()">连接并刷新</button>
+      <a href="选题反哺.html" title="查看 AI 提问埋点反哺的选题清单" style="background:var(--card2);color:var(--cyan);border:1px solid var(--line);padding:9px 18px;border-radius:9px;font-weight:700;font-size:13px;text-decoration:none">选题反哺</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="err" id="errBox"></div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section id="funSec" style="display:none">
+    <div class="sec-head"><h2>线索漏斗</h2><span class="hint">宽度 ∝ 各阶段线索数</span></div>
+    <div class="funnel" id="funnel"></div>
+  </section>
+
+  <section id="leadsSec" style="display:none">
+    <div class="sec-head"><h2>线索明细与对账</h2><span class="hint" id="leadHint"></span></div>
+    <div class="filters" id="filters"></div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr>
+          <th>状态</th><th>编号</th><th>联系</th><th>地区</th><th>推荐通道</th>
+          <th>成交额</th><th>我的分成</th><th>指派代账</th><th>时间</th><th>操作</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="partnerSec" style="display:none">
+    <div class="sec-head"><h2>代账机构录入</h2><span class="hint">指派线索给哪家</span></div>
+    <div class="partform">
+      <input type="text" id="pName" placeholder="机构名称（必填）">
+      <input type="text" id="pContact" placeholder="对接人/电话">
+      <input type="text" id="pRegion" placeholder="地区（如 深圳）">
+      <button type="button" onclick="addPartner()">+ 添加机构</button>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  跨境电商线索对账后台 · 数据来自 FastAPI 后端 /api/leads · 仅限你本人使用，请妥善保管 ADMIN_TOKEN
+</footer>
+
+<script>
+var base='', tok='';
+try{
+  base=localStorage.getItem('cb_backend')||'http://localhost:8000';
+  tok=localStorage.getItem('cb_admin_token')||'';
+}catch(e){}
+document.getElementById('cfgUrl').value=base;
+document.getElementById('cfgTok').value=tok;
+var state={leads:[], partners:[], summary:null};
+
+function saveCfg(){
+  base=(document.getElementById('cfgUrl').value||'http://localhost:8000').replace(/\/+$/,'');
+  tok=document.getElementById('cfgTok').value;
+  try{ localStorage.setItem('cb_backend',base); localStorage.setItem('cb_admin_token',tok); }catch(e){}
+}
+
+function showErr(msg){
+  var e=document.getElementById('errBox');
+  e.style.display='block'; e.textContent='⚠ '+msg;
+}
+function hideErr(){ document.getElementById('errBox').style.display='none'; }
+function qs(){ return 'admin_token='+encodeURIComponent(tok); }
+
+function api(path, opt){
+  return fetch(base+path, opt).then(function(r){
+    if(r.status===403){ throw new Error('ADMIN_TOKEN 错误或未配置（后端已拒绝）'); }
+    if(!r.ok){ return r.json().then(function(j){ throw new Error((j&&j.detail)||('HTTP '+r.status)); }); }
+    return r.json();
+  });
+}
+
+function yuan(c){ return (c/100).toLocaleString('zh-CN',{minimumFractionDigits:2}); }
+function mask(p){
+  if(!p||p.length<7) return p||'-';
+  return p.slice(0,3)+'****'+p.slice(-4);
+}
+var ST={new:'新线索',assigned:'已指派',converted:'已成交·待结算',settled:'已结算',closed:'已关闭'};
+
+function loadData(){
+  saveCfg(); hideErr();
+  if(!tok){ showErr('请填写 ADMIN_TOKEN（对应后端 .env 里配置的值）。不填无法读取管理数据。'); return; }
+  Promise.all([ api('/api/leads/summary?'+qs()), api('/api/leads?'+qs()), api('/api/partners?'+qs()) ])
+    .then(function(a){
+      state.summary=a[0]; state.leads=a[1].leads||[]; state.partners=a[2].partners||[];
+      render();
+    })
+    .catch(function(e){ showErr('连接失败：'+e.message+'。请确认后端地址与 ADMIN_TOKEN。'); });
+}
+
+function count(st){ return (state.summary&&state.summary.by_status&&state.summary.by_status[st])||0; }
+
+function render(){
+  document.getElementById('funSec').style.display='block';
+  document.getElementById('leadsSec').style.display='block';
+  document.getElementById('partnerSec').style.display='block';
+  renderKpis(); renderFunnel(); renderFilters(); renderTable();
+}
+
+function kpi(label,val,sub,extra){ 
+  return '<div class="kpi'+(extra||'')+'"><div class="l">'+label+'</div><div class="n'+((label.indexOf('金额')>-1)?' cny':'')+'">'+val+'</div>'+(sub?'<div class="sub">'+sub+'</div>':'')+'</div>';
+}
+function renderKpis(){
+  var s=state.summary||{};
+  document.getElementById('kpis').innerHTML=
+    kpi('线索总数', state.leads.length)+
+    kpi('新线索', count('new'))+
+    kpi('已指派代账', count('assigned'))+
+    kpi('已成交·待结算', count('converted'), s.pending_count+' 条', ' warn')+
+    kpi('待结算金额', yuan(s.pending_cents||0), '尚未向代账结算', ' warn')+
+    kpi('已结算金额', yuan(s.settled_cents||0), s.settled_count+' 条');
+}
+
+function stageRow(cls,label,val,anno,max){
+  var w= max<=0?10 : Math.max(10, Math.round(val/max*100));
+  var annoHtml = anno ? '<div class="fun-anno">'+anno+'</div>' : '';
+  return '<div class="fun-row"><div class="fun-stage '+cls+'" style="width:'+w+'%">'+
+         '<div class="fs">'+label+'</div><div class="fc">'+val+'</div></div>'+annoHtml+'</div>';
+}
+function renderFunnel(){
+  var max=Math.max(count('new'),count('assigned'),count('converted'),count('settled'),1);
+  var html=
+    stageRow('s1','① 新线索',count('new'),'',max)+
+    stageRow('s2','② 已指派代账',count('assigned'),'',max)+
+    stageRow('s3','③ 已成交 · 待结算',count('converted'),'→ 应收'+yuan(state.summary.pending_cents||0),max)+
+    stageRow('s4','④ 已结算',count('settled'),'→ 已收'+yuan(state.summary.settled_cents||0),max);
+  html+='<div class="fun-pending"><div class="amt">¥ '+yuan(state.summary.pending_cents||0)+'</div><div class="t">待结算金额合计（已成交但尚未结算的线索分成）——这数字越大，越要尽快找代账对账核销。</div></div>';
+  document.getElementById('funnel').innerHTML=html;
+}
+
+var currentFilter='all';
+function renderFilters(){
+  var sts=[['all','全部']];
+  Object.keys(ST).forEach(function(k){ sts.push([k,ST[k]]); });
+  document.getElementById('filters').innerHTML=sts.map(function(s){
+    return '<span class="chip'+(currentFilter===s[0]?' active':'')+'" onclick="setFilter(\''+s[0]+'\')">'+s[1]+'</span>';
+  }).join('');
+}
+function setFilter(f){ currentFilter=f; renderTable(); }
+
+function partnerSelect(){
+  var def='<option value="">未指派</option>';
+  var opts=state.partners.map(function(p){ return '<option value="'+p.partner_id+'">'+p.name+'('+p.region+')</option>'; }).join('');
+  return '<select>'+def+opts+'</select>';
+}
+function renderTable(){
+  var rows=(currentFilter==='all')?state.leads:state.leads.filter(function(l){return l.status===currentFilter;});
+  var btn='';
+  var html=rows.map(function(l){
+    var s=l.status;
+    var act='';
+    if(s==='new'){ 
+      act='<div class="act">'+partnerSelect()+'<button class="btn-cyan" onclick="doAssign(\''+l.lead_id+'\',this)">指派</button></div>';
+    } else if(s==='assigned'){
+      act='<div class="act"><input type="number" placeholder="成交额(元)" class="dv"><input type="number" placeholder="分成(元)" class="fv"><button class="btn-gold" onclick="doDeal(\''+l.lead_id+'\',this)">成交</button></div>';
+    } else if(s==='converted'){
+      act='<div class="act"><button class="btn-gold" onclick="doSettle(\''+l.lead_id+'\')">标记结算</button></div>';
+    } else { act='<span class="dim">—</span>'; }
+    return '<tr>'+
+      '<td><span class="badge '+s+'">'+ST[s]+'</span></td>'+
+      '<td class="mono">'+l.lead_id+'</td>'+
+      '<td>'+esc(l.contact_name||'-')+'<br><span class="mono" style="color:var(--dim)">'+mask(l.contact_phone)+'</span></td>'+
+      '<td>'+(l.region||'-')+'</td>'+
+      '<td>'+esc((l.recommended||'').slice(0,20))+'<br><span style="color:var(--dim);font-size:11px">'+esc(profileHint(l))+'</span></td>'+
+      '<td class="num">'+yuan(l.deal_amount_cents)+'</td>'+
+      '<td class="'+(s==='converted'?'pending':'')+'">'+yuan(l.fee_share_cents)+'</td>'+
+      '<td>'+(l.partner_id?esc(partnerName(l.partner_id)):'—')+'</td>'+
+      '<td class="mono" style="color:var(--dim)">'+esc(l.created_at)+'</td>'+
+      '<td>'+act+'</td></tr>';
+  }).join('');
+  document.getElementById('tbody').innerHTML= html || '<tr><td colspan="10" class="empty">暂无线索</td></tr>';
+}
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function partnerName(id){ var p=state.partners.find(function(x){return x.partner_id===id;}); return p?p.name:id; }
+function profileHint(l){
+  try{
+    var o=JSON.parse(l.profile||'{}');
+    var h=[];
+    if(o.q4) h.push('量级:'+o.q4);
+    if(o.q2) h.push('开票:'+o.q2);
+    if(o.q1) h.push(o.q1);
+    return h.join(' · ').slice(0,40);
+  }catch(e){ return '—'; }
+}
+
+function doAssign(id,btn){
+  var sel=btn.closest('.act').querySelector('select');
+  var pid=sel.value;
+  if(!pid){ alert('请先选择代账机构（或在下方录入）'); return; }
+  api('/api/leads/'+id+'/assign?admin_token='+encodeURIComponent(tok)+'&partner_id='+encodeURIComponent(pid))
+    .then(function(){ loadData(); }).catch(function(e){ showErr('指派失败：'+e.message); });
+}
+function doDeal(id,btn){
+  var b=btn.closest('.act');
+  var dv=parseFloat(b.querySelector('.dv').value)||0;
+  var fv=parseFloat(b.querySelector('.fv').value)||0;
+  if(dv<=0){ alert('请填写成交额'); return; }
+  api('/api/leads/'+id+'/deal?admin_token='+encodeURIComponent(tok)+'&deal_amount_cents='+Math.round(dv*100)+'&fee_share_cents='+Math.round(fv*100))
+    .then(function(){ loadData(); }).catch(function(e){ showErr('成交登记失败：'+e.message); });
+}
+function doSettle(id){
+  if(!confirm('确认将该线索标记为“已结算”？')) return;
+  api('/api/leads/'+id+'/settle?admin_token='+encodeURIComponent(tok))
+    .then(function(){ loadData(); }).catch(function(e){ showErr('结算失败：'+e.message); });
+}
+function addPartner(){
+  var name=document.getElementById('pName').value.trim();
+  if(!name){ alert('请填写机构名称'); return; }
+  var contact=document.getElementById('pContact').value.trim();
+  var region=document.getElementById('pRegion').value.trim();
+  api('/api/partners?admin_token='+encodeURIComponent(tok), {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:name,contact:contact,region:region})
+  }).then(function(){ document.getElementById('pName').value=''; document.getElementById('pContact').value=''; document.getElementById('pRegion').value=''; loadData(); }).catch(function(e){ showErr('添加失败：'+e.message); });
+}
+</script>
+<script>
+/* ============ 站内链接自动附加预览 token ============ */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a');
+  if(!a)return;
+  const href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||/^(https?:|mailto:|tel:|javascript:)/i.test(href))return;
+  const qs=window.location.search;
+  if(!qs||a.search!=='')return;
+  e.preventDefault();
+  const url=a.href+qs;
+  if(a.target==='_blank'){window.open(url,'_blank');}
+  else{window.location.href=url;}
+});
+</script>
+</body>
+</html>

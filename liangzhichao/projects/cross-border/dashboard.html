@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跨境税盾 · 经营数据看板</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#0b1020;--bg2:#111936;--card:#151d3d;--card2:#1a2450;--txt:#e8ecff;--dim:#9aa7d0;--line:#2a3566;--gold:#ffc24d;--gold2:#ff9d2e;--cyan:#37e0ff;--green:#4ade80;--blue:#6c8bff;--red:#ff5c7a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 600px at 20% -10%,#1b2a5e 0%,transparent 50%),var(--bg);color:var(--txt);font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;line-height:1.6;min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+.wrap{max-width:1080px;margin:auto;padding:30px 22px 80px}
+h1{font-size:24px;background:linear-gradient(90deg,#fff,var(--gold),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+.sub{text-align:center;color:var(--dim);font-size:13px;margin:10px 0 24px}
+.conn{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+.conn input{padding:10px 12px;border-radius:9px;background:var(--card);color:var(--txt);border:1px solid var(--line);font-size:13px;min-width:220px}
+.conn button{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;border:none;padding:10px 18px;border-radius:9px;font-weight:800;cursor:pointer}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:22px 0}
+.kpi{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}
+.kpi .n{font-size:26px;font-weight:800;color:var(--gold)}
+.kpi .l{font-size:12px;color:var(--dim);margin-top:4px}
+.kpi.cyan .n{color:var(--cyan)}.kpi.green .n{color:var(--green)}.kpi.red .n{color:var(--red)}.kpi.blue .n{color:var(--blue)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.panel h3{color:var(--gold);font-size:15px;margin-bottom:12px;border-left:3px solid var(--gold2);padding-left:8px}
+.row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13.5px;color:var(--dim)}
+.row b{color:var(--txt)}
+.barline{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:12.5px;color:var(--dim)}
+.barline .lab{width:120px;flex:0 0 auto}
+.barline .tr{flex:1;background:rgba(11,16,32,.5);border-radius:6px;height:14px;overflow:hidden}
+.barline .tr i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:6px}
+.err{background:rgba(255,92,122,.12);border:1px solid var(--red);color:#ffd0da;border-radius:12px;padding:13px 15px;margin-top:14px;font-size:12.5px}
+.ok{background:rgba(74,222,128,.12);border:1px solid var(--green);color:#c9f7da;border-radius:12px;padding:11px 14px;margin-top:10px;font-size:12.5px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding-top:18px;text-align:center;color:var(--dim);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>跨境税盾 · 经营数据看板</h1>
+  <div class="sub">汇总线索 · 成交 · 订阅 · 来源，一眼看经营盘面（需管理密钥）</div>
+
+  <div class="conn">
+    <input id="apiUrl" placeholder="https://...workers.dev" value="https://caishui-leads.861481939.workers.dev">
+    <input id="apiToken" type="password" placeholder="x-admin-token">
+    <button onclick="loadAll()">加载数据 ▶</button>
+  </div>
+
+  <div id="msg"></div>
+  <div class="kpis">
+    <div class="kpi"><div class="n" id="kTotal">—</div><div class="l">线索总数</div></div>
+    <div class="kpi blue"><div class="n" id="kNew">—</div><div class="l">新线索</div></div>
+    <div class="kpi"><div class="n" id="kConv">—</div><div class="l">已成交</div></div>
+    <div class="kpi green"><div class="n" id="kDone">—</div><div class="l">已结算笔数</div></div>
+    <div class="kpi red"><div class="n" id="kDue">—</div><div class="l">待结算金额</div></div>
+    <div class="kpi cyan"><div class="n" id="sTotal">—</div><div class="l">订阅总数</div></div>
+    <div class="kpi cyan"><div class="n" id="sActive">—</div><div class="l">有效订阅</div></div>
+    <div class="kpi cyan"><div class="n" id="sSrc">—</div><div class="l">订阅来源数</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>线索漏斗</h3>
+      <div class="row"><span>新线索</span><b id="nNew">—</b></div>
+      <div class="row"><span>已成交（待结算）</span><b id="nConv">—</b></div>
+      <div class="row"><span>已结算</span><b id="nDone">—</b></div>
+      <div class="row"><span>线索推荐通道 Top</span><b id="kTopRec">—</b></div>
+    </div>
+    <div class="panel">
+      <h3>订阅来源分布</h3>
+      <div id="srcBars">—</div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:16px">
+    <h3>近 8 周趋势（线索提交按周）</h3>
+    <div id="trendBars">—</div>
+  </div>
+
+  <div class="ok" id="ok" style="display:none"></div>
+  <div class="err" id="err" style="display:none"></div>
+  <footer>跨境税盾 · 经营看板 · 数据源 Worker(Supabase) · 请妥善保管密钥</footer>
+</div>
+
+<script>
+function store(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+function loadStore(k,d){ try{return localStorage.getItem(k)||d;}catch(e){return d;} }
+function sval(id){ var v=document.getElementById(id).value.trim(); return v; }
+document.getElementById('apiUrl').value=loadStore('db_url','https://caishui-leads.861481939.workers.dev');
+document.getElementById('apiToken').value=loadStore('db_tok','');
+function tok(){ return sval('apiToken'); }
+function base(){ return sval('apiUrl').replace(/\/+$/,'')||'https://caishui-leads.861481939.workers.dev'; }
+function money(n){ return n==null?'—':'¥'+Number(n).toLocaleString('zh-CN'); }
+function show(msg,t){ document.getElementById('msg').innerHTML=''; }
+function loadAll(){
+  store('db_url',base()); store('db_tok',tok());
+  var H={'x-admin-token':tok()};
+  Promise.all([
+    fetch(base()+'/api/leads',{headers:H}).then(r=>r.json()),
+    fetch(base()+'/api/subscribers',{headers:H}).then(r=>r.json())
+  ]).then(function(arr){
+    var leads=arr[0].leads||[]; var subs=arr[1].subscribers||[]; var sby=arr[1].by_source||{};
+    var newN=0,conv=0,doneN=0,due=0,doneAmt=0; var rec={};
+    leads.forEach(function(L){
+      var s=L.status||'new';
+      if(s==='new')newN++; else if(s==='converted'){conv++;due+=Number(L.my_cut||0);}
+      else if(s==='settled'){doneN++;doneAmt+=Number(L.my_cut||0);}
+      var r=L.recommended||L.recname||'未标注'; rec[r]=(rec[r]||0)+1;
+    });
+    document.getElementById('kTotal').textContent=leads.length;
+    document.getElementById('kNew').textContent=newN;
+    document.getElementById('kConv').textContent=conv;
+    document.getElementById('kDone').textContent=doneN;
+    document.getElementById('kDue').textContent=money(due);
+    document.getElementById('sTotal').textContent=Number(arr[1].total||0);
+    document.getElementById('sActive').textContent=Number(arr[1].active_count||0);
+    document.getElementById('sSrc').textContent=Object.keys(sby).length;
+    document.getElementById('nNew').textContent=newN;
+    document.getElementById('nConv').textContent=conv;
+    document.getElementById('nDone').textContent=doneN;
+    var top=Object.keys(rec).sort(function(a,b){return rec[b]-rec[a];})[0]||'—';
+    document.getElementById('kTopRec').textContent=top;
+    // 订阅来源条形
+    var keys=Object.keys(sby); var max=sby[keys[0]]||1;
+    var sb=keys.length?keys.map(function(k){var w=(sby[k]/max*100);return '<div class="barline"><span class="lab">'+k+'</span><span class="tr"><i style="width:'+w+'%"></i></span><b>'+sby[k]+'</b></div>';}).join(''):'<span style="color:var(--dim)">暂无</span>';
+    document.getElementById('srcBars').innerHTML=sb;
+    // 近8周趋势
+    renderTrend(leads);
+    // 结论
+    document.getElementById('ok').style.display='block';
+    document.getElementById('ok').textContent='✅ 已加载：线索 '+leads.length+' 条 · 订阅 '+Number(arr[1].total||0)+' 个 · 待结算 '+money(due)+' 应收。';
+    document.getElementById('err').style.display='none';
+  }).catch(function(e){
+    document.getElementById('err').style.display='block';
+    document.getElementById('err').textContent='⚠ 加载失败：'+(e.message||e)+'。请检查接口地址与管理密钥。';
+  });
+}
+function renderTrend(leads){
+  // 按提交时间分周（简化：取最近 8 周）
+  var weeks=[]; var now=new Date();
+  for(var i=7;i>=0;i--){ var d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i*7); weeks.push({label:(d.getMonth()+1)+'/'+d.getDate(),count:0}); }
+  leads.forEach(function(L){
+    var t=new Date(L.created_at); if(isNaN(t))return;
+    var idx=Math.min(7,Math.max(0,Math.floor((now - t)/(7*24*3600*1000))));
+    weeks[7-idx].count++;
+  });
+  var max=Math.max.apply(null,weeks.map(function(w){return w.count;}))||1;
+  var html=weeks.map(function(w){var h=Math.round(w.count/max*100);return '<div class="barline"><span class="lab">'+w.label+'</span><span class="tr"><i style="width:'+h+'%"></i></span><b>'+w.count+'</b></div>';}).join('');
+  document.getElementById('trendBars').innerHTML=html;
+}
+loadAll();
+</script>
+<script>
+/* ============ 站内链接自动附加预览 token ============ */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a');
+  if(!a)return;
+  const href=a.getAttribute('href')||'';
+  if(href.indexOf('#')===0||/^(https?:|mailto:|tel:|javascript:)/i.test(href))return;
+  const qs=window.location.search;
+  if(!qs||a.search!=='')return;
+  e.preventDefault();
+  const url=a.href+qs;
+  if(a.target==='_blank'){window.open(url,'_blank');}
+  else{window.location.href=url;}
+});
+</script>
+</body>
+</html>
