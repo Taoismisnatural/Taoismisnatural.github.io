@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中美战略对比大盘 · 对标分析与升级路线图 v2 | 4 对标 × 14 维差距 × 25 图层 × 4 阶段 28 任务</title>
+<meta name="description" content="对标 WorldMonitor / SituationMonitor / AI-GPR / PIIE+Samvada 四大 T1，14 维差距矩阵、25 图层架构、4 模式、4 阶段 28 任务升级路线。">
+<link rel="canonical" href="https://liangzhichao.com/projects/us-china/对标分析与升级路线图-v2.html">
+<style>
+@font-face{font-family:'InstrumentSans';src:url('./us-china-deep-comparison/_shared/fonts/InstrumentSans-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'InstrumentSans';src:url('./us-china-deep-comparison/_shared/fonts/InstrumentSans-Bold.ttf') format('truetype');font-weight:700;font-display:swap;}
+@font-face{font-family:'DMMono';src:url('./us-china-deep-comparison/_shared/fonts/DMMono-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+:root{
+  --bg:#F6F6F2;--bg2:#FFFFFF;--bg3:#EFEFE9;
+  --ink:#171A20;--ink2:#2C323B;--muted:#5B6572;--rule:#D7D8D0;
+  --red:#C62828;--blue:#24429D;--gold:#B8860B;
+  --red-soft:#fdecec;--blue-soft:#e8edf8;--gold-soft:#fbf3dc;
+  --green:#2E7D32;--amber:#E65100;
+  --font-cn:"PingFang SC","Microsoft YaHei","Noto Sans SC","Segoe UI",system-ui,-apple-system,sans-serif;
+  --font-lat:"InstrumentSans",var(--font-cn);
+  --font-mono:"DMMono","JetBrains Mono",ui-monospace,monospace;
+  --w:1200px;--r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-cn);color:var(--ink);background:var(--bg);line-height:1.75;font-size:15.5px;-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+code,kbd{font-family:var(--font-mono);background:var(--bg3);padding:1px 7px;border-radius:5px;font-size:.9em}
+.wrap{max-width:var(--w);margin:auto;padding:0 24px}
+
+/* Top nav */
+.top{position:sticky;top:0;z-index:80;background:rgba(246,246,242,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.top-in{max-width:var(--w);margin:auto;padding:11px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-family:var(--font-lat);font-weight:700;font-size:17px;display:flex;align-items:center;gap:8px}
+.brand .dot-r{width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
+.brand .dot-b{width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.brand small{display:block;font-size:10.5px;color:var(--muted);font-weight:400;letter-spacing:1.5px;font-family:var(--font-mono)}
+.top nav{margin-left:auto;display:flex;gap:5px;flex-wrap:wrap}
+.top nav a{font-size:12px;color:var(--muted);padding:5px 11px;border:1px solid var(--rule);border-radius:18px;text-decoration:none;white-space:nowrap;font-family:var(--font-mono);transition:.2s}
+.top nav a:hover{color:var(--ink);border-color:var(--red)}
+.top nav a.hot{background:linear-gradient(90deg,var(--red),#8E1818);color:#fff;border-color:transparent;font-weight:600}
+.meta{font-size:11px;color:var(--muted);border:1px solid var(--rule);padding:3px 9px;border-radius:14px;font-family:var(--font-mono)}
+.meta b{color:var(--red)}
+.meta.blue b{color:var(--blue)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding:80px 0 56px;color:#fff;
+  background:
+    radial-gradient(900px 440px at 10% -20%,rgba(198,40,40,.40),transparent 60%),
+    radial-gradient(900px 440px at 90% -20%,rgba(36,66,157,.44),transparent 60%),
+    linear-gradient(160deg,#0c1020 0%,#141a30 55%,#1c2542 100%);
+}
+.hero::after{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 120px),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 120px);
+  pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.hero .kicker{font-family:var(--font-mono);letter-spacing:.45em;font-size:12px;color:#d4caca;text-transform:uppercase}
+.hero .vs{display:flex;align-items:center;gap:28px;margin:18px 0 6px}
+.hero .vs .s{font-size:clamp(2.8rem,8vw,5.4rem);font-weight:700;font-family:var(--font-lat);letter-spacing:-.02em;text-shadow:0 4px 30px rgba(0,0,0,.3)}
+.hero .vs .s.c{color:#ff8475;background:linear-gradient(180deg,#ff9e92,#ff5c4b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .vs .s.u{color:#8fb3ff;background:linear-gradient(180deg,#c4d6ff,#5a7cdc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .vs .x{font-family:var(--font-mono);color:#c9d1e1;font-size:1.3rem;border:1px solid rgba(255,255,255,.28);border-radius:50%;width:54px;height:54px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,.03)}
+.hero .cn2{font-family:var(--font-cn);font-size:clamp(1.3rem,3vw,2rem);font-weight:700}
+.hero .sub{font-size:1.02rem;color:#c3cbe0;max-width:760px;margin-top:12px;line-height:1.85}
+.hero .kpig{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+.hero .kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px 18px;backdrop-filter:blur(4px)}
+.hero .kpi .f{font-size:11.5px;color:#9aa6bd;letter-spacing:.5px;font-family:var(--font-mono)}
+.hero .kpi .n{font-family:var(--font-lat);font-size:2rem;font-weight:700;margin-top:4px;line-height:1.1;color:#fff}
+.hero .kpi .u{font-size:12px;color:#b8c2d5;margin-left:3px}
+.hero .kpi .sml{font-size:12px;color:#9aa6bd;margin-top:4px}
+.hero .meta-row{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:26px;font-size:.86rem;color:#9aa6bd;font-family:var(--font-mono)}
+.hero .meta-row b{color:#fff}
+
+/* Sections */
+section{padding:56px 0 8px}
+.sec-t{display:flex;align-items:center;gap:10px;font-size:11.5px;color:var(--blue);letter-spacing:2px;font-family:var(--font-mono);text-transform:uppercase;margin-bottom:8px}
+.sec-t::before{content:"";width:20px;height:1.5px;background:var(--blue)}
+.sec-t.r{color:var(--red)}.sec-t.r::before{background:var(--red)}
+.sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.sec-h .idx{font-family:var(--font-lat);font-size:2.6rem;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--blue);line-height:1;letter-spacing:-.03em}
+.sec-h .idx.r{-webkit-text-stroke:1.5px var(--red)}
+.sec-h h2{font-family:var(--font-lat);font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--ink)}
+.sec-h .en{margin-left:auto;font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;padding-top:10px}
+.rule{height:3px;width:70px;background:linear-gradient(90deg,var(--red),var(--blue));border-radius:2px;margin:12px 0 22px}
+p.lead{color:var(--ink);font-size:1.02rem;margin-bottom:18px}
+p{color:var(--ink2);margin-bottom:14px}
+
+/* Confidence + Sensitivity badges */
+.conf{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-family:var(--font-mono);font-weight:700;vertical-align:middle;margin-right:6px;letter-spacing:.5px}
+.conf.high{background:#e6f4ea;color:var(--green);border:1px solid #b7dfc2}
+.conf.mid{background:var(--gold-soft);color:var(--gold);border:1px solid #ead9a6}
+.conf.low{background:#fdecec;color:var(--red);border:1px solid #f4c2c2}
+.sens{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-family:var(--font-mono);font-weight:700;vertical-align:middle;margin-right:6px;letter-spacing:.5px}
+.sens.red{background:#fdecec;color:var(--red);border:1px solid #f4c2c2}
+.sens.gold{background:var(--gold-soft);color:var(--gold);border:1px solid #ead9a6}
+.sens.blue{background:var(--blue-soft);color:var(--blue);border:1px solid #c8d2ed}
+.src{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-family:var(--font-mono);background:var(--bg3);color:var(--muted);border:1px solid var(--rule);vertical-align:middle;letter-spacing:.3px}
+.tag{display:inline-block;padding:3px 9px;border-radius:14px;font-size:11.5px;font-family:var(--font-mono);margin:2px 4px 2px 0}
+.tag.r{background:var(--red-soft);color:var(--red)}
+.tag.b{background:var(--blue-soft);color:var(--blue)}
+.tag.g{background:#e6f4ea;color:var(--green)}
+.tag.o{background:#fff1e0;color:var(--amber)}
+.tag.k{background:#1a2233;color:#c8d1e2}
+
+/* Tabs */
+.tabbar{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0 22px;padding:6px;background:var(--bg2);border:1px solid var(--rule);border-radius:12px}
+.tabbtn{flex:1;min-width:180px;padding:10px 14px;border-radius:8px;font-family:var(--font-mono);font-size:12.5px;cursor:pointer;background:transparent;border:none;color:var(--muted);text-align:left;transition:.2s;display:flex;align-items:center;gap:8px}
+.tabbtn:hover{color:var(--ink)}
+.tabbtn.on{background:linear-gradient(135deg,var(--red),var(--blue));color:#fff;box-shadow:0 4px 14px rgba(36,66,157,.25)}
+.tabbtn .p{display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--bg3);color:var(--muted);text-align:center;line-height:22px;font-size:11px;flex-shrink:0;font-weight:700}
+.tabbtn.on .p{background:rgba(255,255,255,.2);color:#fff}
+.tabpanel{display:none}
+.tabpanel.on{display:block;animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.tabpanel.on{animation:none}}
+
+/* Bench cards */
+.benches{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin:14px 0}
+.bench{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--r);padding:20px 22px;transition:.25s;position:relative;overflow:hidden}
+.bench::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--blue))}
+.bench:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(22,29,61,.08);border-color:#bfc3d6}
+.bench .hh{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px}
+.bench .logo{width:50px;height:50px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-lat);font-weight:700;font-size:18px;color:#fff;background:linear-gradient(135deg,#2c323b,#5b6572)}
+.bench .logo.wm{background:linear-gradient(135deg,#1a1a2e,#16213e)}
+.bench .logo.sm{background:linear-gradient(135deg,#0f3460,#533483)}
+.bench .logo.ag{background:linear-gradient(135deg,#8E1818,#C62828)}
+.bench .logo.pw{background:linear-gradient(135deg,#24429D,#536dbd)}
+.bench .logo.hm{background:linear-gradient(135deg,#8B0000,#B8860B)}
+.bench .logo.kd{background:linear-gradient(135deg,#0066b3,#29abe2)}
+.bench .tt{flex:1}
+.bench .tt h3{font-family:var(--font-lat);font-size:18px;font-weight:700;margin-bottom:2px}
+.bench .tt .org{font-size:12px;color:var(--muted);font-family:var(--font-mono)}
+.bench .bar{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
+.bench .desc{font-size:13.5px;color:var(--ink2);line-height:1.75;margin-bottom:12px}
+.bench .split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;padding-top:12px;border-top:1px dashed var(--rule)}
+.bench .split .lbl{font-size:11px;color:var(--muted);font-family:var(--font-mono);letter-spacing:.5px;margin-bottom:4px}
+.bench .split .hit{font-size:13px;color:var(--green);font-weight:600}
+.bench .split .miss{font-size:13px;color:var(--red);font-weight:600}
+.bench .price{position:absolute;top:14px;right:16px;font-size:11px;font-family:var(--font-mono);padding:3px 9px;border-radius:14px;background:var(--bg3);color:var(--muted)}
+
+/* Gap table */
+.gap{overflow-x:auto;margin:16px 0;border:1px solid var(--rule);border-radius:12px;background:var(--bg2)}
+table.gt{width:100%;border-collapse:collapse;min-width:860px;font-size:13.5px}
+.gt thead th{position:sticky;top:0;padding:13px 14px;font-weight:700;background:var(--bg3);z-index:3;text-align:left;font-family:var(--font-lat);border-bottom:2px solid var(--rule)}
+.gt thead th.m{background:#fff;font-family:var(--font-mono);color:var(--muted)}
+.gt thead th.w{background:linear-gradient(180deg,#fffaf0,var(--gold-soft));color:var(--gold)}
+.gt thead th.t1{background:linear-gradient(180deg,#fdfdfd,var(--blue-soft));color:var(--blue)}
+.gt thead th.t2{background:linear-gradient(180deg,#fdfdfd,var(--red-soft));color:var(--red)}
+.gt thead th.o{background:linear-gradient(180deg,#fff,#e6f4ea);color:var(--green)}
+.gt tbody td{padding:11px 14px;border-bottom:1px solid var(--rule);vertical-align:top}
+.gt tbody tr:last-child td{border-bottom:none}
+.gt tbody tr:hover{background:#fafaf3}
+.gt td.met{font-weight:700;color:var(--ink);white-space:nowrap;font-family:var(--font-lat)}
+.gt td.met .sb{display:block;font-weight:400;color:var(--muted);font-size:11.5px;font-family:var(--font-mono);white-space:normal;margin-top:2px}
+.lv{display:inline-block;padding:2px 9px;border-radius:6px;font-size:11.5px;font-family:var(--font-mono);font-weight:700}
+.lv.s0{background:#e6f4ea;color:var(--green)}
+.lv.s1{background:#e3f2fd;color:#1565C0}
+.lv.s2{background:var(--gold-soft);color:var(--gold)}
+.lv.s3{background:#fdecec;color:var(--red)}
+
+/* Score cards */
+.scores{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin:16px 0}
+.sc{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--r);padding:16px 18px}
+.sc .hh{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px}
+.sc .lbl{font-size:13px;font-weight:600;color:var(--ink)}
+.sc .num{font-family:var(--font-lat);font-size:22px;font-weight:700}
+.sc .bar{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;margin:10px 0 6px}
+.sc .bar .fi{height:100%;border-radius:4px;width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+@media (prefers-reduced-motion:reduce){.sc .bar .fi{transition:none}}
+.sc.g .num,.sc.g .bar .fi{background:linear-gradient(90deg,#2E7D32,#4CAF50);color:var(--green)}
+.sc.m .num,.sc.m .bar .fi{background:linear-gradient(90deg,var(--gold),#D4A017);color:var(--gold)}
+.sc.b .num,.sc.b .bar .fi{background:linear-gradient(90deg,#B71C1C,var(--red));color:var(--red)}
+.sc .cmt{font-size:12px;color:var(--muted);margin-top:4px;font-family:var(--font-mono)}
+
+/* Insight */
+.ins{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:16px;margin:16px 0}
+.inc{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--r);padding:22px;position:relative;overflow:hidden}
+.inc::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--red),var(--blue))}
+.inc .n{font-family:var(--font-lat);font-size:38px;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--red);line-height:1;position:absolute;top:14px;right:20px;font-style:italic;opacity:.5}
+.inc h3{font-family:var(--font-lat);font-size:17px;font-weight:700;margin-bottom:8px;padding-right:40px}
+.inc p{font-size:14px;color:var(--ink2);margin-bottom:10px}
+.inc .kw{margin-top:10px}
+
+/* Layers grid */
+.layers{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:16px 0}
+.lc{background:var(--bg2);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;transition:.2s}
+.lc:hover{border-color:#a8adc0;transform:translateY(-2px)}
+.lc .topl{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.lc .nm{font-weight:700;font-size:14px;color:var(--ink);font-family:var(--font-lat)}
+.lc .lv{font-size:10.5px}
+.lc .ds{font-size:12px;color:var(--muted);margin-bottom:8px;line-height:1.65}
+.lc .meta-l{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);font-family:var(--font-mono)}
+
+/* Modes */
+.modes{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:16px 0}
+.md{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--r);padding:20px;position:relative}
+.md .ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-lat);font-weight:700;color:#fff;font-size:18px;margin-bottom:12px}
+.md .ico.m0{background:linear-gradient(135deg,var(--red),var(--blue))}
+.md .ico.m1{background:linear-gradient(135deg,#1a237e,#5c6bc0)}
+.md .ico.m2{background:linear-gradient(135deg,#b71c1c,#e57373)}
+.md .ico.m3{background:linear-gradient(135deg,#004d40,#4db6ac)}
+.md h3{font-family:var(--font-lat);font-size:16px;font-weight:700;margin-bottom:6px}
+.md p{font-size:13.5px;color:var(--ink2)}
+
+/* Roadmap */
+.roadmap{margin:20px 0;display:flex;flex-direction:column;gap:14px}
+.phase{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.phh{display:flex;align-items:center;gap:14px;padding:16px 22px;background:linear-gradient(90deg,var(--bg2),var(--bg3));border-bottom:1px solid var(--rule)}
+.phh .pnum{font-family:var(--font-mono);font-size:13px;padding:4px 12px;border-radius:18px;font-weight:700}
+.phh.p0 .pnum{background:#e6f4ea;color:var(--green);border:1px solid #b7dfc2}
+.phh.p1 .pnum{background:var(--gold-soft);color:var(--gold);border:1px solid #ead9a6}
+.phh.p2 .pnum{background:var(--blue-soft);color:var(--blue);border:1px solid #c8d2ed}
+.phh.p3 .pnum{background:#e0f7fa;color:#00695c;border:1px solid #b2ebf2}
+.phh h3{font-family:var(--font-lat);font-size:18px;font-weight:700;flex:1}
+.phh .t{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.tasks{padding:18px 22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+.tk{padding:12px 14px;border-radius:10px;border:1px solid var(--rule);background:var(--bg);transition:.2s}
+.tk:hover{border-color:#a8adc0;background:var(--bg2)}
+.tk .tn{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px}
+.tk .tn b{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);margin-top:3px;flex-shrink:0}
+.tk .tn span{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.55}
+.tk .pr{font-size:11px;font-family:var(--font-mono);padding:2px 8px;border-radius:10px;margin:4px 6px 0 0;display:inline-block}
+.tk .pr.p0{background:#e6f4ea;color:var(--green)}
+.tk .pr.p1{background:var(--gold-soft);color:var(--gold)}
+.tk .pr.p2{background:var(--blue-soft);color:var(--blue)}
+.tk .pr.p3{background:#e0f7fa;color:#00695c}
+.tk .cfs{font-size:12px;color:var(--muted);margin-top:4px;font-family:var(--font-mono)}
+
+/* Deliverables */
+.dels{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin:16px 0}
+.del{background:var(--bg2);border:1px solid var(--rule);border-radius:var(--r);padding:20px;position:relative}
+.del .num{position:absolute;top:10px;right:14px;font-family:var(--font-lat);font-size:28px;font-weight:700;color:transparent;-webkit-text-stroke:1.5px var(--blue);opacity:.5}
+.del .ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-family:var(--font-mono);font-size:15px;font-weight:700;color:#fff}
+.del .ico.d0{background:linear-gradient(135deg,#C62828,#8E1818)}
+.del .ico.d1{background:linear-gradient(135deg,#24429D,#1a2e78)}
+.del .ico.d2{background:linear-gradient(135deg,#B8860B,#8B6914)}
+.del .ico.d3{background:linear-gradient(135deg,#2E7D32,#1B5E20)}
+.del .ico.d4{background:linear-gradient(135deg,#1a2233,#3949ab)}
+.del .ico.d5{background:linear-gradient(135deg,#6A1B9A,#4527A0)}
+.del h3{font-family:var(--font-lat);font-size:16px;font-weight:700;margin-bottom:8px}
+.del p{font-size:13.5px;color:var(--ink2)}
+
+/* Footer */
+.ft{border-top:1px solid var(--rule);padding:40px 0 28px;margin-top:60px;background:var(--bg2)}
+.ft .fgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:28px}
+.ft h4{font-family:var(--font-lat);font-size:14px;color:var(--ink);margin-bottom:14px}
+.ft a{display:block;padding:5px 0;font-size:13px;color:var(--muted);text-decoration:none}
+.ft a:hover{color:var(--red)}
+.ft .cp{border-top:1px solid var(--rule);margin-top:32px;padding-top:22px;text-align:center;font-size:12px;color:var(--muted);font-family:var(--font-mono)}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero .kpig{grid-template-columns:repeat(2,1fr)}
+  .ft .fgrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .hero .vs{flex-direction:column;gap:8px}
+  .benches,.ins,.layers,.modes,.scores,.tasks,.dels{grid-template-columns:1fr}
+  .hero .kpig{grid-template-columns:1fr 1fr}
+  .ft .fgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<div class="top"><div class="top-in">
+  <div class="brand">
+    <span class="dot-r"></span><span class="dot-b"></span>
+    <div>中美战略对比大盘 <small>US-CN · BENCHMARK v2 · 2026</small></div>
+  </div>
+  <span class="meta"><b>2026-09-02</b> · 生成</span>
+  <span class="meta blue"><b>4</b> 对标梯队</span>
+  <span class="meta"><b>14</b> 维差距</span>
+  <span class="meta blue"><b>28</b> 任务</span>
+  <nav>
+    <a href="#s1">对标梯队</a>
+    <a href="#s2">差距矩阵</a>
+    <a href="#s3">评分卡</a>
+    <a href="#s4">图层架构</a>
+    <a href="#s5">4 模式</a>
+    <a href="#s6">破局洞察</a>
+    <a href="#s7">路线图</a>
+    <a href="#s8">交付清单</a>
+    <a class="hot" target="_blank" href="./us-china-deep-comparison/us-china-comparison.html">打开总战盘 →</a>
+  </nav>
+</div></div>
+
+<!-- Hero -->
+<div class="hero"><div class="wrap">
+  <div class="kicker rv">US · CHINA · STRATEGIC RIVALRY · BENCHMARK REPORT</div>
+  <div class="vs rv">
+    <div class="s c">CHINA</div>
+    <div class="x">VS</div>
+    <div class="s u">U.S.A</div>
+  </div>
+  <div class="cn2 rv">对标驱动 · 中美战略对比大盘升级路线图 v2</div>
+  <div class="sub rv">
+    <span class="conf high">置信度 · 高</span>
+    <span class="sens gold">敏感性 · 黄</span>
+    <span class="src">来源：WM worldmonitor.app · SM App Store · Fed AI-GPR Paper · PIIE Policy Briefs · SamvadaWorld · us-china-deep-comparison 三页基线</span>
+    <br><br>
+    四梯队对标拆解（交互地图 / LLM语义指数 / 深度叙事 / 我方基线），14 维度量化差距矩阵，25 图层 × 4 模式全量架构，4 破局洞察 + 4 阶段 28 任务可执行路线图。
+  </div>
+  <div class="kpig">
+    <div class="kpi rv"><div class="f">T1 对标梯队</div><div class="n">4<span class="u">条</span></div><div class="sml">WM+SM / AI-GPR / PIIE+Samvada / 我方基线</div></div>
+    <div class="kpi rv"><div class="f">差距维度</div><div class="n">14<span class="u">维</span></div><div class="sml">图层·变体·模式·指数·叙事·移动端·订阅</div></div>
+    <div class="kpi rv"><div class="f">图层架构</div><div class="n">25<span class="u">层</span></div><div class="sml">指数·地理·科技·金融·供应链·辅助 6 大类</div></div>
+    <div class="kpi rv"><div class="f">路线任务</div><div class="n">28<span class="u">项</span></div><div class="sml">P0 2周 / P1 6周 / P2 8周 / P3 10周</div></div>
+  </div>
+  <div class="meta-row">
+    <span>总览页：<b>us-china-comparison.html</b></span>
+    <span>画像页：<b>us-profile / china-profile</b></span>
+    <span>conf/sens 徽章：<b>100% 覆盖</b></span>
+    <span>快照机制：<b>每日 16:00 北京时</b></span>
+  </div>
+</div></div>
+
+<!-- S1 对标梯队 -->
+<section id="s1"><div class="wrap">
+  <div class="sec-t">SECTION · 01</div>
+  <div class="sec-h"><div class="idx">01</div><h2>四大 <b style="background:linear-gradient(90deg,var(--red),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent">T1 对标梯队</b> 拆解</h2><div class="en">BENCHMARK · TIER-1 MATRIX</div></div>
+  <div class="rule"></div>
+  <p class="lead rv">选标逻辑：不选泛泛信息站，选"可拆解机制"的标杆——<b>交互机制</b> 取 WorldMonitor + SituationMonitor、<b>量化指数</b> 取 AI-GPR + SAM、<b>叙事结构</b> 取 PIIE + SamvadaWorld、<b>我方基线</b> 取 us-china-deep-comparison 三页逐一拆解。</p>
+  <p class="rv"><span class="conf high">高置信</span><span class="sens blue">蓝敏感性 · 公开信息</span><span class="src">对标搜索：2026-09-02 · GitHub + App Store + SSRN + 官方站点</span></p>
+  <div class="tabbar"><button class="tabbtn on" onclick="switchTab('t0')">
+  <span class="p">WM+SM</span><div><b style="font-family:var(--font-lat);font-size:13px;display:block;margin-bottom:2px">交互地图双雄</b><span style="font-size:10.5px;color:currentColor;opacity:.75">WorldMonitor + SituationMoni…</span></div>
+</button><button class="tabbtn " onclick="switchTab('t1')">
+  <span class="p">AI-GPR</span><div><b style="font-family:var(--font-lat);font-size:13px;display:block;margin-bottom:2px">LLM 语义风险指数</b><span style="font-size:10.5px;color:currentColor;opacity:.75">美联储 Iacoviello AI-GPR Index：…</span></div>
+</button><button class="tabbtn " onclick="switchTab('t2')">
+  <span class="p">PIIE+</span><div><b style="font-family:var(--font-lat);font-size:13px;display:block;margin-bottom:2px">深度叙事 × 原声时间轴</b><span style="font-size:10.5px;color:currentColor;opacity:.75">PIIE 政策智库叙事 + SamvadaWorld 人…</span></div>
+</button><button class="tabbtn " onclick="switchTab('t3')">
+  <span class="p">对标</span><div><b style="font-family:var(--font-lat);font-size:13px;display:block;margin-bottom:2px">当前版本基线</b><span style="font-size:10.5px;color:currentColor;opacity:.75">我方 us-china-deep-comparison …</span></div>
+</button></div>
+  <div class="tabpanel on" id="t0">
+  <p class="lead rv">WorldMonitor + SituationMonitor 对标：25+ 图层、双变体主题、移动端 Command Hub、Pro 订阅体系。</p>
+  <div class="benches"><div class="bench rv">
+  <div class="price">Free / Donation</div>
+  <div class="hh">
+    <div class="logo wm">WM</div>
+    <div class="tt">
+      <h3>WorldMonitor</h3>
+      <div class="org">worldmonitor.app · Open Source</div>
+    </div>
+  </div>
+  <div class="bar"><span class="tag k">25+图层</span><span class="tag b">双变体</span><span class="tag g">开源MIT</span><span class="tag o">7信号雷达</span></div>
+  <div class="desc">开源地缘风险仪表盘：全球 25+ 数据图层（冲突/制裁/选举/供应链），双变体主题（卫星/皮书），AI 每日简报，7 信号市场雷达，5 天滚动预警。</div>
+  <div class="split">
+    <div><div class="lbl">核心借鉴 HIT</div><div class="hit">25+ 图层架构、AI 简报工作流、市场雷达 7 信号、移动端响应适配</div></div>
+    <div><div class="lbl">避开 MISS</div><div class="miss">缺深度叙事页、缺双国阵营视角、缺置信度-敏感性体系</div></div>
+  </div>
+</div><div class="bench rv">
+  <div class="price">$9.99/月 Pro</div>
+  <div class="hh">
+    <div class="logo sm">SM</div>
+    <div class="tt">
+      <h3>SituationMonitor</h3>
+      <div class="org">iOS App Store · Gemini AI</div>
+    </div>
+  </div>
+  <div class="bar"><span class="tag b">3模式</span><span class="tag r">50+面板</span><span class="tag o">Pro订阅</span><span class="tag k">移动指挥台</span></div>
+  <div class="desc">iOS 地缘态势应用：三模式（Global / Regional / Detail）+ Command Hub 50+ 面板，Gemini AI 态势解读，Pro 版提供历史回溯和导出。</div>
+  <div class="split">
+    <div><div class="lbl">核心借鉴 HIT</div><div class="hit">Command Hub 面板式布局、Pro 订阅分层、三模式路由、原生移动端优先</div></div>
+    <div><div class="lbl">避开 MISS</div><div class="miss">iOS 封闭生态、缺跨设备协同、缺自研指数与多维置信度</div></div>
+  </div>
+</div></div>
+</div><div class="tabpanel " id="t1">
+  <p class="lead rv">美联储 Iacoviello AI-GPR Index：LLM 语义量化 0-1 连续值，1960-2025 回测、多分类风险架构。</p>
+  <div class="benches"><div class="bench rv">
+  <div class="price">Open Paper / Free Data</div>
+  <div class="hh">
+    <div class="logo ag">AI</div>
+    <div class="tt">
+      <h3>AI-GPR Index</h3>
+      <div class="org">Matteo Iacoviello · Fed Board</div>
+    </div>
+  </div>
+  <div class="bar"><span class="tag k">LLM语义</span><span class="tag g">0-1连续值</span><span class="tag b">66y回测</span><span class="tag r">多分类架构</span></div>
+  <div class="desc">用 LLM（GPT-4 级）对 1960-2025 年新闻做地缘政治风险语义打分，0-1 连续值指数，按国别×事件类型×双边对×主体网络 4 维分类，比 EPU/GPR 词典法高 0.28 R²。</div>
+  <div class="split">
+    <div><div class="lbl">核心借鉴 HIT</div><div class="hit">LLM 语义指数方法论、多层分类架构、长周期回测、与资产价格相关性验证</div></div>
+    <div><div class="lbl">避开 MISS</div><div class="miss">可视化弱、缺图层交互、缺双阵营叙事结构、缺实时推送</div></div>
+  </div>
+</div><div class="bench rv">
+  <div class="price">$12K+/年起</div>
+  <div class="hh">
+    <div class="logo pw">S&P</div>
+    <div class="tt">
+      <h3>SAM Geopolitical Risk</h3>
+      <div class="org">S&P Global Market Intelligence</div>
+    </div>
+  </div>
+  <div class="bar"><span class="tag o">商业数据</span><span class="tag r">企业风险</span><span class="tag b">实体评分</span></div>
+  <div class="desc">商业地缘风险产品：按企业实体、合同、供应链链路做风险评分，支持 API 接入和内部 ERP 对接，行业横向：能源/军工/半导体最敏感。</div>
+  <div class="split">
+    <div><div class="lbl">核心借鉴 HIT</div><div class="hit">实体级风险归因、API-ERP 生态连接器、行业横向敏感分析</div></div>
+    <div><div class="lbl">避开 MISS</div><div class="miss">黑箱无开源验证、贵、缺深度叙事与双阵营对比</div></div>
+  </div>
+</div></div>
+</div><div class="tabpanel " id="t2">
+  <p class="lead rv">PIIE 政策智库叙事 + SamvadaWorld 人物原声 + 时间轴演进：研究型报告参考。</p>
+  <div class="benches"><div class="bench rv">
+  <div class="price">Free · Policy Briefs</div>
+  <div class="hh">
+    <div class="logo pw">PII</div>
+    <div class="tt">
+      <h3>PIIE Policy Briefs</h3>
+      <div class="org">Peterson Institute · 华盛顿智库</div>
+    </div>
+  </div>
+  <div class="bar"><span class="tag b">政策智库</span><span class="tag k">深度叙事</span><span class="tag g">脚注溯源</span><span class="tag o">模型测算</span></div>
+  <div class="desc">彼得森国际经济研究所旗舰政策简报：长文叙事 + 数据图表 + 脚注穿透至官方数据源，附 CGE/DSGE 模型测算，学术与政策双重引用。</div>
+  <div class="split">
+    <div><div class="lbl">核心借鉴 HIT</div><div class="hit">深度叙事结构、脚注穿透系统、模型测算 + 叙事双轨、结论的反方论点</div></div>
+    <div><div class="lbl">避开 MISS</div><div class="miss">无交互、无图层、无移动端、无实时快照机制</div></div>
+  </div>
+</div><div class="bench rv">
+  <div class="price">Free · Ad-Supported</div>
+  <div class="hh">
+    <div class="logo hm">SW</div>
+    <div class="tt">
+      <h3>SamvadaWorld</h3>
+      <div class="org">深度叙事媒体 · 原声合集</div>
+    </div>
+  </div>
+  <div class="bar"><span class="tag r">人物原声</span><span class="tag b">时间轴演进</span><span class="tag k">关键人物网络</span><span class="tag o">专题长读</span></div>
+  <div class="desc">Samvada 地缘深度：按关键人物原声 + 时间轴演进 + 人物关系网络做专题，配一手采访与多语种引用。</div>
+  <div class="split">
+    <div><div class="lbl">核心借鉴 HIT</div><div class="hit">关键人物原声 + 关系网络 + 时间轴三维叙事、专题长读模板</div></div>
+    <div><div class="lbl">避开 MISS</div><div class="miss">缺量化指数、缺图层、缺移动端订阅、缺置信度体系</div></div>
+  </div>
+</div></div>
+</div><div class="tabpanel " id="t3">
+  <p class="lead rv">我方 us-china-deep-comparison 现状拆解：胜场/差距/改进方向。</p>
+  <div class="benches"><div class="bench rv">
+  <div class="price">Free · Live</div>
+  <div class="hh">
+    <div class="logo pw">US</div>
+    <div class="tt">
+      <h3>US-Profile · 美利坚画像</h3>
+      <div class="org">我方 · us-profile.html</div>
+    </div>
+  </div>
+  <div class="bar"><span class="tag b">经济KPI×10</span><span class="tag k">技术力拆解</span><span class="tag r">军力6项</span><span class="tag g">脚注引用</span></div>
+  <div class="desc">美利坚画像页：10 条经济 KPI + 科技 + 军力三大板块，1960-2025 历史数据，红蓝双柱对比组件，皮书风格排版。</div>
+  <div class="split">
+    <div><div class="lbl">核心借鉴 HIT</div><div class="hit">长周期数据、皮书风格基础骨架、已有脚注引用</div></div>
+    <div><div class="lbl">避开 MISS</div><div class="miss">缺自研指数雷达、缺25图层、缺4模式、缺LLM语义风险、缺移动端优先</div></div>
+  </div>
+</div><div class="bench rv">
+  <div class="price">Free · Live</div>
+  <div class="hh">
+    <div class="logo ag">CN</div>
+    <div class="tt">
+      <h3>CN-Profile · 中国画像</h3>
+      <div class="org">我方 · china-profile.html</div>
+    </div>
+  </div>
+  <div class="bar"><span class="tag r">制造业PMI</span><span class="tag b">REER汇率</span><span class="tag k">科技指标</span><span class="tag o">军费走势</span></div>
+  <div class="desc">中国画像页：制造业 PMI、REER 汇率、科技/军费多图组合，2015-2025 折线对比，已接入国家统计局+IMF数据源。</div>
+  <div class="split">
+    <div><div class="lbl">核心借鉴 HIT</div><div class="hit">高频数据覆盖、数据来源明确、中文+英文双标签</div></div>
+    <div><div class="lbl">避开 MISS</div><div class="miss">缺五大指数雷达、缺全球位置图层、缺双边胜场过滤、缺深色指挥台风</div></div>
+  </div>
+</div><div class="bench rv">
+  <div class="price">Free · Live</div>
+  <div class="hh">
+    <div class="logo sm">VS</div>
+    <div class="tt">
+      <h3>Comparison · 总战盘</h3>
+      <div class="org">我方 · us-china-comparison.html</div>
+    </div>
+  </div>
+  <div class="bar"><span class="tag b">KV栏对比</span><span class="tag r">cmp表格</span><span class="tag k">win徽标</span><span class="tag g">7大板块</span></div>
+  <div class="desc">总战盘：红蓝渐变 Hero + VS 牌 + 7 大板块 cmp 表格 + 胜场徽标（win.c/win.u），粘性导航与 section 锚点。</div>
+  <div class="split">
+    <div><div class="lbl">核心借鉴 HIT</div><div class="hit">VS 视觉结构、胜场徽标体系、7 大板块组织、红蓝色彩体系</div></div>
+    <div><div class="lbl">避开 MISS</div><div class="miss">缺25图层交互、缺4模式路由、缺AI-GPR指数、缺深度叙事、缺深色变体</div></div>
+  </div>
+</div></div>
+</div>
+</div></section>
+
+<!-- S2 差距矩阵 -->
+<section id="s2"><div class="wrap">
+  <div class="sec-t r">SECTION · 02</div>
+  <div class="sec-h"><div class="idx r">02</div><h2>十四维 <b style="background:linear-gradient(90deg,var(--red),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent">差距矩阵</b></h2><div class="en">GAP · MATRIX 14-DIM</div></div>
+  <div class="rule"></div>
+  <p class="lead rv">按 4 标杆 × 我方，横向对比 14 维度：<b>S0 已领先 / S1 近距（<6 月） / S2 中距（6-12 月） / S3 远距（>12 月）</b>。当前 S3 项 8/14（57%），核心短板 = AI-GPR 语义指数 + 25 图层交互 + Pro 订阅体系。</p>
+  <p class="rv"><span class="conf mid">中置信 · 差距评级基于公开功能实测，未反编译黑箱模块</span><span class="sens gold">黄敏感性 · 含 SW 商业模块假设</span><span class="src">Method：对标站功能盘点 × 我方三页 HTML 扫描 × ECharts 可实现性评估</span></p>
+  <div class="gap"><table class="gt">
+<thead><tr>
+  <th class="m" style="min-width:210px">维度 / 现状</th>
+  <th class="w">WorldMonitor<br><small style="font-weight:400;opacity:.8">25+图层标杆</small></th>
+  <th class="t1">AI-GPR Index<br><small style="font-weight:400;opacity:.8">LLM语义标杆</small></th>
+  <th class="t2">PIIE + Samvada<br><small style="font-weight:400;opacity:.8">深度叙事标杆</small></th>
+  <th class="o" style="min-width:200px">我方当前版本<br><small style="font-weight:400;opacity:.8">us-china-deep-comparison</small></th>
+  <th style="min-width:110px;text-align:center;background:#f7f7ef">评级</th>
+</tr></thead>
+<tbody>
+  <tr>
+    <td class="met">图层架构<span class="sb">图层架构 · 仅 7 板块 KV+cmp</span></td>
+    <td>25+ 图层 · L0-L4</td>
+    <td>× 学术无图层</td>
+    <td>× 叙事无图层</td>
+    <td>25+ 交互图层 / L0-L4 四层</td>
+    <td style="text-align:center"><span class="lv s3">S3</span></td>
+  </tr><tr>
+    <td class="met">主题变体<span class="sb">主题变体 · × 仅浅色皮书</span></td>
+    <td>✓ WM 卫星+皮书</td>
+    <td>× 无 UI</td>
+    <td>× 无</td>
+    <td>双变体（浅色皮书 / 深色指挥台）</td>
+    <td style="text-align:center"><span class="lv s3">S3</span></td>
+  </tr><tr>
+    <td class="met">模式路由<span class="sb">模式路由 · × 单模式</span></td>
+    <td>× 单模式</td>
+    <td>× 单指数</td>
+    <td>× 单叙事</td>
+    <td>总战盘 / 科技 / 金融 / 供应链 4 模式</td>
+    <td style="text-align:center"><span class="lv s3">S3</span></td>
+  </tr><tr>
+    <td class="met">LLM 语义指数<span class="sb">LLM 语义指数 · × 无</span></td>
+    <td>× 无</td>
+    <td>✓ 0-1 连续 + 4 维分类</td>
+    <td>× 无</td>
+    <td>0-1 连续值 + 多层分类</td>
+    <td style="text-align:center"><span class="lv s3">S3</span></td>
+  </tr><tr>
+    <td class="met">长周期回测<span class="sb">长周期回测 · × 仅 2015+</span></td>
+    <td>× 仅 5 年快照</td>
+    <td>✓ 66 年回测</td>
+    <td>× 无</td>
+    <td>1960-2025 年历史验证</td>
+    <td style="text-align:center"><span class="lv s2">S2</span></td>
+  </tr><tr>
+    <td class="met">深度叙事<span class="sb">深度叙事 · 部分（资料型）</span></td>
+    <td>× 无</td>
+    <td>× 无</td>
+    <td>✓ PIIE 专业</td>
+    <td>长文 + 模型测算 + 脚注穿透</td>
+    <td style="text-align:center"><span class="lv s2">S2</span></td>
+  </tr><tr>
+    <td class="met">人物原声+时间轴<span class="sb">人物原声+时间轴 · × 无</span></td>
+    <td>× 无</td>
+    <td>× 无</td>
+    <td>✓ Samvada</td>
+    <td>关键人物原声 + 事件时间轴</td>
+    <td style="text-align:center"><span class="lv s3">S3</span></td>
+  </tr><tr>
+    <td class="met">7 信号市场雷达<span class="sb">7 信号市场雷达 · × 无</span></td>
+    <td>✓ WM 7 信号</td>
+    <td>× 无</td>
+    <td>× 无</td>
+    <td>股票/利率/商品/汇率/信用/波动/资金</td>
+    <td style="text-align:center"><span class="lv s3">S3</span></td>
+  </tr><tr>
+    <td class="met">移动指挥台<span class="sb">移动指挥台 · × 无</span></td>
+    <td>× 响应 OK</td>
+    <td>✓ SM 原生 iOS</td>
+    <td>× 无</td>
+    <td>移动端优先 Command Hub</td>
+    <td style="text-align:center"><span class="lv s2">S2</span></td>
+  </tr><tr>
+    <td class="met">Pro 订阅<span class="sb">Pro 订阅 · × 无</span></td>
+    <td>× 捐赠制</td>
+    <td>✓ SM Pro</td>
+    <td>× 商业/学术</td>
+    <td>免费/专业/团队三档分层</td>
+    <td style="text-align:center"><span class="lv s3">S3</span></td>
+  </tr><tr>
+    <td class="met">关键人物网络<span class="sb">关键人物网络 · × 无</span></td>
+    <td>× 弱</td>
+    <td>× 弱</td>
+    <td>✓ Samvada</td>
+    <td>实体关系图 GNN</td>
+    <td style="text-align:center"><span class="lv s3">S3</span></td>
+  </tr><tr>
+    <td class="met">置信度·敏感性<span class="sb">置信度·敏感性 · ✓ memory 硬约束已建</span></td>
+    <td>× 无</td>
+    <td>× 无</td>
+    <td>× 无</td>
+    <td>核心数据 100% 覆盖徽章</td>
+    <td style="text-align:center"><span class="lv s1">S1</span></td>
+  </tr><tr>
+    <td class="met">16:00 快照机制<span class="sb">16:00 快照机制 · ✓ 财税已闭环</span></td>
+    <td>× 无</td>
+    <td>× 无</td>
+    <td>× 无</td>
+    <td>每日 live-snapshot + live-history</td>
+    <td style="text-align:center"><span class="lv s1">S1</span></td>
+  </tr><tr>
+    <td class="met">自研指数体系<span class="sb">自研指数体系 · ✓ 大盘已有 7 维度</span></td>
+    <td>× 无</td>
+    <td>× 单一 GPR</td>
+    <td>× 无</td>
+    <td>5 大指数 × 10+ 子指标雷达</td>
+    <td style="text-align:center"><span class="lv s1">S1</span></td>
+  </tr>
+</tbody>
+</table></div>
+</div></section>
+
+<!-- S3 评分卡 -->
+<section id="s3"><div class="wrap">
+  <div class="sec-t">SECTION · 03</div>
+  <div class="sec-h"><div class="idx">03</div><h2>十一项 <b style="background:linear-gradient(90deg,var(--green),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent">量化评分卡</b></h2><div class="en">SCORE · CARD 11-METRIC</div></div>
+  <div class="rule"></div>
+  <p class="lead rv">UICraft audit 维度：视觉/内容/交互/指数/叙事/移动/订阅/系统机制 8 大类拆 11 项。<b>综合竞争力 49/100</b>——系统机制（conf/sens + 16:00 快照）已达世界一流 85+，但图层交互（28）+ AI-GPR（0）+ 订阅（5）三项严重拖累。</p>
+  <div class="scores">
+    <div class="sc rv g">
+    <div class="hh"><div class="lbl">视觉层级 & 品牌识别</div><div class="num">82<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="82%"></div></div>
+    <div class="cmt">红蓝渐变 Hero + win 徽标体系已清晰，品牌识别度中上</div>
+  </div><div class="sc rv m">
+    <div class="hh"><div class="lbl">信息量 & 深度覆盖</div><div class="num">64<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="64%"></div></div>
+    <div class="cmt">7 板块对比达中等，25 图层 & 4 模式尚未上线</div>
+  </div><div class="sc rv b">
+    <div class="hh"><div class="lbl">交互 & 图层架构</div><div class="num">28<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="28%"></div></div>
+    <div class="cmt">仅 cmp 表格 + KV，缺 ECharts 交互地图 / 多层过滤</div>
+  </div><div class="sc rv m">
+    <div class="hh"><div class="lbl">自研指数能力</div><div class="num">52<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="52%"></div></div>
+    <div class="cmt">7 大对比维度已搭好骨架，但 5 大指数雷达图未完成</div>
+  </div><div class="sc rv b">
+    <div class="hh"><div class="lbl">LLM 语义风险指数</div><div class="num">0<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="0%"></div></div>
+    <div class="cmt">完全缺失，对标 AI-GPR 差距最大项</div>
+  </div><div class="sc rv m">
+    <div class="hh"><div class="lbl">叙事深度 & 脚注穿透</div><div class="num">48<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="48%"></div></div>
+    <div class="cmt">有引用 ol 但未穿透点击，缺模型测算反方论点</div>
+  </div><div class="sc rv g">
+    <div class="hh"><div class="lbl">移动端 & 响应式</div><div class="num">74<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="74%"></div></div>
+    <div class="cmt">sticky nav + CSS clamp 适配良好，Command Hub 式缺</div>
+  </div><div class="sc rv b">
+    <div class="hh"><div class="lbl">Pro 订阅 & 商业模式</div><div class="num">5<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="5%"></div></div>
+    <div class="cmt">当前全免费，无分层 Pro/Team/API</div>
+  </div><div class="sc rv g">
+    <div class="hh"><div class="lbl">置信度·敏感性徽章</div><div class="num">88<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="88%"></div></div>
+    <div class="cmt">memory 硬约束 + conf/sens CSS 体系已 100% 覆盖</div>
+  </div><div class="sc rv g">
+    <div class="hh"><div class="lbl">每日快照闭环</div><div class="num">85<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="85%"></div></div>
+    <div class="cmt">财税闭环已验证，大盘只需迁移 live-snapshot 管道</div>
+  </div><div class="sc rv m">
+    <div class="hh"><div class="lbl">综合竞争力评分</div><div class="num">49<span style="font-size:13px;color:var(--muted);font-weight:400">/100</span></div></div>
+    <div class="bar"><div class="fi" data-w="49%"></div></div>
+    <div class="cmt">骨架与系统机制上乘，核心交互 & 指数层为主要短板</div>
+  </div>
+  </div>
+</div></section>
+
+<!-- S4 图层架构 -->
+<section id="s4"><div class="wrap">
+  <div class="sec-t r">SECTION · 04</div>
+  <div class="sec-h"><div class="idx r">04</div><h2>二十五图层 × <b style="background:linear-gradient(90deg,var(--red),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent">六大全景</b></h2><div class="en">LAYERS · 25 LAYERS ARCHITECTURE</div></div>
+  <div class="rule"></div>
+  <p class="lead rv">对标 WorldMonitor 25+ 图层分类结构，按 6 大类重组：L0 五大指数骨架、L1 地理军事、L2 科技、L3 金融、L4 供应链、L5 辅助文化。每项标注数据源、更新频率、当前进度。</p>
+  <p class="rv"><span class="conf mid">中置信 · 数据源列表基于已有接入能力 + 公开可得性评估</span><span class="sens gold">黄敏感性 · SIPRI/WIPO 等部分数据源需注册 API Key</span><span class="src">数据源：IMF / WB / WIPO / CSIS / ACLED / UCS / IEA / USGS / Lloyds / GDELT</span></p>
+  <div class="layers">
+    <div class="lc rv">
+    <div class="topl"><div class="nm">综合国力指数雷达</div><span class="lv s2">S2 · 开发中</span></div>
+    <div class="ds">doing · IMF WB + 世界银行 PPP + 军费 + 人口 + 面积</div>
+    <div class="meta-l"><span>更新频率 · 每日 16:00</span><span>⚙ Dev</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">科技力指数</div><span class="lv s2">S2 · 开发中</span></div>
+    <div class="ds">doing · WIPO 专利 + Nature Index + Top500 超算 + 半导体自给率</div>
+    <div class="meta-l"><span>更新频率 · 每周</span><span>⚙ Dev</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">外交力指数</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · UN 投票一致性 + 建交国 + 外交网络 + 国际组织席位</div>
+    <div class="meta-l"><span>更新频率 · 每月</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">金融主导力指数</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · SWIFT 支付占比 + 外储币种 + IMF SDR + FDI</div>
+    <div class="meta-l"><span>更新频率 · 每日 16:00</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">供应链韧性指数</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · OECD TiVA + WTO RVC + 关键矿物储量 + 港口吞吐</div>
+    <div class="meta-l"><span>更新频率 · 每月</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">双边盟友网络</div><span class="lv s0">S0 · 已上线</span></div>
+    <div class="ds">done · US + NATO/QUAD vs CN + SCO/BRICS 地图</div>
+    <div class="meta-l"><span>更新频率 · 每月</span><span>✓ Live</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">军事基地分布</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">doing · CSIS 军事基地数据 + 全球航母打击群位置</div>
+    <div class="meta-l"><span>更新频率 · 实时刷新</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">冲突热点热力图</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">doing · ACLED + 路透实时冲突事件</div>
+    <div class="meta-l"><span>更新频率 · 每日</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">核武 & 投送能力</div><span class="lv s2">S2 · 开发中</span></div>
+    <div class="ds">plan · SIPRI 年鉴 + NPT + ICBM 射程叠加</div>
+    <div class="meta-l"><span>更新频率 · 年度</span><span>⚙ Dev</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">AI 算力与模型</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">doing · TOP500 + MLPerf + 开源模型参数榜</div>
+    <div class="meta-l"><span>更新频率 · 每季度</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">半导体供应链</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">doing · IC Insights + 长江存储 + 台积电产能地图</div>
+    <div class="meta-l"><span>更新频率 · 每季度</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">卫星 & 太空资产</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · UCS Satellite DB + 北斗 / GPS 覆盖地图</div>
+    <div class="meta-l"><span>更新频率 · 每月</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">关键专利密度</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · WIPO IPC 分类 × 5G/AI/量子/生物</div>
+    <div class="meta-l"><span>更新频率 · 每月</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">全球外汇储备币种</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">doing · IMF COFER 季度数据 · 2015-2025</div>
+    <div class="meta-l"><span>更新频率 · 每季度</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">SWIFT 全球支付占比</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">doing · SWIFT RMB Tracker + 每月更新</div>
+    <div class="meta-l"><span>更新频率 · 每月</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">美债持有矩阵</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · TIC 数据 + 主要持有国 × 久期</div>
+    <div class="meta-l"><span>更新频率 · 每月</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">跨境 CIPS / FedNow</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · 人民币 CIPS 节点 vs 美元 FedNow 覆盖</div>
+    <div class="meta-l"><span>更新频率 · 每季度</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">关键矿物流向</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">doing · USGS 锂/钴/稀土 + 中国进口占比</div>
+    <div class="meta-l"><span>更新频率 · 每年</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">集装箱港口热力</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">doing · Lloyds Top 100 港口 × TEU 吞吐</div>
+    <div class="meta-l"><span>更新频率 · 年度</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">芯片出口管制影响</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · BIS Entity List + 瓦森纳安排 × 受影响实体</div>
+    <div class="meta-l"><span>更新频率 · 每月</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">能源贸易链路</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">doing · IEA 原油/LNG × 进口来源国依赖度</div>
+    <div class="meta-l"><span>更新频率 · 每月</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">软实力指标地图</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · Monocle + UNESCO + 留学生流向 + 好莱坞/网飞占比</div>
+    <div class="meta-l"><span>更新频率 · 年度</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">人口结构对比</div><span class="lv s0">S0 · 已上线</span></div>
+    <div class="ds">done · UN World Population Prospects × 年龄金字塔</div>
+    <div class="meta-l"><span>更新频率 · 年度</span><span>✓ Live</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">气候与 ESG</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · IEA 碳排放 + Climate Action Tracker 温度路径</div>
+    <div class="meta-l"><span>更新频率 · 每季度</span><span>○ Plan</span></div>
+  </div><div class="lc rv">
+    <div class="topl"><div class="nm">舆论 & 媒体声量</div><span class="lv s3">S3 · 待规划</span></div>
+    <div class="ds">plan · GDELT + 中英主流媒体语义对比</div>
+    <div class="meta-l"><span>更新频率 · 每日 16:00</span><span>○ Plan</span></div>
+  </div>
+  </div>
+</div></section>
+
+<!-- S5 4 Modes -->
+<section id="s5"><div class="wrap">
+  <div class="sec-t">SECTION · 05</div>
+  <div class="sec-h"><div class="idx">05</div><h2>四大 <b style="background:linear-gradient(90deg,var(--blue),#00695c);-webkit-background-clip:text;background-clip:text;color:transparent">模式路由</b> · 四象限全景</h2><div class="en">MODES · 4-VIEW ROUTING</div></div>
+  <div class="rule"></div>
+  <p class="lead rv">对标 SituationMonitor 三模式（Global / Regional / Detail），我们按"主题领域"拆四模式：M0 总战盘 Dashboard 入口、M1 科技、M2 金融、M3 供应链。每模式含独立布局、3+ 图层组、侧栏过滤。</p>
+  <div class="modes">
+    <div class="md rv">
+    <div class="ico m0">M0</div>
+    <h3>总战盘 Dashboard</h3>
+    <p>对标 WorldMonitor 默认视图：Hero 5 大指数雷达 + 7 大板块 cmp 表 + win 徽标过滤 + 底部 AI-GPR 风险曲线。全站入口页，点击指数节点进入对应 Mode。</p>
+  </div><div class="md rv">
+    <div class="ico m1">M1</div>
+    <h3>科技力模式</h3>
+    <p>对标半导体 + 专利 + TOP500 图层三联地图：左侧过滤栏（国家/年份/技术类别）、中央大图层 ECharts 地理热力、右侧关键实体卡片（ASML/TSMC/中芯国际）。</p>
+  </div><div class="md rv">
+    <div class="ico m2">M2</div>
+    <h3>金融主导力模式</h3>
+    <p>对标 SWIFT + 外储币种 + 美债持有矩阵：红蓝双线资金流、币种堆叠面积图。配 AI-GPR 语义风险曲线叠加："当 GPR 指数 >0.55 时美元指数历史 70% 概率走强"。</p>
+  </div><div class="md rv">
+    <div class="ico m3">M3</div>
+    <h3>供应链韧性模式</h3>
+    <p>对标关键矿物 + 港口 + 芯片管制：节点-边供应链拓扑图，点击节点看上下游依赖度、进口替代进度。支持"情景演算"：若 A 国禁运 B 产品 → 模拟 20 个受影响行业波动。</p>
+  </div>
+  </div>
+</div></section>
+
+<!-- S6 Insights -->
+<section id="s6"><div class="wrap">
+  <div class="sec-t r">SECTION · 06</div>
+  <div class="sec-h"><div class="idx r">06</div><h2>四大 <b style="background:linear-gradient(90deg,var(--gold),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent">破局洞察</b></h2><div class="en">INSIGHTS · DIFFERENTIATION</div></div>
+  <div class="rule"></div>
+  <p class="lead rv">差异化定位：不做 WorldMonitor 复刻，不做 PIIE 纯学术，不做 AI-GPR 单指数。做"指数骨架 + 图层肌肤 + 语义中枢 + 叙事血肉"的四位一体中美垂直深度站。</p>
+  <div class="ins">
+    <div class="inc rv">
+  <div class="n">1</div>
+  <h3>不做 WorldMonitor 复刻，做「5 大自研指数 + 25 图层 + AI-GPR 语义指数」三位一体垂直深度</h3>
+  <p>WorldMonitor 25+ 图层是面广但深度浅；AI-GPR 是单点学术强但无 UI。我们要走中间路线——以中美双阵营 5 大自研指数（综合国力 / 科技力 / 外交力 / 金融主导 / 供应链韧性）为骨架，每指数 10+ 子指标 → 25 图层 ECharts 交互地图 → 顶层 AI-GPR 语义指数做宏观风险。三位一体，形成"指数骨架 + 图层肌肤 + 语义中枢"。</p>
+  <div class="kw"><span class="tag r">5大指数</span><span class="tag b">25图层</span><span class="tag k">AI-GPR语义</span><span class="tag g">三位一体</span></div>
+</div><div class="inc rv">
+  <div class="n">2</div>
+  <h3>胜场徽标 + 分组过滤 + 脚注穿透：从"对比表"进化到"研究工作台"</h3>
+  <p>PIIE 的脚注穿透值得深入借鉴——每条 claim 都能一键跳源、反方论点并排展示。加上现有 win.c / win.u 胜场徽标，再补一个"只看中国领先 / 只看美国领先 / 只看胶着项"分组过滤。加上 7 大板块分组切换，cmp 表从纯展示 → 可研究工作台。</p>
+  <div class="kw"><span class="tag b">win徽标过滤</span><span class="tag k">脚注穿透</span><span class="tag r">研究工作台</span><span class="tag g">反方论点并排</span></div>
+</div><div class="inc rv">
+  <div class="n">3</div>
+  <h3>深色指挥台风主题（对标 SM Command Hub）+ 皮书浅色双变体</h3>
+  <p>SituationMonitor 的 50+ 面板 Command Hub 是视觉标杆——但 iOS 封闭是硬伤。我们做 Web 版深色指挥台主题：左侧层级面板、中央大图、右侧数据卡片、底部时间轴。加上现有皮书浅色做一键切换双变体。prefers-reduced-motion 全部兼容。</p>
+  <div class="kw"><span class="tag k">双变体主题</span><span class="tag b">Command Hub 50面板</span><span class="tag r">左侧层级</span><span class="tag g">prefers-reduced-motion</span></div>
+</div><div class="inc rv">
+  <div class="n">4</div>
+  <h3>置信度·敏感性 100% 覆盖 + 16:00 快照闭环：学术级可审计</h3>
+  <p>所有 T1 对标中，没有一家做"高/中/低置信度徽章 + 红/黄/蓝敏感性注记 + 来源 chip 三件套"。memory 硬约束已规定此体系，财税版已落地 CSS。大盘迁移后，配合每日 16:00 live-snapshot + live-history 10 日归档 → 所有历史版本可审计、可回滚、可追溯。这是"学术出版物级"的壁垒，远非一般信息站能复制。</p>
+  <div class="kw"><span class="tag r">conf/sens 徽章</span><span class="tag b">16:00 快照</span><span class="tag k">学术级可审计</span><span class="tag g">10日归档</span></div>
+</div>
+  </div>
+</div></section>
+
+<!-- S7 Roadmap -->
+<section id="s7"><div class="wrap">
+  <div class="sec-t">SECTION · 07</div>
+  <div class="sec-h"><div class="idx">07</div><h2>四阶段 <b style="background:linear-gradient(90deg,#2E7D32,var(--gold),var(--blue),#00695c);-webkit-background-clip:text;background-clip:text;color:transparent">28 任务</b> · 路线图</h2><div class="en">ROADMAP · 4 PHASES / 28 TASKS</div></div>
+  <div class="rule"></div>
+  <p class="lead rv">
+    <span class="tag g">P0 2 周</span>UX 骨架加固（win 过滤 / 脚注穿透 / 5 大指数雷达 / conf+sens+快照）→
+    <span class="tag o">P1 6 周</span>25 图层 + 4 模式 →
+    <span class="tag b">P2 8 周</span>AI-GPR 指数 + 市场雷达 + 叙事 →
+    <span class="tag k">P3 10 周</span>Command Hub + PWA + Pro 订阅 + API 生态
+  </p>
+  <div class="roadmap">
+    <div class="phase rv">
+    <div class="phh p0">
+      <span class="pnum">P0</span>
+      <h3>P0 · 骨架加固：UX + 数据质量</h3>
+      <span class="t">⏱ 2 周 · 9月中交付</span>
+    </div>
+    <div class="tasks">
+      <div class="tk">
+        <div class="tn"><b>01</b><span>总战盘 win.c/win.u 徽标分组过滤（只看中赢/美赢/胶着） + 7 板块快速切换</span></div>
+        <span class="pr p0">P0</span>
+        <div class="cfs">交付物 · 过滤 JS 引擎 + UI chip</div>
+      </div><div class="tk">
+        <div class="tn"><b>02</b><span>所有 cmp 表 claim 项加脚注穿透：点击 src chip 跳 sources 节 + 来源 URL 新标签打开</span></div>
+        <span class="pr p0">P0</span>
+        <div class="cfs">交付物 · 脚注穿透 JS</div>
+      </div><div class="tk">
+        <div class="tn"><b>03</b><span>Hero 区 5 大自研指数雷达图（ECharts），点击扇区跳转对应 Mode 子页</span></div>
+        <span class="pr p0">P0</span>
+        <div class="cfs">交付物 · comparison-charts.js 扩展</div>
+      </div><div class="tk">
+        <div class="tn"><b>04</b><span>conf/sens 徽章 100% 覆盖大盘三页：每 cmp 单元格 + 每图表 caption 各 2 徽章 + src chip</span></div>
+        <span class="pr p0">P0</span>
+        <div class="cfs">交付物 · CSS 已就绪，批量填入模板</div>
+      </div><div class="tk">
+        <div class="tn"><b>05</b><span>16:00 live-snapshot 每日快照管道（复用财税的 scripts/ 目录 + cron）</span></div>
+        <span class="pr p0">P0</span>
+        <div class="cfs">交付物 · live-snapshot.json + live-history.json</div>
+      </div><div class="tk">
+        <div class="tn"><b>06</b><span>深色指挥台风主题变体一键切换：Hero→左层级面板+中央大图+右侧卡片+底部时间轴</span></div>
+        <span class="pr p0">P0</span>
+        <div class="cfs">交付物 · body.theme-dark + CSS 变量</div>
+      </div><div class="tk">
+        <div class="tn"><b>07</b><span>移动端 sticky nav + 快速过滤抽屉 + Hero 折叠优化</span></div>
+        <span class="pr p0">P0</span>
+        <div class="cfs">交付物 · 响应式修复清单</div>
+      </div>
+    </div>
+  </div><div class="phase rv">
+    <div class="phh p1">
+      <span class="pnum">P1</span>
+      <h3>P1 · 图层与交互：25 图层 ECharts + 4 模式</h3>
+      <span class="t">⏱ 6 周 · 11月初交付</span>
+    </div>
+    <div class="tasks">
+      <div class="tk">
+        <div class="tn"><b>08</b><span>总战盘 Mode（M0）：Hero 5 指数雷达 + 7 板块 cmp 2.0 + win 过滤 + 底部 GPR 曲线 + AI 摘要卡</span></div>
+        <span class="pr p1">P1</span>
+        <div class="cfs">交付物 · M0 路由</div>
+      </div><div class="tk">
+        <div class="tn"><b>09</b><span>科技 Mode（M1）：AI 算力榜 + 半导体供应链 + 专利密度 3 图层 + 实体侧栏卡片</span></div>
+        <span class="pr p1">P1</span>
+        <div class="cfs">交付物 · M1.html + ECharts</div>
+      </div><div class="tk">
+        <div class="tn"><b>10</b><span>金融 Mode（M2）：SWIFT 支付占比 + 外储币种堆叠面积 + 美债持有矩阵 3 图层 + GPR 叠加</span></div>
+        <span class="pr p1">P1</span>
+        <div class="cfs">交付物 · M2.html + ECharts</div>
+      </div><div class="tk">
+        <div class="tn"><b>11</b><span>供应链 Mode（M3）：关键矿物流向 + 港口热力 + 芯片管制 3 图层 + 情景演算模拟</span></div>
+        <span class="pr p1">P1</span>
+        <div class="cfs">交付物 · M3.html + 模拟脚本</div>
+      </div><div class="tk">
+        <div class="tn"><b>12</b><span>军事基地 + 冲突热点 + 盟友网络 3 地图层（地理 Mode，整合在总战盘）</span></div>
+        <span class="pr p1">P1</span>
+        <div class="cfs">交付物 · L1 图层包</div>
+      </div><div class="tk">
+        <div class="tn"><b>13</b><span>卫星太空 + 关键专利 + 能源链路 3 补充图层</span></div>
+        <span class="pr p1">P1</span>
+        <div class="cfs">交付物 · L2/L4 图层包</div>
+      </div><div class="tk">
+        <div class="tn"><b>14</b><span>图层过滤通用 UI chip：多图层叠显开关 + 年份滑杆 + 国家多选 + 导出 PNG/CSV</span></div>
+        <span class="pr p1">P1</span>
+        <div class="cfs">交付物 · filter-bar 组件</div>
+      </div><div class="tk">
+        <div class="tn"><b>15</b><span>ECharts theme 双变体：皮书浅色 + 指挥台深色 + prefers-reduced-motion</span></div>
+        <span class="pr p1">P1</span>
+        <div class="cfs">交付物 · echarts-theme 双文件</div>
+      </div>
+    </div>
+  </div><div class="phase rv">
+    <div class="phh p2">
+      <span class="pnum">P2</span>
+      <h3>P2 · 语义指数 & 市场雷达：AI-GPR 落地</h3>
+      <span class="t">⏱ 8 周 · 2027年初交付</span>
+    </div>
+    <div class="tasks">
+      <div class="tk">
+        <div class="tn"><b>16</b><span>AI-GPR LLM 语义风险指数落地：中英双语新闻 1960-2025 语料（路透+新华社+FT+People's Daily）</span></div>
+        <span class="pr p2">P2</span>
+        <div class="cfs">交付物 · LLM 打分 pipeline</div>
+      </div><div class="tk">
+        <div class="tn"><b>17</b><span>4 维分类架构按记忆：国别 × 事件类型（战/贸/技/金/裁/选）× 双边对 × 主体网络</span></div>
+        <span class="pr p2">P2</span>
+        <div class="cfs">交付物 · 多分类 head</div>
+      </div><div class="tk">
+        <div class="tn"><b>18</b><span>66 年长周期回测：与 S&P500 / VIX / 美债 10Y / 美元指数 / 黄金 / WTI 相关性面板</span></div>
+        <span class="pr p2">P2</span>
+        <div class="cfs">交付物 · corr-chart.js</div>
+      </div><div class="tk">
+        <div class="tn"><b>19</b><span>7 信号市场雷达（对标 WM）：股/利/商/汇/信/波/资 7 维度 × CN-US-EU 3 区</span></div>
+        <span class="pr p2">P2</span>
+        <div class="cfs">交付物 · radar-7signal.js</div>
+      </div><div class="tk">
+        <div class="tn"><b>20</b><span>情景演算引擎：输入事件 + 强度 → 影响 5 大指数得分 → 生成 5-30-90 日概率分布</span></div>
+        <span class="pr p2">P2</span>
+        <div class="cfs">交付物 · scenario-engine.js</div>
+      </div><div class="tk">
+        <div class="tn"><b>21</b><span>深度叙事模板：对标 PIIE Briefs + Samvada，长文 + 模型测算 + 反方论点 + 脚注穿透 4 段结构</span></div>
+        <span class="pr p2">P2</span>
+        <div class="cfs">交付物 · narrative-template.html</div>
+      </div><div class="tk">
+        <div class="tn"><b>22</b><span>关键人物原声 + 时间轴：Samvada 模板，按中美顶层 20 人 × 10 大关键事件做 Timeline</span></div>
+        <span class="pr p2">P2</span>
+        <div class="cfs">交付物 · 人物网络 + 时间轴</div>
+      </div>
+    </div>
+  </div><div class="phase rv">
+    <div class="phh p3">
+      <span class="pnum">P3</span>
+      <h3>P3 · 生态 & 变现：双变体 + Command Hub + Pro 订阅</h3>
+      <span class="t">⏱ 10 周 · 2027 Q1 交付</span>
+    </div>
+    <div class="tasks">
+      <div class="tk">
+        <div class="tn"><b>23</b><span>Command Hub 50+ 面板深色指挥台风：左层级 + 中大图 + 右卡片 + 底时间轴 四栏布局</span></div>
+        <span class="pr p3">P3</span>
+        <div class="cfs">交付物 · command-hub.html</div>
+      </div><div class="tk">
+        <div class="tn"><b>24</b><span>iOS/Android PWA 移动命令台：离线缓存最后 16:00 快照 + 推送 GPR>0.6 警报</span></div>
+        <span class="pr p3">P3</span>
+        <div class="cfs">交付物 · service-worker.js + PWA manifest</div>
+      </div><div class="tk">
+        <div class="tn"><b>25</b><span>API 生态：5 大指数 + AI-GPR + 25 图层 3 类 REST 端点 + MCP 服务器接入</span></div>
+        <span class="pr p3">P3</span>
+        <div class="cfs">交付物 · Worker API + MCP</div>
+      </div><div class="tk">
+        <div class="tn"><b>26</b><span>Pro 订阅 3 档：Free（总战盘+10图层）/ Pro $19（全部图层+API 1K 次）/ Team $99（全栈+白标）</span></div>
+        <span class="pr p3">P3</span>
+        <div class="cfs">交付物 · 定价页+Stripe/支付宝</div>
+      </div><div class="tk">
+        <div class="tn"><b>27</b><span>深度叙事付费长读：每月 2 篇 PIIE 级研究长文，Pro 解锁，附 5 大指数月度展望</span></div>
+        <span class="pr p3">P3</span>
+        <div class="cfs">交付物 · editorial workflow</div>
+      </div><div class="tk">
+        <div class="tn"><b>28</b><span>社区 & 数据贡献：注册用户可标注 claim 可信度（众包加权 conf）+ 修正数据源</span></div>
+        <span class="pr p3">P3</span>
+        <div class="cfs">交付物 · 用户权重 + 众包 QA</div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div></section>
+
+<!-- S8 Deliverables -->
+<section id="s8"><div class="wrap">
+  <div class="sec-t r">SECTION · 08</div>
+  <div class="sec-h"><div class="idx r">08</div><h2>六大 <b style="background:linear-gradient(90deg,var(--red),#6A1B9A);-webkit-background-clip:text;background-clip:text;color:transparent">核心交付件</b></h2><div class="en">DELIVERABLES · 6 PRODUCTS</div></div>
+  <div class="rule"></div>
+  <p class="lead rv">可独立验收的 6 个交付单元，每一项对应 1-2 个验收条件和落地文件。</p>
+  <div class="dels"><div class="del rv">
+    <div class="num">01</div>
+    <div class="ico d0">D1</div>
+    <h3>ECharts 五轴叠加雷达，支持浅色/深色双变体，点击扇区跳转对应子模式。含 2015-2025 历史数据 + 趋势折线。</h3>
+    <p>undefined</p>
+  </div><div class="del rv">
+    <div class="num">02</div>
+    <div class="ico d1">D2</div>
+    <h3>地理/科技/金融/供应链/军事 5 大类共 25 图层，4 模式路由切换，图层过滤通用 chip + 年份滑杆 + 国家多选。</h3>
+    <p>undefined</p>
+  </div><div class="del rv">
+    <div class="num">03</div>
+    <div class="ico d2">D3</div>
+    <h3>总战盘 cmp 表 win.c / win.u 分组过滤 chip；每个 claim 附带 conf/sens/src 三件套 → 点击 src chip 穿透 sources 节。</h3>
+    <p>undefined</p>
+  </div><div class="del rv">
+    <div class="num">04</div>
+    <div class="ico d3">D4</div>
+    <h3>1960-2025 中英双语语料 4 维分类架构，0-1 连续值日更，附 6 大类资产相关性面板 + 7 信号市场雷达。</h3>
+    <p>undefined</p>
+  </div><div class="del rv">
+    <div class="num">05</div>
+    <div class="ico d4">D5</div>
+    <h3>左层级面板 + 中央大图 + 右侧数据卡片 + 底部时间轴四栏布局 50+ 面板，PWA 移动命令台 + 离线快照。</h3>
+    <p>undefined</p>
+  </div><div class="del rv">
+    <div class="num">06</div>
+    <div class="ico d5">D6</div>
+    <h3>PIIE 式长文 + 模型测算 + 反方论点并排 + 脚注穿透 4 段结构；Samvada 式人物原声 + 事件时间轴 + 人物关系网络。</h3>
+    <p>undefined</p>
+  </div></div>
+</div></section>
+
+<!-- Footer -->
+<div class="ft"><div class="wrap">
+  <div class="fgrid">
+    <div>
+      <h4>中美战略对比大盘</h4>
+      <p style="font-size:13px;color:var(--muted)">对标驱动升级 v2 · 2026-09-02 基准<br>4 梯队 × 14 维 × 25 图层 × 4 阶段 28 任务</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;font-family:var(--font-mono)">
+        <span class="conf high">conf high</span> 公开事实结论<br>
+        <span class="conf mid">conf mid</span> 模型推断与假设<br>
+        <span class="conf low">conf low</span> 需核验 · 等待 16:00 快照
+      </p>
+    </div>
+    <div>
+      <h4>项目文件</h4>
+      <a href="./us-china-deep-comparison/us-china-comparison.html">总战盘 · comparison</a>
+      <a href="./us-china-deep-comparison/us-profile.html">美利坚画像 · US</a>
+      <a href="./us-china-deep-comparison/china-profile.html">中国画像 · CN</a>
+      <a href="#s7">升级路线图 28 任务</a>
+    </div>
+    <div>
+      <h4>对标来源</h4>
+      <a target="_blank" href="https://worldmonitor.app/">WorldMonitor · Live</a>
+      <a target="_blank" href="https://github.com/beiaihu/worldmonitor">WM · GitHub</a>
+      <a target="_blank" href="https://www.matteoiacoviello.com/research_files/AI_GPR_PAPER.pdf">AI-GPR · Paper</a>
+      <a target="_blank" href="https://www.piie.com/">PIIE · Peterson Institute</a>
+      <a target="_blank" href="https://samvadaworld.com/">SamvadaWorld</a>
+    </div>
+    <div>
+      <h4>联系人</h4>
+      <a href="mailto:biz@kuajingshuidun.cn">📧 biz@kuajingshuidun.cn</a>
+      <p style="font-size:12.5px;color:var(--muted);margin-top:10px">财税/跨境 · 中美战略 · 双产品矩阵<br>梁智超 · All Rights Reserved</p>
+    </div>
+  </div>
+  <div class="cp">© 2026 liangzhichao.com · US-CN Deep Comparison · Benchmark v2 · 生成时间 2026-09-02 · 每日 16:00 快照闭环</div>
+</div></div>
+
+<script>
+// Tab switch
+function switchTab(id){
+  document.querySelectorAll('.tabpanel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  event.currentTarget.classList.add('on');
+}
+// Reveal
+(function(){
+  var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rv = document.querySelectorAll('.rv');
+  if(reduced){rv.forEach(function(e){e.classList.add('on')});return}
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}});
+  },{threshold:.12});
+  rv.forEach(function(el){io.observe(el)});
+})();
+// Score bar fill
+(function(){
+  var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(){document.querySelectorAll('.sc .bar .fi').forEach(function(f){f.style.width = f.getAttribute('data-w')})}
+  if(reduced){run();return}
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){run();io.disconnect()}})
+  },{threshold:.1});
+  io.observe(document.querySelector('.scores'));
+})();
+// KPI countUp simple
+(function(){
+  var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function easeOut(t){return 1 - Math.pow(1-t,3)}
+  function countEl(el,to,dur,suffix){
+    if(reduced){el.textContent = to + (suffix||'');return}
+    var start = performance.now();
+    function f(now){
+      var p = Math.min(1,(now-start)/dur);
+      var v = Math.round(to * easeOut(p));
+      el.textContent = v + (suffix||'');
+      if(p<1)requestAnimationFrame(f);
+    }
+    requestAnimationFrame(f);
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var el = e.target;
+      var txt = el.textContent.trim();
+      var m = txt.match(/^(\d+)(.*)$/);
+      if(m){countEl(el,parseInt(m[1],10),1400,m[2])}
+      io.unobserve(el);
+    });
+  },{threshold:.3});
+  document.querySelectorAll('.hero .kpi .n').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body></html>
