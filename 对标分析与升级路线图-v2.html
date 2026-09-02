@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跨境税盾 · 对标分析与升级路线图 v2 | 8 对标 × 12 维差距 × 4 阶段 32 任务</title>
+<meta name="description" content="对标 Avalara/TaxJar/Anrok/Sovos + 金蝶/华盟/星火/阿优，8 家 T1 拆解、12 维差距矩阵、4 阶段 32 任务升级路线。">
+<link rel="canonical" href="https://kuajingshuidun.cn/对标分析与升级路线图-v2.html">
+<style>
+:root{
+  --bg:#0a0f1f;--bg2:#0f1735;--bg3:#141c3f;
+  --card:#151d3d;--card2:#1a2450;--card3:#1e2a5e;
+  --txt:#e8ecff;--dim:#9aa7d0;--line:#2a3566;--line2:#3a4a8a;
+  --gold:#ffc24d;--gold2:#ff9d2e;--cyan:#37e0ff;--green:#4ade80;--blue:#6c8bff;--red:#ff5c7a;
+  --w:1240px;--radius:14px;
+  --font:"Segoe UI","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  --mono:"JetBrains Mono",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--txt);background:radial-gradient(1400px 700px at 8% -10%,#1b2a5e 0%,transparent 55%),radial-gradient(1200px 650px at 92% -5%,#3a235b 0%,transparent 60%),var(--bg);line-height:1.75;min-height:100vh}
+a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
+code,kbd{font-family:var(--mono);font-size:.92em;background:rgba(55,224,255,.08);border:1px solid var(--line);padding:1px 7px;border-radius:6px}
+.top{position:sticky;top:0;z-index:80;background:rgba(10,15,31,.86);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.top-in{max-width:var(--w);margin:auto;padding:12px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-size:18px;font-weight:800;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{display:block;font-size:11px;color:var(--dim);font-weight:500;-webkit-text-fill-color:var(--dim);letter-spacing:1px}
+.top nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.top nav a{font-size:12.5px;color:var(--dim);padding:6px 12px;border:1px solid var(--line);border-radius:20px;transition:.2s;white-space:nowrap}
+.top nav a:hover{color:var(--txt);border-color:var(--cyan)}
+.top nav a.hot{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;border-color:transparent;font-weight:700}
+.meta-chip{font-size:11.5px;color:var(--dim);border:1px solid var(--line);padding:4px 10px;border-radius:20px;font-family:var(--mono)}
+.meta-chip b{color:var(--gold)}
+.wrap{max-width:var(--w);margin:auto;padding:0 24px}
+section{padding:46px 0}
+.sec-tag{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;color:var(--cyan);border:1px dashed var(--cyan);padding:4px 12px;border-radius:20px;letter-spacing:1.5px;font-family:var(--mono);text-transform:uppercase}
+.sec-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+h2.sec-h{font-size:clamp(22px,3vw,30px);font-weight:800;margin:12px 0 4px}
+h2.sec-h b{background:linear-gradient(90deg,var(--gold),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-rule{height:3px;width:84px;background:linear-gradient(90deg,var(--gold2),var(--cyan));border-radius:3px;margin:10px 0 18px}
+.sec-sub{color:var(--dim);font-size:14.5px;max-width:960px;margin-bottom:22px;line-height:1.85}
+.hero{position:relative;padding:70px 0 46px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(650px 240px at 50% -20%,rgba(255,194,77,.18),transparent 70%),radial-gradient(500px 220px at 100% 40%,rgba(55,224,255,.12),transparent 70%)}
+.hero-kicker{font-family:var(--mono);font-size:12px;color:var(--gold2);letter-spacing:3.5px;text-transform:uppercase;margin-bottom:16px}
+.hero h1{font-size:clamp(30px,5.2vw,52px);font-weight:800;line-height:1.18;letter-spacing:-.02em;margin-bottom:16px}
+.hero h1 .g1{background:linear-gradient(90deg,#fff 10%,var(--gold) 40%,var(--cyan) 82%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .g2{background:linear-gradient(90deg,var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--dim);font-size:16px;max-width:880px;margin-bottom:22px}
+.hero p.lead b{color:var(--gold)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:18px;margin:6px 0 26px}
+.hero-meta span{font-size:12.5px;color:var(--dim);font-family:var(--mono)}
+.hero-meta b{color:var(--txt);font-size:14px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-size:14px;font-weight:700;transition:.25s;border:1px solid transparent;text-decoration:none}
+.btn:hover{transform:translateY(-2px);text-decoration:none}
+.btn.p{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;box-shadow:0 10px 24px rgba(255,194,77,.24)}
+.btn.s{background:var(--card);color:var(--cyan);border-color:var(--line)}
+.btn.s:hover{border-color:var(--cyan)}
+.btn.g{background:linear-gradient(90deg,#18326b,#2c4a9a);color:#e9efff;border-color:#3a5ab0}
+.hkpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:36px}
+.hkpi-card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden}
+.hkpi-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold2),var(--cyan))}
+.hkpi-card .n{font-size:30px;font-weight:800;color:var(--gold)}
+.hkpi-card .n.c{color:var(--cyan)}.hkpi-card .n.g{color:var(--green)}.hkpi-card .n.r{color:var(--red)}
+.hkpi-card .l{font-size:12.5px;color:var(--dim);margin-top:3px}
+.hkpi-card .s{font-size:11px;color:var(--gold2);margin-top:6px;font-family:var(--mono)}
+.tab-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;background:var(--bg2);padding:8px;border:1px solid var(--line);border-radius:14px}
+.tab{padding:9px 16px;border-radius:10px;font-size:13px;cursor:pointer;color:var(--dim);transition:.2s;font-weight:600;white-space:nowrap}
+.tab:hover{color:var(--txt)}
+.tab.active{background:linear-gradient(90deg,var(--gold2),var(--gold));color:#231407;box-shadow:0 8px 20px rgba(255,194,77,.22)}
+.tab-panel{display:none;animation:fadein .35s ease}
+.tab-panel.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.bench-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.bench{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative;overflow:hidden;transition:.25s}
+.bench:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.35);border-color:var(--line2)}
+.bench-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.b-logo{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:var(--mono);font-size:14px;flex:0 0 auto}
+.b-logo.a{background:linear-gradient(135deg,#00c9a7,#066d5a);color:#fff}
+.b-logo.t{background:linear-gradient(135deg,#ff6b35,#c93820);color:#fff}
+.b-logo.n{background:linear-gradient(135deg,#6f5bff,#2a1d99);color:#fff}
+.b-logo.s{background:linear-gradient(135deg,#3d63ff,#0c2693);color:#fff}
+.b-logo.k{background:linear-gradient(135deg,#009de0,#004a75);color:#fff}
+.b-logo.h{background:linear-gradient(135deg,#f59e0b,#92400e);color:#fff}
+.b-logo.x{background:linear-gradient(135deg,#a855f7,#5b21b6);color:#fff}
+.b-logo.y{background:linear-gradient(135deg,#ef4444,#991b1b);color:#fff}
+.b-title .n{font-size:16.5px;font-weight:800}
+.b-title .t{font-size:11.5px;color:var(--dim);margin-top:2px;font-family:var(--mono)}
+.b-origin{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;margin-left:auto;font-family:var(--mono)}
+.b-origin.us{background:rgba(55,224,255,.12);color:var(--cyan);border:1px solid rgba(55,224,255,.3)}
+.b-origin.cn{background:rgba(255,194,77,.14);color:var(--gold);border:1px solid rgba(255,194,77,.35)}
+.b-tag{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.b-tag span{font-size:10.5px;padding:3px 8px;border-radius:14px;background:var(--bg3);color:var(--dim);border:1px solid var(--line);font-family:var(--mono)}
+.b-desc{font-size:13.5px;color:var(--dim);margin:8px 0 12px;line-height:1.75}
+.b-hit{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);border-radius:10px;padding:10px 12px;margin:8px 0}
+.b-hit .t{font-size:11px;color:var(--green);font-family:var(--mono);letter-spacing:1px;margin-bottom:4px;font-weight:700}
+.b-hit p{font-size:12.5px;line-height:1.7}
+.b-miss{background:rgba(255,92,122,.08);border:1px solid rgba(255,92,122,.25);border-radius:10px;padding:10px 12px;margin:8px 0}
+.b-miss .t{font-size:11px;color:var(--red);font-family:var(--mono);letter-spacing:1px;margin-bottom:4px;font-weight:700}
+.b-miss p{font-size:12.5px;line-height:1.7}
+.b-price{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+.b-price b{color:var(--gold);font-size:14px;font-family:var(--mono)}
+.b-price span{font-size:11.5px;color:var(--dim)}
+.b-borrow{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:rgba(255,194,77,.14);color:var(--gold);padding:3px 9px;border-radius:14px;border:1px solid rgba(255,194,77,.35);font-weight:700}
+.gap-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg2);max-height:720px}
+.gap-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:1100px}
+.gap-table thead th{position:sticky;top:0;padding:14px 16px;text-align:left;font-weight:700;background:#101940;color:var(--txt);z-index:3;border-bottom:2px solid var(--line)}
+.gap-table thead th.us{color:var(--cyan)}
+.gap-table thead th.cn{color:var(--gold)}
+.gap-table thead th.me{background:linear-gradient(90deg,rgba(255,194,77,.2),rgba(55,224,255,.2))}
+.gap-table tbody td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.7}
+.gap-table tbody tr:hover{background:rgba(55,224,255,.04)}
+.gap-table td.metric{font-weight:700;color:var(--txt);white-space:nowrap;width:140px}
+.gap-table td.metric small{display:block;font-weight:400;color:var(--dim);font-size:11.5px;white-space:normal;margin-top:3px}
+.lvl{display:inline-block;padding:2px 9px;border-radius:12px;font-size:10.5px;font-weight:800;font-family:var(--mono);margin-right:4px}
+.lvl.s0{background:rgba(255,92,122,.15);color:var(--red);border:1px solid rgba(255,92,122,.4)}
+.lvl.s1{background:rgba(255,194,77,.15);color:var(--gold);border:1px solid rgba(255,194,77,.4)}
+.lvl.s2{background:rgba(108,139,255,.18);color:#9db6ff;border:1px solid rgba(108,139,255,.4)}
+.lvl.s3{background:rgba(74,222,128,.15);color:var(--green);border:1px solid rgba(74,222,128,.45)}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px;padding:10px 14px;border:1px dashed var(--line);border-radius:12px;align-items:center;font-size:12px;color:var(--dim);font-family:var(--mono)}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.sc-card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.sc-card h4{font-size:13.5px;display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.sc-card h4 .pts{font-family:var(--mono);color:var(--gold);font-size:15px}
+.sc-bar{height:10px;background:var(--bg3);border-radius:10px;overflow:hidden}
+.sc-bar-fill{height:100%;border-radius:10px;transition:width 1.2s ease-out;background:linear-gradient(90deg,var(--gold2),var(--gold))}
+.sc-bar-fill.good{background:linear-gradient(90deg,#2a8cff,var(--cyan))}
+.sc-bar-fill.bad{background:linear-gradient(90deg,var(--red),#ff8b6b)}
+.sc-note{font-size:11.5px;color:var(--dim);margin-top:8px;font-family:var(--mono)}
+.ins-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.ins{background:linear-gradient(160deg,var(--card),var(--card3));border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative;overflow:hidden}
+.ins::before{content:"";position:absolute;top:0;left:0;width:6px;height:100%;background:linear-gradient(180deg,var(--gold2),var(--cyan))}
+.ins-no{font-family:var(--mono);font-size:12px;color:var(--cyan);letter-spacing:2px;margin-bottom:8px}
+.ins h3{font-size:18px;font-weight:800;margin-bottom:8px;color:var(--gold)}
+.ins p{font-size:13.5px;color:var(--dim);line-height:1.8;margin-bottom:10px}
+.ins ul{list-style:none;margin:6px 0}
+.ins li{font-size:12.5px;padding:5px 0 5px 18px;position:relative;line-height:1.7}
+.ins li::before{content:"▸";color:var(--cyan);position:absolute;left:0;font-weight:700}
+.phases{display:grid;gap:20px;margin-top:12px}
+.phase{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;position:relative;overflow:hidden}
+.phase-head{display:flex;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.ph-badge{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:#231407;flex:0 0 auto;font-family:var(--mono)}
+.ph-badge.p0{background:linear-gradient(135deg,#4ade80,#16a34a)}
+.ph-badge.p1{background:linear-gradient(135deg,var(--gold2),var(--gold))}
+.ph-badge.p2{background:linear-gradient(135deg,#6c8bff,#2c4a9a);color:#fff}
+.ph-badge.p3{background:linear-gradient(135deg,var(--cyan),#2a8cff);color:#062f4a}
+.ph-title .p{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:2px}
+.ph-title h3{font-size:20px;font-weight:800;margin-top:2px}
+.ph-meta{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px}
+.ph-meta span{padding:3px 10px;border-radius:14px;border:1px solid var(--line);color:var(--dim)}
+.ph-meta b{color:var(--gold)}
+.phase-tasks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:6px}
+.task{background:var(--bg3);border:1px solid var(--line);border-radius:11px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;transition:.2s}
+.task:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.task .tk-n{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:var(--gold2);color:#231407;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
+.task .tk-body{flex:1;min-width:0}
+.task .tk-body b{font-size:13px;display:block;line-height:1.5}
+.task .tk-body span{font-size:11.5px;color:var(--dim);display:block;margin-top:4px;line-height:1.65}
+.task.tk-done .tk-n{background:var(--green);color:#062f19}
+.task.tk-wip .tk-n{background:#6c8bff;color:#fff}
+.task.tk-risk .tk-n{background:var(--red);color:#fff}
+.del-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.del{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:14px;padding:18px 20px;position:relative;overflow:hidden}
+.del::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold2))}
+.del .no{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:2px}
+.del h4{font-size:15.5px;font-weight:800;margin:4px 0 8px}
+.del ul{list-style:none;margin:8px 0 0}
+.del li{font-size:12.5px;color:var(--dim);padding:4px 0 4px 16px;position:relative;line-height:1.65}
+.del li::before{content:"└";color:var(--gold2);position:absolute;left:0;font-family:var(--mono)}
+.conf{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;padding:3px 9px;border-radius:14px;font-weight:800;margin:2px 4px;white-space:nowrap;font-family:var(--mono)}
+.conf .dot{width:7px;height:7px;border-radius:50%}
+.conf.high{background:var(--green);color:#062f19}.conf.high .dot{background:#062f19}
+.conf.mid{background:var(--gold);color:#5c4200}.conf.mid .dot{background:#5c4200}
+.conf.low{background:var(--red);color:#fff}.conf.low .dot{background:#fff}
+.sens{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;padding:3px 9px;border-radius:14px;font-weight:700;margin:2px 4px;white-space:nowrap;font-family:var(--mono)}
+.sens.red{color:var(--red);background:rgba(255,92,122,.12);border:1px solid var(--red)}
+.sens.gold{color:var(--gold);background:rgba(255,194,77,.12);border:1px solid var(--gold2)}
+.sens.blue{color:var(--cyan);background:rgba(55,224,255,.1);border:1px solid var(--cyan)}
+.src{display:inline-block;font-size:10.5px;color:var(--dim);padding:2px 7px;border:1px dashed var(--line);border-radius:8px;margin:2px 3px;font-family:var(--mono)}
+footer{margin-top:70px;padding:40px 0 70px;background:linear-gradient(180deg,transparent,#060a18);border-top:1px solid var(--line)}
+.foot-in{max-width:var(--w);margin:auto;padding:0 24px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:26px;font-size:12.5px;color:var(--dim)}
+.foot-in h5{color:var(--gold);font-size:13px;margin-bottom:10px;font-family:var(--mono);letter-spacing:1px}
+.foot-in a{color:var(--cyan);display:block;padding:3px 0}
+.copyright{max-width:var(--w);margin:30px auto 0;padding:14px 24px 0;border-top:1px dashed var(--line);text-align:center;font-size:11.5px;color:var(--dim);font-family:var(--mono)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal,.tab-panel,.bench,.task{transition:none !important;animation:none !important}.reveal{opacity:1;transform:none}}
+@media(max-width:760px){.top nav{order:3;width:100%}.foot-in{grid-template-columns:1fr}.ph-meta{margin-left:0}}
+</style>
+</head><body>
+<div class="top"><div class="top-in">
+<div class="brand">跨境税盾<small>BENCHMARK · ROADMAP v2.0</small></div>
+<nav><a href="#hero">总览</a><a href="#bench">对标梯队</a><a href="#gap">差距矩阵</a><a href="#score">现状评分</a><a href="#insight">破局洞察</a><a href="#roadmap">升级路线</a><a href="#delivery">交付清单</a><a class="hot" href="index-live-v2.html">查看 v2 首页 →</a></nav>
+<div style="display:flex;gap:8px;align-items:center;margin-left:12px;flex-wrap:wrap">
+  <span class="meta-chip">生成 <b>2026-09-02</b></span>
+  <span class="meta-chip">对标 <b>8 T1</b></span>
+  <span class="conf high"><span class="dot"></span>高置信度</span>
+</div>
+</div></div>
+
+<header class="hero" id="hero"><div class="wrap">
+<div class="hero-kicker">● TAX &amp; COMPLIANCE SAAS · GLOBAL T1 BENCHMARK</div>
+<h1><span class="g1">财税双产品 · 顶级对标与改良升级路线</span><br><span class="g2">从信息撮合 → Agentic 合规中台</span></h1>
+<p class="lead">对标 <b>Avalara / TaxJar / Anrok / Sovos</b>（海外 T1）与 <b>金蝶 AI 星空 / 华盟税纪云 / 星火创智 / 阿优精灵</b>（国内 T1）。输出 <b>8 项梯队 / 12 维差距 / 11 项评分 / 4 洞察 / 4 阶段 32 任务 / 6 交付物</b>，目标 <b>6 个月</b>升级到「中国版 Avalara 中小微 &amp; 跨境场景」。</p>
+<div class="hero-meta">
+  <span>覆盖区间 <b>国内 + 海外 T1 × 8</b></span>
+  <span>方法论 <b>UICraft · Assess→Correct→Refine→Finish</b></span>
+  <span>目标客群 <b>个体户 · 小微 · 电商跨境</b></span>
+  <span>变现模型 <b>免费 → ¥29 → ¥2999/年</b></span>
+</div>
+<div class="cta-row">
+  <a class="btn p" href="#roadmap">🚀 跳转 4 阶段执行清单</a>
+  <a class="btn s" href="https://kuajingshuidun.cn/" target="_blank" rel="noopener">↗ 线上现状预览</a>
+  <a class="btn g" href="index-live-v2.html">🆕 查看首页 v2</a>
+</div>
+<div class="hkpi reveal">
+  <div class="hkpi-card"><div class="n">8</div><div class="l">T1 对标案例（海外 4 / 国内 4）</div><div class="s">COVERAGE · 100%</div></div>
+  <div class="hkpi-card"><div class="n c">12</div><div class="l">产品能力维度 × 差距评级</div><div class="s">GAP GRID · S0~S3</div></div>
+  <div class="hkpi-card"><div class="n g">32</div><div class="l">可执行任务 · 分 4 阶段</div><div class="s">ROADMAP · 0/32 DONE</div></div>
+  <div class="hkpi-card"><div class="n r">6</div><div class="l">可交付文件 · 代码+文档</div><div class="s">DELIVERY · v2 DELIVERABLES</div></div>
+</div>
+</div></header>
+
+<section id="bench"><div class="wrap">
+<div class="sec-tag"><span class="dot"></span>SECTION 01 · T1 BENCH ECHELON</div>
+<h2 class="sec-h">全网顶级对标梯队 · <b>海外 4 + 国内 4</b></h2><div class="sec-rule"></div>
+<p class="sec-sub">海外对标锁定「合规计算 + Nexus 判定 + 报税自动化 + API 生态」成熟 SaaS；国内对标锁定「AI 管家 + 税所服务 + 海外税覆盖 + Agent 矩阵」一体化方案。
+<span class="conf high"><span class="dot"></span>高</span><span class="sens gold">敏感性 · 中</span>
+<span class="src">Avalara 产品页 · TaxJar 对比 · gulfsaasreview 2026 · Sovos 10 替代 · 华盟官网 · 金蝶 AI 星空 · 星火创智 · 东方财富发布</span></p>
+<div class="tab-bar" id="benchTabs">
+<div class="tab active" data-tab="overseas">🌏 海外 T1 · 4 家</div>
+<div class="tab" data-tab="domestic">🇨🇳 国内 T1 · 4 家</div>
+</div>
+<div class="tab-panel active" id="p-overseas"><div class="bench-grid"><article class="bench reveal">
+  <div class="bench-head">
+    <div class="b-logo a">AV</div>
+    <div class="b-title"><div class="n">Avalara <span class="b-borrow">★ 核心借鉴</span></div><div class="t">合规计算的"事实标准" · 190+ 国家辖区</div></div>
+    <span class="b-origin us">US · T1</span>
+  </div>
+  <div class="b-tag"><span>Calculations</span><span>Returns</span><span>CertCapture</span><span>Avi Agentic</span><span>Sales Tax API</span><span>ERP 连接器 × 1300</span></div>
+  <p class="b-desc">全球合规计算市占最高。2025 推出 <b>Avi Agentic</b>：LLM 自动解释法规变更、生成企业级影响报告、智能对账。典型企业客户年费 <b>$60K 起</b>，中小微 <b>$39~$299/月</b>。</p>
+  <div class="b-hit"><div class="t">✓ 可借鉴 HIT</div><p>① <b>4 步合规漏斗</b>（Connect→Determine→Apply→Analyze）贯穿全站点导航；② Hero 强调"已集成 1300+ ERP/电商平台"降低接入疑虑；③ 客户案例按品牌 logo 墙 + 行业组织；④ 明确分层 3 档定价 + ROI 计算器。</p></div>
+  <div class="b-miss"><div class="t">✗ 不照搬 MISS</div><p>① 企业级产品重销售驱动，不适合中小微内容 SEO；② $60K 定价模型对中国卖家过高。</p></div>
+  <div class="b-price"><b>$39~$60K+/年</b><span>分层：Starter / Plus / Enterprise</span></div>
+</article><article class="bench reveal">
+  <div class="bench-head">
+    <div class="b-logo t">TJ</div>
+    <div class="b-title"><div class="n">TaxJar + Stripe Tax </div><div class="t">五环节合规 · Shopify 生态霸主</div></div>
+    <span class="b-origin us">US · T1</span>
+  </div>
+  <div class="b-tag"><span>Calculate</span><span>Collect</span><span>Nexus Track</span><span>File</span><span>Remit</span><span>Shopify+</span></div>
+  <p class="b-desc">美国电商卖家首选。<b>5 环节合规</b>：计算→代收→Nexus 监控→报税→划款。2026 与 Stripe Tax 合并覆盖 40+ 国家自动登记+自动报税。Shopify App Store 4.8/5。</p>
+  <div class="b-hit"><div class="t">✓ 可借鉴 HIT</div><p>① <b>5 环节流程卡</b>，每环节配图+CTA；② <b>州级 Nexus 监控面板</b>按订单/金额阈值触发提醒——直接对应"综试区 Nexus 热图"；③ 免费税额计算器作为 SEO 钩子。</p></div>
+  <div class="b-miss"><div class="t">✗ 不照搬 MISS</div><p>① 美国州税模式与中国四通道不兼容；② 自动报税国内无接口，只能一键生成底稿+对接税所。</p></div>
+  <div class="b-price"><b>$39~$199/月</b><span>免费计税器引流</span></div>
+</article><article class="bench reveal">
+  <div class="bench-head">
+    <div class="b-logo n">AN</div>
+    <div class="b-title"><div class="n">Anrok <span class="b-borrow">★ 核心借鉴</span></div><div class="t">SaaS 精品 · Nexus 热图发明者</div></div>
+    <span class="b-origin us">US · T1</span>
+  </div>
+  <div class="b-tag"><span>Nexus Heatmap</span><span>VAT OSS IOSS</span><span>自动注册</span><span>B2B 反向开票</span><span>Product Tax Code</span></div>
+  <p class="b-desc">SaaS 公司税务合规精品路径。<b>核心杀招 = Nexus 热图</b>：全球每州/国销售、阈值、注册义务热力色化，红区 1 月内必须完成注册。ARR $10M+ SaaS 复购率极高。</p>
+  <div class="b-hit"><div class="t">✓ 可借鉴 HIT</div><p>① <b>Nexus 热图</b>→「综试区 × 4 通道 × 经营所得 4% 核定 · 中国版 Nexus」最强差异化组件；② <b>Product Tax Code</b> = 跨境商品 HS 编码自动匹配退税率；③ 定价显示"每 1K 订单 $0.xx"清晰计量。</p></div>
+  <div class="b-miss"><div class="t">✗ 不照搬 MISS</div><p>① Anrok 强依赖 Stripe 数据自动阈值，国内需走手动/Excel 导入；② 仅 SaaS，无跨境物流/海外仓。</p></div>
+  <div class="b-price"><b>$149/月起 · 按订单</b><span>热图 80% 用户因之买单</span></div>
+</article><article class="bench reveal">
+  <div class="bench-head">
+    <div class="b-logo s">SV</div>
+    <div class="b-title"><div class="n">Sovos · Vertex · ONESOURCE </div><div class="t">企业级三件套 · 直接税+间接税</div></div>
+    <span class="b-origin us">US · T1</span>
+  </div>
+  <div class="b-tag"><span>Global ERP 内嵌</span><span>Transfer Pricing</span><span>e-Invoicing PEPPOL</span><span>税务共享中心</span><span>审计追踪</span></div>
+  <p class="b-desc">世界 2000 强标配。<b>全球确定性税务引擎</b> + 合规申报 + 发票 + 转让定价全套。按模块 $200K/年起。</p>
+  <div class="b-hit"><div class="t">✓ 可借鉴 HIT</div><p>① <b>合规声明 Legal/Compliance 页</b>：覆盖辖区、SOC2/ISO、对等 ICP+等保三级；② <b>转让定价文档中心</b>→"4 通道合规文档生成器"；③ 税务共享中心→多主体多店铺看板。</p></div>
+  <div class="b-miss"><div class="t">✗ 不照搬 MISS</div><p>① 太重，销售周期 6 个月+；② 与中小微客群不匹配。</p></div>
+  <div class="b-price"><b>$200K+/年 · 定制</b><span>仅借鉴合规基础设施</span></div>
+</article></div></div>
+<div class="tab-panel" id="p-domestic"><div class="bench-grid"><article class="bench reveal">
+  <div class="bench-head">
+    <div class="b-logo k">金蝶</div>
+    <div class="b-title"><div class="n">金蝶 AI 星空 <span class="b-borrow">★ 核心借鉴</span></div><div class="t">财务云 + 智能税务 · 千万级存量 ERP</div></div>
+    <span class="b-origin cn">CN · T1</span>
+  </div>
+  <div class="b-tag"><span>AI 会计</span><span>智能开票</span><span>风险体检</span><span>进销项池</span><span>金税四对接</span><span>ERP 存量千万</span></div>
+  <p class="b-desc">国内财务云市占 Top1。AI 星空 = <b>业财税档一体化</b>，内置 80+ AI 场景：发票 OCR、风险 360° 体检、智能申报、现金流预测。云星空中型 ¥19.8 万/年。</p>
+  <div class="b-hit"><div class="t">✓ 可借鉴 HIT</div><p>① <b>AI 税务风险体检</b>：5 题问卷升级为 30 题 8 维度，输出 PDF 报告；② <b>政策推送订阅</b>：按属地/行业/税种标签→邮件/企微；③ 智能开票+进销项池→AI 助手发票 OCR 对接。</p></div>
+  <div class="b-miss"><div class="t">✗ 不照搬 MISS</div><p>① 金蝶靠 ERP 存量转化，不适合独立站跨境卖家；② 部署重，需本地实施。</p></div>
+  <div class="b-price"><b>¥19.8 万+/年（中型）</b><span>跨境场景为 ERP 附加</span></div>
+</article><article class="bench reveal">
+  <div class="bench-head">
+    <div class="b-logo h">华盟</div>
+    <div class="b-title"><div class="n">华盟税纪云 <span class="b-borrow">★ 核心借鉴</span></div><div class="t">国内税 + Taxcellent 海外税双轮</div></div>
+    <span class="b-origin cn">CN · T1</span>
+  </div>
+  <div class="b-tag"><span>国内申报中台</span><span>Taxcellent 全球</span><span>转让定价</span><span>海外架构</span><span>税所+工具</span></div>
+  <p class="b-desc">四大出身团队。<b>国内数字化 + 全球海外税（Taxcellent）</b>双引擎，转让定价、香港利得税、VAT 24 国全覆盖。获客=税所咨询→SaaS 转化。</p>
+  <div class="b-hit"><div class="t">✓ 可借鉴 HIT</div><p>① <b>"税所服务 + SaaS 工具"双轮变现</b>——对应"信息撮合→合作税所→工具"最优闭环；② 海外独立品牌 Taxcellent→"跨境税盾"独立运营；③ 转让定价→9810 海外仓顶层架构服务。</p></div>
+  <div class="b-miss"><div class="t">✗ 不照搬 MISS</div><p>① 税所团队重运营，人力成本高；② 大客户为主，客群不同。</p></div>
+  <div class="b-price"><b>¥8 万+/年（中小） · 服务另计</b><span>双轮模型最值得借鉴</span></div>
+</article><article class="bench reveal">
+  <div class="bench-head">
+    <div class="b-logo x">星火</div>
+    <div class="b-title"><div class="n">星火创智 · SparkX </div><div class="t">六大 AI Agent 矩阵 · 财税全栈</div></div>
+    <span class="b-origin cn">CN · T1</span>
+  </div>
+  <div class="b-tag"><span>记账 Agent</span><span>开票 Agent</span><span>报税 Agent</span><span>风险 Agent</span><span>咨询 Agent</span><span>筹划 Agent</span></div>
+  <p class="b-desc">2025 新锐。<b>6 大 AI Agent 协作矩阵</b>：记账→开票→申报→预警→咨询→筹划。Agent 共享企业档案、自动派发跨 Agent 任务，号称"替税总做 80% 决定"。</p>
+  <div class="b-hit"><div class="t">✓ 可借鉴 HIT</div><p>① <b>6 Agent 协作 → 5 大 Agent 设计</b>：测算/合规路径/风险预警/政策追踪/文档生成；② Agent 协作图可视化；③ 用 MCP 服务封装每个 Agent API→自然语言配置。</p></div>
+  <div class="b-miss"><div class="t">✗ 不照搬 MISS</div><p>① 6 Agent 对小团队过重，先落地 2~3 个；② 筹划 Agent 易踩"税务筹划=虚开"红线，需合规边界。</p></div>
+  <div class="b-price"><b>¥9,800/年 · 创业版</b><span>Agent 矩阵值得学习</span></div>
+</article><article class="bench reveal">
+  <div class="bench-head">
+    <div class="b-logo y">AY</div>
+    <div class="b-title"><div class="n">阿优精灵 · 东方财富系 </div><div class="t">税所服务 + AI 双轮驱动 · 个体户/小微</div></div>
+    <span class="b-origin cn">CN · T1</span>
+  </div>
+  <div class="b-tag"><span>一键注册</span><span>智能记账</span><span>季度申报</span><span>开票中心</span><span>政策红包匹配</span><span>税所线下</span></div>
+  <p class="b-desc">精准定位"个体户 + 电商 + 灵活用工"。<b>AI 工具轻 + 税所服务重</b>融合，注册、记账、申报、开票全自动，年度 ¥699 起。东方财富参股背书。</p>
+  <div class="b-hit"><div class="t">✓ 可借鉴 HIT</div><p>① <b>¥699/年切入</b>→第二定价层（加 ¥299/月 · ¥2999/年）；② <b>政策红包匹配</b>：海南 15%/西部 15%/综试区 4% 自动匹配；③ Onboarding 引导式 5 步注册建档案。</p></div>
+  <div class="b-miss"><div class="t">✗ 不照搬 MISS</div><p>① 线下税所服务重，地域有限；② 纯国内场景，海外税覆盖少。</p></div>
+  <div class="b-price"><b>¥699/年起</b><span>精准客群 · 低客单 · 高留存</span></div>
+</article></div></div>
+</div></section>
+
+<section id="gap" style="background:linear-gradient(180deg,transparent,rgba(30,42,94,.25) 50%,transparent)"><div class="wrap">
+<div class="sec-tag"><span class="dot"></span>SECTION 02 · 12 DIMENSION GAP MATRIX</div>
+<h2 class="sec-h">12 维差距矩阵 · <b>双产品综合评测</b></h2><div class="sec-rule"></div>
+<p class="sec-sub">以 T1 标杆为基准打 S0~S3（<b>S0 缺失，S1 弱，S2 中，S3 强</b>）。
+<span class="conf mid"><span class="dot"></span>中</span><span class="sens red">敏感性 · 高（差距结论直接影响路线）</span></p>
+<div class="legend">▸ 差距评级：
+<span class="lvl s3">S3 强</span>=对齐标杆
+<span class="lvl s2">S2 中</span>=有雏形需补全
+<span class="lvl s1">S1 弱</span>=仅局部
+<span class="lvl s0">S0 缺失</span>=完全空白
+</div>
+<div class="gap-wrap reveal"><table class="gap-table"><thead><tr>
+<th style="width:160px">能力维度</th>
+<th class="us">海外 T1 基线</th><th class="cn">国内 T1 基线</th>
+<th class="me">跨境税盾现状</th><th>AI 助手现状</th><th style="width:200px">🔧 优先改进</th>
+</tr></thead><tbody>
+<tr class="g"><td class="metric" colspan="6" style="background:rgba(55,224,255,.06)">🔶 🔶 基础能力</td></tr>
+<tr><td class="metric">undefined. undefined<small>undefined</small></td><td>undefined</td><td>undefined</td><td>undefined</td><td>undefined</td><td>undefined</td></tr><tr class="g"><td class="metric" colspan="6" style="background:rgba(55,224,255,.06)">🔶 转化 & 变现</td></tr>
+<tr><td class="metric">3. 定价透明 & 分层<small>Free/Pro/Team/Ent 4 档</small></td><td>TaxJar 3 档+订单计；Anrok 计量 <span class="lvl s3">S3</span></td><td>阿优 ¥699；金蝶 ERP 分层 <span class="lvl s2">S2</span></td><td>无定价页 · 撮合表单 <span class="lvl s0">S0</span></td><td>仅 ¥29 月，无年度对比 <span class="lvl s1">S1</span></td><td>⚡ P0：pricing.html · 4 档分层</td></tr>
+<tr><td class="metric">4. 客户案例 & 社交证明<small>logo 墙 · 故事 · KPI</small></td><td>Avalara 1300+ 客户 LOGO + 行业视频 <span class="lvl s3">S3</span></td><td>华盟四大案例；金蝶行业标杆 <span class="lvl s3">S3</span></td><td>KJ-Trust 6 卡，无 LOGO 墙 <span class="lvl s1">S1</span></td><td>完全空白 <span class="lvl s0">S0</span></td><td>⚡ P1：案例卡 × 8 + LOGO 墙 + 脱敏 KPI</td></tr>
+<tr class="g"><td class="metric" colspan="6" style="background:rgba(55,224,255,.06)">🔶 🔶 AI 能力</td></tr>
+<tr><td class="metric">6. 对话体验 & 引用溯源<small>脚注 · 原文穿透 · 案例</small></td><td>Avi Agentic 追溯法规原文 <span class="lvl s2">S2</span></td><td>金蝶 AI 附政策文号 <span class="lvl s2">S2</span></td><td>—</td><td>有文号但无链接穿透 <span class="lvl s1">S1</span></td><td>⚡ P1：每条回答 [1][2] 脚注→浮窗原文</td></tr>
+<tr><td class="metric">7. 置信度 & 风险边界<small>高/中/低 + 敏感性 + 需核验</small></td><td>Sovos 法律免责 <span class="lvl s2">S2</span></td><td>华盟税所兜底 <span class="lvl s2">S2</span></td><td>徽标体系部分落地 <span class="lvl s2">S2</span></td><td>高危拒答；需核验未系统化 <span class="lvl s1">S1</span></td><td>P1：100% 覆盖 · legal.html 升级</td></tr>
+<tr class="g"><td class="metric" colspan="6" style="background:rgba(55,224,255,.06)">🔶 🔶 合规可视化</td></tr>
+<tr><td class="metric">9. 合规流程 & 文档生成<small>PDF 报告 · 底稿 · 四流合一</small></td><td>TaxJar 凭证包；Sovos 审计追踪 <span class="lvl s3">S3</span></td><td>华盟转让定价；金蝶申报底稿 <span class="lvl s3">S3</span></td><td>自查 PDF 有，但非合规底稿 <span class="lvl s1">S1</span></td><td>—</td><td>P2：文档生成 Agent（9610/1039/9810 包）</td></tr>
+<tr class="g"><td class="metric" colspan="6" style="background:rgba(55,224,255,.06)">🔶 🔶 基础设施</td></tr>
+<tr><td class="metric">11. Onboarding & 引导<small>首次 5 分钟 Aha!</small></td><td>TaxJar 3 步接入；Anrok Stripe 一键 <span class="lvl s3">S3</span></td><td>阿优 5 步建档案 <span class="lvl s2">S2</span></td><td>问卷无进度环 <span class="lvl s1">S1</span></td><td>芯片点击无反馈 <span class="lvl s0">S0</span></td><td>⚡ P0：进度条 + AI onboarding + 样例</td></tr>
+<tr><td class="metric">12. 信任 & 合规基建<small>备案 · 法律声明 · SOC</small></td><td>Avalara SOC2 + 合规页公开 <span class="lvl s3">S3</span></td><td>金蝶等保三级 <span class="lvl s2">S2</span></td><td>ICP 有；legal 弱 <span class="lvl s1">S1</span></td><td>隐私政策有 · 合规边界缺 <span class="lvl s1">S1</span></td><td>P1：legal.html 6 模块升级</td></tr>
+</tbody></table></div>
+</div></section>
+
+<section id="score"><div class="wrap">
+<div class="sec-tag"><span class="dot"></span>SECTION 03 · BASELINE SCORECARD</div>
+<h2 class="sec-h">现状量化评分卡 · <b>11 项 · 百分制</b></h2><div class="sec-rule"></div>
+<p class="sec-sub">基准线：海外 T1 平均 92 分 / 国内 T1 平均 81 分 / 跨境税盾当前。<span class="conf mid"><span class="dot"></span>中</span></p>
+<div class="sc-grid reveal"><div class="sc-card"><h4>① Hero 转化 <span class="pts">48 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill bad" style="width:48%"></div></div>
+  <div class="sc-note">CTA 单一 · 信任 KPI 无动态 · 平台 LOGO 墙缺</div></div><div class="sc-card"><h4>② 定价透明 <span class="pts">32 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill bad" style="width:32%"></div></div>
+  <div class="sc-note">无定价页 · 分层缺失 · 选型计算器无</div></div><div class="sc-card"><h4>③ 社交证明 <span class="pts">29 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill bad" style="width:29%"></div></div>
+  <div class="sc-note">KJ-Trust 6 张卡，但客户 LOGO 墙=0 · 案例卡=0</div></div><div class="sc-card"><h4>④ AI 问答能力 <span class="pts">66 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill " style="width:66%"></div></div>
+  <div class="sc-note">知识库 137+276 条 · 4 测算器 · 引用溯源弱</div></div><div class="sc-card"><h4>⑤ 合规引擎 <span class="pts">54 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill " style="width:54%"></div></div>
+  <div class="sc-note">4 通道规则 OK · 税率表按月维需补 · HS 退税率缺</div></div><div class="sc-card"><h4>⑥ Nexus 属地可视化 <span class="pts">38 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill bad" style="width:38%"></div></div>
+  <div class="sc-note">属地速查静态 · 非热力 · 无阈值告警</div></div><div class="sc-card"><h4>⑦ 问卷 & Onboarding <span class="pts">44 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill bad" style="width:44%"></div></div>
+  <div class="sc-note">问卷无进度 · AI 助手无 onboarding</div></div><div class="sc-card"><h4>⑧ 付费闭环 <span class="pts">74 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill good" style="width:74%"></div></div>
+  <div class="sc-note">支付宝 ¥29 月订阅通 · 需年度定价</div></div><div class="sc-card"><h4>⑨ 合规基建 <span class="pts">51 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill " style="width:51%"></div></div>
+  <div class="sc-note">ICP 已办 · privacy.html 存在 · legal 声明需升级</div></div><div class="sc-card"><h4>⑩ API & 连接器 <span class="pts">15 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill bad" style="width:15%"></div></div>
+  <div class="sc-note">Leads Worker 单点 · 无 ERP/平台/支付对接</div></div><div class="sc-card"><h4>⑪ Agent 协作 <span class="pts">22 / 100</span></h4>
+  <div class="sc-bar"><div class="sc-bar-fill bad" style="width:22%"></div></div>
+  <div class="sc-note">仅问答单 Agent · 5 矩阵=愿景</div></div></div>
+</div></section>
+
+<section id="insight" style="background:linear-gradient(180deg,transparent,rgba(255,157,46,.08) 50%,transparent)"><div class="wrap">
+<div class="sec-tag"><span class="dot"></span>SECTION 04 · FOUR BREAKTHROUGH INSIGHTS</div>
+<h2 class="sec-h">四大破局洞察 · <b>差异化切入跨境 1.6 万亿增量</b></h2><div class="sec-rule"></div>
+<p class="sec-sub">不做中国版 Avalara（太重）也不做另一个阿优（客群重叠）。唯一胜出 = <b>「Nexus 热图 × 4 通道 × 5 Agent」 × 跨境垂直</b>。
+<span class="conf high"><span class="dot"></span>高</span><span class="sens red">敏感性 · 高（战略决策）</span></p>
+<div class="ins-grid reveal"><div class="ins"><div class="ins-no">INSIGHT 01</div><h3>🚀 最强差异化 = 中国版 Nexus 热图</h3><p>Anrok 用 Nexus 热图切 SaaS 全球增值税。我们对标的是「<b>跨境电商 × 169 综试区 × 4 通道 × 经营所得 4% 核定</b>」——这是一个 Avalara 在中国做不了、金蝶不重视、阿优没做的视觉化杀器。</p><ul><li>按地图热力显示：169 综试区 → 4% 核定资格城市 → 金税四稽查高发地</li><li>输入"我在杭州做亚马逊" → 自动输出：9610 无票免税资格 ✓ / 4% 核定资格 ✓ / 杭州稽查指数 ★★★★</li><li>免费 SEO 钩子："综试区名单""核定征收城市""我所在城市能不能无票免税"</li></ul></div><div class="ins"><div class="ins-no">INSIGHT 02</div><h3>💰 变现闭环 = 双轮 · 轻工具+重税所</h3><p>华盟「税所咨询 + SaaS」双轮是对的，但他的客户太大。我们做中小微跨境版：</p><ul><li>轻工具端：免费 Nexus 热图 / 免费测算器 / ¥29 月 AI 问答 → 获客</li><li>重服务端：合规文档生成 ¥299 起 + 撮合合作税所 30% 分成</li><li>年度中台：¥2999/年（多店铺多主体看板 + 政策订阅 + 专属顾问）</li><li>ARPU = ¥29 月 → 撮合转化 10% → 平均 ¥1440/客户/年</li></ul></div><div class="ins"><div class="ins-no">INSIGHT 03</div><h3>🧠 AI 不做"万能答" · 做 5 Agent 专项</h3><p>星火 6 Agent 思路对但太全。我们聚焦 5 个跨境电商专项 Agent，每个 80+ 分：</p><ul><li>① <b>测算 Agent</b>：4 通道税额 + 3 口径（免税/退税/核定）比省多少</li><li>② <b>路径 Agent</b>：输入业务数据 → 9610/9710/9810/1039 决策 + 迁移方案</li><li>③ <b>风险预警 Agent</b>：四流扫描 + 虚开/补税 12 类红黄牌</li><li>④ <b>政策追踪 Agent</b>：按属地/行业/税种 · 16:00 每日快照 · 变更高危推送</li><li>⑤ <b>文档生成 Agent</b>：一键 9610 免税资料包 / 1039 采购单 / 9810 海外仓单</li></ul></div><div class="ins"><div class="ins-no">INSIGHT 04</div><h3>🌊 流量基建 = 双飞轮内容矩阵</h3><p>Avalara SEO 长尾词 10 万+。国内版要做「<b>40 篇极点内容 → 分发 8 平台 → 引导站内工具</b>」飞轮：</p><ul><li>4 大高搜索量主题：无票免税 / 出口退税 / 核定征收 / 买单出口补税</li><li>每主题 10 篇 = 40 极点内容（草稿库/gzh + zhihu 模板已建）</li><li>每篇内嵌对应站内测算器 / Nexus 热图 CTA → 转化 3x</li><li>问答 AI 助手"选题反哺"：每 100 问答抽 5 个高重复 → 新极点</li></ul></div></div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+<div class="sec-tag"><span class="dot"></span>SECTION 05 · FOUR PHASE ROADMAP · 32 TASKS</div>
+<h2 class="sec-h">四阶段 32 任务 · <b>6 个月升级到中小微跨境合规中台</b></h2><div class="sec-rule"></div>
+<p class="sec-sub">P0（2 周 UX）→ P1（6 周差异化）→ P2（8 周 Agent）→ P3（10 周生态）。每阶段附对标来源 / 完成标准 / 风险。
+<span class="conf high"><span class="dot"></span>高</span></p>
+<div class="phases"><div class="phase reveal">
+  <div class="phase-head">
+    <div class="ph-badge p0">P0</div>
+    <div class="ph-title">
+      <div class="p">PHASE 0 · 2 周</div>
+      <h3>UX 基础 & 转化漏斗修复（对标：Avalara Hero + TaxJar 5 环节 + 阿优 Onboarding）</h3>
+    </div>
+    <div class="ph-meta">
+      <span>⏱ <b>2 周</b></span>
+      <span>🎯 目标：转化率 × 2.5</span>
+      <span class="lvl s3">PRIORITY · P0 必做</span>
+    </div>
+  </div>
+  <div class="phase-tasks"><div class="task tk-wip"><div class="tk-n">1</div>
+      <div class="tk-body"><b>首页 v2：Avalara 式 Hero + 四步合规漏斗卡</b><span>替换 Hero 为 Connect→Determine→Apply→Analyze；动态 KPI（4 通道/169 综试区/600+ 线索）。交付：index-live-v2.html</span></div></div><div class="task tk-wip"><div class="tk-n">2</div>
+      <div class="tk-body"><b>定价页 + 选型计算器</b><span>4 档分层 Free/Pro¥29/Team¥299/Ent¥2999；5 题选型计算器。对标 TaxJar + 阿优 ¥699</span></div></div><div class="task tk-wip"><div class="tk-n">3</div>
+      <div class="tk-body"><b>自查问卷：5 步进度环 + PDF 下载改造</b><span>Q1~Q5 顶部圆环进度条；结果页 CTA「下载合规报告 PDF」。对标阿优 5 步 Onboarding</span></div></div><div class="task tk-wip"><div class="tk-n">4</div>
+      <div class="tk-body"><b>客户 LOGO 墙 + 8 张案例卡</b><span>匿名行业 LOGO 墙（外贸/服装/3C/家居/美妆等）；8 张问题→方案→省税%案例卡</span></div></div><div class="task tk-wip"><div class="tk-n">5</div>
+      <div class="tk-body"><b>动态信任 KPI 区</b><span>滚动：累计服务企业/覆盖综试区/撮合税所/处理问卷/平均节税率%。对标 Avalara</span></div></div><div class="task tk-wip"><div class="tk-n">6</div>
+      <div class="tk-body"><b>legal.html 合规声明页升级</b><span>6 模块：覆盖辖区/免责/数据/Cookie/权利/联系。对标 Sovos</span></div></div><div class="task "><div class="tk-n">7</div>
+      <div class="tk-body"><b>AI 助手 onboarding + 首次对话样例</b><span>3 个示例问题卡（9610/年终奖/金税四稽查）→ 点击直接发送。对标星火</span></div></div><div class="task "><div class="tk-n">8</div>
+      <div class="tk-body"><b>订阅入口视觉 + 年度定价</b><span>¥29/月 vs ¥299/年（省 15%）vs ¥2999/企业版。对标 Anrok</span></div></div></div></div><div class="phase reveal">
+  <div class="phase-head">
+    <div class="ph-badge p1">P1</div>
+    <div class="ph-title">
+      <div class="p">PHASE 1 · 6 周</div>
+      <h3>差异化组件 & 变现分层（对标：Anrok Nexus 热图 + 星火 6 Agent 雏形）</h3>
+    </div>
+    <div class="ph-meta">
+      <span>⏱ <b>6 周</b></span>
+      <span>🎯 目标：ARPU ¥29 → ¥240</span>
+      <span class="lvl s2">PRIORITY · P1/P2 高</span>
+    </div>
+  </div>
+  <div class="phase-tasks"><div class="task "><div class="tk-n">1</div>
+      <div class="tk-body"><b>🔥 综试区 Nexus 热图 v1</b><span>ECharts 中国地图：169 综试区 + 4% 核定红区 + 稽查高发蓝区。交付：nexus-heatmap.html</span></div></div><div class="task "><div class="tk-n">2</div>
+      <div class="tk-body"><b>测算器 v2：三口径对比</b><span>9610 免税 vs 9710 退税 vs 4% 核定并排对比→综合税负差。对标 Avalara</span></div></div><div class="task "><div class="tk-n">3</div>
+      <div class="tk-body"><b>AI 回答引用溯源脚注 [1][2]</b><span>每条回答标脚注→悬停原文片段+官方链接。对标 Avi Agentic</span></div></div><div class="task "><div class="tk-n">4</div>
+      <div class="tk-body"><b>相似案例卡</b><span>回答后推荐 3 条匿名相似案例。对标华盟</span></div></div><div class="task "><div class="tk-n">5</div>
+      <div class="tk-body"><b>政策订阅邮件/企微闭环</b><span>用户选择属地税种→政策 Agent 每日 16:00 推送变更。对标金蝶</span></div></div><div class="task "><div class="tk-n">6</div>
+      <div class="tk-body"><b>AI 风险体检（30 题 · PDF 报告）</b><span>8 维度 × 30 题 → 红/黄/绿评级 PDF。对标金蝶 AI 星空</span></div></div><div class="task "><div class="tk-n">7</div>
+      <div class="tk-body"><b>合作税所撮合系统</b><span>「我要合规撮合」→ 税所后台派单 → 状态流转 → 30% 分成。对标华盟</span></div></div><div class="task "><div class="tk-n">8</div>
+      <div class="tk-body"><b>置信度/敏感性徽标 100% 覆盖</b><span>所有 AI 输出 + 政策页 + 问卷结果页必须带。需核验 = 16:00 快照闭环</span></div></div></div></div><div class="phase reveal">
+  <div class="phase-head">
+    <div class="ph-badge p2">P2</div>
+    <div class="ph-title">
+      <div class="p">PHASE 2 · 8 周</div>
+      <h3>Agent 矩阵 & 文档中台（对标：星火 6 Agent · Sovos 文档中心 · TaxJar 凭证包）</h3>
+    </div>
+    <div class="ph-meta">
+      <span>⏱ <b>8 周</b></span>
+      <span>🎯 目标：5 大 Agent + 文档生成</span>
+      <span class="lvl s2">PRIORITY · P1/P2 高</span>
+    </div>
+  </div>
+  <div class="phase-tasks"><div class="task "><div class="tk-n">1</div>
+      <div class="tk-body"><b>Agent 1：测算 Agent</b><span>自然语言→三口径测算→差额对比输出</span></div></div><div class="task "><div class="tk-n">2</div>
+      <div class="tk-body"><b>Agent 2：合规路径 Agent</b><span>输入业务数据 → 4 通道决策 + 迁移方案（步骤/成本/时间/风险）</span></div></div><div class="task "><div class="tk-n">3</div>
+      <div class="tk-body"><b>Agent 3：风险预警 Agent</b><span>四流合一 12 类红黄牌 → 推企微 → 自动排期 → 税所派单</span></div></div><div class="task "><div class="tk-n">4</div>
+      <div class="tk-body"><b>Agent 4：政策追踪 Agent</b><span>16:00 快照 + 变更分析 + 标签推送。MCP 封装</span></div></div><div class="task "><div class="tk-n">5</div>
+      <div class="tk-body"><b>Agent 5：文档生成 Agent</b><span>9610 免税资料包 / 9810 海外仓单 / 1039 采购单 / 年度申报底稿。对标 Sovos</span></div></div><div class="task "><div class="tk-n">6</div>
+      <div class="tk-body"><b>MCP 封装 5 Agent API</b><span>每个 Agent 暴露 MCP → 自然语言调用 → 小程序/H5/税所 ERP 接入</span></div></div><div class="task "><div class="tk-n">7</div>
+      <div class="tk-body"><b>多主体多店铺统一看板</b><span>企业版：多家注册地 + 多监管码统一可视化。对标金蝶税务共享中心</span></div></div><div class="task "><div class="tk-n">8</div>
+      <div class="tk-body"><b>知识库扩量：200 政策 / 400 问答</b><span>扩：MCN/灵活用工 域 2 + 餐饮/建筑劳务 域 3 + 横琴/前海/南沙优惠</span></div></div></div></div><div class="phase reveal">
+  <div class="phase-head">
+    <div class="ph-badge p3">P3</div>
+    <div class="ph-title">
+      <div class="p">PHASE 3 · 10 周</div>
+      <h3>生态 & 规模化（对标：Avalara 1300 连接器 · Anrok 自动注册 · 华盟 Taxcellent 海外税）</h3>
+    </div>
+    <div class="ph-meta">
+      <span>⏱ <b>10 周</b></span>
+      <span>🎯 目标：MAU × 10 / ARPU × 3</span>
+      <span class="lvl s1">PRIORITY · P3 战略</span>
+    </div>
+  </div>
+  <div class="phase-tasks"><div class="task "><div class="tk-n">1</div>
+      <div class="tk-body"><b>连接器 v1：Shopify / 亚马逊 / 速卖通 / TikTok Shop</b><span>订单一键导入 → Nexus 阈值监控 → 合规报告。对标 Avalara</span></div></div><div class="task "><div class="tk-n">2</div>
+      <div class="tk-body"><b>连接器 v2：金蝶/用友 ERP + 支付宝/微信支付</b><span>财务 & 支付数据 → 进销项池扫描。对标金蝶内嵌</span></div></div><div class="task "><div class="tk-n">3</div>
+      <div class="tk-body"><b>海外 VAT 24 国接入</b><span>对标华盟 Taxcellent：英/德/法/意/西 24 国 VAT 底稿→对接海外税所合作</span></div></div><div class="task "><div class="tk-n">4</div>
+      <div class="tk-body"><b>海外架构 & 9810 顶层设计服务</b><span>港+新+美 LLC 三层架构 → 转让定价文档包 → ¥9,800 档。对标华盟</span></div></div><div class="task "><div class="tk-n">5</div>
+      <div class="tk-body"><b>40 篇极点内容 × 8 平台分发</b><span>4 主题 × 10 篇 × 8 平台 → 站内工具 CTA 转化</span></div></div><div class="task "><div class="tk-n">6</div>
+      <div class="tk-body"><b>问答 → 极点选题反哺飞轮</b><span>每 100 问答抽 5 个高频 → 自动选题卡 → 编辑审核 → 发布</span></div></div><div class="task "><div class="tk-n">7</div>
+      <div class="tk-body"><b>企业版 SSO & 协作空间</b><span>多人协作：财务/运营/老板共看档案 + 权限。对标企业级 SaaS</span></div></div><div class="task "><div class="tk-n">8</div>
+      <div class="tk-body"><b>行业解决方案中心</b><span>服装/3C/家居/美妆/户外/宠物 6 大垂直页 + Nexus 热图 + 白皮书 + 典型案例</span></div></div></div></div></div>
+</div></section>
+
+<section id="delivery" style="background:linear-gradient(180deg,transparent,rgba(55,224,255,.08) 50%,transparent)"><div class="wrap">
+<div class="sec-tag"><span class="dot"></span>SECTION 06 · 6 DELIVERABLES</div>
+<h2 class="sec-h">6 件可交付物 · <b>代码 + 文档 + 运行清单</b></h2><div class="sec-rule"></div>
+<p class="sec-sub">本轮 v2 附带直接交付物。线上同步通过 <b>Cloudflare Pages + Workers</b> 部署。</p>
+<div class="del-grid reveal"><div class="del"><div class="no">D-01</div><h4>🚀 跨境税盾首页 v2</h4><ul><li>文件：index-live-v2.html</li><li>内容：Avalara Hero + 四步流程 + 动态信任 KPI</li><li>Nexus 热图入口卡 + 客户案例 × 8 + LOGO 墙</li><li>合规声明入口 + 订阅区升级</li></ul></div><div class="del"><div class="no">D-02</div><h4>📚 对标路线图 v2（本文档）</h4><ul><li>8 对标梯队深度拆解 HIT/MISS</li><li>12 维差距矩阵 + 11 项评分卡</li><li>4 破局洞察 + 4 阶段 32 任务</li></ul></div><div class="del"><div class="no">D-03</div><h4>💎 定价页 + 选型计算器</h4><ul><li>文件：pricing.html（P0 产出）</li><li>4 档：Free / Pro ¥29 / Team ¥299 / Ent ¥2999</li><li>选型计算器：5 题 3 分钟选方案</li><li>年付优惠对比：省 15%</li></ul></div><div class="del"><div class="no">D-04</div><h4>🧭 Nexus 综试区热图 v1</h4><ul><li>文件：nexus-heatmap.html（P1 产出）</li><li>ECharts：169 综试区 + 4% 核定 + 稽查高发</li><li>输入城市 → 合规建议 + 迁移路径</li><li>免费引流 SEO 钩子</li></ul></div><div class="del"><div class="no">D-05</div><h4>⚖️ 合规声明页升级</h4><ul><li>文件：legal-v2.html（P0 产出）</li><li>6 大模块：辖区/免责/数据/Cookie/权利/联系</li><li>对标 Sovos + 等保三级说明</li><li>ICP 备案 + 联系邮箱公开</li></ul></div><div class="del"><div class="no">D-06</div><h4>🤖 AI 助手升级清单</h4><ul><li>Onboarding 3 卡 + 首次对话样例</li><li>回答脚注引用溯源 [1][2] 原文展开</li><li>3 相似案例卡 + 徽标 100% 覆盖</li><li>订阅年度定价 + 对比展示</li></ul></div></div>
+</div></section>
+
+<footer>
+<div class="foot-in">
+<div><h5>跨境税盾 · BENCHMARK v2</h5>
+<p>UICraft Assess→Correct→Refine→Finish 方法论。<br>
+所有结论附置信度/敏感性徽标，未经 16:00 快照核实=「需核验」。<br>
+联系邮箱：<a href="mailto:861481939@qq.com">861481939@qq.com</a></p></div>
+<div><h5>站内导航</h5>
+<a href="#hero">总览</a><a href="#bench">对标梯队</a><a href="#gap">差距矩阵</a><a href="#roadmap">升级路线</a><a href="#delivery">交付清单</a><a href="index-live-v2.html">首页 v2 →</a></div>
+<div><h5>线上去向</h5>
+<a href="https://kuajingshuidun.cn/" target="_blank" rel="noopener">跨境税盾主页 ↗</a>
+<a href="https://ai.kuajingshuidun.cn/" target="_blank" rel="noopener">AI 问答 ↗</a>
+<a href="https://kuajingshuidun.cn/sources.html" target="_blank" rel="noopener">政策来源 ↗</a>
+<a href="https://kuajingshuidun.cn/privacy.html" target="_blank" rel="noopener">隐私政策 ↗</a></div>
+</div>
+<div class="copyright">© 2026 跨境税盾 · BENCHMARK ROADMAP v2.0 · Generated 2026-09-02 · Confidence High · Sensitivity Medium</div>
+</footer>
+
+<script>
+document.querySelectorAll('#benchTabs .tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('#benchTabs .tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('p-'+t.dataset.tab).classList.add('active');
+  });
+});
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(e=>e.classList.add('in'));return;}
+  const io=new IntersectionObserver(entries=>entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.08});
+  els.forEach(e=>io.observe(e));
+})();
+window.addEventListener('load',()=>{
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setTimeout(()=>{
+    document.querySelectorAll('.sc-bar-fill').forEach(b=>{const w=b.style.width;b.style.width='0';requestAnimationFrame(()=>{b.style.width=w;});});
+  },200);
+  document.querySelectorAll('.hkpi .n').forEach(el=>{
+    const target=parseInt(el.textContent,10);if(!target) return;let cur=0;const step=Math.ceil(target/40);
+    const t=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(t);}el.textContent=cur;},28);
+  });
+});
+</script>
+</body></html>
