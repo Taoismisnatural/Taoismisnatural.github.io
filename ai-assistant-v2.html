@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#0a0f1f" />
+<title>跨境税盾 · AI 助手 v2 — 9810/9710/9610 全模式税务合规副驾驶</title>
+<meta name="description" content="面向跨境电商卖家。对标 Avalara 4步Onboarding、TaxJar 四档定价、Anrok 渐进错误态、Sovos 多主体 Workspace。知识库 137 项有效政策 + 276 条稽查案例。" />
+<meta name="keywords" content="跨境电商税务,9810海外仓,9710出口,9610直邮,1210保税,1039市场采购,无票免税,出口退税,欧洲VAT,金税四期,AI财税助手" />
+<meta name="author" content="跨境税盾 KuajingShuiDun" />
+<link rel="icon" type="image/png" href="https://kuajingshuidun.cn/assets/favicon-96.png" />
+
+<meta property="og:title" content="跨境税盾 · AI 助手 v2 — 9810/9710/9610 全模式税务合规副驾驶" />
+<meta property="og:description" content="面向跨境电商卖家。对标 Avalara 4步Onboarding、TaxJar 四档定价、Anrok 渐进错误态、Sovos 多主体 Workspace。知识库 137 项有效政策 + 276 条稽查案例。" />
+<meta property="og:url" content="https://kuajingshuidun.cn/ai-assistant-v2.html" />
+<meta property="og:site_name" content="跨境税盾 KuajingShuiDun" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:image" content="https://kuajingshuidun.cn/assets/跨境税盾头像_盾牌.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="跨境税盾 · AI 助手 v2 — 9810/9710/9610 全模式税务合规副驾驶" />
+<meta name="twitter:description" content="面向跨境电商卖家。对标 Avalara 4步Onboarding、TaxJar 四档定价、Anrok 渐进错误态、Sovos 多主体 Workspace。知识库 137 项有效政策 + 276 条稽查案例。" />
+<meta name="twitter:image" content="https://kuajingshuidun.cn/assets/跨境税盾头像_盾牌.jpg" />
+
+<style id="ssr-hide">.app, .app-footer{visibility:hidden}</style>
+  
+<style>
+/* ======= Core tokens ======= */
+:root{
+  --bg:#0a0f1f;--bg2:#131d33;--bg3:#0e1730;
+  --ink:#e9eef7;--muted:#93a2bd;--rule:#24334f;
+  --gold:#ffc24d;--gold-deep:#c48a1a;
+  --cyan:#37e0ff;--green:#4ade80;--red:#ef4444;
+  --violet:#a855f7;--blue:#4f8fe0;
+  --panel:#111b36;--panel2:#0d1730;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background:radial-gradient(1200px 800px at 10% -10%, rgba(255,194,77,0.06), transparent 60%),
+  radial-gradient(1000px 700px at 110% 10%, rgba(55,224,255,0.08), transparent 60%),
+  linear-gradient(180deg, var(--bg) 0%, #070b18 100%);
+  color:var(--ink); font-family: -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Yahei","Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:14px; line-height:1.55;
+}
+a{color:inherit;text-decoration:none}
+.hidden{display:none!important}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important; transition:none!important; scroll-behavior:auto!important}
+}
+
+/* ======= Topbar ======= */
+.topbar{
+  position:sticky; top:0; z-index:60; backdrop-filter: blur(14px);
+  background: linear-gradient(180deg, rgba(10,15,31,0.85), rgba(10,15,31,0.55));
+  border-bottom:1px solid var(--rule);
+  padding: 10px 24px; display:flex; align-items:center; gap:14px;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-logo{
+  width:36px;height:36px;border-radius:10px;
+  background: radial-gradient(circle at 30% 30%, #ffe4a0, #c48a1a 60%, #6a4610 100%);
+  box-shadow: var(--glowGold);
+  display:grid; place-items:center; color:#1a1200; font-weight:800; font-size:16px;
+  letter-spacing:.5px;
+}
+.brand-name{font-weight:700; font-size:15.5px; color:var(--gold)}
+.brand-sub{font-size:11.5px; color:var(--muted)}
+.nav{display:flex;align-items:center;gap:10px; flex:1}
+.navlink{
+  padding:7px 13px; border-radius:999px; color:var(--ink);
+  border:1px solid var(--rule); font-size:12.5px;
+  background: rgba(79,143,224,0.06);
+  transition:.2s;
+}
+.navlink:hover{border-color: var(--cyan); color:var(--cyan)}
+.topbar-right{display:flex; align-items:center; gap:12px}
+.ws{
+  display:flex; align-items:center; gap:8px;
+  padding:6px 10px 6px 8px; border-radius:12px;
+  border:1px solid var(--rule); background: var(--panel);
+  cursor:pointer; font-size:12.5px; max-width:200px;
+}
+.ws-avatars{display:flex}
+.ws-avatars .av{
+  width:22px;height:22px;border-radius:50%;
+  display:grid;place-items:center; color:#fff; font-size:10px; font-weight:700;
+  border:2px solid var(--panel); margin-left:-6px;
+}
+.ws-avatars .av:first-child{margin-left:0}
+.quota{
+  font-size:12px; color:var(--muted); padding:5px 10px; border:1px dashed var(--rule); border-radius:10px;
+}
+.quota b{color:var(--gold); font-weight:700}
+.btn{
+  border:none; cursor:pointer; font-weight:600; padding:8px 15px; border-radius:12px;
+  font-size:13px; transition:.2s;
+}
+.btn-gold{
+  background:linear-gradient(135deg,#ffd27a 0%, #ffc24d 50%, #c48a1a 100%);
+  color:#1a1200; box-shadow: var(--glowGold);
+}
+.btn-gold:hover{filter:brightness(1.08); transform: translateY(-1px)}
+.btn-ghost{
+  background: transparent; color:var(--ink); border:1px solid var(--rule);
+}
+.btn-ghost:hover{border-color: var(--cyan); color:var(--cyan)}
+.btn-blue{
+  background: linear-gradient(135deg, #4f8fe0, #37e0ff);
+  color:#00151d; box-shadow: var(--glowCyan);
+}
+
+/* ======= Three column shell ======= */
+.app{
+  display:grid;
+  grid-template-columns: 240px 1fr 300px;
+  gap: 14px; padding: 14px 18px 18px; min-height: calc(100vh - 58px);
+  max-width: 1480px; margin: 0 auto;
+}
+@media (max-width: 1180px){
+  .app{grid-template-columns: 64px 1fr 300px}
+  .side .side-hd, .side .sess-title, .side .sess-meta, .side .new-btn-label{display:none}
+}
+@media (max-width: 920px){
+  .app{grid-template-columns: 1fr}
+  .side, .mini-calc{display:none}
+}
+
+/* ======= Left sidebar ======= */
+.side{
+  border:1px solid var(--rule); border-radius: var(--radiusBig);
+  background: linear-gradient(180deg, var(--panel), var(--panel2));
+  padding: 14px; display:flex; flex-direction:column; gap:14px; min-height:0;
+}
+.side-hd .workspace-label{font-size:11px; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase}
+.side-hd .workspace-name{font-weight:700; font-size:14.5px; margin-top:2px}
+.new-chat{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:9px 12px; border-radius:12px;
+  background: linear-gradient(135deg, rgba(255,194,77,0.18), rgba(79,143,224,0.14));
+  border:1px solid rgba(255,194,77,0.35); color: var(--gold);
+  font-weight:600; cursor:pointer; transition:.2s;
+}
+.new-chat:hover{background: rgba(255,194,77,0.28)}
+.sessions{display:flex; flex-direction:column; gap:6px; overflow:auto; padding-right:4px; max-height:56vh}
+.sess{
+  display:grid; grid-template-columns: 36px 1fr; gap:8px;
+  padding:8px 9px; border-radius:10px; cursor:pointer;
+  border:1px solid transparent; transition:.18s;
+}
+.sess:hover{background: rgba(79,143,224,0.08); border-color:var(--rule)}
+.sess.active{background: rgba(255,194,77,0.1); border-color: rgba(255,194,77,0.35)}
+.sess-av{
+  width:36px;height:36px;border-radius:9px; display:grid;place-items:center;
+  color:#fff; font-weight:700; font-size:12px;
+}
+.sess-title{font-size:13px; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.sess-meta{font-size:11.5px; color:var(--muted); margin-top:2px; display:flex; align-items:center; gap:6px}
+.sess-badge{padding:1px 6px; border-radius:999px; font-size:10.5px}
+.cross-border{background:linear-gradient(135deg, #4f8fe0, #37e0ff); color:#001821}
+.domestic{background: rgba(74,222,128,0.15); color:var(--green); border:1px solid rgba(74,222,128,0.3)}
+.team-plan{background: rgba(168,85,247,0.15); color:var(--violet); border:1px solid rgba(168,85,247,0.3)}
+
+.side-tip{
+  margin-top:auto; padding:10px 12px; border-radius:12px;
+  border:1px dashed rgba(255,194,77,0.35);
+  background: rgba(255,194,77,0.05);
+  font-size:11.5px; color:var(--muted); line-height:1.5;
+}
+.side-tip b{color:var(--gold)}
+
+/* ======= Center chat ======= */
+.center{
+  border:1px solid var(--rule); border-radius: var(--radiusBig);
+  background: linear-gradient(180deg, var(--panel) 0%, var(--bg2) 100%);
+  display:flex; flex-direction:column; min-height:0; overflow:hidden; position:relative;
+}
+.onboard-strip{
+  padding: 10px 18px;
+  background: linear-gradient(90deg, rgba(255,194,77,0.1), rgba(55,224,255,0.06) 60%, transparent 100%);
+  border-bottom:1px dashed rgba(255,194,77,0.35);
+  display:flex; align-items:center; gap:14px;
+}
+.onboard-label{font-size:11.5px; color:var(--gold); font-weight:700; letter-spacing:.1em; white-space:nowrap}
+.onboard-steps{flex:1; display:grid; grid-template-columns: repeat(4, 1fr); gap:8px}
+.onboard-step{
+  display:flex; align-items:center; gap:8px; padding:6px 10px; border-radius:10px;
+  font-size:11.5px; background: rgba(10,15,31,0.5);
+  border:1px solid var(--rule);
+}
+.onboard-step .n{
+  width:20px;height:20px; border-radius:50%;
+  background: rgba(147,162,189,0.18); color:var(--muted);
+  display:grid; place-items:center; font-weight:800; font-size:11px;
+}
+.onboard-step.done .n{background: linear-gradient(135deg, #4ade80, #22c55e); color:#06250f}
+.onboard-step.active{border-color: rgba(255,194,77,0.4); background: rgba(255,194,77,0.1)}
+.onboard-step.active .n{background: linear-gradient(135deg, #ffd27a, #c48a1a); color:#1a1200; box-shadow: var(--glowGold)}
+.onboard-step.done + .onboard-step.done::before{display:none}
+.onboard-close{
+  width:26px;height:26px;border-radius:50%; display:grid; place-items:center; cursor:pointer;
+  background: rgba(10,15,31,0.5); border:1px solid var(--rule); color:var(--muted); font-size:12px;
+}
+.onboard-close:hover{color:var(--gold)}
+
+.welcome{padding: 26px 40px 18px}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:5px 12px; border-radius:999px; font-size:11.5px; font-weight:700;
+  background: linear-gradient(135deg, rgba(255,194,77,0.2), rgba(55,224,255,0.12));
+  border:1px solid rgba(255,194,77,0.35); color:var(--gold);
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%; background: var(--green); box-shadow: 0 0 8px rgba(74,222,128,0.7); animation: pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.welcome h1{
+  margin: 12px 0 6px; font-size: 28px; font-weight: 800; line-height: 1.25;
+  background: linear-gradient(135deg, #fff 30%, #ffd27a 55%, #37e0ff 95%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.welcome p.lead{color:var(--muted); font-size:14px; margin:0 0 20px; max-width:720px}
+
+.scenarios{display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin-top:18px}
+@media (max-width: 1080px){.scenarios{grid-template-columns: repeat(2, 1fr)}}
+.scen{
+  position:relative; border:1px solid var(--rule); border-radius: 14px; padding:13px 12px 12px 12px;
+  cursor:pointer; transition:.2s; overflow:hidden;
+  background: linear-gradient(160deg, rgba(255,194,77,0.04), rgba(79,143,224,0.04));
+}
+.scen::before{
+  content:""; position:absolute; inset:auto 0 -40% 0; height:80%;
+  background: radial-gradient(closest-side, rgba(255,194,77,0.14), transparent 70%);
+  opacity:0; transition:.2s; pointer-events:none;
+}
+.scen:hover{transform: translateY(-2px); border-color: rgba(255,194,77,0.5)}
+.scen:hover::before{opacity:1}
+.scen .em{font-size:22px; display:block; margin-bottom:6px}
+.scen .t{font-weight:700; font-size:13.5px}
+.scen .d{font-size:11.5px; color:var(--muted); margin-top:3px}
+
+.chat-scroll{
+  flex:1; overflow:auto; padding: 10px 30px 20px; display:flex; flex-direction:column; gap:14px;
+}
+.msg-row{display:flex; gap:10px; align-items:flex-start}
+.msg-row.me{flex-direction:row-reverse}
+.av{
+  flex:0 0 36px; width:36px; height:36px; border-radius:10px;
+  display:grid; place-items:center; font-weight:800; font-size:12px;
+}
+.av.me{
+  background: linear-gradient(135deg, #4f8fe0, #37e0ff); color:#001821;
+}
+.av.bot{
+  background: radial-gradient(circle at 30% 30%, #ffe4a0, #c48a1a 60%, #6a4610);
+  color:#1a1200; box-shadow: var(--glowGold);
+}
+.msg{
+  max-width: 78%; padding: 14px 16px; border-radius: 16px;
+  border:1px solid var(--rule);
+  font-size: 13.5px;
+}
+.msg-row.me .msg{
+  background: linear-gradient(135deg, rgba(255,194,77,0.22), rgba(255,194,77,0.10));
+  border-color: rgba(255,194,77,0.35);
+}
+.msg-row.bot .msg{
+  background: linear-gradient(180deg, rgba(19,29,51,0.9), rgba(14,23,48,0.9));
+  border-color: rgba(79,143,224,0.28);
+}
+.msg b{color:#fff}
+
+/* Conf / Sens / Source three-piece badges */
+.tags{display:flex; flex-wrap:wrap; gap:6px; margin-top: 10px}
+.conf{padding:2px 8px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.03em; border:1px solid}
+.conf.high{background: rgba(74,222,128,0.12); border-color: rgba(74,222,128,0.35); color:var(--green)}
+.conf.mid{background: rgba(255,194,77,0.12); border-color: rgba(255,194,77,0.4); color:var(--gold)}
+.conf.low{background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.4); color:var(--red)}
+.sens{padding:2px 8px; border-radius:999px; font-size:11px; font-weight:700; border:1px solid}
+.sens.low{background: rgba(147,162,189,0.12); border-color: rgba(147,162,189,0.35); color:var(--muted)}
+.sens.mid{background: rgba(79,143,224,0.15); border-color: rgba(79,143,224,0.45); color:var(--blue)}
+.sens.high{background: rgba(239,68,68,0.12); border-color: rgba(239,68,68,0.4); color:var(--red)}
+.src{padding:2px 8px; border-radius:999px; font-size:11px; font-weight:700; border:1px solid;
+  background: rgba(55,224,255,0.1); border-color: rgba(55,224,255,0.35); color:var(--cyan)}
+
+/* Evidence 3 cards (decision / basis / actions) */
+.evi{
+  margin-top: 12px; display:grid; gap:8px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 780px){.evi{grid-template-columns: 1.05fr 1.2fr 1fr}}
+.evi-card{
+  border:1px solid var(--rule); border-radius:12px; padding:10px 12px;
+  background: rgba(10,15,31,0.5);
+}
+.evi-card h5{
+  margin:0 0 8px; font-size:11.5px; color:var(--muted); font-weight:700;
+  letter-spacing:0.08em; text-transform:uppercase; display:flex; align-items:center; gap:6px;
+}
+.evi-card.decision{border-color: rgba(79,143,224,0.45); background: linear-gradient(160deg, rgba(79,143,224,0.10), rgba(79,143,224,0.02))}
+.evi-card.basis{border-color: rgba(255,194,77,0.4)}
+.evi-card.actions{border-color: rgba(74,222,128,0.35)}
+.evi-branch{
+  display:flex; align-items:flex-start; gap:7px; padding:5px 0; font-size:12.5px;
+  border-bottom: 1px dashed rgba(147,162,189,0.15);
+}
+.evi-branch:last-child{border-bottom:none}
+.evi-branch .mark{
+  padding:1px 7px; border-radius:6px; font-size:10.5px; font-weight:700; flex:0 0 auto;
+  background: rgba(79,143,224,0.2); color:var(--cyan)
+}
+.evi-branch.else .mark{background: rgba(168,85,247,0.2); color:var(--violet)}
+.evi-valid{
+  display:inline-flex; align-items:center; gap:4px; padding:1px 7px; border-radius:999px; font-size:10.5px; font-weight:700;
+  background: rgba(74,222,128,0.15); color:var(--green); border:1px solid rgba(74,222,128,0.3);
+}
+.evi-valid.expired{background: rgba(239,68,68,0.12); color:var(--red); border-color: rgba(239,68,68,0.35)}
+.evi-basis a{color:var(--cyan); text-decoration:underline; text-decoration-color: rgba(55,224,255,0.35); cursor:pointer}
+.evi-basis a:hover{color:#fff; text-decoration-color:#fff}
+.evi-basis .need{color:var(--red); font-weight:700}
+.evi-actions{margin:0; padding-left:18px; font-size:12.5px}
+.evi-actions li{margin:4px 0; line-height:1.5}
+.feedback-bar{margin-top:10px; display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--muted)}
+.fb-btn{
+  padding:3px 8px; border-radius:8px; cursor:pointer; border:1px solid var(--rule); background:transparent; color:var(--muted);
+  transition:.15s; font-size:11.5px;
+}
+.fb-btn:hover{color:var(--gold); border-color: rgba(255,194,77,0.4)}
+.fb-btn.good:hover{color:var(--green); border-color: rgba(74,222,128,0.4)}
+
+/* Input bar */
+.input-wrap{
+  padding: 14px 18px 20px;
+  border-top:1px solid var(--rule);
+  background: linear-gradient(180deg, transparent, rgba(10,15,31,0.5));
+}
+.input-box{
+  position:relative; border-radius: 16px; border:1px solid var(--rule);
+  background: rgba(10,15,31,0.65);
+  transition:.18s;
+}
+.input-box:focus-within{border-color: rgba(255,194,77,0.5); box-shadow: 0 0 0 3px rgba(255,194,77,0.08)}
+.input-box textarea{
+  width:100%; border:none; background:transparent; outline:none; resize:vertical;
+  color:var(--ink); font-family:inherit; font-size:13.5px; line-height:1.55;
+  padding: 12px 100px 10px 16px; min-height: 64px; max-height: 220px;
+}
+.input-box .send{
+  position:absolute; right:8px; bottom:8px;
+}
+.disclaimer{
+  font-size:11px; color:var(--muted); margin-top: 8px; padding-left:4px; display:flex; align-items:center; gap:6px
+}
+.disclaimer a{color:var(--gold)}
+
+/* ======= Right sidebar (mini calc) ======= */
+.mini-calc{
+  border:1px solid var(--rule); border-radius: var(--radiusBig);
+  background: linear-gradient(180deg, var(--panel), var(--panel2));
+  display:flex; flex-direction:column; min-height:0; overflow:hidden;
+}
+.mini-hd{
+  padding: 12px 14px; border-bottom:1px solid var(--rule);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.mini-hd h4{
+  margin:0; font-size:13.5px; font-weight:700; display:flex; align-items:center; gap:7px;
+}
+.mini-hd .chip{
+  padding:2px 8px; border-radius:999px; font-size:10.5px; font-weight:700;
+  background: linear-gradient(135deg, rgba(79,143,224,0.25), rgba(55,224,255,0.15));
+  color:var(--cyan); border:1px solid rgba(55,224,255,0.35);
+}
+.mini-tabs{display:flex; padding: 8px 10px 0 10px; gap:4px}
+.mini-tab{
+  flex:1; padding:6px 8px; text-align:center; border-radius: 10px;
+  cursor:pointer; font-size:11.5px; color:var(--muted);
+  border:1px solid transparent; transition:.15s;
+}
+.mini-tab:hover{color:var(--ink); background: rgba(79,143,224,0.06)}
+.mini-tab.active{
+  color:var(--gold); background: rgba(255,194,77,0.1);
+  border-color: rgba(255,194,77,0.35);
+}
+.mini-body{padding: 12px 14px; overflow:auto; display:flex; flex-direction:column; gap:10px}
+.field{display:flex; flex-direction:column; gap:4px}
+.field label{font-size:11.5px; color:var(--muted)}
+.field input[type=number], .field input[type=text]{
+  background: rgba(10,15,31,0.7); border:1px solid var(--rule); color:var(--ink);
+  padding: 7px 10px; border-radius: 9px; font-size:12.5px; outline:none;
+  font-family:inherit;
+}
+.field input:focus{border-color: rgba(255,194,77,0.4)}
+.rg{display:flex; gap:8px}
+.rg label{
+  flex:1; padding:7px 8px; text-align:center; border-radius: 9px; cursor:pointer;
+  border:1px solid var(--rule); font-size:11.5px; transition:.15s;
+  display:flex; align-items:center; justify-content:center; gap:5px;
+}
+.rg input{display:none}
+.rg input:checked + span{color:var(--gold); font-weight:700}
+.rg label:has(input:checked){
+  background: rgba(255,194,77,0.1);
+  border-color: rgba(255,194,77,0.4);
+}
+.calc-btn{
+  width:100%; padding: 9px 10px; border-radius: 11px; cursor:pointer;
+  background: linear-gradient(135deg, #4f8fe0, #37e0ff); color:#001821;
+  font-weight:700; font-size:12.5px; border:none;
+}
+.calc-btn:hover{filter:brightness(1.1)}
+.result-box{
+  border:1px solid rgba(255,194,77,0.35); border-radius: 12px; padding: 10px 12px;
+  background: rgba(255,194,77,0.06); display:none;
+}
+.result-box.show{display:block}
+.result-row{
+  display:flex; justify-content:space-between; padding:3px 0; font-size:12px;
+  border-bottom:1px dashed rgba(255,255,255,0.05);
+}
+.result-row:last-of-type{border:none}
+.result-row .k{color:var(--muted)}
+.result-row .v{color:var(--ink); font-weight:600}
+.result-row.total{margin-top: 5px; padding-top: 7px; border-top:1px solid rgba(255,194,77,0.35); border-bottom:none}
+.result-row.total .v{color:var(--gold); font-size:15px; font-weight:800}
+.hint{color:var(--gold); font-size:11.5px; font-weight:600; margin-top:5px; line-height:1.5}
+.note-box{
+  font-size:11.5px; color:var(--muted); padding: 7px 9px; border-radius:8px;
+  background: rgba(10,15,31,0.5); border-left: 2px solid var(--cyan); margin-top: 5px;
+}
+.upgrade-lock{
+  margin-top: 8px; padding:8px 10px; border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255,194,77,0.14), rgba(79,143,224,0.1));
+  border:1px dashed rgba(255,194,77,0.45);
+  font-size:11.5px; color:var(--ink); display:flex; justify-content:space-between; align-items:center; gap:8px;
+}
+.upgrade-lock a{color:var(--gold); font-weight:700; cursor:pointer}
+.mini-foot{
+  margin-top:auto; padding: 10px 14px; border-top:1px solid var(--rule);
+  font-size:11px; color:var(--muted); display:flex; justify-content:space-between; align-items:center
+}
+.mini-foot .open{
+  color:var(--cyan); cursor:pointer; padding:4px 8px; border-radius:8px;
+  border:1px solid rgba(55,224,255,0.3);
+}
+.mini-foot .open:hover{background: rgba(55,224,255,0.08)}
+
+/* ======= Pricing modal ======= */
+.modal-mask{
+  position:fixed; inset:0; z-index: 100; display:none;
+  background: rgba(4,7,17,0.72); backdrop-filter: blur(8px);
+  align-items:center; justify-content:center; padding: 20px;
+}
+.modal-mask.show{display:flex}
+.modal{
+  width:min(960px, 96vw); max-height: 92vh; overflow:auto;
+  border-radius: 22px; border: 1px solid rgba(255,194,77,0.25);
+  background: linear-gradient(180deg, #131d33 0%, #0a0f1f 100%);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,194,77,0.08);
+}
+.modal-hd{
+  padding: 26px 34px 14px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+}
+.modal-hd h2{
+  margin:0; font-size: 23px; font-weight: 800;
+  background: linear-gradient(135deg, #fff 30%, #ffc24d 60%, #37e0ff 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.modal-hd p{color:var(--muted); margin: 6px 0 0; font-size: 13px}
+.close-x{
+  width:34px; height:34px; border-radius: 12px; cursor:pointer;
+  display:grid; place-items:center; color:var(--muted); background: rgba(10,15,31,0.6);
+  border:1px solid var(--rule); font-size: 15px;
+}
+.close-x:hover{color:var(--gold); border-color: rgba(255,194,77,0.4)}
+.plans{
+  padding: 8px 34px 24px; display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+@media (max-width: 820px){.plans{grid-template-columns: 1fr 1fr}}
+.plan{
+  position:relative; border:1px solid var(--rule); border-radius: 16px;
+  padding: 18px 16px; background: linear-gradient(180deg, rgba(19,29,51,0.9), rgba(10,15,31,0.9));
+  display:flex; flex-direction:column; gap: 12px; transition:.2s;
+}
+.plan:hover{transform: translateY(-2px); border-color: rgba(55,224,255,0.3)}
+.plan.recommended{
+  border:1.5px solid rgba(255,194,77,0.55);
+  box-shadow: 0 16px 40px rgba(255,194,77,0.15);
+  background: linear-gradient(180deg, rgba(255,194,77,0.08), rgba(19,29,51,0.9));
+}
+.plan.recommended::before{
+  content:"✦ 推荐"; position:absolute; top: -10px; right: 14px;
+  padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight:800;
+  background: linear-gradient(135deg,#ffd27a,#c48a1a); color:#1a1200;
+  box-shadow: var(--glowGold);
+}
+.plan-team::before{content:"团队 · 5账号"!important}
+.plan h3{margin:0; font-size:15.5px; font-weight:700; display:flex; align-items:center; gap:7px}
+.plan h3 .em{font-size:18px}
+.price-row{display:flex; align-items:baseline; gap:6px; margin-top: 4px}
+.price-big{font-size: 30px; font-weight: 800; color:#fff; line-height:1}
+.price-unit{font-size:12px; color:var(--muted)}
+.price-orig{font-size: 12px; color:var(--muted); text-decoration: line-through; margin-left: 4px}
+.plan ul{margin:4px 0 4px; padding-left: 17px; color:var(--muted); font-size: 12px}
+.plan ul li{margin:3px 0}
+.plan ul b{color:var(--ink)}
+.btn-block{
+  margin-top:auto; padding: 10px; text-align:center; border-radius: 12px;
+  cursor:pointer; font-weight:700; font-size:13px; transition:.18s;
+  border:1px solid var(--rule); background: transparent; color:var(--ink);
+}
+.btn-block.gold{
+  background: linear-gradient(135deg,#ffd27a,#ffc24d 50%, #c48a1a); color:#1a1200; border-color: transparent;
+  box-shadow: var(--glowGold);
+}
+.btn-block.gold:hover{filter:brightness(1.08)}
+.btn-block:hover{border-color: rgba(255,194,77,0.4); color: var(--gold)}
+.btn-block.disabled{opacity:.55; cursor:not-allowed}
+.btn-block .tag-mini{
+  display:block; font-size:10.5px; color:var(--muted); font-weight:500; margin-top: 2px;
+}
+.guarantee{
+  margin: 4px 34px 22px; padding: 12px 16px; border-radius: 14px;
+  background: rgba(10,15,31,0.6); border:1px dashed var(--rule);
+  display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+@media (max-width: 820px){.guarantee{grid-template-columns: 1fr 1fr}}
+.guar-item{font-size:11.5px; color:var(--muted); display:flex; gap:8px; align-items:flex-start}
+.guar-item .i{font-size:16px}
+.guar-item b{color:var(--ink); display:block; font-size:12.5px}
+
+/* ======= Anrok-style progressive modal ======= */
+.err-modal .inner{
+  display:grid; grid-template-columns: 1fr 1.2fr; max-width: 860px;
+}
+@media (max-width: 820px){.err-modal .inner{grid-template-columns: 1fr}}
+.err-scene{
+  padding: 28px 28px;
+  background: linear-gradient(160deg, rgba(239,68,68,0.1), rgba(168,85,247,0.05));
+  display:flex; flex-direction:column; gap:18px;
+  border-right:1px solid var(--rule);
+}
+.err-scene.warn{background: linear-gradient(160deg, rgba(255,194,77,0.14), rgba(79,143,224,0.05))}
+.err-scene.ok{background: linear-gradient(160deg, rgba(74,222,128,0.1), rgba(55,224,255,0.05))}
+.scene-card{
+  padding: 16px; border-radius: 14px; border:1px solid var(--rule);
+  background: rgba(10,15,31,0.55);
+}
+.scene-icon{font-size: 42px; margin-bottom: 10px}
+.scene-title{font-weight: 800; font-size:17px; line-height:1.35; margin-bottom: 6px}
+.scene-sub{font-size: 12.5px; color:var(--muted); line-height:1.55}
+.scene-metrics{display:grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px}
+.metric{
+  padding: 8px 10px; border-radius: 10px; border:1px solid var(--rule);
+  background: rgba(19,29,51,0.8);
+}
+.metric .k{font-size:10.5px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase}
+.metric .v{font-size:15px; font-weight: 800; margin-top: 2px; color:#fff}
+.err-actions{padding:24px 28px; display:flex; flex-direction:column; gap:10px}
+.err-actions h3{margin:0 0 4px; font-size:16.5px; font-weight:800}
+.err-actions .lead{margin:0 0 12px; font-size:12.5px; color:var(--muted)}
+.act-card{
+  display:grid; grid-template-columns: 44px 1fr auto; gap:12px; align-items:center;
+  padding: 12px 14px; border-radius: 13px; border:1px solid var(--rule);
+  cursor:pointer; transition:.18s; background: rgba(19,29,51,0.5);
+}
+.act-card:hover{border-color: rgba(255,194,77,0.4); transform: translateX(2px)}
+.act-card.primary{
+  border-color: rgba(255,194,77,0.45); background: linear-gradient(135deg, rgba(255,194,77,0.12), rgba(19,29,51,0.5));
+}
+.act-icon{
+  width:44px;height:44px;border-radius:12px; display:grid;place-items:center; font-size:20px;
+  background: rgba(255,194,77,0.15);
+}
+.act-card.secondary .act-icon{background: rgba(55,224,255,0.12)}
+.act-card.tertiary .act-icon{background: rgba(147,162,189,0.14)}
+.act-title{font-weight:700; font-size: 13.5px; color:#fff}
+.act-sub{font-size:11.5px; color:var(--muted); margin-top:2px}
+.act-arrow{color:var(--gold); font-weight: 800; font-size: 16px}
+
+/* ======= Auth modal ======= */
+.auth{
+  padding: 26px 34px 34px;
+}
+.auth-tabs{display:flex; gap:4px; margin-bottom: 18px; background: rgba(10,15,31,0.6); padding:4px; border-radius: 12px; border:1px solid var(--rule)}
+.auth-tab{flex:1; padding:8px; text-align:center; border-radius: 9px; cursor:pointer; color:var(--muted); font-size:13px; font-weight:600}
+.auth-tab.active{background: linear-gradient(135deg,#ffd27a,#ffc24d 50%, #c48a1a); color:#1a1200}
+.auth-panel{display:none; flex-direction:column; gap: 10px}
+.auth-panel.active{display:flex}
+.auth-panel label{font-size:12px; color:var(--muted)}
+.auth-panel input{
+  background: rgba(10,15,31,0.7); border:1px solid var(--rule); color:var(--ink);
+  padding: 10px 12px; border-radius: 11px; font-size:13.5px; outline:none; font-family:inherit;
+}
+.auth-panel input:focus{border-color: rgba(255,194,77,0.4)}
+.auth-submit{
+  margin-top:6px; padding: 10px; border-radius:11px; cursor:pointer;
+  background: linear-gradient(135deg,#ffd27a,#ffc24d 50%, #c48a1a); color:#1a1200;
+  font-weight: 700; font-size: 14px; border:none;
+}
+.auth-foot{text-align:center; margin-top: 10px; font-size:12px; color:var(--muted)}
+
+/* ======= Footer ======= */
+.app-footer{
+  grid-column: 1 / -1;
+  margin-top: 8px; padding: 18px 24px 22px;
+  border-top:1px solid var(--rule);
+  display:grid; grid-template-columns: 1.2fr repeat(3, 1fr); gap: 24px;
+  color:var(--muted); font-size: 12px;
+}
+@media (max-width: 920px){.app-footer{grid-template-columns: 1fr 1fr}}
+.foot-brand .fb{display:flex; align-items:center; gap:10px; color:var(--gold); font-weight:700; font-size:14px; margin-bottom: 6px}
+.foot-brand p{margin:2px 0; line-height:1.6}
+.app-footer h6{margin:0 0 10px; color:var(--ink); font-size:12.5px}
+.app-footer ul{margin:0; padding:0; list-style:none}
+.app-footer ul li{padding:3px 0; cursor:pointer}
+.app-footer ul li:hover{color:var(--gold)}
+.foot-cta{
+  padding:12px; border-radius:12px; border:1px dashed rgba(255,194,77,0.4);
+  background: rgba(255,194,77,0.05); color:var(--ink);
+}
+.foot-cta .big{color:var(--gold); font-weight:700; font-size:13px}
+.foot-cta button{
+  margin-top:8px; width:100%; padding:7px; border-radius: 9px; border:none; cursor:pointer;
+  background: linear-gradient(135deg,#ffd27a,#c48a1a); color:#1a1200; font-weight:700; font-size:12px;
+}
+.copyright{grid-column: 1 / -1; padding-top: 14px; border-top:1px dashed var(--rule);
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 6px; font-size: 11px}
+
+/* ======= Typing ======= */
+.typing{color:var(--muted); font-style:italic}
+.typing .dots span{animation: blink 1.4s infinite; display:inline-block; margin:0 1px}
+.typing .dots span:nth-child(2){animation-delay:.2s}
+.typing .dots span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
+
+/* Hot questions in welcome */
+.hot{
+  margin-top: 20px; padding: 14px 16px; border-radius:14px;
+  border:1px solid var(--rule); background: rgba(10,15,31,0.55);
+}
+.hot h5{
+  margin:0 0 8px; font-size:12px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; font-weight:700;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.hot-grid{display:grid; grid-template-columns: repeat(2, 1fr); gap: 6px}
+@media (max-width: 640px){.hot-grid{grid-template-columns: 1fr}}
+.hot-item{
+  padding: 7px 10px; border-radius: 9px; cursor:pointer; font-size:12.5px;
+  background: rgba(19,29,51,0.7); border:1px solid var(--rule);
+  transition:.15s; display:flex; align-items:center; gap:8px;
+}
+.hot-item:hover{border-color: rgba(255,194,77,0.4); color:var(--gold)}
+.hot-item .rk{
+  width:18px; height:18px; border-radius: 5px; display:grid; place-items:center;
+  font-size: 10px; font-weight:800;
+  background: rgba(255,194,77,0.15); color:var(--gold)
+}
+.hot-item:nth-child(-n+3) .rk{background: linear-gradient(135deg,#ffd27a,#c48a1a); color:#1a1200}
+</style>
+</head>
+<body>
+  
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-logo">盾</div>
+    <div>
+      <div class="brand-name">跨境税盾 · AI 助手</div>
+      <div class="brand-sub">9810 / 9710 / 9610 / 1210 / 1039 · 全模式</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a class="navlink" href="https://kuajingshuidun.cn/" target="_blank" rel="noopener">🏠 主站</a>
+    <a class="navlink" href="calculator.html" target="_blank" rel="noopener">🧮 税费测算器</a>
+    <a class="navlink" href="https://kuajingshuidun.cn/内容-合规自查清单.html" target="_blank" rel="noopener">🛡️ 合规自查清单</a>
+    <a class="navlink" href="https://kuajingshuidun.cn/案例分析.html" target="_blank" rel="noopener">📁 稽查案例库</a>
+  </nav>
+
+  <div class="topbar-right">
+    
+<div class="ws" id="workspaceSwitch" title="切换主体（Workspace Mock）">
+  <div class="ws-avatars">
+    <div class="av" style="background:linear-gradient(135deg,#4f8fe0,#37e0ff)">小</div>
+    <div class="av" style="background:linear-gradient(135deg,#c48a1a,#ffc24d)">海</div>
+    <div class="av" style="background:linear-gradient(135deg,#a855f7,#7c3aed)">义</div>
+    <div class="av" style="background:linear-gradient(135deg,#4ade80,#16a34a)">+2</div>
+  </div>
+  <div style="overflow:hidden">
+    <div style="font-size:10.5px; color:var(--muted); letter-spacing:.08em">当前主体</div>
+    <div style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:700" id="currentWorkspace">杭州小棉袄跨境</div>
+  </div>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--muted)"><polyline points="6 9 12 15 18 9"/></svg>
+</div>
+    <div class="quota">今日剩余 <b id="quotaRemain">8</b> / 10 次</div>
+    <button class="btn btn-ghost" id="authBtnOpen" onclick="document.getElementById('authModal').classList.add('show')">登录 / 注册</button>
+    <button class="btn btn-gold" id="subBtnOpen" onclick="document.getElementById('subModal').classList.add('show')">✦ 开通订阅</button>
+  </div>
+</div>
+  <div class="app">
+    
+<div class="side">
+  <div class="side-hd">
+    <div class="workspace-label">会话</div>
+    <div class="workspace-name">对话历史 <span style="color:var(--muted); font-weight:500">· 6</span></div>
+  </div>
+  <div class="new-chat" id="newChatBtn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    <span class="new-btn-label">新对话（跨境语境）</span>
+  </div>
+  <div class="sessions">
+    
+<div class="sess active">
+  <div class="sess-av" style="background:linear-gradient(135deg,#4f8fe0,#37e0ff)">跨</div>
+  <div>
+    <div class="sess-title">9810 海外仓模式能否享受出口退税？</div>
+    <div class="sess-meta">
+      <span class="sess-badge cross-border">🌏 跨境</span>
+      <span>· 12 分钟前</span>
+    </div>
+  </div>
+</div>
+<div class="sess ">
+  <div class="sess-av" style="background:linear-gradient(135deg,#a855f7,#6366f1)">欧</div>
+  <div>
+    <div class="sess-title">欧洲 VAT 注册被拒，补 EORI 申请流程</div>
+    <div class="sess-meta">
+      <span class="sess-badge cross-border">🌏 跨境</span>
+      <span>· 昨天 19:42</span>
+    </div>
+  </div>
+</div>
+<div class="sess ">
+  <div class="sess-av" style="background:linear-gradient(135deg,#4ade80,#22c55e)">免</div>
+  <div>
+    <div class="sess-title">无票免税四流一致证据链清单</div>
+    <div class="sess-meta">
+      <span class="sess-badge cross-border">🌏 跨境</span>
+      <span>· 昨天 16:07</span>
+    </div>
+  </div>
+</div>
+<div class="sess ">
+  <div class="sess-av" style="background:linear-gradient(135deg,#c48a1a,#6a4610)">义</div>
+  <div>
+    <div class="sess-title">义乌个体户 1039 收汇额度上限</div>
+    <div class="sess-meta">
+      <span class="sess-badge domestic">🇨🇳 国内</span>
+      <span>· 周一</span>
+    </div>
+  </div>
+</div>
+<div class="sess ">
+  <div class="sess-av" style="background:linear-gradient(135deg,#f97316,#ea580c)">个</div>
+  <div>
+    <div class="sess-title">年终奖 36 万 vs 35.9 万，差多少税后？</div>
+    <div class="sess-meta">
+      <span class="sess-badge domestic">🇨🇳 国内</span>
+      <span>· 08-27</span>
+    </div>
+  </div>
+</div>
+<div class="sess ">
+  <div class="sess-av" style="background:linear-gradient(135deg,#0ea5e9,#0369a1)">海</div>
+  <div>
+    <div class="sess-title">海南 15% 双 15 政策最新门槛</div>
+    <div class="sess-meta">
+      <span class="sess-badge team-plan">※ 团队版</span>
+      <span>· 08-23</span>
+    </div>
+  </div>
+</div>
+  </div>
+  <div class="side-tip">
+    <b>Conf 低 ·</b> 本地会话存档<br>
+    换浏览器或清空缓存会丢失历史<br>
+    升级 <b>年会员/团队版</b> 解锁云同步
+  </div>
+</div>
+    
+<div class="center">
+  
+<div class="onboard-strip" id="onboardStrip">
+  <div class="onboard-label">ONBOARDING · 4 步</div>
+  <div class="onboard-steps">
+    <div class="onboard-step done"><div class="n">✓</div>Connect · 接入主体信息</div>
+    <div class="onboard-step done"><div class="n">✓</div>Determine · 判定合规义务</div>
+    <div class="onboard-step active"><div class="n">3</div>Apply · 应用税率规则</div>
+    <div class="onboard-step"><div class="n">4</div>Analyze · 风险画像</div>
+  </div>
+  <div style="font-size:11.5px; color:var(--muted)">进度 <b style="color:var(--gold)">72%</b> · 再回答 2 题即可生成跨境画像</div>
+  <div class="onboard-close" title="最小化引导" onclick="document.getElementById('onboardStrip').style.display='none'">×</div>
+</div>
+  <div class="welcome">
+    <div class="eyebrow"><span class="dot"></span>Avalara 级 · 跨境税务合规问答 &nbsp;<span style="color:var(--cyan)">v2.0</span> · <span style="color:var(--muted);font-weight:500">BETA</span></div>
+    <h1>问清楚每一个海关编码的税。<br>把合规风险，变成可以量化的经营优势。</h1>
+    <p class="lead">针对「9810 海外仓 / 9710 B2B 直接出口 / 9610 直邮 / 1210 保税备货 / 1039 市场采购 / 无票免税+核定征收」六大跨境模式，用 137 项有效政策 + 276 条案例解读，给你可以直接交付给代账 / 税务师的行动清单。</p>
+
+    <div class="scenarios">
+    
+<div class="scen">
+  <span class="em">🌏</span>
+  <div class="t">跨境出口合规</div>
+  <div class="d">无票免税 / 9810 海外仓退税 / 9610 9710 对比</div>
+</div>
+<div class="scen">
+  <span class="em">🛒</span>
+  <div class="t">跨境进口核算</div>
+  <div class="d">保税仓 1210 / 直邮 9610 / 年度限额 2.6 万</div>
+</div>
+<div class="scen">
+  <span class="em">⚖️</span>
+  <div class="t">跨境稽查自查</div>
+  <div class="d">四流一致 / 转移定价 / 离岸账户资金回流</div>
+</div>
+<div class="scen">
+  <span class="em">💰</span>
+  <div class="t">国内税筹优化</div>
+  <div class="d">年终奖 / 专附扣除 / 个体户核率 / 海南 15%</div>
+</div>
+  </div>
+    <div class="hot">
+    <h5><span>🔥 跨境卖家 · 热门自查 Top 6</span><span style="font-size:10.5px;color:var(--muted); font-weight:500; letter-spacing:normal; text-transform:none">24h 2,317 卖家查询 · 更新 2026-09-02 17:28 CST</span></h5>
+    <div class="hot-grid">
+      <div class="hot-item"><div class="rk">1</div>9810 海外仓出口退税的四个必要单证是什么？</div><div class="hot-item"><div class="rk">2</div>无票免税+核定征收(4%)：年销 1000 万实际税多少？</div><div class="hot-item"><div class="rk">3</div>欧洲 VAT 被追缴 3 年 + 滞纳金，怎么谈分期？</div><div class="hot-item"><div class="rk">4</div>1039 市场采购：3 大合规红线不能碰</div><div class="hot-item"><div class="rk">5</div>金税四期下香港账户资金回流路径合规方案</div><div class="hot-item"><div class="rk">6</div>跨境电商广告费 VAT 抵扣怎么操作？</div>
+    </div>
+  </div>
+  </div>
+
+  <div class="chat-scroll">
+    <!-- 历史消息 1：用户问 -->
+    <div class="msg-row me">
+      <div class="av me">我</div>
+      <div class="msg">我们杭州小棉袄跨境主要做 <b>9810 海外仓</b>（亚马逊美国站），2026 年上半年出口报关 680 万元，进项增值税专票开了 432 万（13%）。能办出口退税吗？大概能退多少？另外如果选择无票免税方案实际综合税负是多少？</div>
+    </div>
+
+    <!-- AI 回答 -->
+    <div class="msg-row bot">
+      <div class="av bot">税</div>
+      <div class="msg">
+        <div style="margin-bottom:10px">小棉袄你好。根据你提供的信息，做了 <b>两套方案的定量对比</b>，结论是 <b style="color:var(--gold)">9810 正常退税方案比无票免税方案税后优势 ¥189,500</b>，优先选有票退税（前提是进项票的品名、编码、数量三项完全匹配报关单）。</div>
+
+        <div style="padding: 10px 12px; border-radius:12px; background: rgba(10,15,31,0.6); border:1px solid rgba(55,224,255,0.25); font-size:12.5px; margin-bottom: 8px">
+          <div style="font-weight:700; color:var(--cyan); margin-bottom: 6px">📊 定量对比（半年口径 · 已按小型微利 5% 所得税调整）</div>
+          <div class="result-row"><span class="k">A. 有票退税 · 增值税退税</span><span class="v" style="color:var(--green)">+ ¥561,600</span></div>
+          <div class="result-row"><span class="k">&nbsp;&nbsp;· 企业所得税（按查账）</span><span class="v" style="color:var(--red)">- ¥62,000</span></div>
+          <div class="result-row total"><span class="k">A 方案净现金</span><span class="v">+ ¥499,600</span></div>
+          <div class="result-row" style="margin-top:4px"><span class="k">B. 无票免税 · 综试区核定 4%</span><span class="v">¥-13,600</span></div>
+          <div class="result-row total"><span class="k">A − B 差异</span><span class="v" style="color:var(--green)">▲ ¥513,200</span></div>
+        </div>
+
+        
+<div class="evi">
+  <div class="evi-card decision">
+    <h5>⚖️ 决策树</h5>
+    <div class="evi-branch">
+      <span class="mark">IF</span>
+      <div>企业已在综试区线上平台登记 & 以 9810 清单申报离境 & 取得进项增值税专用发票</div>
+    </div>
+    <div class="evi-branch">
+      <span class="mark">THEN</span>
+      <div>可按 <b>免抵退</b> 办理出口退税，退税率依商品编码（通常 9%/13%），申报时效为报关出口次月增值税申报期内。</div>
+    </div>
+    <div class="evi-branch else">
+      <span class="mark">ELSE</span>
+      <div>若未取得进项票但属于综试区注册企业 → 适用 <b>无票免税</b>（财税〔2018〕103号），不退税但免征增值/消费税，企业所得税按核定 4%。</div>
+    </div>
+  </div>
+
+  <div class="evi-card basis">
+    <h5>📚 依据与时效</h5>
+    <div class="evi-basis" style="font-size:12px; display:flex; flex-direction:column; gap:8px">
+      <div>
+        <span class="evi-valid">● 现行有效</span>
+        <div style="margin-top:5px"><a>《跨境电商综试区零售出口企业所得税核定征收办法》</a>（国家税务总局公告2019年第36号）<br>应税所得率统一按 <b>4%</b>。</div>
+      </div>
+      <div>
+        <span class="evi-valid">● 现行有效</span>
+        <div style="margin-top:5px"><a>《出口退（免）税管理》</a>（国家税务总局公告2026年第5号）<br>新增 9810 / 9710 数据项采集要求。</div>
+      </div>
+      <div>
+        <span class="evi-valid expired">● 已到期</span>
+        <span class="need" style="font-size:11.5px"> 〔需核验〕</span>
+        <div style="margin-top:5px">财税〔2018〕103号 已到期但全国综试区仍在参照执行，具体延续文号 <span class="need">需核验</span>。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="evi-card actions">
+    <h5>✅ 下一步行动清单</h5>
+    <ol class="evi-actions">
+      <li>登录 <b>综试区线上综合服务平台</b>，核验企业是否已在「出口退(免)税备案」名单内。</li>
+      <li>梳理 2026 年 1-8 月 9810 报关单，按「商品编码 × 退税率」建立退税测算台账。</li>
+      <li>向供应商索取 <b>增值税专用发票</b>，开票商品名称须与报关单中文品名一致（一字不差）。</li>
+      <li>9 月 15 日前完成首次正式申报，<b>不要拖到 12 月</b>（年底退税科窗口压力 ×3，审核周期 ≥ 60 天）。</li>
+      <li>若仍有缺口，<a onclick="document.getElementById('miniTabEx').click();document.getElementById('cb_ex_rev').value=1000;document.getElementById('cb_ex_calc').click();" style="cursor:pointer; color:var(--gold)">→ 用右侧 Mini 测算器估算退税额</a>。</li>
+    </ol>
+  </div>
+</div>
+
+<div class="tags">
+  <span class="conf mid">置信度 · 中</span>
+  <span class="sens high">敏感性 · 高</span>
+  <span class="src">来源 · 国家税务总局公告 2019年第36号 / 2026年第5号</span>
+  <span class="conf low">¹ᐟ₃ 依据待确认</span>
+  <span class="sens mid">涉及金额估算</span>
+</div>
+
+        <div class="feedback-bar">
+          <span>这个回答有帮助吗？</span>
+          <button class="fb-btn good">👍 有用</button>
+          <button class="fb-btn">👎 需要补单证模板</button>
+          <button class="fb-btn">↻ 换一个案例口径</button>
+          <span style="margin-left:auto; font-size:10.5px">回答耗时 2.1 秒 · RAG 召回 7 条 · 模型 deepseek-chat</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typing -->
+    <div class="msg-row bot">
+      <div class="av bot">税</div>
+      <div class="msg typing">正在为你生成「四流一致单证收集 Checklist 模板」，请稍候<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+    </div>
+  </div>
+
+  <div class="input-wrap">
+    <div class="input-box">
+      <textarea id="userInput" placeholder="直接提问，例如：香港公司利润汇回境内怎么申报？或者把你的报关单 / 银行流水截图 / 税务处理决定书粘贴进来，我帮你拆解风险点。（Shift+Enter 换行）"></textarea>
+      <button class="btn btn-gold send" onclick="document.querySelector('.chat-scroll').scrollTop = document.querySelector('.chat-scroll').scrollHeight">发送 →</button>
+    </div>
+    <div class="disclaimer">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      AI 问答仅供经营决策参考，不构成法律或税务代理意见。所有结论请结合 <a>文号原文</a> 与主管税局实际口径复核。高危问题不会给出具体操作建议。详情见 <a>免责声明</a>。
+    </div>
+  </div>
+</div>
+    
+<div class="mini-calc">
+  <div class="mini-hd">
+    <h4>🧮 Mini 测算器 <span class="chip">跨境 · 默认</span></h4>
+    <div style="display:flex; align-items:center; gap:6px">
+      <span class="conf high">Conf 高</span>
+    </div>
+  </div>
+  <div class="mini-tabs">
+    <div class="mini-tab" id="miniTabIm">进口综合税</div>
+    <div class="mini-tab active" id="miniTabEx">出口 · 退税vs无票</div>
+    <div class="mini-tab" id="miniTabBonus">年终奖</div>
+  </div>
+
+  <!-- 出口 -->
+  <div class="mini-body" id="miniPanelEx">
+    <div class="field">
+      <label>出口销售收入（元）</label>
+      <input type="number" id="cb_ex_rev" placeholder="例如 6800000" value="6800000">
+    </div>
+    <div class="field">
+      <label>是否取得增值税专用发票（进项票）</label>
+      <div class="rg">
+        <label><input type="radio" name="cb_ex_inv_m" value="1" checked><span>✅ 有进项</span></label>
+        <label><input type="radio" name="cb_ex_inv_m" value="0"><span>❌ 无票</span></label>
+      </div>
+    </div>
+    <div class="field">
+      <label>适用退税率（%）</label>
+      <input type="number" id="cb_ex_rate" placeholder="9 或 13" value="13">
+    </div>
+    <div class="field">
+      <label>
+        <input type="checkbox" id="cb_ex_excluded_m" checked style="margin-right:5px; accent-color: var(--gold)">
+        不属于取消退（免）税范围
+      </label>
+    </div>
+    <button class="calc-btn" id="cb_ex_calc_m">⇲ 一键估算</button>
+
+    <div class="result-box" id="cb_ex_result_m">
+      <div class="result-row"><span class="k">增值税处理</span><span class="v" id="cb_ex_vat_m">可办出口退税</span></div>
+      <div class="result-row"><span class="k">可退增值税</span><span class="v" id="cb_ex_rebate_m" style="color:var(--green)">+ ¥561,600</span></div>
+      <div class="result-row"><span class="k">企业所得税（25%）</span><span class="v" id="cb_ex_ql_m">¥68,000</span></div>
+      <div class="result-row"><span class="k">实际税负（小微 5%）</span><span class="v" id="cb_ex_small_m">¥13,600</span></div>
+      <div class="result-row total"><span class="k">净现金（估算）</span><span class="v" id="cb_ex_net_m">+ ¥548,000</span></div>
+      <div class="hint" id="cb_ex_saving_m"></div>
+      <div class="note-box" id="cb_ex_note_m">取得有效进货凭证且不属于取消退（免）税范围，报关离境并收汇后可申报。以上为简化估算。</div>
+    </div>
+
+    <div class="upgrade-lock">
+      <span>🔒 <b style="color:#fff">完整 20 页合规报告</b><br><span style="font-size:11px; color:var(--muted);">含单证校验表 + 四流对照 + 退税时间表</span></span>
+      <a onclick="document.getElementById('subModal').classList.add('show')">解锁 →</a>
+    </div>
+  </div>
+
+  <!-- 进口 -->
+  <div class="mini-body hidden" id="miniPanelIm">
+    <div class="field">
+      <label>单次订单 / 单件完税价格（元）</label>
+      <input type="number" id="cb_im_price_m" placeholder="≤5000 限值内最划算" value="3800">
+    </div>
+    <div class="field">
+      <label>个人年度剩余额度（元）</label>
+      <input type="number" id="cb_im_remain_m" placeholder="默认 26000" value="26000">
+    </div>
+    <div class="field">
+      <label>商品是否征收消费税？</label>
+      <div class="rg">
+        <label><input type="radio" name="cb_im_g_m" value="low" checked><span>普通商品</span></label>
+        <label><input type="radio" name="cb_im_g_m" value="high"><span>高档化妆品 15%</span></label>
+      </div>
+    </div>
+    <button class="calc-btn" id="cb_im_calc_m">⇲ 计算综合税</button>
+
+    <div class="result-box" id="cb_im_result_m">
+      <div class="result-row"><span class="k">关税</span><span class="v" id="cb_im_cus_m">¥0</span></div>
+      <div class="result-row"><span class="k">增值税（×70%）</span><span class="v" id="cb_im_vat_m">¥345.8</span></div>
+      <div class="result-row"><span class="k">消费税</span><span class="v" id="cb_im_cons_m">¥0</span></div>
+      <div class="result-row total"><span class="k">综合税额</span><span class="v" id="cb_im_total_m">¥346</span></div>
+      <div class="hint" id="cb_im_saving_m"></div>
+      <div class="note-box" id="cb_im_note_m"></div>
+    </div>
+
+    <div class="upgrade-lock">
+      <span>🔒 <b style="color:#fff">分仓策略计算器</b><br><span style="font-size:11px; color:var(--muted);">拆分订单 / 错峰下单节省方案</span></span>
+      <a onclick="document.getElementById('subModal').classList.add('show')">会员解锁 →</a>
+    </div>
+  </div>
+
+  <!-- 年终奖 -->
+  <div class="mini-body hidden" id="miniPanelBonus">
+    <div class="field">
+      <label>年终奖金额（元）</label>
+      <input type="number" id="bonus_m" value="144001">
+    </div>
+    <div class="field">
+      <label>计税方式</label>
+      <div class="rg">
+        <label><input type="radio" name="bonus_mode_m" value="single" checked><span>单独计税</span></label>
+        <label><input type="radio" name="bonus_mode_m" value="merge"><span>并入综合</span></label>
+      </div>
+    </div>
+    <button class="calc-btn" id="bonus_calc_m">⇲ 计算</button>
+    <div class="result-box show" style="display:block">
+      <div class="result-row total"><span class="k">⚠️ 临界点优化</span><span class="v" style="color:var(--red); font-size:14px">¥144,001 → 144,000</span></div>
+      <div class="result-row"><span class="k">多发 1 元</span><span class="v" style="color:var(--red)">多缴税 ¥13,199</span></div>
+      <div class="note-box">年终奖单独计税使用「月度级距」，在 36,000 / 144,000 / 300,000 / 420,000 / 660,000 / 960,000 这 6 个档位前会出现「多发少得」。用「降到右边界」法即可立刻省税。</div>
+    </div>
+  </div>
+
+  <div class="mini-foot">
+    <div>数据源: <b style="color:var(--ink)">财关税〔2018〕49号 / 税委会2024-11号</b></div>
+    <div class="open" onclick="window.open('calculator.html','_blank')">打开完整版 →</div>
+  </div>
+</div>
+    
+<footer class="app-footer">
+  <div class="foot-brand">
+    <div class="fb"><span class="brand-logo" style="width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:radial-gradient(circle at 30% 30%, #ffe4a0, #c48a1a 60%, #6a4610 100%);color:#1a1200;font-weight:800;font-size:13px">盾</span>跨境税盾 KuajingShuiDun</div>
+    <p>跨境卖家的税务合规副驾驶。以 Avalara 级别的确定性，处理 9810 / 9710 / 9610 / 1210 / 1039 跨境六大模式的税率判定、合规义务与稽查应对。</p>
+    <p style="margin-top:6px">📮 商务 & 客服：<b style="color:var(--ink)">861481939@qq.com</b><br>📱 手机：私下使用（公开页仅留邮箱）</p>
+  </div>
+  <div>
+    <h6>产品</h6>
+    <ul>
+      <li onclick="document.getElementById('subModal').classList.add('show')">AI 问答助手（本页）</li>
+      <li><a href="calculator.html" target="_blank">税费测算器</a></li>
+      <li><a href="https://kuajingshuidun.cn/内容专栏.html" target="_blank">政策解读专栏</li>
+      <li><a href="https://kuajingshuidun.cn/内容专栏.html" target="_blank">稽查案例库（276 例）</li>
+      <li><a href="https://kuajingshuidun.cn/dashboard.html" target="_blank">跨境风险大盘</a></li>
+    </ul>
+  </div>
+  <div>
+    <h6>行业 · 深度内容</h6>
+    <ul>
+      <li><a href="https://kuajingshuidun.cn/内容-四大出口模式.html" target="_blank">出口四模式对比（9810/9710/9610/1039）</a></li>
+      <li><a href="https://kuajingshuidun.cn/内容-无票免税怎么做才合规.html" target="_blank">无票免税 · 合规操作手册</a></li>
+      <li><a href="https://kuajingshuidun.cn/内容-出口退税能退多少.html" target="_blank">出口退税能退多少 · 8 行业实测</a></li>
+      <li><a href="https://kuajingshuidun.cn/内容-收到补税通知.html" target="_blank">收到补税通知 · 应对 SOP</a></li>
+      <li><a href="https://kuajingshuidun.cn/内容-地方差异.html" target="_blank">综试区城市 · 地方差异速查</a></li>
+    </ul>
+  </div>
+  <div class="foot-cta">
+    <div class="big">⚡ 现在开通月会员 · 24h 内不满意可退款</div>
+    <div style="font-size:11.5px; color:var(--muted); margin-top:3px">¥29 / 月 · 无限次问答 + 全部 Mini 测算器 + 单证模板下载</div>
+    <button onclick="document.getElementById('subModal').classList.add('show')">✦ 立刻升级 · ¥29/月</button>
+  </div>
+  <div class="copyright">
+    <div>© 2026 跨境税盾 KuajingShuiDun · 杭州小棉袄跨境电商有限公司 · 经营主体 Mock</div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap">
+      <span style="padding:3px 8px; border-radius:999px; border:1px solid var(--rule); font-size:11px">Conf 高 · 政策时效已打标</span>
+      <span style="padding:3px 8px; border-radius:999px; border:1px solid var(--rule); font-size:11px">Sens 中 · 涉及金额估算，须结合实际账务核验</span>
+      <span style="padding:3px 8px; border-radius:999px; border:1px solid var(--rule); font-size:11px">数据源：国家税务总局 / 财政部 / 海关总署</span>
+    </div>
+  </div>
+</footer>
+  </div>
+  
+<div class="modal-mask" id="subModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-hd">
+      <div>
+        <h2>四档分层 · 只为跨境卖家设计</h2>
+        <p>和主站 kuajingshuidun.cn 定价完全对齐。已购买用户直接登录后额度同步激活。</p>
+      </div>
+      <div class="close-x" onclick="document.getElementById('subModal').classList.remove('show')">×</div>
+    </div>
+    <div class="plans">
+<div class="plan  ">
+  <h3><span class="em">🆓</span>免费版</h3>
+  <div class="price-row">
+    <span class="price-big">¥0</span>
+    <span class="price-unit">永久免费</span>
+    
+  </div>
+  <ul><li>每月 <b>10 次</b> AI 问答（每日限流 3 次）</li><li>Mini 测算器基础版</li><li>热门自查 Top6 免费看</li><li>政策原文链接可跳转</li><li><b style='color:var(--red)'>不含</b>：完整 20 页合规报告、无对话云同步</li></ul>
+  <button class="btn-block  disabled" >
+    当前方案
+    
+  </button>
+</div>
+<div class="plan recommended ">
+  <h3><span class="em">⚡</span>月会员</h3>
+  <div class="price-row">
+    <span class="price-big"><span style="color:#ffc24d">¥29</span></span>
+    <span class="price-unit">/ 月</span>
+    <span class="price-orig">¥59</span>
+  </div>
+  <ul><li>AI 问答 <b>无限次</b></li><li>Mini 测算器完整 + <b>20 页合规报告</b></li><li>对话云同步（30 天存档）</li><li>单证模板下载（14 类 · Word 可编辑）</li><li>会员专属客服 <b>861481939@qq.com</b></li></ul>
+  <button class="btn-block gold " onclick="window.alert('已跳转到支付宝收银台（Mock，后端下单前请先配置 backend/.env 的 ALIPAY_* 凭据。月 ¥29 = ALIPAY_SUB_PRICE_CENTS=2900）
+
+实际生产环境中：此处会调用 /api/subscribe/order → 跳转 alipay.com 支付 → 异步通知验签 → 自动发会员额度。')">
+    立即升级 · ¥29
+    
+  </button>
+</div>
+<div class="plan  ">
+  <h3><span class="em">✨</span>年会员</h3>
+  <div class="price-row">
+    <span class="price-big"><span style="color:#fff">¥299</span></span>
+    <span class="price-unit">/ 年（省 ¥49）</span>
+    <span class="price-orig">¥348</span>
+  </div>
+  <ul><li>月会员全部权益</li><li><b>省 ¥49</b>（相当于 2.5 个月免费）</li><li>年度跨境风险盘点报告（专属）</li><li>新政上线 48h 内主动推送</li><li>上线日期：<b>2026-09-08（即将开放）</b></li></ul>
+  <button class="btn-block  disabled" >
+    等年版上线提醒我
+    <span class="tag-mini">点此留下邮箱，上线前 24h 通知</span>
+  </button>
+</div>
+<div class="plan  plan-team">
+  <h3><span class="em">👥</span>团队版</h3>
+  <div class="price-row">
+    <span class="price-big"><span style="color:#fff">¥999</span></span>
+    <span class="price-unit">/ 年 · 5 账号</span>
+    <span class="price-orig">¥1999</span>
+  </div>
+  <ul><li>年会员全部权益</li><li><b>5 个账号</b>（财务 / 运营 / 关务 / 老板 / 代账都能用）</li><li>多主体 Workspace 切换（3 主体）</li><li>共享对话 / 共享风险看板</li><li>上线日期：<b>2026-09-15（即将开放）</b></li></ul>
+  <button class="btn-block  disabled" >
+    申请团队版内测
+    <span class="tag-mini">留下邮箱，商务 48h 内联系</span>
+  </button>
+</div></div>
+    <div class="guarantee">
+      <div class="guar-item"><span class="i">🛡️</span><div><b>30 天无理由退款</b>订阅后 30 天内不满意，全额原路退回</div></div><div class="guar-item"><span class="i">⚡</span><div><b>15 秒开通</b>支付宝秒付完成，额度实时生效不排队</div></div><div class="guar-item"><span class="i">🔒</span><div><b>经营数据隔离</b>会话存档按主体独立加密，跨主体不可互查</div></div><div class="guar-item"><span class="i">📩</span><div><b>邮件订阅凭证</b>支付成功自动发送订阅确认函，可作报销凭证</div></div>
+    </div>
+  </div>
+</div>
+  
+<div class="modal-mask" id="authModal" role="dialog">
+  <div class="modal" style="max-width: 460px">
+    <div class="modal-hd">
+      <div>
+        <h2>登录 · 跨境税盾 AI</h2>
+        <p>登录后免费额度、对话历史、订阅权益和跨设备同步。</p>
+      </div>
+      <div class="close-x" onclick="document.getElementById('authModal').classList.remove('show')">×</div>
+    </div>
+    <div class="auth">
+      <div class="auth-tabs">
+        <div class="auth-tab active" data-tab="login">账号密码登录</div>
+        <div class="auth-tab" data-tab="register">新用户注册</div>
+      </div>
+      <div class="auth-panel active" data-panel="login">
+        <label>用户名 / 邮箱</label>
+        <input type="text" placeholder="例如 23123 或 861481939@qq.com" value="23123">
+        <label>密码</label>
+        <input type="password" placeholder="请输入密码" value="••••••••">
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:var(--muted)">
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" checked style="accent-color:var(--gold)">记住我（30 天）</label>
+          <a style="color:var(--cyan);cursor:pointer">忘记密码？</a>
+        </div>
+        <button class="auth-submit" onclick="document.getElementById('authModal').classList.remove('show'); alert('登录成功（Mock）· 用户 23123 · 今日剩余 8/10 次');">登录 · 进入 AI 助手</button>
+        <div class="auth-foot">还没有账号？<a style="color:var(--gold);cursor:pointer" onclick="document.querySelectorAll('.auth-tab').forEach(e=>e.classList.remove('active'));document.querySelector('[data-tab=register]').classList.add('active');document.querySelectorAll('.auth-panel').forEach(e=>e.classList.remove('active'));document.querySelector('[data-panel=register]').classList.add('active');">切换到注册 Tab</a></div>
+      </div>
+      <div class="auth-panel" data-panel="register">
+        <label>昵称</label>
+        <input type="text" placeholder="例如 杭州小棉袄跨境-李总">
+        <label>邮箱（唯一登录凭证）</label>
+        <input type="text" placeholder="例如 xxx@qq.com">
+        <label>密码（≥ 8 位，建议字母+数字+符号）</label>
+        <input type="password">
+        <label>
+          <input type="checkbox" checked style="accent-color:var(--gold); margin-right:6px">
+          我已阅读并同意 <a style="color:var(--cyan)">用户协议</a> 与 <a style="color:var(--cyan)">隐私政策</a>
+        </label>
+        <button class="auth-submit">✦ 创建账号（Mock，不调用后端）</button>
+        <div class="auth-foot">已有账号？切回登录 Tab</div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="modal-mask err-modal" id="errModal" role="dialog">
+  <div class="modal inner" style="padding:0; overflow:hidden">
+    <div class="err-scene">
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <span class="eyebrow" style="margin:0"><span class="dot" style="background:var(--red); box-shadow:0 0 8px rgba(239,68,68,0.8)"></span>402 · 免费额度用完</span>
+        <div class="close-x" style="position:relative; inset:auto" onclick="document.getElementById('errModal').classList.remove('show')">×</div>
+      </div>
+      <div class="scene-card">
+        <div class="scene-icon">⏳</div>
+        <div class="scene-title">本月免费 10 次，已全部使用。<br>跨境问题正卡在这里，别等稽查追上来。</div>
+        <div class="scene-sub">下面是我们建议的 <b>三条递进式路径</b>，你可以任选其一继续推进。数据不会丢，所有历史对话和 Onboarding 进度会保留到下一次登录。</div>
+      </div>
+      <div class="scene-metrics">
+        <div class="metric"><div class="k">本月已用</div><div class="v" style="color:var(--gold)">10 / 10</div></div>
+        <div class="metric"><div class="k">平均问题耗时</div><div class="v" style="color:var(--cyan)">2.3s</div></div>
+        <div class="metric"><div class="k">覆盖政策依据</div><div class="v" style="color:var(--green)">91 条</div></div>
+        <div class="metric"><div class="k">建议升级</div><div class="v" style="color:#fff">月会员 ¥29</div></div>
+      </div>
+    </div>
+    <div class="err-actions">
+      <h3>三条递进式路径 · 你可以任选其一</h3>
+      <p class="lead">（Anrok 同款渐进式设计，不给你灰色禁用按钮。）</p>
+
+      <div class="act-card primary" onclick="document.getElementById('errModal').classList.remove('show'); document.getElementById('subModal').classList.add('show');">
+        <div class="act-icon">⚡</div>
+        <div>
+          <div class="act-title">立刻升级月会员 · ¥29 / 月</div>
+          <div class="act-sub">解锁无限次 AI 问答 + 20 页合规报告 + 单证模板下载，支付宝 15 秒开通。</div>
+        </div>
+        <div class="act-arrow">→</div>
+      </div>
+
+      <div class="act-card secondary" onclick="window.open('https://kuajingshuidun.cn/内容-合规自查清单.html','_blank')">
+        <div class="act-icon">📖</div>
+        <div>
+          <div class="act-title">先不升级 · 读一篇《跨境电商 2026 合规避坑指南》</div>
+          <div class="act-sub">包含：9810 退税四单证 / 1039 市场采购红线 / 金税四期下香港账户回流。</div>
+        </div>
+        <div class="act-arrow" style="color:var(--cyan)">↗</div>
+      </div>
+
+      <div class="act-card tertiary" onclick="window.location='mailto:861481939@qq.com?subject=跨境税盾%20AI助手%20额度问题&body=描述一下你的情况：'">
+        <div class="act-icon">📮</div>
+        <div>
+          <div class="act-title">特殊情况 · 找客服人工处理</div>
+          <div class="act-sub">商务合作 / 发票 / 公司采购 / 代账合伙人 · 48 小时内人工回复。</div>
+        </div>
+        <div class="act-arrow" style="color:var(--muted)">↗</div>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 10px; font-size: 11px; color:var(--muted); display:flex; justify-content:space-between">
+        <span>下次免费额度刷新时间：<b style="color:var(--ink)">2026-09-03 00:00 CST</b></span>
+        <a style="color:var(--cyan); cursor:pointer" onclick="document.getElementById('errModal').classList.remove('show')">先回到对话（只读）</a>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"9810 海外仓模式能不能办出口退税？","acceptedAnswer":{"@type":"Answer","text":"已在综试区登记并取得 9810 报关单 + 进项增值税专票 + 收汇凭证的跨境电商企业，可按免抵退办理出口退税。退税率按商品编码（通常 9%/13%），申报时效为报关出口次月增值税申报期内。若未取得进项票，可按财税〔2018〕103号享受无票免税政策（不退税但免增值税/消费税），企业所得税按综试区核定应税所得率 4%。"}},{"@type":"Question","name":"欧洲 VAT 被追缴 3 年怎么办？","acceptedAnswer":{"@type":"Answer","text":"建议三步走：1）立即向税务代理索取 24 个月交易明细 + 应缴测算；2）主动与税局提交 OSS/IOSS 分期申请书，避免货物被海关暂扣；3）资金端做好 3 倍税款+滞纳金的储备。高危情形下 AI 助手不会给出具体操作建议，须直接对接持牌税所。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"跨境税盾 AI 助手 v2","description":"面向跨境电商卖家的税务合规副驾驶。覆盖 9810 海外仓 / 9710 B2B / 9610 直邮 / 1210 保税 / 1039 市场采购 / 无票免税+核定征收 六大模式，提供 Avalara 级别 Onboarding、Anrok 风错误态、TaxJar 四档定价，以及 Sovos 风多主体 Workspace Mock。","offers":[{"@type":"Offer","price":"0","priceCurrency":"CNY","name":"免费版"},{"@type":"Offer","price":"29","priceCurrency":"CNY","name":"月会员"},{"@type":"Offer","price":"299","priceCurrency":"CNY","name":"年会员"},{"@type":"Offer","price":"999","priceCurrency":"CNY","name":"团队版 5账号"}]}</script>
+  
+<script>
+/* ====== 通用工具 ====== */
+const FM = (n) => (n == null ? "--" : Number(n).toLocaleString("zh-CN", { maximumFractionDigits: 0 }));
+const yuan = (n) => "¥" + FM(Math.round(n));
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+/* ====== Mini Tab 切换 ====== */
+$$(".mini-tab").forEach((t) => {
+  t.addEventListener("click", () => {
+    $$(".mini-tab").forEach((x) => x.classList.remove("active"));
+    t.classList.add("active");
+    const map = { miniTabIm: "miniPanelIm", miniTabEx: "miniPanelEx", miniTabBonus: "miniPanelBonus" };
+    const key = map[t.id];
+    $$(".mini-body").forEach((b) => {
+      if (b.id === key) b.classList.remove("hidden");
+      else b.classList.add("hidden");
+    });
+  });
+});
+
+/* ====== Mini 测算器：出口 ====== */
+$("#cb_ex_calc_m").addEventListener("click", () => {
+  const rev = +$("#cb_ex_rev").value || 0;
+  const hasInv = $$("input[name=cb_ex_inv_m]").find((r) => r.checked).value === "1";
+  const rate = (+$("#cb_ex_rate").value || 0) / 100;
+  const notExcluded = $("#cb_ex_excluded_m").checked;
+
+  let vatText, rebate, note;
+  if (hasInv && notExcluded) {
+    vatText = "可办出口退税";
+    rebate = rev * rate;
+    note = "取得有效进货凭证且不属于取消退（免）税范围的，报关离境并按规定收汇后可申报出口退（免）税。退税额为销售收入的简化估算，实际以进项税额及退税率核定。";
+  } else if (!hasInv && notExcluded) {
+    vatText = "无票免税（不退税）";
+    rebate = 0;
+    note = "综试区内电商出口企业、未取得有效进货凭证且不属于取消退（免）税范围，可试行增值/消费税免税（无票免税），但不退增值税。需完成线上登记并通过综试区海关申报。";
+  } else {
+    vatText = "按征税 / 须核验";
+    rebate = 0;
+    note = "货物属于明确取消出口退（免）税范围（如两高一资等），不适用退（免）税和免税，应如实申报缴税。此情形须进一步核验。";
+  }
+  const taxable = rev * 0.04;
+  const ql = taxable * 0.25;
+  const small = taxable * 0.05;
+  const net = rebate - small; // 按小微估算净现金
+
+  $("#cb_ex_vat_m").textContent = vatText;
+  $("#cb_ex_rebate_m").textContent = rebate > 0 ? "+ " + yuan(rebate) : "0";
+  $("#cb_ex_rebate_m").style.color = rebate > 0 ? "var(--green)" : "var(--ink)";
+  $("#cb_ex_ql_m").textContent = yuan(ql);
+  $("#cb_ex_small_m").textContent = yuan(small);
+  $("#cb_ex_net_m").textContent = (net >= 0 ? "+ " : "- ") + yuan(Math.abs(net));
+  $("#cb_ex_net_m").style.color = net >= 0 ? "var(--green)" : "var(--red)";
+  $("#cb_ex_saving_m").innerHTML = hasInv && notExcluded && rebate > 0
+    ? "💡 有票出口可退增值税约 <b>" + yuan(rebate) + "</b>；无票免税虽不退税，但省去征管麻烦。是否开票需结合成本结构权衡。"
+    : "💡 无票免税不免除企业所得税（综试区核定应税所得率4%）。符合小微时实际税负可降至5%。";
+  $("#cb_ex_note_m").textContent = note;
+  $("#cb_ex_result_m").classList.add("show");
+});
+
+/* ====== Mini 测算器：进口 ====== */
+$("#cb_im_calc_m").addEventListener("click", () => {
+  const price = +$("#cb_im_price_m").value || 0;
+  const remain = +$("#cb_im_remain_m").value || 26000;
+  const hasCons = $$("input[name=cb_im_g_m]").find((r) => r.checked).value === "high";
+  const consBasis = hasCons ? 0.15 : 0;
+  let plan, vat, cons, cus, note;
+  if (price <= 5000) {
+    plan = "限值内（≤5000元）";
+    vat = price * 0.13 * 0.7;
+    cons = price * consBasis * 0.7;
+    cus = 0;
+    note = "单次交易限值5000元内：关税暂设为0%，进口环节增值税按法定税率的70%征收" + (hasCons ? "，高档化妆品另按消费税法定税率的70%征收。" : "。");
+  } else if (price < remain) {
+    plan = "超单次限值单件商品（<年度限值）";
+    vat = price * 0.13;
+    cons = price * consBasis;
+    cus = 0;
+    note = "完税价格超5000元但低于年度限值、且订单为单件不可分割商品时，按货物税率全额征收（本测算按关税0、增值税13%全额估算）。";
+  } else {
+    plan = "超年度限值（按一般贸易）";
+    vat = price * 0.13;
+    cons = price * consBasis;
+    cus = 0;
+    note = "年度限值内剩余额度不足，超限部分按一般贸易管理，关税税率因商品而异需另行核定（本测算按0估算，须核验）。";
+  }
+  const total = vat + cons + cus;
+  $("#cb_im_cus_m").textContent = yuan(cus);
+  $("#cb_im_vat_m").textContent = yuan(vat);
+  $("#cb_im_cons_m").textContent = yuan(cons);
+  $("#cb_im_total_m").textContent = yuan(total);
+  $("#cb_im_saving_m").innerHTML = "适用方案：<b>" + plan + "</b>，综合税额约 <b>" + yuan(total) + "</b>。";
+  $("#cb_im_note_m").textContent = note;
+  $("#cb_im_result_m").classList.add("show");
+});
+
+/* ====== 对话历史（localStorage 持久化）====== */
+const SESS_KEY = "cai_chat_sessions_v2";
+function ensureSampleSessions() {
+  if (!localStorage.getItem(SESS_KEY)) {
+    const samples = [
+      { id: "s1", title: "9810 海外仓模式能否享受出口退税？", updatedAt: Date.now() - 12 * 60000, badge: ["🌏 跨境"] },
+      { id: "s2", title: "欧洲 VAT 注册被拒，补 EORI 申请流程", updatedAt: Date.now() - 26 * 3600000, badge: ["🌏 跨境"] },
+      { id: "s3", title: "无票免税四流一致证据链清单", updatedAt: Date.now() - 29 * 3600000, badge: ["🌏 跨境"] },
+      { id: "s4", title: "义乌个体户 1039 收汇额度上限", updatedAt: Date.now() - 3 * 86400000, badge: ["🇨🇳 国内"] },
+      { id: "s5", title: "年终奖 36 万 vs 35.9 万，差多少税后？", updatedAt: Date.now() - 6 * 86400000, badge: ["🇨🇳 国内"] },
+      { id: "s6", title: "海南 15% 双 15 政策最新门槛", updatedAt: Date.now() - 10 * 86400000, badge: ["※ 团队版"] },
+    ];
+    localStorage.setItem(SESS_KEY, JSON.stringify(samples));
+  }
+}
+ensureSampleSessions();
+
+/* ====== Session item click → Mock 激活态 ====== */
+$$(".sess").forEach((s, idx) => {
+  s.addEventListener("click", () => {
+    $$(".sess").forEach((x) => x.classList.remove("active"));
+    s.classList.add("active");
+  });
+});
+
+/* ====== New chat ====== */
+$("#newChatBtn").addEventListener("click", () => {
+  $$(".sess").forEach((x) => x.classList.remove("active"));
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+/* ====== Auth Tab 切换 ====== */
+$$(".auth-tab").forEach((t) => {
+  t.addEventListener("click", () => {
+    $$(".auth-tab").forEach((x) => x.classList.remove("active"));
+    t.classList.add("active");
+    const target = t.dataset.tab;
+    $$(".auth-panel").forEach((p) => {
+      p.classList.toggle("active", p.dataset.panel === target);
+    });
+  });
+});
+
+/* ====== 点击 Modal 背景关闭 ====== */
+["subModal", "authModal", "errModal"].forEach((id) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("click", (e) => {
+    if (e.target === el) el.classList.remove("show");
+  });
+});
+
+/* ====== Workspace 下拉（Mock 3 主体切换）====== */
+const WSS = ["杭州小棉袄跨境", "深圳海星辰进出口", "义乌小商品直邮"];
+let wsIdx = 0;
+$("#workspaceSwitch").addEventListener("click", (e) => {
+  wsIdx = (wsIdx + 1) % WSS.length;
+  $("#currentWorkspace").textContent = WSS[wsIdx];
+});
+
+/* ====== 自动算一次出口测算（默认值直接出结果看视觉）====== */
+try { $("#cb_ex_calc_m").click(); } catch (e) {}
+
+/* ====== 演示：1 分 30 秒后触发 Anrok 错误态（方便你点其他入口也可以手动触发 window.openErrModal()）====== */
+window.openErrModal = () => document.getElementById("errModal").classList.add("show");
+window.closeErrModal = () => document.getElementById("errModal").classList.remove("show");
+// setTimeout(window.openErrModal, 90000);  // 先注释掉，避免视觉验收时干扰
+
+/* ====== 快捷键：Enter 发送 / Shift+Enter 换行 ====== */
+const ta = $("#userInput");
+if (ta) {
+  ta.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      if (ta.value.trim()) alert("发送（Mock）：已模拟 POST /api/chat，DeepSeek 不在本地环境下实际调用。你可以在生产环境 ai.kuajingshuidun.cn 对接真实接口。");
+    }
+  });
+}
+
+/* ====== 测试按钮：手动触发 402 错误态 ====== */
+// 如果想立刻看 402 Modal：在 Console 里敲 openErrModal()
+
+/* ====== prefers-reduced-motion 兜底（CSS 层已经覆盖了全局 transition:none，动画都有 media 查询；这里再补一次 Observer 保险）====== */
+(function reduceMotionSafe(){
+  try {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (mq.matches) {
+      document.querySelectorAll(".av, .plan, .scen, .act-card").forEach(el => {
+        el.style.transform = "none";
+        el.style.animation = "none";
+      });
+    }
+  } catch (e) {}
+})();
+</script>
+  <script>document.getElementById('ssr-hide').remove();</script>
+</body>
+</html>
