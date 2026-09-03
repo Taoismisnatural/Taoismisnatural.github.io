@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AXION · 跟单接入指引</title>
+<meta name="description" content="AXION 信号接入文档：SSE 实时流与 Webhook 自动执行，含数据结构与示例代码。">
+<style>
+:root{--bg-deep:oklch(14% .015 240);--s1:oklch(20% .012 240);--s2:oklch(24% .012 240);--line:oklch(31% .012 240);--line-soft:oklch(25% .012 240);
+--ink:oklch(92% .005 240);--ink-dim:oklch(70% .012 240);--ink-faint:oklch(58% .012 240);
+--accent:oklch(78% .16 165);--pos:oklch(78% .16 165);--neg:oklch(68% .19 20)}
+*{box-sizing:border-box;margin:0;padding:0}
+/* 键盘焦点 */
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+body{background:var(--bg-deep);color:var(--ink);font-family:"Segoe UI","PingFang SC",system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.back a{display:inline-block;padding:8px 0}
+.wrap{max-width:960px;margin:0 auto;padding:44px 28px 90px}
+.back{font-family:Consolas,monospace;font-size:12.5px;color:var(--ink-dim);margin-bottom:16px}
+h1{font-size:28px;font-weight:500}
+.sub{color:var(--ink-dim);font-size:14.5px;margin:10px 0 34px;max-width:72ch}
+h2{font-size:18px;margin:38px 0 12px;color:var(--accent);font-weight:600}
+p,li{color:var(--ink-dim);font-size:14px;margin-bottom:8px}
+ol,ul{padding-left:22px}
+code{font-family:Consolas,monospace;font-size:12.5px;background:var(--s2);border:1px solid var(--line);padding:1px 6px;border-radius:5px;color:var(--accent);word-break:break-all}
+pre{background:#0c1118;border:1px solid var(--line);border-radius:10px;padding:16px 18px;overflow-x:auto;margin:12px 0 22px;font-size:12.5px;line-height:1.7}
+pre code{background:none;border:none;padding:0;color:#cfe3d9}
+.k{color:#33e0a8}.s{color:#9fbf8f}.c{color:#5c6b77}
+.callout{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;background:var(--s1);padding:14px 16px;margin:16px 0;font-size:13px;color:var(--ink-dim)}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0 20px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line-soft);font-family:Consolas,monospace;font-size:12px;vertical-align:top}
+th{color:var(--ink-faint);font-weight:500}
+.step{border:1px solid var(--line);border-radius:12px;background:var(--s1);padding:18px 20px;margin-bottom:14px}
+.step b{color:var(--accent);font-family:Consolas}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="back"><a href="/axion-platform.html">← 返回首页</a></div>
+<h1>跟单接入指引</h1>
+<p class="sub">AXION 提供三种跟单方式：网页控制台（人工跟单）、SSE 实时流（轻量自动）、Webhook 推送（机构档自动执行）。三种方式共用同一数据口径与订阅密钥鉴权。</p>
+
+<h2>0. 前置条件</h2>
+<div class="step">
+  <b>订阅密钥（AXK-…）</b> — 专业跟单档以上有效。免费观察档密钥仅可查看公开披露数据。用途：<code>?key=</code> 或请求头 <code>X-AXION-KEY</code>。<br>
+  到期后自动失效（返回 401），续费后原密钥继续有效。
+</div>
+
+<h2>1. 网页控制台（最快上手）</h2>
+<p>首页顶部「控制台」区块输入邮箱 + 密钥 → 实时信号流即刻连接（SSE），无需写代码。</p>
+
+<h2>2. SSE 实时流（推荐自动跟单）</h2>
+<p>服务端推送事件，浏览器和新手脚本友好，断线自动重连（<code>retry: 15000</code>）。</p>
+<div class="callout">端点：<code>GET /api/pro/stream?key=AXK-…</code><br>鉴权：密钥错误或已过期返回 <b style="color:var(--neg)">401</b>。</div>
+<pre><code><span class="c"># Python：使用 requests + 文本流</span>
+<span class="k">import</span> requests
+<span class="k">import</span> json
+
+url = <span class="s">"http://&lt;your-host&gt;/api/pro/stream"</span>
+r = requests.get(url, params={<span class="s">"key"</span>: <span class="s">"AXK-…"</span>}, stream=True, timeout=(5, 300))
+<span class="k">for</span> line <span class="k">in</span> r.iter_lines():
+    <span class="k">if</span> line <span class="k">and</span> line.startswith(<span class="s">b"data: "</span>):
+        ev = json.loads(line[6:])
+        <span class="k">print</span>(ev[<span class="s">"sym"</span>], ev[<span class="s">"side"</span>], ev[<span class="s">"entry"</span>], ev[<span class="s">"tp"</span>], ev[<span class="s">"sl"</span>])</code></pre>
+<pre><code><span class="c">// 浏览器：EventSource 自动重连</span>
+<span class="k">const</span> es = <span class="k">new</span> EventSource(<span class="s">`/api/pro/stream?key=${key}`</span>);
+es.onmessage = e =&gt; { <span class="k">const</span> ev = JSON.parse(e.data); <span class="k">console</span>.log(ev); };</code></pre>
+
+<h2>3. Webhook 推送（机构档自动执行）</h2>
+<p>订阅开通后，在管理端维护该订阅的 <code>webhook_url</code>。每当有新信号，平台会 POST 以下 JSON 到你的端点（失败自动告警日志，不影响其他推送）。</p>
+<div class="callout">幂等提示：每条信号唯一键为 <code>ts + sym + rule</code>。请在你的执行端按该键去重，避免同一信号重复下单。</div>
+<pre><code><span class="c">// POST https://your-bot.example/webhook 请求体示例</span>
+{
+  <span class="s">"type"</span>: <span class="s">"signal"</span>,
+  <span class="s">"data"</span>: {
+    <span class="s">"ts"</span>: <span class="s">"2026-09-01 12:26:10"</span>,
+    <span class="s">"sym"</span>: <span class="s">"BTCUSDC"</span>,
+    <span class="s">"rule"</span>: <span class="s">"mom1h_l"</span>,
+    <span class="s">"tf"</span>: <span class="s">"1h"</span>,
+    <span class="s">"side"</span>: <span class="s">"LONG"</span>,
+    <span class="s">"entry"</span>: 78655.7,
+    <span class="s">"tp"</span>: 4.0, <span class="s">"sl"</span>: 1.2,
+    <span class="s">"status"</span>: <span class="s">"tp"</span>,
+    <span class="s">"weight"</span>: 0.25,
+    <span class="s">"reason"</span>: <span class="s">"1h 连续 2 根上涨动量触发 1.0% …"</span>,
+    <span class="s">"invalidate"</span>: <span class="s">"止损 1.2% 触发或持仓超 4h 即失效"</span>
+  }
+}</code></pre>
+<p>建议在 webhook URL 中自带密钥参数（如 <code>https://host/hook?token=xxx</code>），平台不额外加密，端口你自己鉴权。</p>
+
+<h2>4. 信号字段说明</h2>
+<table>
+  <tr><th>字段</th><th>含义</th><th>说明</th></tr>
+  <tr><td>ts</td><td>信号时间戳</td><td>YYYY-MM-DD HH:MM:SS</td></tr>
+  <tr><td>sym</td><td>币种</td><td>USDC 永续交易对，如 BTCUSDC</td></tr>
+  <tr><td>rule / tf</td><td>规则 / 周期</td><td>mom15_l / 15m；30m；1h 三周期宽码头</td></tr>
+  <tr><td>side</td><td>方向</td><td>LONG / SHORT</td></tr>
+  <tr><td>entry / exit</td><td>回撤挂单价 / 离场价</td><td>null 表示未成交/未离场</td></tr>
+  <tr><td>tp / sl</td><td>止盈 / 止损（%）</td><td>相对挂单价，如 4.0 / 1.2</td></tr>
+  <tr><td>status</td><td>状态</td><td>open / tp / stop / expire / timeout</td></tr>
+  <tr><td>pnl1x</td><td>盈亏</td><td>1x 口径盈余百分比，已扣手续费与资金费</td></tr>
+  <tr><td>tbsi</td><td>订单流指标</td><td>数值越小信号越强（&lt;0.55 高置信）</td></tr>
+  <tr><td>weight</td><td>建议权重</td><td>0~1，单币 Kelly 上限 25%</td></tr>
+  <tr><td>reason / invalidate</td><td>触发理由 / 失效条件</td><td>供人工与日志审计</td></tr>
+</table>
+
+<h2>5. 温馨提示与风险</h2>
+<ul>
+  <li>信号仅供跟单参考，不构成投资建议；请在理解清算与资金费后再使用杠杆。</li>
+  <li>自动执行前先用最低仓位跑通链路，核对滑点与去重逻辑。</li>
+  <li>任何密钥泄露风险自担：<b style="color:var(--neg)">请勿将订阅密钥提交到公开仓库或第三方平台</b>。</li>
+  <li><b>组合级熔断建议</b>：仿照 eToro「跟单止损 CSL」，建议为整个跟单组设定回撤阈值（默认 40%），触及即整体退出；平台信号侧：单月熔断 30%、连亏 4 笔冷却 2 周。</li>
+</ul>
+
+<div class="callout" style="margin-top:28px">📖 完整数据结构示例详见 <a href="/api/analytics" style="color:var(--accent)">/api/analytics</a>（全部历史）与 <a href="/api/pro/signals?key=…" style="color:var(--accent)">/api/pro/signals</a>（最近 20 条）。</div>
+<div class="back" style="margin-top:26px"><a href="/axion-platform.html">← 返回首页</a></div>
+</div>
+</body>
+</html>

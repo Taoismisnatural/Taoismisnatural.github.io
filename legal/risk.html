@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>AXION · 风险披露</title>
+<style>
+:root{--bg:oklch(15% .012 240);--s1:oklch(20% .012 240);--line:oklch(31% .012 240);--ink:oklch(92% .005 240);--dim:oklch(70% .012 240);--accent:oklch(78% .16 165)}
+*{box-sizing:border-box;margin:0;padding:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+body{background:var(--bg);color:var(--ink);font-family:"Segoe UI","PingFang SC",system-ui,sans-serif;line-height:1.85}
+.topbar{position:sticky;top:0;background:rgba(15,18,22,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 24px;display:flex;align-items:center;gap:18px;font-size:13px}
+.topbar .brand{font-weight:800;letter-spacing:.04em;color:var(--accent)}
+.topbar a{color:var(--dim);text-decoration:none;margin-right:16px}
+.topbar a:hover{color:var(--ink)}
+.wrap{max-width:780px;margin:0 auto;padding:52px 28px 80px}
+h1{font-size:27px;margin-bottom:6px}.sub{color:var(--dim);font-size:13px;margin-bottom:34px}
+h2{font-size:17px;margin:28px 0 10px;color:var(--accent);font-weight:700}
+p,li{color:var(--dim);font-size:14.5px;margin-bottom:9px}
+ul{padding-left:22px;margin-bottom:10px}
+b.warn{color:oklch(80% .15 60)}
+.note{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--s1);border-radius:8px;padding:14px 18px;margin:18px 0;font-size:13.5px;color:var(--dim)}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="topbar"><span class="brand">AXION</span><a href="/axion-platform.html">首页</a><a href="/workspace">工作台</a><a href="/terms">条款</a><a href="/analytics">台账</a></div>
+<div class="wrap">
+<h1>风险披露声明</h1>
+<p class="sub">生效日期：2026-09-01 · 请在使用任何 AXION 服务前阅读本页全部内容</p>
+
+<p class="note"><b class="warn">重要风险警告：</b>加密货币永续合约交易存在极高风险，杠杆会同时放大盈利与亏损。您可能损失全部保证金甚至（在极端情况下）超过本金。仅使用您能够承受完全损失的资金参与。</p>
+
+<h2>1. 交易涉及重大亏损风险</h2>
+<p>数字资产市场波动剧烈，可在短时间内出现大幅涨跌。包括持仓追踪、不利价格跳空、交易所宕机等在内的多种情形，可能导致您以远离挂单价格的价位成交，甚至无法成交。本平台不保证任何交易结果。</p>
+
+<h2>2. 财务风险清单</h2>
+<ul>
+<li><b>本金风险：</b>您可能损失部分或全部投入资金，切勿使用借贷、备用金或生活必需资金交易。</li>
+<li><b>杠杆风险：</b>杠杆放大收益的同时等比例放大亏损；高杠杆下小幅反向波动即可触发强制平仓。</li>
+<li><b>市场波动：</b>重大行情事件（宏观数据、社交媒体消息、流动性断层）会造成瞬间剧烈波动与滑点。</li>
+<li><b>费率风险：</b>资金费率、手续费、分摊与滑点将侵蚀收益，尤其在小周期高频信号上影响显著。</li>
+<li><b>技术风险：</b>网络中断、交易所接口异常、本平台或第三方服务故障均可能影响信号接收与执行。</li>
+</ul>
+
+<h2>3. 非投资建议与平台定位</h2>
+<p>AXION 是提供算法生成的市场分析、信号与数据展示的<u>教育性信息平台</u>。平台及运营方<b>不是</b>持牌投资顾问、经纪商或资产管理人；我们不提供针对您个人财务状况的建议，不持有、不托管您的资金与交易所密钥，也不代您下单。所有内容均视为一般性市场信息，不构成对任何资产的买入、卖出、持有邀约。</p>
+
+<h2>4. 历史业绩与模拟数据免责</h2>
+<p>平台展示的回测结果、模拟盘（探针）成交、胜率与权益曲线均为特定历史假设下的复现，仅供说明用途：<b>过去表现不代表未来结果</b>。回测未完全计入真实成交率、滑点、深度、资金费率与情绪约束；真实执行可能显著低于模拟结果。</p>
+
+<h2>5. 信号执行的固有局限</h2>
+<ul>
+<li>信号入场/出场价格为估值，市场流动性、深度与延迟可能导致实际成交价偏离。</li>
+<li>信号生成与您接收、执行之间必然存在时延，行情可能在信号发出后快速变化。</li>
+<li>并非所有信号都会盈利；存在连续亏损区间。</li>
+<li>策略依赖特定市场环境（趋势/区间/波动率），环境切换时表现可能显著退化。</li>
+</ul>
+
+<h2>6. 自动跟单（Webhook 执行）特有风险</h2>
+<p>机构档订阅可通过 Webhook 将信号转发至您的执行端点（Cornix、自建机器人等），自动化执行带来以下额外风险：</p>
+<ul>
+<li><b>无人值守：</b>策略可能在您离开屏幕时自动开平仓，除非您自行配置，单笔交易没有人工熔断。</li>
+<li><b>软件故障：</b>执行端、数据源或连接的任何缺陷可能产生重复、错误或失控订单。</li>
+<li><b>依赖连续运行：</b>自动化依赖您的设备、网络与账户连接持续在线；断电、休眠、崩溃或断网可能使持仓失管。</li>
+<li><b>快速连环下单：</b>剧烈行情下系统可能以超出您反应速度的频率下单，放大损失。</li>
+<li><b>账户责任：</b>最终监控账户、验证每笔订单的责任完全在您；本平台无法访问或控制您的账户。</li>
+</ul>
+<p>在自动化跟单前，请先在模拟环境完整验证；运行时保持监督；仅将可承受的仓位交给自动化。</p>
+
+<h2>7. 风控工具仅为辅助</h2>
+<p>平台内置的单月熔断（30%）、连亏闸门与组合止损建议等机制是<b>信号层纪律约束</b>，不是对您账户的安全保证。您仍需自行设置止损位，理解并接受全部交易后果。</p>
+
+<h2>8. 用户责任</h2>
+<p>使用本服务即表示您确认：您已阅读并理解本披露；您独立作出交易决策并完成自身尽调；您具备相应知识与风险承受能力（仅限 18 周岁以上）；您不会因任何交易亏损向平台追责。</p>
+
+<h2>9. 税务义务</h2>
+<p>交易利润可能需在您的司法管辖区申报纳税，您有义务自行申报并缴纳适用税费。</p>
+
+<h2>10. 地域限制与监管状态</h2>
+<p>部分司法辖区禁止或限制杠杆数字资产交易。您有责任在订阅前核实当地法律允许您使用本服务。AXION 为独立信息发布方，未受任何金融监管机构授权提供投资建议或管理客户资金。</p>
+
+<h2>11. 责任限制</h2>
+<p>在法律允许的最大范围内，AXION 及其运营方、员工与关联方不对因使用信号、自动化执行、数据错误、系统故障或延迟引发的任何损失、损害或成本承担责任。</p>
+
+<p style="margin-top:34px;color:var(--dim);font-size:13px">如有疑问，请阅读 <a href="/terms">服务条款</a> 后再决定是否订阅。</p>
+<p style="margin-top:8px"><a href="/axion-platform.html" style="display:inline-block;padding:6px 0">← 返回首页</a></p>
+</div>
+</body>
+</html>

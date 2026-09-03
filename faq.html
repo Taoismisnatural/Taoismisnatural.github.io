@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AXION · 常见问题</title>
+<meta name="description" content="AXION 常见问题：回测口径、跟单方式、开通时效、退款政策、风控与合规。">
+<style>
+:root{--bg-deep:oklch(14% .015 240);--surface-1:oklch(20% .012 240);--line:oklch(31% .012 240);--line-soft:oklch(25% .012 240);
+--ink:oklch(92% .005 240);--ink-dim:oklch(70% .012 240);--ink-faint:oklch(58% .012 240);
+--accent:oklch(78% .16 165);--pos:oklch(78% .16 165);--neg:oklch(68% .19 20)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg-deep);color:var(--ink);font-family:"Segoe UI","PingFang SC",system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:860px;margin:0 auto;padding:44px 28px 90px}
+.back{font-family:Consolas,monospace;font-size:12.5px;color:var(--ink-dim);margin-bottom:16px}
+.back a{display:inline-block;padding:8px 0}
+h1{font-size:28px;font-weight:500;margin-bottom:8px}
+.sub{color:var(--ink-dim);font-size:14.5px;margin:0 0 34px}
+details.qa{background:var(--surface-1);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;overflow:hidden}
+summary{cursor:pointer;padding:16px 20px;font-size:15px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+.ic{color:var(--accent);font-family:Consolas;font-size:18px;transition:transform .2s}
+details[open] .ic{transform:rotate(45deg)}
+.qa .a{padding:0 20px 18px;color:var(--ink-dim);font-size:14px;border-top:1px solid var(--line-soft);padding-top:14px;margin-top:14px}
+.qa .a a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="back"><a href="/axion-platform.html">← 返回 AXION 首页</a></div>
+<h1>常见问题</h1>
+<p class="sub">你说得对的问题们。首页也有同名区块，这里整合为独立页便于查阅与分享。</p>
+<details class="qa"><summary>回测 +454% 是真实能做到的么？<span class="ic">+</span></summary><div class="a">+454% 是触价即成交乐观口径下的 2x 复利；真实执行有队列系数折扣（约 ×0.5~0.7）。平台用探针（虚拟挂单）对每一笔信号实测成交率，首页「实时信号」区块展示的就是探针真实记录。</div></details>
+<details class="qa"><summary>跟单怎么跟？<span class="ic">+</span></summary><div class="a">订阅后实时收到结构化信号：币种、方向、回撤挂单价、止盈止损、失效规则、建议权重。平台另有 SSE 实时流与 Webhook 自动执行两种接口，接入方式见 <a href="/guide" style="color:var(--accent)">跟单接入指引</a>。平台不托管资金、不经手你的密钥，只提供可验证信号。</div></details>
+<details class="qa"><summary>「每月都赚钱」存在么？<span class="ic">+</span></summary><div class="a">不存在。16 个月中 10 个月为正，震荡月会亏。价值在于趋势月吃满波段、震荡月亏得够少。</div></details>
+<details class="qa"><summary>付款后多久开通？<span class="ic">+</span></summary><div class="a">人工确认制：付款后发订单号+核验码给客服，到账核对后开通，通常 12 小时内。免费档即时开通。</div></details>
+<details class="qa"><summary>付费后不满意能退款么？<span class="ic">+</span></summary><div class="a">专业跟单与机构档支持 7 天无理由退款：开通后 7 天内联系客服，核对订单后原路退回（网络转账手续费由用户承担）。免费档无需退款。</div></details>
+<details class="qa"><summary>我的整个跟单组合能设置熔断么？<span class="ic">+</span></summary><div class="a">可以自行设置，参考 eToro「跟单止损 CSL」做法：对单次跟单整体设定最大回撤阈值（如 40%），触及即退出整组交易。平台侧已内置两道信号级保险：单月熔断 30%（当月权益回撤≥30% 即停发新信号）与连亏闸门（连续 4 笔亏损冷却 2 周）。组合级止损由你在执行端设置（详见 <a href="/guide" style="color:var(--accent)">跟单接入指引</a>）。</div></details>
+<details class="qa"><summary>0 Maker 费会不会停？<span class="ic">+</span></summary><div class="a">会。币安 USDC-M 促销政策。每周核验续期；若终止，策略切换定价/结构，并提前一个周期通知用户。</div></details>
+<details class="qa"><summary>你们是投资建议么？<span class="ic">+</span></summary><div class="a">不是。AXION 是教育性信息平台，提供算法信号与数据，不构成投资建议、不托管资金、不代你下单。合约交易可能损失全部本金，请在订阅前阅读完整的 <a href="/legal/risk" style="color:var(--accent)">风险披露</a>。</div></details>
+</div>
+</body>
+</html>
